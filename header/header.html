@@ -1,0 +1,41 @@
+<!-- =============================================
+     HEADER — КРОНОВЪ
+     Шаблон шапки для всех страниц.
+     Копируйте этот блок в <body> каждой страницы.
+     Подключите: <link rel="stylesheet" href="header/header.css">
+     ============================================= -->
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <svg viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="18" r="14" stroke="#D4B896" stroke-width="1.8"/>
+        <circle cx="18" cy="14" r="6" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <circle cx="34" cy="14" r="6" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <circle cx="26" cy="22" r="5" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <line x1="26" y1="32" x2="26" y2="50" stroke="#D4B896" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="header-logo-text">КРОНОВЪ</span>
+    </a>
+    <nav class="header-nav" id="nav">
+      <a href="/#catalog">Каталог</a>
+      <a href="/#process">Как работаем</a>
+      <a href="/#gallery">Работы</a>
+      <a href="/#faq">Вопросы</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#cta" class="header-cta">Получить предложение</a>
+    </nav>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== STICKY MOBILE BAR ===== -->
+<div class="sticky-bar">
+  <div class="sticky-bar-inner">
+    <a href="tel:+375296888629" class="sticky-call">Позвонить</a>
+    <a href="https://wa.me/375296888629" class="sticky-wa">WhatsApp</a>
+  </div>
+</div>

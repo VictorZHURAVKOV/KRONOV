@@ -1,0 +1,78 @@
+/* =============================================
+   FOOTER — КРОНОВЪ
+   Единый стиль подвала для всех страниц сайта.
+   Подключается: <link rel="stylesheet" href="footer/footer.css">
+   ============================================= */
+
+.footer {
+  background: var(--c-dark, #1E1410);
+  border-top: 1px solid rgba(212,184,150,.08);
+  padding: 48px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+/* --- Brand column --- */
+.footer-brand {
+  font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+  font-size: 22px;
+  color: var(--c-sand, #D4B896);
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.footer-desc {
+  font-size: 14px;
+  color: var(--c-sand, #D4B896);
+  opacity: .5;
+  line-height: 1.6;
+}
+.footer-phone {
+  margin-top: 16px;
+}
+.footer-phone a {
+  opacity: 1 !important;
+  color: var(--c-sand, #D4B896) !important;
+  font-size: 16px !important;
+  font-weight: 600;
+}
+
+/* --- Link columns --- */
+.footer h5 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-sand, #D4B896);
+  margin-bottom: 16px;
+}
+.footer a {
+  display: block;
+  font-size: 14px;
+  color: var(--c-sand, #D4B896);
+  opacity: .5;
+  padding: 4px 0;
+  transition: opacity .3s;
+  text-decoration: none;
+}
+.footer a:hover { opacity: 1; }
+
+/* --- Bottom bar --- */
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(212,184,150,.06);
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--c-sand, #D4B896);
+  opacity: .3;
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
