@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+
+# Source/reference materials (not part of the live site)
+*.zip
+*.pdf
+*.docx
+*.md
+KRONOV_CATALOG_REFERENCE.html
+kronov-landing.html
+kronov-landing-updated.html
+thank-you*.html
+!index.html
+!thank-you.html
+
+# Folders with source images
+НОВЫЙ САЙТ/
