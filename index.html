@@ -490,6 +490,27 @@ input { font-family:inherit; }
   transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(30,20,16,.1);
 }
+a.catalog-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.catalog-card .catalog-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-bordo);
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .3s, transform .3s;
+}
+.catalog-card:hover .catalog-more {
+  opacity: 1;
+  transform: translateY(0);
+}
 .catalog-img {
   aspect-ratio: 4/3;
   background: var(--c-sand);
@@ -1154,7 +1175,7 @@ input { font-family:inherit; }
     </div>
     <div class="catalog-grid">
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-001.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-001</div>
@@ -1162,12 +1183,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Вечер. Длинный стол. Вся семья собралась под одной крышей — и эта крыша в вашем саду. Флагманская модель с безупречной геометрией.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 6 900 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-002.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-002-front.jpg" alt="КР-002 Эстетъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-002</div>
@@ -1175,12 +1197,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Свет играет на гранях. Необычная форма притягивает взгляд. Беседка, которая становится архитектурным акцентом вашего участка.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 7 300 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-003.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-003-front.jpg" alt="КР-003 Патриархъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-003</div>
@@ -1188,12 +1211,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Три поколения за одним столом. Массивная конструкция для большой семьи — места хватит каждому, включая внуков.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 9 500 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-004.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-004</div>
@@ -1201,12 +1225,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Тёплый плед. Чай с мятой. Тишина вечера. Премиальная комплектация для тех, кто привык к лучшему.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 10 500 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-005.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-005-front.jpg" alt="КР-005 Встреча" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-005</div>
@@ -1214,12 +1239,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Два кресла. Чай на двоих. Тихий вечер. Компактная беседка для тех, кому не нужно много — нужно своё, настоящее.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 4 500 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-006.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-006-front.jpg" alt="КР-006 Ротонда" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-006</div>
@@ -1227,12 +1253,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Классическая форма. Восемь граней, выверенные пропорции. Беседка, которая выглядит так, будто стояла здесь всегда.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 7 800 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-008.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-008-sunset.jpg" alt="КР-008 Дворъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-008</div>
@@ -1240,12 +1267,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Мангал потрескивает. Друзья рядом. Разговоры, которые не хочется заканчивать. Мужской характер, мощная конструкция.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 6 200 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-007.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-007-front.jpg" alt="КР-007 Бельведеръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-007</div>
@@ -1253,25 +1281,27 @@ input { font-family:inherit; }
           <div class="catalog-desc">Массивный брус. Открытый горизонт. Беседка, в которой чувствуешь себя хозяином участка. Фахверковый характер, брутальная честность конструкции.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 7 600 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-009-front.jpg" alt="КР-009 Убежище" style="width:100%;height:100%;object-fit:cover;"></div>
+      <a href="gazebo/kr-009.html" class="catalog-link"><div class="catalog-card animate">
+        <div class="catalog-img"><img src="images/kr-009-front.jpg" alt="КР-009 Павильонъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-009</div>
           <div class="catalog-name">Павильонъ</div>
           <div class="catalog-desc">Максимальный простор. Ни одной стены — только крыша, стойки и горизонт. Для тех, кто хочет быть в саду, а не в коробке.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 5 900 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-010.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-010-front.jpg" alt="КР-010 Убежище" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-010</div>
@@ -1279,12 +1309,13 @@ input { font-family:inherit; }
           <div class="catalog-desc">Рейки-ширмы создают приватность. Гирлянда над головой. Книга в руках. Компактная беседка для тех, кто ценит уединение и камерность.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 5 300 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
-      <div class="catalog-card animate">
+      <a href="gazebo/kr-011.html" class="catalog-link"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-011-front.jpg" alt="КР-011 Тишина" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-011</div>
@@ -1292,10 +1323,11 @@ input { font-family:inherit; }
           <div class="catalog-desc">Закат. Лес за спиной. Плед на плечах. Компактная беседка с японским характером — тёмный каркас, светлое дерево, абсолютный покой.</div>
           <div class="catalog-footer">
             <div class="catalog-price">от 5 700 <span>BYN</span></div>
-            <button class="catalog-btn" onclick="scrollTo('#cta')">Узнать стоимость</button>
+            <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
+          <div class="catalog-more">Подробнее →</div>
         </div>
-      </div>
+      </div></a>
 
     </div>
     <div class="catalog-cta">
