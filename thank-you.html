@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спасибо! — КРОНОВЪ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--c-dark:#1E1410;--c-dark2:#3A2518;--c-brown:#5C3A28;--c-sand:#D4B896;--c-cream:#F2EBE0;--c-bordo:#7A2E38;--c-bronze:#B8965A;--c-text:#2A1C0E;--c-text-light:#6B5540;--c-white:#FFFFFF;--font-display:'Playfair Display',Georgia,serif;--font-body:'Montserrat','Helvetica Neue',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--c-cream);color:var(--c-text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;-webkit-font-smoothing:antialiased}
+.card{max-width:560px;width:100%;background:var(--c-white);border-radius:16px;padding:48px;text-align:center;box-shadow:0 24px 80px rgba(30,20,16,.08)}
+.logo{font-family:var(--font-display);font-size:20px;color:var(--c-dark);letter-spacing:4px;margin-bottom:32px;opacity:.5}
+.check{width:64px;height:64px;background:rgba(122,46,56,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px;color:var(--c-bordo)}
+h1{font-family:var(--font-display);font-size:28px;color:var(--c-dark);margin-bottom:8px}
+.sub{font-size:16px;color:var(--c-text-light);margin-bottom:32px;line-height:1.6}
+.manager{display:flex;align-items:center;gap:12px;background:var(--c-cream);border-radius:12px;padding:16px;margin-bottom:32px;text-align:left}
+.manager-avatar{width:48px;height:48px;border-radius:50%;background:var(--c-brown);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--c-sand);font-weight:600;flex-shrink:0}
+.manager-info{font-size:14px;color:var(--c-text-light)}
+.manager-info strong{display:block;font-size:16px;color:var(--c-dark)}
+.links-title{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--c-bordo);margin-bottom:16px}
+.links{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.links a{display:block;padding:14px;background:var(--c-cream);border-radius:8px;font-size:14px;font-weight:500;color:var(--c-dark);text-decoration:none;transition:background .3s}
+.links a:hover{background:var(--c-sand)}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#25D366;color:#fff;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:background .3s}
+.wa-btn:hover{background:#1DA851}
+.timer{font-family:var(--font-display);font-size:36px;color:var(--c-bordo);margin:16px 0}
+.timer-label{font-size:13px;color:var(--c-text-light);margin-bottom:24px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">КРОНОВЪ</div>
+  <div class="check">&#10003;</div>
+  <h1>Отлично! Алёна уже видит ваш запрос</h1>
+  <p class="sub">Перезвонит через минуту и ответит на все вопросы</p>
+  <div class="timer" id="timer">01:00</div>
+  <p class="timer-label">Перезвоним через</p>
+  <div class="manager">
+    <div class="manager-avatar">А</div>
+    <div class="manager-info">
+      <strong>Алёна</strong>
+      Менеджер КРОНОВЪ · ответит лично
+    </div>
+  </div>
+  <p class="links-title">Пока ждёте — посмотрите</p>
+  <div class="links">
+    <a href="kronov-landing.html#gallery">Фотогалерея наших работ</a>
+    <a href="kronov-landing.html#catalog">Каталог беседок</a>
+    <a href="kronov-landing.html#video">Видеоотзыв клиента</a>
+  </div>
+  <a href="https://wa.me/375296888629" class="wa-btn">Написать в WhatsApp</a>
+</div>
+<script>
+let s=60;const t=document.getElementById('timer');
+const iv=setInterval(()=>{s--;if(s<=0){clearInterval(iv);t.textContent='Звоним!';}
+else{const m=Math.floor(s/60),sec=s%60;t.textContent=String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}},1000);
+</script>
+</body>
+</html>
