@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КР-011 Тишина — КРОНОВЪ</title>
+<meta name="description" content="Беседка Тишина КР-011 от КРОНОВЪ. Компактная беседка с японским характером. Тёмный каркас, светлое дерево, абсолютный покой. Фото, характеристики, цена. Производитель полного цикла в Беларуси.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../header/header.css">
+<link rel="stylesheet" href="../footer/footer.css">
+<style>
+:root {
+  --c-dark: #1E1410;
+  --c-dark2: #3A2518;
+  --c-brown: #5C3A28;
+  --c-brown-mid: #8B6040;
+  --c-sand: #D4B896;
+  --c-cream: #F2EBE0;
+  --c-bordo: #7A2E38;
+  --c-bronze: #B8965A;
+  --c-text: #2A1C0E;
+  --c-text-light: #6B5540;
+  --c-white: #FFFFFF;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --max-w: 1200px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-cream);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width:100%; display:block; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; border:none; font-family:inherit; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+.breadcrumb { padding: 80px 0 16px; font-size: 13px; color: var(--c-text-light); }
+.breadcrumb a { color: var(--c-bordo); transition: opacity .3s; }
+.breadcrumb a:hover { opacity: .7; }
+.breadcrumb span { margin: 0 8px; opacity: .4; }
+
+.gazebo-hero { padding: 0 0 48px; }
+.gazebo-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.gazebo-hero-img { aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--c-sand); }
+.gazebo-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.gazebo-hero-info { padding-top: 16px; }
+.gazebo-article { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--c-bordo); margin-bottom: 8px; }
+.gazebo-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 500; color: var(--c-dark); line-height: 1.2; margin-bottom: 16px; }
+.gazebo-desc { font-size: 16px; color: var(--c-text-light); line-height: 1.7; margin-bottom: 24px; }
+.gazebo-price { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--c-dark); margin-bottom: 8px; }
+.gazebo-price span { font-size: 16px; font-weight: 400; color: var(--c-text-light); }
+.gazebo-price-note { font-size: 13px; color: var(--c-text-light); margin-bottom: 32px; }
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; background: var(--c-bordo); color: var(--c-white); font-size: 15px; font-weight: 600; border-radius: 6px; transition: background .3s; letter-spacing: 0.5px; }
+.btn-primary:hover { background: #8E3542; }
+
+.gazebo-gallery { padding: 48px 0; }
+.gazebo-gallery h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--c-dark); margin-bottom: 32px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gallery-grid-item { aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; cursor: pointer; position: relative; background: var(--c-sand); }
+.gallery-grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.gallery-grid-item:hover img { transform: scale(1.05); }
+.gallery-grid-item::after { content: ''; position: absolute; inset: 0; background: rgba(30,20,16,0); transition: background .3s; }
+.gallery-grid-item:hover::after { background: rgba(30,20,16,.1); }
+
+.lightbox { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(30,20,16,.95); align-items: center; justify-content: center; padding: 40px; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+.lightbox-close { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,.1); border: none; border-radius: 50%; color: var(--c-sand); font-size: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .3s; }
+.lightbox-close:hover { background: rgba(255,255,255,.2); }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(255,255,255,.1); border: none; border-radius: 50%; color: var(--c-sand); font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .3s; }
+.lightbox-nav:hover { background: rgba(255,255,255,.2); }
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+.gazebo-specs { padding: 48px 0; border-top: 1px solid rgba(139,96,64,.1); }
+.gazebo-specs h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--c-dark); margin-bottom: 32px; }
+.specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.spec-card { background: var(--c-white); border-radius: 12px; padding: 24px; text-align: center; border: 1px solid rgba(139,96,64,.08); }
+.spec-icon { width: 48px; height: 48px; margin: 0 auto 12px; color: var(--c-bordo); }
+.spec-icon svg { width: 100%; height: 100%; }
+.spec-value { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--c-dark); margin-bottom: 4px; }
+.spec-label { font-size: 13px; color: var(--c-text-light); letter-spacing: 0.5px; }
+
+.gazebo-options { padding: 48px 0; border-top: 1px solid rgba(139,96,64,.1); }
+.gazebo-options h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--c-dark); margin-bottom: 32px; }
+.options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.option-item { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--c-white); border-radius: 10px; border: 1px solid rgba(139,96,64,.08); }
+.option-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(122,46,56,.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--c-bordo); }
+.option-icon svg { width: 20px; height: 20px; }
+.option-text { font-size: 15px; font-weight: 500; color: var(--c-dark); }
+.option-price { font-size: 13px; color: var(--c-text-light); margin-top: 2px; }
+
+.gazebo-cta { padding: 64px 0; border-top: 1px solid rgba(139,96,64,.1); }
+.cta-box { background: var(--c-dark); border-radius: 16px; padding: 48px; text-align: center; }
+.cta-box h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 500; color: var(--c-sand); margin-bottom: 12px; }
+.cta-box p { font-size: 15px; color: var(--c-sand); opacity: .6; margin-bottom: 32px; }
+.cta-form { display: flex; gap: 12px; max-width: 560px; margin: 0 auto; }
+.cta-form input { flex: 1; padding: 14px 20px; border: 1px solid rgba(212,184,150,.2); border-radius: 8px; background: rgba(255,255,255,.05); color: var(--c-sand); font-size: 15px; font-family: inherit; }
+.cta-form input::placeholder { color: rgba(212,184,150,.4); }
+.cta-form button { padding: 14px 32px; background: var(--c-bordo); color: var(--c-white); font-size: 15px; font-weight: 600; border-radius: 8px; white-space: nowrap; transition: background .3s; }
+.cta-form button:hover { background: #8E3542; }
+
+.back-link { padding: 32px 0 64px; text-align: center; }
+.back-link a { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: var(--c-bordo); transition: opacity .3s; }
+.back-link a:hover { opacity: .7; }
+
+@media (max-width: 768px) {
+  .gazebo-hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .specs-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .options-grid { grid-template-columns: 1fr; }
+  .cta-form { flex-direction: column; }
+  .cta-box { padding: 32px 20px; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .specs-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo">
+      <svg viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="18" r="14" stroke="#D4B896" stroke-width="1.8"/>
+        <circle cx="18" cy="14" r="6" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <circle cx="34" cy="14" r="6" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <circle cx="26" cy="22" r="5" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
+        <line x1="26" y1="32" x2="26" y2="50" stroke="#D4B896" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="header-logo-text">КРОНОВЪ</span>
+    </a>
+    <nav class="header-nav" id="nav">
+      <a href="../index.html#catalog">Каталог</a>
+      <a href="../index.html#process">Как работаем</a>
+      <a href="../index.html#gallery">Работы</a>
+      <a href="../index.html#faq">Вопросы</a>
+      <a href="../index.html#reviews">Отзывы</a>
+      <a href="../index.html#cta" class="header-cta">Получить предложение</a>
+    </nav>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">Главная</a>
+    <span>→</span>
+    <a href="../index.html#catalog">Каталог</a>
+    <span>→</span>
+    Тишина
+  </div>
+</div>
+
+<!-- ===== GAZEBO HERO ===== -->
+<section class="gazebo-hero">
+  <div class="container">
+    <div class="gazebo-hero-grid">
+      <div class="gazebo-hero-img">
+        <img src="../images/kr-011-front.jpg" alt="КР-011 Тишина">
+      </div>
+      <div class="gazebo-hero-info">
+        <div class="gazebo-article">КР-011</div>
+        <h1 class="gazebo-title">Тишина</h1>
+        <p class="gazebo-desc">Закат. Лес за спиной. Плед на плечах. Компактная беседка с японским характером — тёмный каркас, светлое дерево, абсолютный покой.</p>
+        <div class="gazebo-price">от 5 700 <span>BYN</span></div>
+        <p class="gazebo-price-note">Цена за базовую комплектацию. Точный расчёт — по запросу.</p>
+        <a href="#gazebo-cta" class="btn-primary">Узнать точную стоимость</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gazebo-gallery">
+  <div class="container">
+    <h2>Фотографии</h2>
+    <div class="gallery-grid">
+      <div class="gallery-grid-item" onclick="openLightbox(0)">
+        <img src="../images/kr-011-front.jpg" alt="Тишина — общий вид">
+      </div>
+      <div class="gallery-grid-item" onclick="openLightbox(1)">
+        <img src="../images/kr-011-adirondack.jpg" alt="Тишина — кресла на закате">
+      </div>
+      <div class="gallery-grid-item" onclick="openLightbox(2)">
+        <img src="../images/kr-011-night.jpg" alt="Тишина — ночная подсветка">
+      </div>
+      <div class="gallery-grid-item" onclick="openLightbox(3)">
+        <img src="../images/kr-011-garden.jpg" alt="Тишина — в саду">
+      </div>
+      <div class="gallery-grid-item" onclick="openLightbox(4)">
+        <img src="../images/kr-011-house.jpg" alt="Тишина — у дома">
+      </div>
+      <div class="gallery-grid-item" onclick="openLightbox(5)">
+        <img src="../images/kr-011-couple.jpg" alt="Тишина — пара в беседке">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECS ===== -->
+<section class="gazebo-specs">
+  <div class="container">
+    <h2>Характеристики</h2>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/>
+          </svg>
+        </div>
+        <div class="spec-value">2.5 × 2.5</div>
+        <div class="spec-label">Размер, м</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="spec-value">Сосна</div>
+        <div class="spec-label">Материал</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/>
+          </svg>
+        </div>
+        <div class="spec-value">Шатровая</div>
+        <div class="spec-label">Крыша</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="spec-value">4–6</div>
+        <div class="spec-label">Вместимость, чел</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="spec-value">20</div>
+        <div class="spec-label">Гарантия, лет</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="spec-value">1–2</div>
+        <div class="spec-label">Монтаж, дней</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OPTIONS ===== -->
+<section class="gazebo-options">
+  <div class="container">
+    <h2>Дополнительные опции</h2>
+    <div class="options-grid">
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 12m-1 0a1 1 0 102 0 1 1 0 10-2 0"/><path d="M3 12h8m2 0h8"/><path d="M12 3v8m0 2v8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Мангальная зона</div>
+          <div class="option-price">от 1 200 BYN</div>
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="3"/><path d="M12 8v8"/><path d="M8 20h8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Освещение (гирлянда)</div>
+          <div class="option-price">от 350 BYN</div>
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Мебельный комплект</div>
+          <div class="option-price">от 800 BYN</div>
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Покраска в цвет</div>
+          <div class="option-price">от 500 BYN</div>
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Доставка и монтаж</div>
+          <div class="option-price">от 600 BYN</div>
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18M5.5 7.5L12 3l6.5 4.5M5.5 16.5L12 21l6.5-4.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="option-text">Решётчатые панели</div>
+          <div class="option-price">от 400 BYN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="gazebo-cta" id="gazebo-cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Узнать стоимость беседки «Тишина»</h2>
+      <p>Оставьте номер — менеджер Алёна перезвонит и рассчитает стоимость с учётом доставки и монтажа</p>
+      <form class="cta-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы перезвоним в ближайшее время.');">
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="+375 (__) ___-__-__" required>
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BACK LINK ===== -->
+<div class="back-link">
+  <a href="../index.html#catalog">← Все беседки</a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">КРОНОВЪ</div>
+        <p class="footer-desc">Деревянные изделия ручной работы.<br>Производитель полного цикла в Беларуси.</p>
+        <p style="margin-top:16px;">
+          <a href="tel:+375296888629" style="opacity:1;color:var(--c-sand);font-size:16px;font-weight:600;">+375 (29) 688-86-29</a>
+        </p>
+      </div>
+      <div>
+        <h5>Каталог</h5>
+        <a href="../index.html#catalog">Все модели</a>
+        <a href="kr-001.html">Резиденция</a>
+        <a href="kr-002.html">Эстетъ</a>
+        <a href="kr-003.html">Патриархъ</a>
+        <a href="kr-006.html">Ротонда</a>
+      </div>
+      <div>
+        <h5>Компания</h5>
+        <a href="../index.html#why">О производстве</a>
+        <a href="../index.html#process">Как работаем</a>
+        <a href="../index.html#gallery">Портфолио</a>
+        <a href="../index.html#reviews">Отзывы</a>
+        <a href="../index.html#faq">Вопросы</a>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <a href="tel:+375296888629">+375 (29) 688-86-29</a>
+        <a href="https://wa.me/375296888629">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>КРОНОВЪ · Республика Беларусь · 2026</span>
+      <a href="#" style="opacity:.3;">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== STICKY MOBILE BAR ===== -->
+<div class="sticky-bar">
+  <div class="sticky-bar-inner">
+    <a href="tel:+375296888629" class="sticky-call">Позвонить</a>
+    <a href="https://wa.me/375296888629" class="sticky-wa">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="Фото беседки">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+</div>
+
+<script>
+const galleryImages = document.querySelectorAll('.gallery-grid-item img');
+let currentIndex = 0;
+function openLightbox(index) {
+  currentIndex = index;
+  document.getElementById('lightbox-img').src = galleryImages[index].src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentIndex = (currentIndex + dir + galleryImages.length) % galleryImages.length;
+  document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
+}
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+</script>
+
+</body>
+</html>
