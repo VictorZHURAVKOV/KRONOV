@@ -399,9 +399,26 @@ body {
   .swatch-name { font-size: 8.5px; }
   .compare-table th, .compare-table td { padding: 9px 10px; font-size: 11px; }
 }
+
+.phone-fixed { position: fixed; top: 14px; right: 20px; z-index: 1100;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; background: #7A2E38; color: #FFF;
+  font-size: 17px; font-weight: 700; letter-spacing: 0.5px;
+  text-decoration: none; border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(122,46,56,.45);
+  white-space: nowrap; transition: background .25s, transform .25s; }
+.phone-fixed:hover { background: #8E3542; transform: translateY(-1px); }
+.phone-fixed svg { width: 20px; height: 20px; flex-shrink: 0; animation: phone-ring 2.6s ease-in-out infinite; }
+@keyframes phone-ring { 0%,92%,100%{transform:rotate(0);} 94%{transform:rotate(-15deg);} 96%{transform:rotate(15deg);} 98%{transform:rotate(-8deg);} }
+@media(max-width:768px) { .phone-fixed { top:10px; right:10px; padding:10px 14px; font-size:0; gap:0; } .phone-fixed svg { width:22px; height:22px; } }
 </style>
 </head>
 <body>
+<a href="tel:+375296888629" class="phone-fixed" aria-label="Позвонить менеджеру Алёне">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <span>+375 (29) 688-86-29</span>
+</a>
+
 
 <!-- HEADER -->
 <div class="header">
