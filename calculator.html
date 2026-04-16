@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор беседки — КРОНОВЪ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:    #1E1410;
+  --dark2:   #3A2518;
+  --brown:   #5C3A28;
+  --mid:     #8B6040;
+  --sand:    #D4B896;
+  --cream:   #F2EBE0;
+  --bordeaux:#7A2E38;
+  --bronze:  #B8965A;
+  --text:    #2A1C0E;
+  --muted:   #6B5540;
+  --white:   #FFFFFF;
+}
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--dark);
+  padding: 32px 20px 28px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.logo-icon { flex-shrink: 0; }
+
+.brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--sand);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-desc {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.header-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--bronze);
+  margin: 18px auto 14px;
+}
+
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: 1px;
+}
+
+.header-sub {
+  font-size: 12px;
+  color: var(--mid);
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ── SECTION ── */
+.section {
+  background: var(--white);
+  border-bottom: 1px solid #EBE3D8;
+  padding: 28px 32px;
+}
+
+.section + .section { border-top: none; }
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--bordeaux);
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cream);
+}
+
+/* ── SIZE ── */
+.size-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.field-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.slider-wrap { display: flex; align-items: center; gap: 14px; }
+
+.slider-wrap input[type=range] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 2px;
+  background: var(--sand);
+  outline: none;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.slider-wrap input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  cursor: pointer;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1px var(--bordeaux);
+}
+
+.slider-wrap input[type=range]::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  cursor: pointer;
+  border: 2px solid var(--white);
+}
+
+.size-readout {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark);
+  min-width: 62px;
+  text-align: right;
+}
+
+.size-info {
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+  padding: 12px 16px;
+  background: var(--cream);
+  border-left: 2px solid var(--bronze);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.size-info strong {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+/* ── OPTION CARDS ── */
+.cards { display: grid; gap: 10px; }
+.cards.c2 { grid-template-columns: 1fr 1fr; }
+.cards.c3 { grid-template-columns: 1fr 1fr 1fr; }
+.cards.c4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.cards.c5 { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+
+.card {
+  border: 1px solid #E8DDD0;
+  background: var(--cream);
+  padding: 14px 12px 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+  position: relative;
+}
+
+.card:hover { border-color: var(--bronze); }
+
+.card.on {
+  border-color: var(--bordeaux);
+  background: #FBF5EF;
+}
+
+.card.on::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--bordeaux);
+}
+
+.card-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+
+.card-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.card-tag {
+  font-size: 11px;
+  color: var(--bronze);
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* ── ROWS ── */
+.row {
+  display: flex;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--cream);
+  gap: 8px;
+}
+.row:last-child { border-bottom: none; }
+
+.row-name { flex: 1; font-size: 14px; color: var(--text); }
+
+.row-price {
+  font-size: 11px;
+  color: var(--bronze);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-right: 12px;
+}
+
+/* COUNTER */
+.ctr { display: flex; align-items: center; border: 1px solid #E0D5C8; overflow: hidden; }
+
+.ctr-btn {
+  width: 30px; height: 30px;
+  background: var(--cream);
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  color: var(--bordeaux);
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.1s;
+}
+.ctr-btn:hover { background: #EBE0D5; }
+
+.ctr-val {
+  width: 34px; height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  border-left: 1px solid #E0D5C8;
+  border-right: 1px solid #E0D5C8;
+  background: var(--white);
+}
+
+/* TOGGLE */
+.tog { position: relative; width: 42px; height: 22px; flex-shrink: 0; }
+.tog input { opacity: 0; width: 0; height: 0; position: absolute; }
+.tog-track {
+  position: absolute; inset: 0;
+  background: #D9CEBC;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tog-track::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 3px; top: 3px;
+  background: var(--white);
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+.tog input:checked + .tog-track { background: var(--bordeaux); }
+.tog input:checked + .tog-track::after { transform: translateX(20px); }
+
+/* DIST */
+.dist-box {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: var(--cream);
+  border-left: 2px solid var(--bordeaux);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.dist-box input[type=number] {
+  width: 72px;
+  padding: 5px 8px;
+  border: 1px solid #D9CEBC;
+  background: var(--white);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  text-align: center;
+  outline: none;
+}
+.dist-box input:focus { border-color: var(--bordeaux); }
+
+/* ACCESSORIES */
+.acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.acc-row {
+  display: flex;
+  align-items: center;
+  padding: 9px 12px;
+  background: var(--cream);
+  border: 1px solid #E8DDD0;
+  gap: 6px;
+}
+
+.acc-name { flex: 1; font-size: 12px; color: var(--text); line-height: 1.3; }
+.acc-tag { font-size: 11px; color: var(--bronze); font-weight: 600; white-space: nowrap; margin-right: 6px; }
+
+.actr { display: flex; align-items: center; border: 1px solid #D9CEBC; overflow: hidden; }
+.actr-btn {
+  width: 26px; height: 26px;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--bordeaux);
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.actr-btn:hover { background: #EBE0D5; }
+.actr-val {
+  width: 26px; height: 26px;
+  text-align: center; line-height: 26px;
+  font-size: 13px; font-weight: 600;
+  color: var(--dark);
+  border-left: 1px solid #D9CEBC;
+  border-right: 1px solid #D9CEBC;
+  background: var(--cream);
+}
+
+/* SUBSECTION LABEL */
+.sub-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+
+/* ── RESULT PANEL ── */
+.result {
+  position: sticky;
+  bottom: 0;
+  background: var(--dark);
+  border-top: 2px solid var(--bordeaux);
+  padding: 20px 32px 24px;
+  z-index: 20;
+}
+
+.result-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.result-lbl {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.result-price {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--bronze);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.result-note {
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 3px;
+}
+
+.result-cta {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--bordeaux);
+  color: var(--cream);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+.result-cta:hover { background: #5C2028; }
+
+.bdown {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px 20px;
+}
+
+.bdown-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+
+.bdown-item span:last-child { color: rgba(255,255,255,0.7); font-weight: 600; }
+
+/* ── BRAND TABS ── */
+.brand-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.brand-tab {
+  border: 1.5px solid #DDD4C4;
+  border-radius: 6px;
+  padding: 14px 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.brand-tab:hover { border-color: var(--bronze); }
+
+.brand-tab.on {
+  border-color: var(--bronze);
+  background: #FDF8F2;
+}
+
+.brand-tab-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.aquatex-badge { background: #E8F4EA; color: #2E6B3A; }
+.belinka-badge { background: #F4EBE0; color: #8B4513; }
+
+.brand-tab-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.brand-tab-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── PALETTE ── */
+.palette-block { margin-top: 20px; }
+
+.palette-title {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.palette-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--bronze);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.color-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  width: 58px;
+}
+
+.color-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  transition: border-color 0.15s, transform 0.15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.color-swatch:hover .color-circle { transform: scale(1.12); border-color: var(--bronze); }
+.color-swatch.on .color-circle { border-color: var(--bordeaux); box-shadow: 0 0 0 3px rgba(122,46,56,0.25); }
+
+.color-name {
+  font-size: 9px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.color-swatch.on .color-name { color: var(--bordeaux); font-weight: 600; }
+
+.selected-color-info {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: #FAF6F0;
+  border-left: 3px solid var(--bronze);
+  font-size: 12px;
+  color: var(--muted);
+  display: none;
+}
+
+@media (max-width: 620px) {
+  .brand-tabs { grid-template-columns: 1fr; }
+  .color-grid { gap: 8px; }
+  .color-swatch { width: 52px; }
+  .color-circle { width: 40px; height: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="logo-mark">
+    <svg class="logo-icon" width="52" height="58" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="20" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="34" cy="20" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="26" cy="13" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="18" cy="20" r="10" fill="#3A2518" opacity="0.7"/>
+      <circle cx="34" cy="20" r="10" fill="#3A2518" opacity="0.7"/>
+      <circle cx="26" cy="13" r="10" fill="#3A2518" opacity="0.7"/>
+      <circle cx="26" cy="19" r="9" fill="#B8965A" opacity="0.25"/>
+      <line x1="26" y1="28" x2="26" y2="57" stroke="#B8965A" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="46" x2="34" y2="46" stroke="#B8965A" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <div>
+      <div class="brand-name">КРОНОВЪ</div>
+      <div class="brand-desc">Деревянные изделия</div>
+    </div>
+  </div>
+  <div class="header-divider"></div>
+  <div class="header-title">Калькулятор стоимости беседки</div>
+  <div class="header-sub">Настройте конфигурацию и получите ориентировочную стоимость</div>
+</div>
+
+<div class="wrap">
+
+  <!-- SIZE -->
+  <div class="section" style="margin-top:0;">
+    <div class="section-label">Шаг 1</div>
+    <div class="section-title">Размер беседки</div>
+    <div class="size-grid">
+      <div>
+        <span class="field-label">Длина</span>
+        <div class="slider-wrap">
+          <input type="range" id="sl-len" min="2" max="8" step="0.5" value="3" oninput="onLen(this.value)">
+          <div class="size-readout" id="out-len">3,0 м</div>
+        </div>
+      </div>
+      <div>
+        <span class="field-label">Ширина</span>
+        <div class="slider-wrap">
+          <input type="range" id="sl-wid" min="2" max="6" step="0.5" value="4" oninput="onWid(this.value)">
+          <div class="size-readout" id="out-wid">4,0 м</div>
+        </div>
+      </div>
+    </div>
+    <div class="size-info">
+      <span>Площадь пола: <strong id="out-area">12,0 м²</strong></span>
+      <span>Периметр: <strong id="out-perim">14,0 м</strong></span>
+      <span>Примерно: <strong id="out-preset">стандартная</strong></span>
+    </div>
+  </div>
+
+  <!-- ROOF -->
+  <div class="section">
+    <div class="section-label">Шаг 2</div>
+    <div class="section-title">Тип кровли</div>
+    <div class="cards c4" id="roof-cards">
+      <div class="card on" onclick="pick(this,'roof-cards',0)">
+        <span class="card-icon">—</span>
+        <div class="card-name">Без кровли</div>
+        <div class="card-tag">не включена</div>
+      </div>
+      <div class="card" onclick="pick(this,'roof-cards',95)">
+        <span class="card-icon">◺</span>
+        <div class="card-name">Односкатная</div>
+        <div class="card-tag">от 95 р/м²</div>
+      </div>
+      <div class="card" onclick="pick(this,'roof-cards',145)">
+        <span class="card-icon">△</span>
+        <div class="card-name">Двускатная</div>
+        <div class="card-tag">от 145 р/м²</div>
+      </div>
+      <div class="card" onclick="pick(this,'roof-cards',175)">
+        <span class="card-icon">✦</span>
+        <div class="card-name">Четырёхскатная</div>
+        <div class="card-tag">от 175 р/м²</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAIN -->
+  <div class="section" id="stain-section">
+    <div class="section-label">Шаг 3</div>
+    <div class="section-title">Покрытие и цвет</div>
+
+    <!-- Brand tabs -->
+    <div class="brand-tabs">
+      <div class="brand-tab on" id="tab-none" onclick="selectBrand('none')">
+        <div class="brand-tab-name">Без покрытия</div>
+        <div class="brand-tab-sub">—</div>
+      </div>
+      <div class="brand-tab" id="tab-aquatex" onclick="selectBrand('aquatex')">
+        <div class="brand-tab-badge aquatex-badge">СТАНДАРТ</div>
+        <div class="brand-tab-name">Акватекс</div>
+        <div class="brand-tab-sub">от 40 р/м²</div>
+      </div>
+      <div class="brand-tab" id="tab-belinka" onclick="selectBrand('belinka')">
+        <div class="brand-tab-badge belinka-badge">ПРЕМИУМ</div>
+        <div class="brand-tab-name">Belinka Toplasur</div>
+        <div class="brand-tab-sub">от 115 р/м²</div>
+      </div>
+    </div>
+
+    <!-- Color palettes -->
+    <div id="palette-none" class="palette-block" style="display:none;">
+      <p style="color:var(--muted);font-size:13px;margin-top:12px;">Покрытие не выбрано. Дерево останется необработанным.</p>
+    </div>
+
+    <div id="palette-aquatex" class="palette-block" style="display:none;">
+      <div class="palette-title">Выберите цвет <span class="palette-brand">Акватекс</span></div>
+      <div class="color-grid" id="colors-aquatex"></div>
+      <div class="selected-color-info" id="info-aquatex"></div>
+    </div>
+
+    <div id="palette-belinka" class="palette-block" style="display:none;">
+      <div class="palette-title">Выберите цвет <span class="palette-brand">Belinka Toplasur</span></div>
+      <div class="color-grid" id="colors-belinka"></div>
+      <div class="selected-color-info" id="info-belinka"></div>
+    </div>
+  </div>
+
+  <!-- FURNITURE -->
+  <div class="section">
+    <div class="section-label">Шаг 4</div>
+    <div class="section-title">Мебель</div>
+
+    <div class="sub-label">Стол</div>
+    <div class="cards c3" id="table-cards" style="margin-bottom:20px;">
+      <div class="card on" onclick="pick(this,'table-cards',0)">
+        <span class="card-icon">—</span>
+        <div class="card-name">Без стола</div>
+        <div class="card-tag">—</div>
+      </div>
+      <div class="card" onclick="pick(this,'table-cards',1015)">
+        <span class="card-icon">▭</span>
+        <div class="card-name">Стол стандарт</div>
+        <div class="card-tag">1 015 р</div>
+      </div>
+      <div class="card" onclick="pick(this,'table-cards',1190)">
+        <span class="card-icon">◼</span>
+        <div class="card-name">Стол из массива</div>
+        <div class="card-tag">1 190 р</div>
+      </div>
+    </div>
+
+    <div class="sub-label">Лавочки</div>
+    <div class="row">
+      <span class="row-name">Лавочки без спинки</span>
+      <span class="row-price">260 р / шт</span>
+      <div class="ctr">
+        <button class="ctr-btn" onclick="adj('ba',-1)">−</button>
+        <div class="ctr-val" id="ba-v">0</div>
+        <button class="ctr-btn" onclick="adj('ba',1)">+</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="row-name">Лавочки со спинкой</span>
+      <span class="row-price">360 р / шт</span>
+      <div class="ctr">
+        <button class="ctr-btn" onclick="adj('bb',-1)">−</button>
+        <div class="ctr-val" id="bb-v">0</div>
+        <button class="ctr-btn" onclick="adj('bb',1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDATION & DOORS -->
+  <div class="section">
+    <div class="section-label">Шаг 5</div>
+    <div class="section-title">Фундамент и двери</div>
+    <div class="row">
+      <span class="row-name">Фундамент (комплект блоков)</span>
+      <span class="row-price">800 р</span>
+      <label class="tog">
+        <input type="checkbox" id="tog-f" onchange="calc()">
+        <span class="tog-track"></span>
+      </label>
+    </div>
+    <div class="row">
+      <span class="row-name">Сваи Ø76</span>
+      <span class="row-price">220 р / шт</span>
+      <div class="ctr">
+        <button class="ctr-btn" onclick="adj('piles',-1)">−</button>
+        <div class="ctr-val" id="piles-v">0</div>
+        <button class="ctr-btn" onclick="adj('piles',1)">+</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="row-name">Двери</span>
+      <span class="row-price">510 р / шт</span>
+      <div class="ctr">
+        <button class="ctr-btn" onclick="adj('doors',-1)">−</button>
+        <div class="ctr-val" id="doors-v">0</div>
+        <button class="ctr-btn" onclick="adj('doors',1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTALL & DELIVERY -->
+  <div class="section">
+    <div class="section-label">Шаг 6</div>
+    <div class="section-title">Монтаж и доставка</div>
+    <div class="row">
+      <span class="row-name">Монтаж под ключ</span>
+      <span class="row-price">10% от каркаса</span>
+      <label class="tog">
+        <input type="checkbox" id="tog-i" onchange="calc()">
+        <span class="tog-track"></span>
+      </label>
+    </div>
+    <div class="row" style="flex-wrap:wrap;gap:10px;">
+      <span class="row-name">Доставка</span>
+      <span class="row-price">6 р/км (туда-обратно)</span>
+      <label class="tog">
+        <input type="checkbox" id="tog-d" onchange="onDelivery()">
+        <span class="tog-track"></span>
+      </label>
+      <div id="dist-box" class="dist-box" style="display:none;width:100%;">
+        <span>Расстояние до участка:</span>
+        <input type="number" id="inp-km" min="1" max="1000" value="50" oninput="calc()">
+        <span>км (одна сторона)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESSORIES -->
+  <div class="section">
+    <div class="section-label">Дополнительно</div>
+    <div class="section-title">Аксессуары</div>
+    <div class="acc-grid">
+      <div class="acc-row">
+        <span class="acc-name">Шторы 1,45×2 м</span>
+        <span class="acc-tag">57 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a1',-1)">−</button>
+          <div class="actr-val" id="a1-v">0</div>
+          <button class="actr-btn" onclick="adjA('a1',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Шторы 1,45×2,5 м</span>
+        <span class="acc-tag">94 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a2',-1)">−</button>
+          <div class="actr-val" id="a2-v">0</div>
+          <button class="actr-btn" onclick="adjA('a2',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Гирлянда «Роса» 22 м</span>
+        <span class="acc-tag">23 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a3',-1)">−</button>
+          <div class="actr-val" id="a3-v">0</div>
+          <button class="actr-btn" onclick="adjA('a3',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Светильники солн. 4 шт</span>
+        <span class="acc-tag">19 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a4',-1)">−</button>
+          <div class="actr-val" id="a4-v">0</div>
+          <button class="actr-btn" onclick="adjA('a4',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Светильники солн. 8 шт</span>
+        <span class="acc-tag">26 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a5',-1)">−</button>
+          <div class="actr-val" id="a5-v">0</div>
+          <button class="actr-btn" onclick="adjA('a5',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Подушка 110×50</span>
+        <span class="acc-tag">57 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a6',-1)">−</button>
+          <div class="actr-val" id="a6-v">0</div>
+          <button class="actr-btn" onclick="adjA('a6',1)">+</button>
+        </div>
+      </div>
+      <div class="acc-row">
+        <span class="acc-name">Подушка 45×45</span>
+        <span class="acc-tag">38 р</span>
+        <div class="actr">
+          <button class="actr-btn" onclick="adjA('a7',-1)">−</button>
+          <div class="actr-val" id="a7-v">0</div>
+          <button class="actr-btn" onclick="adjA('a7',1)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- RESULT -->
+<div class="result">
+  <div class="result-top">
+    <div>
+      <div class="result-lbl">Ориентировочная стоимость</div>
+      <div class="result-price" id="r-total">5 160 BYN</div>
+      <div class="result-note">Включая НДС · Точный расчёт у менеджера</div>
+    </div>
+    <a class="result-cta" href="tel:+375296888629">Позвонить Алёне →</a>
+  </div>
+  <div class="bdown">
+    <div class="bdown-item"><span>Каркас</span><span id="r-frame">—</span></div>
+    <div class="bdown-item"><span>Кровля</span><span id="r-roof">—</span></div>
+    <div class="bdown-item"><span>Пропитка</span><span id="r-stain">—</span></div>
+    <div class="bdown-item"><span>Мебель</span><span id="r-furn">—</span></div>
+    <div class="bdown-item"><span>Фундамент / сваи</span><span id="r-found">—</span></div>
+    <div class="bdown-item"><span>Двери</span><span id="r-doors">—</span></div>
+    <div class="bdown-item"><span>Монтаж</span><span id="r-inst">—</span></div>
+    <div class="bdown-item"><span>Доставка</span><span id="r-delv">—</span></div>
+    <div class="bdown-item"><span>Аксессуары</span><span id="r-acc">—</span></div>
+  </div>
+</div>
+
+<script>
+// ── ЦВЕТОВЫЕ ПАЛИТРЫ ──────────────────────────────────────────────────────
+// Цены: закупка РФ × 3.7 ÷ 100 = BYN → +30% наценка → работа +50% от материала
+// Aquatex 9л: 7165₽ → 265 BYN → ×1.3 = 344.5 BYN / 54 м² ≈ 6.4 BYN/м² материал → ×1.5 ≈ 9.6
+// Belinka 10л: 23000₽ → 851 BYN → ×1.3 = 1106 BYN / 60 м² ≈ 18.4 BYN/м² материал → ×1.5 ≈ 27.6
+// Умножаем на коэфф. ~4× (реальная площадь конструкции к площади пола):
+// Aquatex: 9.6 × 4 ≈ 38 → округляем до 40 BYN/м² пола
+// Belinka: 27.6 × 4 ≈ 110 → округляем до 115 BYN/м² пола
+
+var BRANDS = {
+  none:    { pricePerM2: 0 },
+  aquatex: { pricePerM2: 40 },
+  belinka: { pricePerM2: 115 }
+};
+
+var COLORS = {
+  aquatex: [
+    { name:'Бесцветный',    hex:'#E8DCC8' },
+    { name:'Белый',         hex:'#F5F0E8' },
+    { name:'Сосна',         hex:'#D4A55A' },
+    { name:'Орегон',        hex:'#C07830' },
+    { name:'Дуб',           hex:'#A07030' },
+    { name:'Груша',         hex:'#D4A040' },
+    { name:'Тик',           hex:'#8B5A1A' },
+    { name:'Орех',          hex:'#7A4820' },
+    { name:'Палисандр',     hex:'#5A2010' },
+    { name:'Махагон',       hex:'#8B2020' },
+    { name:'Рябина',        hex:'#C03020' },
+    { name:'Калужница',     hex:'#B04828' },
+    { name:'Жёлтый',        hex:'#E0B020' },
+    { name:'Еловая зелень', hex:'#2A4A1A' },
+    { name:'Папоротник',    hex:'#4A6A2A' }
+  ],
+  belinka: [
+    { name:'Белая',             hex:'#F5F0E6' },
+    { name:'Бесцветная',        hex:'#EAE0CA' },
+    { name:'Сосна',             hex:'#D4A55A' },
+    { name:'Пиния',             hex:'#DEB878' },
+    { name:'Лиственница',       hex:'#C8944A' },
+    { name:'Дуб',               hex:'#A07030' },
+    { name:'Орех',              hex:'#7A4820' },
+    { name:'Тик',               hex:'#8B4513' },
+    { name:'Махагон',           hex:'#7A1A1A' },
+    { name:'Палиссандр',        hex:'#3D1010' },
+    { name:'Олива',             hex:'#5A5820' },
+    { name:'Красная',           hex:'#A82020' },
+    { name:'Зелёная',           hex:'#2E5A2E' },
+    { name:'Голубая',           hex:'#1A3A7A' },
+    { name:'Ст. древесина',     hex:'#A09080' },
+    { name:'Эбеновое дерево',   hex:'#151210' }
+  ]
+};
+
+// ── STATE ────────────────────────────────────────────────────────────────
+var S = {
+  len:3, wid:4,
+  roof:0, table:0,
+  stainBrand: 'none',
+  stainColor: null,
+  ba:0, bb:0, piles:0, doors:0,
+  found:false, inst:false, delv:false, km:50,
+  acc:{a1:0,a2:0,a3:0,a4:0,a5:0,a6:0,a7:0},
+  aP: {a1:57,a2:94,a3:23,a4:19,a5:26,a6:57,a7:38}
+};
+
+// ── BUILD PALETTES ───────────────────────────────────────────────────────
+function buildPalette(brand) {
+  var grid = document.getElementById('colors-' + brand);
+  grid.innerHTML = '';
+  COLORS[brand].forEach(function(c, i) {
+    var swatch = document.createElement('div');
+    swatch.className = 'color-swatch';
+    swatch.setAttribute('data-idx', i);
+    swatch.onclick = function() { selectColor(brand, i); };
+    var circle = document.createElement('div');
+    circle.className = 'color-circle';
+    circle.style.background = c.hex;
+    // dark border for very light colors
+    var isLight = isLightColor(c.hex);
+    circle.style.boxShadow = isLight
+      ? '0 2px 6px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.08)'
+      : '0 2px 6px rgba(0,0,0,0.2)';
+    var name = document.createElement('div');
+    name.className = 'color-name';
+    name.textContent = c.name;
+    swatch.appendChild(circle);
+    swatch.appendChild(name);
+    grid.appendChild(swatch);
+  });
+}
+
+function isLightColor(hex) {
+  var r = parseInt(hex.slice(1,3),16);
+  var g = parseInt(hex.slice(3,5),16);
+  var b = parseInt(hex.slice(5,7),16);
+  return (r*299 + g*587 + b*114) / 1000 > 200;
+}
+
+// ── SELECT BRAND ─────────────────────────────────────────────────────────
+function selectBrand(brand) {
+  ['none','aquatex','belinka'].forEach(function(b) {
+    document.getElementById('tab-' + b).classList.remove('on');
+    var pb = document.getElementById('palette-' + b);
+    if(pb) pb.style.display = 'none';
+  });
+  document.getElementById('tab-' + brand).classList.add('on');
+  var palette = document.getElementById('palette-' + brand);
+  if(palette) {
+    palette.style.display = 'block';
+    // auto-select first color
+    if(brand !== 'none' && S.stainBrand !== brand) {
+      S.stainColor = 0;
+      highlightColor(brand, 0);
+      showColorInfo(brand, 0);
+    }
+  }
+  S.stainBrand = brand;
+  if(brand === 'none') S.stainColor = null;
+  calc();
+}
+
+// ── SELECT COLOR ─────────────────────────────────────────────────────────
+function selectColor(brand, idx) {
+  S.stainColor = idx;
+  highlightColor(brand, idx);
+  showColorInfo(brand, idx);
+  calc();
+}
+
+function highlightColor(brand, idx) {
+  var grid = document.getElementById('colors-' + brand);
+  if(!grid) return;
+  grid.querySelectorAll('.color-swatch').forEach(function(s) { s.classList.remove('on'); });
+  var target = grid.querySelector('[data-idx="' + idx + '"]');
+  if(target) target.classList.add('on');
+}
+
+function showColorInfo(brand, idx) {
+  var info = document.getElementById('info-' + brand);
+  if(!info) return;
+  var c = COLORS[brand][idx];
+  var priceM2 = BRANDS[brand].pricePerM2;
+  info.style.display = 'block';
+  info.innerHTML = '<strong>' + c.name + '</strong> — '
+    + (brand === 'aquatex' ? 'Акватекс Экстра' : 'Belinka Toplasur UV Plus')
+    + ' · ' + priceM2 + ' р/м² пола (материал + работа)';
+}
+
+// ── UTILS ────────────────────────────────────────────────────────────────
+function ru(n){ return Math.round(n).toLocaleString('ru-RU'); }
+function show(id,v){ document.getElementById(id).textContent = v>0 ? ru(v)+' р' : '—'; }
+
+function onLen(v){ S.len=parseFloat(v); document.getElementById('out-len').textContent=S.len.toFixed(1).replace('.',',')+' м'; updateInfo(); calc(); }
+function onWid(v){ S.wid=parseFloat(v); document.getElementById('out-wid').textContent=S.wid.toFixed(1).replace('.',',')+' м'; updateInfo(); calc(); }
+
+function updateInfo(){
+  var a=S.len*S.wid, p=2*(S.len+S.wid);
+  document.getElementById('out-area').textContent=a.toFixed(1).replace('.',',')+' м²';
+  document.getElementById('out-perim').textContent=p.toFixed(1).replace('.',',')+' м';
+  var preset = a<=8?'компактная':a<=15?'стандартная':a<=24?'просторная':'большая';
+  document.getElementById('out-preset').textContent=preset;
+}
+
+function pick(el, gid, val){
+  document.getElementById(gid).querySelectorAll('.card').forEach(function(c){c.classList.remove('on');});
+  el.classList.add('on');
+  if(gid==='roof-cards') S.roof=val;
+  else if(gid==='table-cards') S.table=val;
+  calc();
+}
+
+var counts = {ba:260, bb:360, piles:220, doors:510};
+function adj(k,d){
+  S[k]=Math.max(0,(S[k]||0)+d);
+  document.getElementById(k+'-v').textContent=S[k];
+  calc();
+}
+
+function adjA(k,d){
+  S.acc[k]=Math.max(0,S.acc[k]+d);
+  document.getElementById(k+'-v').textContent=S.acc[k];
+  calc();
+}
+
+function onDelivery(){
+  S.delv=document.getElementById('tog-d').checked;
+  document.getElementById('dist-box').style.display=S.delv?'flex':'none';
+  calc();
+}
+
+function calc(){
+  S.found=document.getElementById('tog-f').checked;
+  S.inst=document.getElementById('tog-i').checked;
+  S.km=parseFloat(document.getElementById('inp-km').value)||0;
+
+  var area=S.len*S.wid;
+  var frame=area*430;
+  var roof=area*S.roof;
+  var stain=area * BRANDS[S.stainBrand].pricePerM2;
+  var furn=S.table+(S.ba||0)*260+(S.bb||0)*360;
+  var found=(S.found?800:0)+(S.piles||0)*220;
+  var doors=(S.doors||0)*510;
+  var inst=S.inst?frame*0.1:0;
+  var delv=S.delv?S.km*2*3:0;
+  var acc=0; Object.keys(S.acc).forEach(function(k){acc+=S.acc[k]*S.aP[k];});
+
+  var total=frame+roof+stain+furn+found+doors+inst+delv+acc;
+
+  document.getElementById('r-total').textContent=ru(total)+' BYN';
+  show('r-frame',frame); show('r-roof',roof); show('r-stain',stain);
+  show('r-furn',furn); show('r-found',found); show('r-doors',doors);
+  show('r-inst',inst); show('r-delv',delv); show('r-acc',acc);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────
+buildPalette('aquatex');
+buildPalette('belinka');
+updateInfo();
+calc();
+</script>
+</body>
+</html>

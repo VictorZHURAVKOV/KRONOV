@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Палитра покрытий — КРОНОВЪ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:    #1A120C;
+  --dark2:   #2E1A10;
+  --brown:   #5C3A22;
+  --mid:     #8B6040;
+  --sand:    #D4B896;
+  --cream:   #F5EFE6;
+  --off:     #EDE5D8;
+  --bordeaux:#7A2E38;
+  --bronze:  #B8965A;
+  --text:    #2A1C0E;
+  --muted:   #7A6050;
+  --white:   #FFFFFF;
+  --green:   #2E6B3A;
+  --green-bg:#EAF3EB;
+  --amber:   #8B4513;
+  --amber-bg:#F5EDE3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+.header {
+  background: var(--dark);
+  padding: 40px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(184,150,90,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, rgba(122,46,56,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.header-inner { position: relative; z-index: 1; }
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: var(--sand);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-desc {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--bronze);
+  margin: 20px auto 16px;
+}
+
+.header-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 1px;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── INTRO STRIP ─────────────────────────────────────────────────── */
+.intro-strip {
+  background: var(--off);
+  border-bottom: 1px solid #DDD4C4;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+.intro-strip p {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── BRAND BLOCK ─────────────────────────────────────────────────── */
+.page { max-width: 960px; margin: 0 auto; padding: 0 20px 80px; }
+
+.brand-block { margin-top: 40px; }
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-header.aquatex {
+  background: linear-gradient(135deg, #1E3A22 0%, #2E5C30 100%);
+}
+
+.brand-header.belinka {
+  background: linear-gradient(135deg, #3A1A0C 0%, #5C2E14 100%);
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.brand-badge.std { background: rgba(255,255,255,0.15); color: #A8D8B0; border: 1px solid rgba(168,216,176,0.3); }
+.brand-badge.prem { background: rgba(255,255,255,0.15); color: #D4B896; border: 1px solid rgba(212,184,150,0.3); }
+
+.brand-hinfo { flex: 1; }
+
+.brand-hname {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.brand-hname span {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  opacity: 0.7;
+  margin-left: 6px;
+}
+
+.brand-hdesc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.brand-hprice {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-val {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.price-unit {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+/* ── PALETTE BODY ────────────────────────────────────────────────── */
+.palette-body {
+  background: #fff;
+  border: 1px solid #DDD4C4;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 28px;
+}
+
+.palette-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* ── SWATCHES ────────────────────────────────────────────────────── */
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 10px;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 72px;
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+.swatch:hover { transform: translateY(-3px); }
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+.swatch:hover .circle {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22) !important;
+}
+
+.circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.12), inset 0 2px 4px rgba(255,255,255,0.18);
+}
+
+.swatch-name {
+  font-size: 9.5px;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 70px;
+  word-break: break-word;
+}
+
+.swatch-num {
+  font-size: 8px;
+  color: #CCC;
+  font-weight: 500;
+}
+
+/* ── DIVIDER ROW ─────────────────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 14px;
+}
+
+.section-divider-line { flex: 1; height: 1px; background: var(--off); }
+.section-divider-text {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #CCC;
+  white-space: nowrap;
+}
+
+/* ── COMPARISON TABLE ────────────────────────────────────────────── */
+.compare {
+  margin-top: 40px;
+  background: #fff;
+  border: 1px solid #DDD4C4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compare-head {
+  background: var(--dark);
+  padding: 18px 28px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sand);
+  letter-spacing: 1px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th {
+  background: var(--off);
+  padding: 12px 18px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid #DDD4C4;
+}
+
+.compare-table th:not(:first-child) { text-align: center; }
+
+.compare-table td {
+  padding: 11px 18px;
+  border-bottom: 1px solid #F0E8DC;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.compare-table td:not(:first-child) { text-align: center; }
+
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: #FAF6F0; }
+
+.td-feat { color: var(--muted); font-weight: 500; }
+.td-good { color: #2E6B3A; font-weight: 600; }
+.td-ok { color: #8B6040; }
+.td-best { color: #7A2E38; font-weight: 700; }
+
+/* ── NOTE ────────────────────────────────────────────────────────── */
+.note {
+  margin-top: 28px;
+  padding: 16px 20px;
+  background: var(--off);
+  border-left: 3px solid var(--bronze);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+.footer {
+  background: var(--dark);
+  padding: 24px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer p {
+  font-size: 11px;
+  color: var(--mid);
+  letter-spacing: 1px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .brand-header { flex-wrap: wrap; gap: 12px; }
+  .brand-hprice { text-align: left; width: 100%; }
+  .palette-body { padding: 18px; }
+  .swatches { gap: 10px 8px; }
+  .swatch { width: 60px; }
+  .circle { width: 50px; height: 50px; }
+  .swatch-name { font-size: 8.5px; }
+  .compare-table th, .compare-table td { padding: 9px 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-row">
+      <svg width="44" height="50" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="20" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="34" cy="20" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="26" cy="13" r="13" fill="none" stroke="#B8965A" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="18" cy="20" r="10" fill="#3A2518" opacity="0.7"/>
+        <circle cx="34" cy="20" r="10" fill="#3A2518" opacity="0.7"/>
+        <circle cx="26" cy="13" r="10" fill="#3A2518" opacity="0.7"/>
+        <circle cx="26" cy="19" r="9" fill="#B8965A" opacity="0.25"/>
+        <line x1="26" y1="28" x2="26" y2="57" stroke="#B8965A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="18" y1="46" x2="34" y2="46" stroke="#B8965A" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <div>
+        <div class="brand-name">КРОНОВЪ</div>
+        <div class="brand-desc">Деревянные изделия</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="header-title">Палитра защитных покрытий</div>
+    <div class="header-sub">Выберите цвет для вашей беседки</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-strip">
+  <p>Мы используем два вида профессиональных покрытий для дерева. <strong>Акватекс Экстра</strong> — надёжная защита по доступной цене. <strong>Belinka Toplasur</strong> — европейское премиальное покрытие с воском и УФ-фильтрами. Оба варианта наносятся в 2 слоя и обеспечивают долгосрочную защиту от влаги и солнца.</p>
+</div>
+
+<div class="page">
+
+  <!-- ══ AQUATEX ══════════════════════════════════════════════════════ -->
+  <div class="brand-block">
+
+    <div class="brand-header aquatex">
+      <div>
+        <div class="brand-badge std">Стандарт</div>
+      </div>
+      <div class="brand-hinfo">
+        <div class="brand-hname">Акватекс <span>Экстра</span></div>
+        <div class="brand-hdesc">Защитно-декоративное текстурное покрытие · 9 л · 2 слоя</div>
+      </div>
+      <div class="brand-hprice">
+        <span class="price-label">Работа + материал</span>
+        <div class="price-val">от 40 р</div>
+        <div class="price-unit">за м² пола</div>
+      </div>
+    </div>
+
+    <div class="palette-body">
+      <div class="palette-label">15 готовых оттенков</div>
+
+      <div class="swatches" id="swatches-aquatex"></div>
+
+      <div class="section-divider">
+        <div class="section-divider-line"></div>
+        <div class="section-divider-text">Покрытие на основе воды · расход 1 л / 6 м²</div>
+        <div class="section-divider-line"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ BELINKA ══════════════════════════════════════════════════════ -->
+  <div class="brand-block">
+
+    <div class="brand-header belinka">
+      <div>
+        <div class="brand-badge prem">Премиум</div>
+      </div>
+      <div class="brand-hinfo">
+        <div class="brand-hname">Belinka <span>Toplasur UV Plus</span></div>
+        <div class="brand-hdesc">Толстослойное лазурное покрытие с воском и УФ-фильтрами · 10 л · 2 слоя</div>
+      </div>
+      <div class="brand-hprice">
+        <span class="price-label">Работа + материал</span>
+        <div class="price-val">от 115 р</div>
+        <div class="price-unit">за м² пола</div>
+      </div>
+    </div>
+
+    <div class="palette-body">
+      <div class="palette-label">16 готовых оттенков</div>
+
+      <div class="swatches" id="swatches-belinka"></div>
+
+      <div class="section-divider">
+        <div class="section-divider-line"></div>
+        <div class="section-divider-text">Словенское производство · натуральный воск · расход 1 л / 6 м²</div>
+        <div class="section-divider-line"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ COMPARISON ═══════════════════════════════════════════════════ -->
+  <div class="compare">
+    <div class="compare-head">Сравнение покрытий</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Характеристика</th>
+          <th>Акватекс Экстра</th>
+          <th>Belinka Toplasur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-feat">Основа</td>
+          <td>Водная</td>
+          <td>Алкидно-масляная</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Воск в составе</td>
+          <td class="td-ok">Нет</td>
+          <td class="td-best">Да</td>
+        </tr>
+        <tr>
+          <td class="td-feat">УФ-фильтры</td>
+          <td class="td-ok">Базовые</td>
+          <td class="td-best">Усиленные</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Срок защиты</td>
+          <td class="td-ok">3–5 лет</td>
+          <td class="td-best">5–8 лет</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Количество цветов</td>
+          <td>15 оттенков</td>
+          <td>16 оттенков</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Страна</td>
+          <td>Россия</td>
+          <td>Словения</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Стоимость (работа + материал)</td>
+          <td class="td-ok">от 40 р/м²</td>
+          <td class="td-best">от 115 р/м²</td>
+        </tr>
+        <tr>
+          <td class="td-feat">Рекомендуем для</td>
+          <td>Стандартные беседки</td>
+          <td class="td-best">Дорогие изделия, подарки</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note">
+    <strong>Как рассчитывается стоимость покрытия:</strong> цена включает материал (с наценкой 30%) и работу маляра (50% от стоимости материала). Расход — 1 литр на 6 м² реальной поверхности в 2 слоя. Для беседки реальная площадь обработки примерно в 4 раза больше площади пола.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>КРОНОВЪ · Деревянные беседки и изделия · Беларусь</p>
+</div>
+
+<script>
+var DATA = {
+  aquatex: [
+    { name: 'Бесцветный',     num: '',     hex: '#E8DCC8', light: true },
+    { name: 'Белый',          num: '',     hex: '#F0EBE0', light: true },
+    { name: 'Сосна',          num: '',     hex: '#D4A55A', light: false },
+    { name: 'Орегон',         num: '',     hex: '#BF7830', light: false },
+    { name: 'Дуб',            num: '',     hex: '#A07030', light: false },
+    { name: 'Груша',          num: '',     hex: '#D4A040', light: false },
+    { name: 'Тик',            num: '',     hex: '#8B5A1A', light: false },
+    { name: 'Орех',           num: '',     hex: '#7A4820', light: false },
+    { name: 'Палисандр',      num: '',     hex: '#5A2010', light: false },
+    { name: 'Махагон',        num: '',     hex: '#8B1E1E', light: false },
+    { name: 'Рябина',         num: '',     hex: '#BF2E20', light: false },
+    { name: 'Калужница',      num: '',     hex: '#AF4828', light: false },
+    { name: 'Жёлтый',         num: '',     hex: '#DFB020', light: false },
+    { name: 'Еловая зелень',  num: '',     hex: '#2A4A1A', light: false },
+    { name: 'Папоротник',     num: '',     hex: '#4A6A2A', light: false }
+  ],
+  belinka: [
+    { name: 'Белая',              num: '11', hex: '#F5F0E6', light: true },
+    { name: 'Бесцветная',         num: '12', hex: '#EAE0CA', light: true },
+    { name: 'Сосна',              num: '13', hex: '#D4A55A', light: false },
+    { name: 'Пиния',              num: '25', hex: '#DEB878', light: false },
+    { name: 'Лиственница',        num: '14', hex: '#C8944A', light: false },
+    { name: 'Дуб',                num: '15', hex: '#A07030', light: false },
+    { name: 'Орех',               num: '16', hex: '#7A4820', light: false },
+    { name: 'Тик',                num: '17', hex: '#8B4513', light: false },
+    { name: 'Махагон',            num: '23', hex: '#7A1A1A', light: false },
+    { name: 'Палиссандр',         num: '24', hex: '#3D1010', light: false },
+    { name: 'Олива',              num: '27', hex: '#5A5820', light: false },
+    { name: 'Красная',            num: '18', hex: '#A82020', light: false },
+    { name: 'Зелёная',            num: '19', hex: '#2E5A2E', light: false },
+    { name: 'Голубая',            num: '20', hex: '#1A3A7A', light: false },
+    { name: 'Ст. древесина',      num: '28', hex: '#A09080', light: false },
+    { name: 'Эбеновое дерево',    num: '22', hex: '#151210', light: false }
+  ]
+};
+
+function buildSwatches(brand) {
+  var container = document.getElementById('swatches-' + brand);
+  DATA[brand].forEach(function(c) {
+    var shadow = c.light
+      ? '0 3px 10px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.06)'
+      : '0 3px 10px rgba(0,0,0,0.22)';
+
+    var numHtml = c.num ? '<div class="swatch-num">№' + c.num + '</div>' : '';
+
+    var html = '<div class="swatch">'
+      + '<div class="circle" style="background:' + c.hex + ';box-shadow:' + shadow + ';"></div>'
+      + '<div class="swatch-name">' + c.name + '</div>'
+      + numHtml
+      + '</div>';
+    container.insertAdjacentHTML('beforeend', html);
+  });
+}
+
+buildSwatches('aquatex');
+buildSwatches('belinka');
+</script>
+</body>
+</html>
