@@ -418,32 +418,37 @@ input { font-family:inherit; }
 .why-card {
   background: var(--c-white);
   border: 1px solid rgba(139,96,64,.1);
-  border-radius: 12px;
-  padding: 32px 28px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: transform .3s, box-shadow .3s;
 }
 .why-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(30,20,16,.08);
+  box-shadow: 0 16px 48px rgba(30,20,16,.12);
 }
-.why-icon {
-  width: 48px; height: 48px;
-  background: rgba(122,46,56,.08);
-  border-radius: 10px;
-  display: flex; align-items:center; justify-content:center;
-  margin-bottom: 20px;
-  font-size: 22px;
+.why-card-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+.why-card-body {
+  padding: 24px 24px 28px;
+  flex: 1;
 }
 .why-card h4 {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 20px;
   color: var(--c-dark);
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 .why-card p {
   font-size: 14px;
   color: var(--c-text-light);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 /* Counters */
 .counters {
@@ -1135,34 +1140,46 @@ body { padding-bottom: 76px; }
     </div>
     <div class="why-grid">
       <div class="why-card animate">
-        <div class="why-icon">&#9881;</div>
-        <h4>Полный цикл производства</h4>
-        <p>Собственная доставка леса, пилорама, столярный цех и проектное бюро. Всё делаем сами — под ключ.</p>
+        <img class="why-card-img" src="images/why-cycle.jpg" alt="Полный цикл производства КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Полный цикл производства</h4>
+          <p>Собственная доставка леса, пилорама, столярный цех и проектное бюро. Всё делаем сами — под ключ.</p>
+        </div>
       </div>
       <div class="why-card animate">
-        <div class="why-icon">&#9752;</div>
-        <h4>Собственная пилорама</h4>
-        <p>Контроль качества древесины с первого бревна. Камерная сушка до 12% влажности, антисептирование в 3 слоя.</p>
+        <img class="why-card-img" src="images/why-sawmill.jpg" alt="Собственная пилорама КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Собственная пилорама</h4>
+          <p>Контроль качества древесины с первого бревна. Камерная сушка до 12% влажности, антисептирование в 3 слоя.</p>
+        </div>
       </div>
       <div class="why-card animate">
-        <div class="why-icon">&#9634;</div>
-        <h4>Проектное бюро</h4>
-        <p>Сами проектируем и визуализируем. Бесплатный 3D-эскиз беседки на вашем участке за 24 часа.</p>
+        <img class="why-card-img" src="images/why-design.jpg" alt="Проектное бюро КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Проектное бюро</h4>
+          <p>Сами проектируем и визуализируем. Бесплатный 3D-эскиз беседки на вашем участке за 24 часа.</p>
+        </div>
       </div>
       <div class="why-card animate">
-        <div class="why-icon">&#9745;</div>
-        <h4>Гарантия качества</h4>
-        <p>Отвечаем за каждый этап работы. Массив дерева, заводская обработка, фиксация условий в договоре.</p>
+        <img class="why-card-img" src="images/why-guarantee.jpg" alt="Гарантия качества КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Гарантия качества</h4>
+          <p>Отвечаем за каждый этап работы. Массив дерева, заводская обработка, фиксация условий в договоре.</p>
+        </div>
       </div>
       <div class="why-card animate">
-        <div class="why-icon">&#9201;</div>
-        <h4>Монтаж за 1 день</h4>
-        <p>Никакой стройки и грязи. Наша бригада приезжает, собирает и убирает за собой.</p>
+        <img class="why-card-img" src="images/why-montage.jpg" alt="Монтаж за 1 день КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Монтаж за 1 день</h4>
+          <p>Никакой стройки и грязи. Наша бригада приезжает, собирает и убирает за собой.</p>
+        </div>
       </div>
       <div class="why-card animate">
-        <div class="why-icon">&#128736;</div>
-        <h4>Столярный цех</h4>
-        <p>Собственное производство в Беларуси. 13 лет опыта, 100+ реализованных проектов.</p>
+        <img class="why-card-img" src="images/why-workshop.jpg" alt="Столярный цех КРОНОВЪ">
+        <div class="why-card-body">
+          <h4>Столярный цех</h4>
+          <p>Собственное производство в Беларуси. 13 лет опыта, 100+ реализованных проектов.</p>
+        </div>
       </div>
     </div>
     <div class="counters">
