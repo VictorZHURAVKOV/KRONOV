@@ -146,11 +146,14 @@ input { font-family:inherit; }
 .header-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 260px 0 24px; /* right padding reserved for fixed phone badge */
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 64px;
+}
+@media(max-width:900px) {
+  .header-inner { padding-right: 70px; } /* icon-only phone badge */
 }
 .header-logo {
   display: flex;
@@ -313,12 +316,11 @@ input { font-family:inherit; }
   margin-bottom: 20px;
 }
 .manager-avatar {
-  width: 48px; height: 48px;
+  width: 56px; height: 56px;
   border-radius: 50%;
-  background: var(--c-brown);
-  display: flex; align-items:center; justify-content:center;
-  font-size: 18px; color: var(--c-sand); font-weight:600;
-  /* PLACEHOLDER: замените на реальное фото Алёны */
+  background: url('images/manager-alyona.jpg') center/cover no-repeat;
+  border: 2px solid var(--c-sand);
+  flex-shrink: 0;
 }
 .manager-info { font-size:13px; color:var(--c-sand); }
 .manager-info strong { display:block; color:var(--c-cream); font-size:15px; }
@@ -950,21 +952,57 @@ a.catalog-link {
 .sticky-bar { display: block; }
 body { padding-bottom: 76px; }
 
-/* Desktop phone in header */
-.header-phone {
-  display: flex;
+/* ===== FIXED PHONE BADGE (always visible, doesn't shrink) ===== */
+.phone-fixed {
+  position: fixed;
+  top: 14px;
+  right: 20px;
+  z-index: 1100;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--c-sand);
-  font-size: 14px;
-  font-weight: 600;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--c-bordo);
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 700;
   letter-spacing: 0.5px;
-  margin-right: 8px;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(122,46,56,.45);
+  white-space: nowrap;
+  transition: background .25s, transform .25s, box-shadow .25s;
 }
-.header-phone svg { width: 16px; height: 16px; }
+.phone-fixed:hover {
+  background: #8E3542;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(122,46,56,.55);
+}
+.phone-fixed svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  animation: phone-ring 2.6s ease-in-out infinite;
+}
+@keyframes phone-ring {
+  0%, 92%, 100% { transform: rotate(0); }
+  94% { transform: rotate(-15deg); }
+  96% { transform: rotate(15deg); }
+  98% { transform: rotate(-8deg); }
+}
 @media(max-width:768px) {
-  .header-phone { display: none; }
+  .phone-fixed {
+    top: 10px;
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 0;
+    gap: 0;
+  }
+  .phone-fixed svg { width: 22px; height: 22px; }
 }
+
+/* Hide old in-header phone (keep element for backward compat) */
+.header-phone { display: none; }
 
 /* ===== EXIT POPUP ===== */
 .popup-overlay {
@@ -1041,6 +1079,12 @@ body { padding-bottom: 76px; }
 </head>
 <body>
 
+<!-- ===== FIXED PHONE BADGE (always visible) ===== -->
+<a href="tel:+375296888629" class="phone-fixed" aria-label="Позвонить: +375 (29) 688-86-29">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  <span>+375 (29) 688-86-29</span>
+</a>
+
 <!-- ===== HEADER ===== -->
 <header class="header" id="header">
   <div class="header-inner">
@@ -1061,10 +1105,6 @@ body { padding-bottom: 76px; }
       <a href="calculator.html">Калькулятор</a>
       <a href="#faq">Вопросы</a>
       <a href="#reviews">Отзывы</a>
-      <a href="tel:+375296888629" class="header-phone">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +375 (29) 688-86-29
-      </a>
       <a href="#cta" class="header-cta">Получить предложение</a>
     </nav>
     <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')">
@@ -1094,7 +1134,7 @@ body { padding-bottom: 76px; }
     </div>
     <div class="hero-form-card">
       <div class="manager-row">
-        <div class="manager-avatar">А</div>
+        <div class="manager-avatar" aria-label="Менеджер Алёна"></div>
         <div class="manager-info">
           <strong>Алёна</strong>
           Ответит лично
