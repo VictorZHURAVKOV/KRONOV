@@ -391,60 +391,74 @@ body {
   position: sticky;
   bottom: 0;
   background: var(--dark);
-  border-top: 2px solid var(--bordeaux);
-  padding: 20px 32px 24px;
+  border-top: 3px solid var(--bordeaux);
+  padding: 28px 32px 28px;
   z-index: 20;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
 }
 
 .result-top {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+  gap: 14px;
 }
 
 .result-lbl {
-  font-size: 10px;
-  letter-spacing: 3px;
+  font-size: 12px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--sand);
+  opacity: 0.8;
+  text-align: center;
 }
 
 .result-price {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 38px;
+  font-size: 68px;
   font-weight: 700;
-  color: var(--bronze);
-  letter-spacing: 1px;
+  color: #F5E6C8;
+  letter-spacing: 2px;
   line-height: 1;
+  text-align: center;
+  text-shadow: 0 2px 20px rgba(245,230,200,0.2);
 }
 
 .result-note {
-  font-size: 11px;
-  color: var(--mid);
-  margin-top: 3px;
+  font-size: 12px;
+  color: var(--sand);
+  opacity: 0.55;
+  margin-top: 2px;
+  text-align: center;
 }
 
 .result-cta {
   display: inline-block;
-  padding: 10px 24px;
+  padding: 16px 40px;
   background: var(--bordeaux);
-  color: var(--cream);
+  color: #FFFFFF;
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.15s;
   border: none;
   white-space: nowrap;
-  align-self: flex-end;
+  margin-top: 6px;
+  border-radius: 4px;
 }
-.result-cta:hover { background: #5C2028; }
+.result-cta:hover { background: #5C2028; transform: translateY(-1px); }
+
+@media (max-width: 620px) {
+  .result-price { font-size: 48px; }
+  .result { padding: 20px 16px; }
+}
 
 .bdown {
   border-top: 1px solid rgba(255,255,255,0.08);
