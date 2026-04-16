@@ -390,21 +390,23 @@ body {
 .result {
   position: sticky;
   bottom: 0;
-  background: var(--dark);
-  border-top: 3px solid var(--bordeaux);
-  padding: 28px 32px 28px;
+  background: transparent;
+  padding: 0;
   z-index: 20;
-  box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
 }
 
+/* Dark compact capsule — only price + CTA */
 .result-top {
+  background: var(--dark);
+  border-top: 3px solid var(--bordeaux);
+  padding: 22px 24px 24px;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: 20px;
-  gap: 14px;
+  gap: 10px;
 }
 
 .result-lbl {
@@ -460,22 +462,28 @@ body {
   .result { padding: 20px 16px; }
 }
 
+/* Breakdown on light cream background */
 .bdown {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 14px;
+  background: var(--cream);
+  padding: 18px 24px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px 20px;
+  gap: 6px 24px;
+  border-top: 1px solid rgba(139,96,64,.15);
 }
 
 .bdown-item {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: rgba(255,255,255,0.45);
+  color: var(--muted);
 }
 
-.bdown-item span:last-child { color: rgba(255,255,255,0.7); font-weight: 600; }
+.bdown-item span:last-child { color: var(--text); font-weight: 600; }
+
+@media (max-width: 620px) {
+  .bdown { grid-template-columns: 1fr 1fr; gap: 6px 16px; padding: 14px 16px 16px; }
+}
 
 /* ── BRAND TABS ── */
 .brand-tabs {
@@ -603,17 +611,19 @@ body {
   .color-circle { width: 40px; height: 40px; }
 }
 
-.phone-fixed { position: fixed; top: 14px; right: 20px; z-index: 1100;
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 12px 22px; background: #7A2E38; color: #FFF;
-  font-size: 17px; font-weight: 700; letter-spacing: 0.5px;
+.phone-fixed {
+  position: fixed; bottom: 92px; right: 24px; z-index: 1100;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 26px; background: #7A2E38; color: #FFF;
+  font-size: 18px; font-weight: 700; letter-spacing: 0.5px;
   text-decoration: none; border-radius: 999px;
-  box-shadow: 0 6px 24px rgba(122,46,56,.45);
-  white-space: nowrap; transition: background .25s, transform .25s; }
-.phone-fixed:hover { background: #8E3542; transform: translateY(-1px); }
-.phone-fixed svg { width: 20px; height: 20px; flex-shrink: 0; animation: phone-ring 2.6s ease-in-out infinite; }
+  box-shadow: 0 10px 32px rgba(122,46,56,.5), 0 2px 8px rgba(0,0,0,.15);
+  white-space: nowrap; transition: background .25s, transform .25s, box-shadow .25s;
+}
+.phone-fixed:hover { background: #8E3542; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(122,46,56,.6); }
+.phone-fixed svg { width: 22px; height: 22px; flex-shrink: 0; animation: phone-ring 2.6s ease-in-out infinite; }
 @keyframes phone-ring { 0%,92%,100%{transform:rotate(0);} 94%{transform:rotate(-15deg);} 96%{transform:rotate(15deg);} 98%{transform:rotate(-8deg);} }
-@media(max-width:768px) { .phone-fixed { top:10px; right:10px; padding:10px 14px; font-size:0; gap:0; } .phone-fixed svg { width:22px; height:22px; } }
+@media(max-width:768px) { .phone-fixed { bottom:86px; right:14px; padding:14px; font-size:0; gap:0; border-radius:50%; } .phone-fixed svg { width:26px; height:26px; } } }
 </style>
 </head>
 <body>
@@ -928,7 +938,7 @@ body {
     <div>
       <div class="result-lbl">Ориентировочная стоимость</div>
       <div class="result-price" id="r-total">5 160 BYN</div>
-      <div class="result-note">Включая НДС · Точный расчёт у менеджера</div>
+      <div class="result-note">Точный расчёт у менеджера</div>
     </div>
     <a class="result-cta" href="tel:+375296888629">Позвонить Алёне →</a>
   </div>
