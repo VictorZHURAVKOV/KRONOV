@@ -386,63 +386,107 @@ body {
   margin-top: 4px;
 }
 
-/* ── RESULT PANEL ── */
-.result {
-  position: sticky;
-  bottom: 0;
-  background: transparent;
-  padding: 0;
-  z-index: 20;
+/* ── FLOATING PRICE BADGE (bottom-center, always visible while scrolling) ── */
+.price-float {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  background: var(--dark);
+  padding: 14px 28px;
+  border-radius: 999px;
+  box-shadow: 0 12px 32px rgba(30,20,16,.4), 0 2px 8px rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1.5px solid rgba(212,184,150,.25);
+}
+.price-float-lbl {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.7;
+  line-height: 1;
+}
+.price-float-val {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #F5E6C8;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+.price-float-sub {
+  margin-top: 3px;
+}
+@media (max-width: 620px) {
+  .price-float { bottom: 14px; padding: 10px 18px; gap: 10px; }
+  .price-float-val { font-size: 20px; }
+  .price-float-lbl { font-size: 8px; letter-spacing: 2px; }
 }
 
-/* Price + CTA on LIGHT cream background — airy, prominent */
+/* ── FINAL PRICE BLOCK (at end of page — full width, prominent) ── */
+.result {
+  background: transparent;
+  padding: 60px 24px 180px;
+  max-width: 760px;
+  margin: 0 auto;
+}
 .result-top {
   background: var(--cream);
-  border-top: 1px solid rgba(139,96,64,.15);
-  padding: 26px 24px 22px;
+  border: 2px solid var(--bronze);
+  border-radius: 20px;
+  padding: 40px 32px 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
 }
-
+.result-top::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 40px; right: 40px;
+  height: 2px;
+  background: var(--bordeaux);
+}
 .result-lbl {
-  font-size: 11px;
-  letter-spacing: 4px;
+  font-size: 13px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--bordeaux);
+  font-weight: 600;
   text-align: center;
 }
-
 .result-price {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 64px;
+  font-size: 84px;
   font-weight: 700;
   color: var(--dark);
   letter-spacing: 1px;
   line-height: 1;
   text-align: center;
-  margin: 2px 0;
+  margin: 4px 0 6px;
 }
-
 .result-note {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 2px;
   text-align: center;
 }
-
 .result-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 36px;
+  gap: 10px;
+  padding: 18px 44px;
   background: var(--bordeaux);
   color: #FFFFFF;
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -451,38 +495,36 @@ body {
   transition: background 0.15s, transform 0.15s;
   border: none;
   white-space: nowrap;
-  margin-top: 8px;
-  border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(122,46,56,.25);
+  margin-top: 18px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(122,46,56,.35);
 }
 .result-cta:hover { background: #5C2028; transform: translateY(-1px); }
-
 @media (max-width: 620px) {
-  .result-price { font-size: 46px; }
-  .result-top { padding: 22px 16px 18px; }
+  .result { padding: 40px 16px 160px; }
+  .result-price { font-size: 52px; }
+  .result-top { padding: 28px 18px 24px; }
 }
 
-/* Breakdown on DARK chocolate strip — thin, only at very bottom */
+/* Breakdown — light list BELOW the final price card */
 .bdown {
-  background: var(--dark);
-  padding: 12px 24px 14px;
+  background: transparent;
+  padding: 20px 8px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px 24px;
-  border-top: 1px solid rgba(255,255,255,.08);
+  gap: 6px 24px;
 }
-
 .bdown-item {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
-  color: rgba(255,255,255,.45);
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(139,96,64,.08);
 }
-
-.bdown-item span:last-child { color: var(--sand); font-weight: 600; }
-
+.bdown-item span:last-child { color: var(--text); font-weight: 600; }
 @media (max-width: 620px) {
-  .bdown { grid-template-columns: 1fr 1fr; gap: 4px 14px; padding: 10px 16px 12px; font-size: 10px; }
+  .bdown { grid-template-columns: 1fr 1fr; gap: 4px 14px; }
 }
 
 /* ── BRAND TABS ── */
@@ -932,14 +974,20 @@ body {
 
 </div><!-- /wrap -->
 
-<!-- RESULT -->
+<!-- FLOATING PRICE BADGE — follows scroll -->
+<div class="price-float">
+  <div>
+    <div class="price-float-lbl">Ориентировочно</div>
+    <div class="price-float-val" id="r-total-float">5 160 BYN</div>
+  </div>
+</div>
+
+<!-- FINAL PRICE CARD at end of page -->
 <div class="result">
   <div class="result-top">
-    <div>
-      <div class="result-lbl">Ориентировочная стоимость</div>
-      <div class="result-price" id="r-total">5 160 BYN</div>
-      <div class="result-note">Точный расчёт у менеджера</div>
-    </div>
+    <div class="result-lbl">Итоговая цена</div>
+    <div class="result-price" id="r-total">5 160 BYN</div>
+    <div class="result-note">Точный расчёт у менеджера</div>
     <a class="result-cta" href="tel:+375296888629">Позвонить Алёне →</a>
   </div>
   <div class="bdown">
@@ -1163,7 +1211,9 @@ function calc(){
 
   var total=frame+roof+stain+furn+found+doors+inst+delv+acc;
 
-  document.getElementById('r-total').textContent=ru(total)+' BYN';
+  var txt=ru(total)+' BYN';
+  document.getElementById('r-total').textContent=txt;
+  var fl=document.getElementById('r-total-float'); if(fl) fl.textContent=txt;
   show('r-frame',frame); show('r-roof',roof); show('r-stain',stain);
   show('r-furn',furn); show('r-found',found); show('r-doors',doors);
   show('r-inst',inst); show('r-delv',delv); show('r-acc',acc);

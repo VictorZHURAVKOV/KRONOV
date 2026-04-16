@@ -49,7 +49,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
 
 .gazebo-hero { padding: 0 0 48px; }
 .gazebo-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.gazebo-hero-img { aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--c-sand); }
+.gazebo-hero-img { aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #F2EBE0 0%, #E8DCC4 100%); display:flex; align-items:center; justify-content:center; }
 .gazebo-hero-img img { width: 100%; height: 100%; object-fit: cover; }
 .gazebo-hero-info { padding-top: 16px; }
 .gazebo-article { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--c-bordo); margin-bottom: 8px; }
@@ -65,7 +65,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
 .gazebo-gallery h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--c-dark); margin-bottom: 32px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .gallery-grid-item { aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; cursor: pointer; position: relative; background: var(--c-sand); }
-.gallery-grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.gallery-grid-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform .4s; }
 .gallery-grid-item:hover img { transform: scale(1.05); }
 .gallery-grid-item::after { content: ''; position: absolute; inset: 0; background: rgba(30,20,16,0); transition: background .3s; }
 .gallery-grid-item:hover::after { background: rgba(30,20,16,.1); }
@@ -223,7 +223,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
   <div class="container">
     <div class="gazebo-hero-grid">
       <div class="gazebo-hero-img">
-        <img src="../images/kr-011-front.jpg" alt="КР-011 Классика">
+        <img src="../images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:contain;object-position:center;">
       </div>
       <div class="gazebo-hero-info">
         <div class="gazebo-article">КР-011</div>
@@ -280,7 +280,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
           </svg>
         </div>
         <div class="spec-value">2.5 × 2.5</div>
-        <div class="spec-label">Размер, м</div>
+        <div class="spec-label">Размер под заказ, м</div>
       </div>
       <div class="spec-card">
         <div class="spec-icon">
