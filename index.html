@@ -706,6 +706,7 @@ a.catalog-link {
   /* PLACEHOLDER: замените на реальные фото */
 }
 .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 .gallery-item:hover { transform: scale(1.02); }
 .gallery-placeholder {
   width:100%; height:100%;
@@ -716,6 +717,7 @@ a.catalog-link {
 @media(max-width:768px) {
   .gallery-grid { grid-template-columns: repeat(2,1fr); }
   .gallery-item:nth-child(1) { grid-column:span 2; }
+  .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 }
 
 /* ===== SECTION: FAQ ===== */
@@ -1590,10 +1592,10 @@ body { padding-bottom: 76px; }
       <div class="gallery-item"><img src="images/kr-011-house.jpg" alt="Классика у дома" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="gallery-item"><img src="images/portfolio-25.jpg" alt="Беседка КРОНОВЪ — на реальном участке" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="gallery-item"><img src="images/portfolio-26.jpg" alt="Беседка КРОНОВЪ — с зоной отдыха" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — на даче" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item wide"><img src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — сравнение моделей" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="gallery-item"><img src="images/portfolio-28.jpg" alt="Беседка КРОНОВЪ — в ландшафте" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — летний вид" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — у загородного дома" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item wide"><img src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — ракурсы" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item wide"><img src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — варианты A и B" style="width:100%;height:100%;object-fit:cover;"></div>
     </div>
   </div>
 </section>
