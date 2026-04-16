@@ -7,6 +7,7 @@
 <meta name="description" content="Беседка Резиденция КР-001 от КРОНОВЪ. Флагманская модель с шатровой крышей. Фото, характеристики, цена. Производитель полного цикла в Беларуси.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../images/kr-001-day.jpg">
 <link rel="stylesheet" href="../header/header.css">
 <link rel="stylesheet" href="../footer/footer.css">
 <style>
@@ -246,22 +247,22 @@ button { cursor:pointer; border:none; font-family:inherit; }
     <h2>Фотографии</h2>
     <div class="gallery-grid">
       <div class="gallery-grid-item" onclick="openLightbox(0)">
-        <img src="../images/kr-001-day.jpg" alt="Резиденция — дневной вид">
+        <img loading="lazy" decoding="async" src="../images/kr-001-day.jpg" alt="Резиденция — дневной вид">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(1)">
-        <img src="../images/kr-001-couple.jpg" alt="Резиденция — пара в беседке">
+        <img loading="lazy" decoding="async" src="../images/kr-001-couple.jpg" alt="Резиденция — пара в беседке">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(2)">
-        <img src="../images/kr-001-inside.jpg" alt="Резиденция — интерьер">
+        <img loading="lazy" decoding="async" src="../images/kr-001-inside.jpg" alt="Резиденция — интерьер">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(3)">
-        <img src="../images/kr-001-evening.jpg" alt="Резиденция — вечернее освещение">
+        <img loading="lazy" decoding="async" src="../images/kr-001-evening.jpg" alt="Резиденция — вечернее освещение">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(4)">
-        <img src="../images/kr-001-night.jpg" alt="Резиденция — ночной вид">
+        <img loading="lazy" decoding="async" src="../images/kr-001-night.jpg" alt="Резиденция — ночной вид">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(5)">
-        <img src="../images/kr-001-stone.jpg" alt="Резиденция — каменная площадка">
+        <img loading="lazy" decoding="async" src="../images/kr-001-stone.jpg" alt="Резиденция — каменная площадка">
       </div>
     </div>
   </div>
@@ -525,7 +526,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
 <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
-  <img id="lightbox-img" src="" alt="Фото беседки">
+  <img loading="lazy" decoding="async" id="lightbox-img" src="" alt="Фото беседки">
   <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
 </div>
 

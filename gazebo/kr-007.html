@@ -7,6 +7,7 @@
 <meta name="description" content="Беседка Бельведеръ КР-007 от КРОНОВЪ. Фахверковая беседка из массивного бруса с двускатной крышей. Фото, характеристики, цена. Производитель полного цикла в Беларуси.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../images/kr-007-side.jpg">
 <link rel="stylesheet" href="../header/header.css">
 <link rel="stylesheet" href="../footer/footer.css">
 <style>
@@ -246,22 +247,22 @@ button { cursor:pointer; border:none; font-family:inherit; }
     <h2>Фотографии</h2>
     <div class="gallery-grid">
       <div class="gallery-grid-item" onclick="openLightbox(0)">
-        <img src="../images/kr-007-side.jpg" alt="Бельведеръ — боковой вид">
+        <img loading="lazy" decoding="async" src="../images/kr-007-side.jpg" alt="Бельведеръ — боковой вид">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(1)">
-        <img src="../images/kr-007-compact.jpg" alt="Бельведеръ — компактный вид">
+        <img loading="lazy" decoding="async" src="../images/kr-007-compact.jpg" alt="Бельведеръ — компактный вид">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(2)">
-        <img src="../images/kr-007-large.jpg" alt="Бельведеръ — общий план">
+        <img loading="lazy" decoding="async" src="../images/kr-007-large.jpg" alt="Бельведеръ — общий план">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(3)">
-        <img src="../images/kr-007-peonies.jpg" alt="Бельведеръ — с пионами">
+        <img loading="lazy" decoding="async" src="../images/kr-007-peonies.jpg" alt="Бельведеръ — с пионами">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(4)">
-        <img src="../images/kr-007-couple.jpg" alt="Бельведеръ — пара в беседке">
+        <img loading="lazy" decoding="async" src="../images/kr-007-couple.jpg" alt="Бельведеръ — пара в беседке">
       </div>
       <div class="gallery-grid-item" onclick="openLightbox(5)">
-        <img src="../images/kr-007-sofa.jpg" alt="Бельведеръ — диван в беседке">
+        <img loading="lazy" decoding="async" src="../images/kr-007-sofa.jpg" alt="Бельведеръ — диван в беседке">
       </div>
     </div>
   </div>
@@ -525,7 +526,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
 <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
-  <img id="lightbox-img" src="" alt="Фото беседки">
+  <img loading="lazy" decoding="async" id="lightbox-img" src="" alt="Фото беседки">
   <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
 </div>
 

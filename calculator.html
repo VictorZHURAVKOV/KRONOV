@@ -395,94 +395,94 @@ body {
   z-index: 20;
 }
 
-/* Dark compact capsule — only price + CTA */
+/* Price + CTA on LIGHT cream background — airy, prominent */
 .result-top {
-  background: var(--dark);
-  border-top: 3px solid var(--bordeaux);
-  padding: 22px 24px 24px;
-  box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
+  background: var(--cream);
+  border-top: 1px solid rgba(139,96,64,.15);
+  padding: 26px 24px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .result-lbl {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--sand);
-  opacity: 0.8;
+  color: var(--muted);
   text-align: center;
 }
 
 .result-price {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 68px;
+  font-size: 64px;
   font-weight: 700;
-  color: #F5E6C8;
-  letter-spacing: 2px;
+  color: var(--dark);
+  letter-spacing: 1px;
   line-height: 1;
   text-align: center;
-  text-shadow: 0 2px 20px rgba(245,230,200,0.2);
+  margin: 2px 0;
 }
 
 .result-note {
   font-size: 12px;
-  color: var(--sand);
-  opacity: 0.55;
+  color: var(--muted);
   margin-top: 2px;
   text-align: center;
 }
 
 .result-cta {
-  display: inline-block;
-  padding: 16px 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
   background: var(--bordeaux);
   color: #FFFFFF;
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.15s, transform 0.15s;
   border: none;
   white-space: nowrap;
-  margin-top: 6px;
-  border-radius: 4px;
+  margin-top: 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(122,46,56,.25);
 }
 .result-cta:hover { background: #5C2028; transform: translateY(-1px); }
 
 @media (max-width: 620px) {
-  .result-price { font-size: 48px; }
-  .result { padding: 20px 16px; }
+  .result-price { font-size: 46px; }
+  .result-top { padding: 22px 16px 18px; }
 }
 
-/* Breakdown on light cream background */
+/* Breakdown on DARK chocolate strip — thin, only at very bottom */
 .bdown {
-  background: var(--cream);
-  padding: 18px 24px 20px;
+  background: var(--dark);
+  padding: 12px 24px 14px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 6px 24px;
-  border-top: 1px solid rgba(139,96,64,.15);
+  gap: 4px 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .bdown-item {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
 }
 
-.bdown-item span:last-child { color: var(--text); font-weight: 600; }
+.bdown-item span:last-child { color: var(--sand); font-weight: 600; }
 
 @media (max-width: 620px) {
-  .bdown { grid-template-columns: 1fr 1fr; gap: 6px 16px; padding: 14px 16px 16px; }
+  .bdown { grid-template-columns: 1fr 1fr; gap: 4px 14px; padding: 10px 16px 12px; font-size: 10px; }
 }
 
 /* ── BRAND TABS ── */
