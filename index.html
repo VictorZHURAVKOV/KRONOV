@@ -546,7 +546,6 @@ input { font-family:inherit; }
 /* ===== PREMIUM PAYMENT SCHEDULE ===== */
 .payment-schedule {
   position: relative;
-  background: linear-gradient(160deg, #231410 0%, #1E1410 50%, #2A1A14 100%);
   color: var(--c-cream);
   padding: 36px 32px 30px;
   border-radius: 18px;
@@ -555,12 +554,43 @@ input { font-family:inherit; }
     0 24px 60px rgba(30,20,16,.28),
     inset 0 1px 0 rgba(184,150,90,.12);
   overflow: hidden;
+  /* Многослойный шоколадный фон с переливом через background-position */
+  background:
+    linear-gradient(135deg,
+      #1A0F0B 0%,
+      #2A1812 18%,
+      #3A2116 34%,
+      #2A1812 52%,
+      #231410 68%,
+      #3A2116 84%,
+      #1A0F0B 100%);
+  background-size: 280% 280%;
+  background-position: 0% 0%;
+  animation: ps-shimmer 14s ease-in-out infinite;
+}
+@keyframes ps-shimmer {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
 }
 .payment-schedule::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--c-bronze) 25%, var(--c-bronze) 75%, transparent 100%);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(184,150,90,.2) 15%,
+    var(--c-bronze) 40%,
+    #D4B896 50%,
+    var(--c-bronze) 60%,
+    rgba(184,150,90,.2) 85%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: ps-topglow 7s linear infinite;
+}
+@keyframes ps-topglow {
+  0%   { background-position: 100% 0%; }
+  100% { background-position: -100% 0%; }
 }
 .payment-schedule::after {
   content: '';
@@ -568,10 +598,22 @@ input { font-family:inherit; }
   inset: 1px;
   border-radius: 17px;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184,150,90,.10) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(122,46,56,.14) 0%, transparent 55%);
+    radial-gradient(ellipse at 15% 10%, rgba(184,150,90,.14) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 90%, rgba(122,46,56,.18) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(212,184,150,.06) 0%, transparent 40%);
   pointer-events: none;
-  opacity: .8;
+  opacity: .85;
+  animation: ps-glow 11s ease-in-out infinite alternate;
+}
+@keyframes ps-glow {
+  0%   { opacity: .7; transform: scale(1); }
+  50%  { opacity: 1;  transform: scale(1.02); }
+  100% { opacity: .75; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .payment-schedule,
+  .payment-schedule::before,
+  .payment-schedule::after { animation: none; }
 }
 .payment-schedule > * { position: relative; z-index: 1; }
 
