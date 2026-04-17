@@ -153,7 +153,7 @@
 .header-nav { flex: 0 1 auto; min-width: 0; }
 
 /* --- Mobile menu (бургер появляется раньше: на 1024px чтобы освободить место для телефона) --- */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .header-nav { display: none; }
   .burger { display: flex; }
   .header-nav.open {
