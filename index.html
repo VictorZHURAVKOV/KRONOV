@@ -15,6 +15,12 @@
 <meta property="og:locale" content="ru_RU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ===== FORM PERSONALIZER (заглушка — подключит заказчик: Envybox / Callibri / аналог) ===== -->
+<!-- <script src="https://envybox.io/js/widget.js?project_id=XXX" async></script> -->
+
+<!-- ===== ANALYTICS (заглушка — подключит заказчик) ===== -->
+<!-- <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(YM_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});</script> -->
 <style>
 /* ===== CSS VARIABLES ===== */
 :root {
@@ -1620,10 +1626,171 @@ a.catalog-link {
 }
 .sticky-call { background: var(--c-bordo); color: var(--c-white); }
 .sticky-wa { background: #25D366; color: var(--c-white); }
+.sticky-viber { background: #7360F2; color: var(--c-white); }
 
 /* Sticky bar: visible on ALL devices */
 .sticky-bar { display: block; }
 body { padding-bottom: 76px; }
+
+/* ===== MULTI-BUTTON (desktop) ===== */
+.multi-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+.multi-btn-main {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--c-bordo); color: var(--c-cream);
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer;
+  box-shadow: 0 10px 28px rgba(122,46,56,.45);
+  transition: transform .22s, background .22s;
+}
+.multi-btn-main:hover { background: #8E3542; transform: scale(1.06); }
+.multi-btn.open .multi-btn-main { background: var(--c-dark); transform: rotate(45deg); }
+.multi-btn-options {
+  position: absolute; bottom: 72px; right: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  opacity: 0; pointer-events: none; transform: translateY(14px);
+  transition: opacity .25s, transform .25s;
+}
+.multi-btn.open .multi-btn-options { opacity: 1; pointer-events: all; transform: translateY(0); }
+.mb-option {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--c-dark); color: var(--c-cream);
+  padding: 10px 16px 10px 18px; border-radius: 28px;
+  white-space: nowrap; box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  font-size: 13px; font-weight: 500;
+  transition: transform .2s;
+}
+.mb-option:hover { transform: translateX(-3px); }
+.mb-label { line-height: 1; }
+.mb-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; flex-shrink: 0;
+}
+.mb-phone .mb-icon { background: var(--c-bordo); }
+.mb-wa .mb-icon { background: #25D366; }
+.mb-viber .mb-icon { background: #7360F2; }
+.mb-tg .mb-icon { background: #0088CC; }
+@media(max-width:767px) { .multi-btn { display: none; } }
+
+/* ===== STICKY DESKTOP CTA ===== */
+.sticky-desktop-cta {
+  position: fixed; bottom: 28px; right: 100px;
+  padding: 14px 24px;
+  background: var(--c-bordo); color: var(--c-cream);
+  border-radius: 28px;
+  font-family: var(--font-body); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 28px rgba(122,46,56,.45);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s, background .3s;
+  transform: translateY(10px);
+  z-index: 998;
+}
+.sticky-desktop-cta.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+.sticky-desktop-cta:hover { background: #8E3542; }
+@media(max-width:767px) { .sticky-desktop-cta { display: none; } }
+
+/* ===== CALLBACK WIDGET ===== */
+.callback-widget {
+  position: fixed; bottom: 100px; right: 24px;
+  width: 320px; background: var(--c-white);
+  border-radius: 16px; padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  z-index: 998; display: flex; gap: 16px;
+  animation: cb-slide .35s cubic-bezier(.2,.7,.3,1.1);
+}
+@keyframes cb-slide { from { opacity: 0; transform: translateY(14px);} to { opacity: 1; transform: translateY(0);} }
+.cb-close {
+  position: absolute; top: 8px; right: 10px;
+  background: none; border: none; font-size: 22px;
+  cursor: pointer; color: var(--c-brown-mid);
+  width: 30px; height: 30px; line-height: 1;
+}
+.cb-avatar { flex-shrink: 0; }
+.cb-avatar img {
+  width: 56px; height: 56px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--c-bronze);
+  display: block;
+}
+.cb-avatar-fallback {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--c-bordo); color: var(--c-cream);
+  font-family: var(--font-display); font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--c-bronze);
+}
+.cb-body { flex: 1; min-width: 0; }
+.cb-body strong {
+  display: block; color: var(--c-dark);
+  font-family: var(--font-display); font-size: 16px;
+  margin-bottom: 2px;
+}
+.cb-body p { font-size: 12.5px; color: var(--c-text-light); margin: 4px 0 10px; line-height: 1.45; }
+.cb-body .form-input {
+  width: 100%; padding: 9px 12px;
+  border: 1px solid var(--c-bronze);
+  border-radius: 6px; font-size: 13px;
+  margin-bottom: 8px;
+}
+@media(max-width:767px) { .callback-widget { display: none !important; } }
+
+/* ===== QUIZ POPUP ===== */
+.quiz-popup {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(30,20,16,.82);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.quiz-popup-inner {
+  background: var(--c-cream); border-radius: 16px;
+  padding: 40px 36px; max-width: 540px; width: 100%;
+  position: relative; max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+}
+.quiz-popup-inner h3 {
+  font-family: var(--font-display); font-size: 26px;
+  color: var(--c-dark); margin-bottom: 10px;
+  padding-right: 32px;
+}
+.quiz-lead { font-size: 14px; color: var(--c-text-light); margin-bottom: 20px; line-height: 1.55; }
+.quiz-progress {
+  height: 4px; background: rgba(184,150,90,.25);
+  border-radius: 2px; overflow: hidden; margin-bottom: 22px;
+}
+.quiz-progress-bar {
+  height: 100%; background: var(--c-bordo);
+  border-radius: 2px; transition: width .35s;
+}
+.quiz-step { animation: qs-in .3s; }
+@keyframes qs-in { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+.quiz-q {
+  font-family: var(--font-display); font-size: 19px;
+  color: var(--c-dark); margin-bottom: 16px;
+}
+.quiz-opts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+.quiz-opts button {
+  padding: 13px 18px; border: 1.5px solid var(--c-bronze);
+  background: var(--c-white); border-radius: 8px;
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--c-dark); text-align: left;
+  cursor: pointer; transition: all .2s;
+}
+.quiz-opts button:hover {
+  border-color: var(--c-bordo);
+  background: var(--c-bordo); color: var(--c-cream);
+  transform: translateX(4px);
+}
+.quiz-popup-inner .form-input {
+  width: 100%; padding: 12px 14px;
+  border: 1px solid var(--c-bronze);
+  border-radius: 8px; font-size: 14px;
+  margin-bottom: 12px; background: var(--c-white);
+}
+@media(max-width:480px){
+  .quiz-popup-inner { padding: 28px 22px; }
+  .quiz-popup-inner h3 { font-size: 22px; }
+}
 
 /* ===== FLOATING PHONE BUTTON (bottom-right, always visible) ===== */
 .phone-fixed {
@@ -1818,7 +1985,7 @@ body { padding-bottom: 76px; }
       </div>
       <h3>Бесплатный 3D-проект</h3>
       <p>Оставьте номер — перезвоним через 60 секунд</p>
-      <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" id="hero-phone">
+      <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" id="hero-phone" name="phone" autocomplete="tel">
       <button class="form-submit" onclick="submitForm('hero')">Перезвоните мне</button>
       <p class="form-note">Никакого спама. Только один звонок.</p>
     </div>
@@ -2771,9 +2938,9 @@ body { padding-bottom: 76px; }
       </div>
       <div class="cta-form">
         <h3>Оставьте заявку</h3>
-        <input type="text" class="form-input" placeholder="Ваше имя">
-        <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__">
-        <select class="form-input" style="appearance:auto;">
+        <input type="text" class="form-input" placeholder="Ваше имя" name="name" autocomplete="given-name">
+        <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" name="phone" autocomplete="tel">
+        <select class="form-input" style="appearance:auto;" name="call_time">
           <option value="" disabled selected>Удобное время звонка</option>
           <option>Утро (9:00–12:00)</option>
           <option>День (12:00–17:00)</option>
@@ -2835,8 +3002,127 @@ body { padding-bottom: 76px; }
 <!-- ===== STICKY MOBILE BAR ===== -->
 <div class="sticky-bar">
   <div class="sticky-bar-inner">
-    <a href="tel:+375296888629" class="sticky-call">Позвонить</a>
-    <a href="https://wa.me/375296888629" class="sticky-wa">WhatsApp</a>
+    <a href="tel:+375296888629" class="sticky-call" aria-label="Позвонить">Позвонить</a>
+    <a href="https://wa.me/375296888629" class="sticky-wa" aria-label="WhatsApp">WhatsApp</a>
+    <a href="viber://chat?number=%2B375296888629" class="sticky-viber" aria-label="Viber">Viber</a>
+  </div>
+</div>
+
+<!-- ===== MULTI-BUTTON (desktop) ===== -->
+<div class="multi-btn" id="multiBtn">
+  <div class="multi-btn-options" id="multiBtnOptions">
+    <a href="tel:+375296888629" class="mb-option mb-phone">
+      <span class="mb-label">Позвонить</span>
+      <span class="mb-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </span>
+    </a>
+    <a href="https://wa.me/375296888629" class="mb-option mb-wa" target="_blank" rel="noopener">
+      <span class="mb-label">WhatsApp</span>
+      <span class="mb-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </span>
+    </a>
+    <a href="viber://chat?number=%2B375296888629" class="mb-option mb-viber">
+      <span class="mb-label">Viber</span>
+      <span class="mb-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817c-.063 3.11-.138 8.932 5.474 10.514v2.414s-.037.978.61 1.177c.777.24 1.234-.502 1.979-1.302.408-.44.973-1.087 1.398-1.584 3.842.323 6.795-.416 7.13-.525.775-.252 5.167-.816 5.882-6.647.737-6.013-.36-9.81-2.334-11.526l-.012-.005c-.596-.549-2.99-2.29-8.336-2.312 0 0-.396-.025-1.024-.022zm.067 1.685c.535-.003.87.018.87.018 4.521.019 6.69 1.38 7.195 1.838 1.668 1.434 2.518 4.854 1.896 9.876-.6 4.87-4.16 5.177-4.814 5.388-.28.09-2.876.737-6.142.524 0 0-2.434 2.935-3.192 3.696-.118.122-.257.168-.35.146-.132-.03-.168-.187-.168-.42l.023-4.005c-4.747-1.32-4.47-6.275-4.417-8.872.053-2.597.54-4.725 1.998-6.163 1.958-1.769 5.47-2.018 7.102-2.026zm-.107 1.915c-.1.002-.17.01-.17.01a.422.422 0 00-.378.444.422.422 0 00.449.396h.005c.987-.014 1.963.122 2.9.47 2.054.762 2.83 2.072 2.83 4.56 0 .232.19.422.423.422a.422.422 0 00.422-.423c.003-2.742-1.012-4.467-3.363-5.343a10.3 10.3 0 00-3.118-.535z"/></svg>
+      </span>
+    </a>
+    <a href="https://t.me/+375296888629" class="mb-option mb-tg" target="_blank" rel="noopener">
+      <span class="mb-label">Telegram</span>
+      <span class="mb-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121L8.48 13.617l-2.95-.924c-.64-.203-.658-.643.136-.953l11.514-4.44c.538-.196 1.006.128.832.922z"/></svg>
+      </span>
+    </a>
+  </div>
+  <button class="multi-btn-main" type="button" onclick="toggleMultiBtn()" aria-label="Связаться с нами">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </button>
+</div>
+
+<!-- ===== STICKY DESKTOP CTA ===== -->
+<a href="#cta" class="sticky-desktop-cta" id="stickyDesktopCta">Получить 3D-проект</a>
+
+<!-- ===== CALLBACK WIDGET ===== -->
+<div class="callback-widget" id="callbackWidget" style="display:none;" role="dialog" aria-labelledby="callbackTitle">
+  <button class="cb-close" type="button" onclick="closeCallback()" aria-label="Закрыть">×</button>
+  <div class="cb-avatar">
+    <img src="images/alena.jpg" alt="Алёна — менеджер КРОНОВЪ" onerror="this.outerHTML='<div class=&quot;cb-avatar-fallback&quot;>А</div>';">
+  </div>
+  <div class="cb-body">
+    <strong id="callbackTitle">Помочь с выбором?</strong>
+    <p>Перезвоню за 60 секунд и отвечу на любые вопросы</p>
+    <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" id="cbPhone" name="phone" autocomplete="tel">
+    <button type="button" class="btn-primary" style="width:100%;padding:11px;font-size:14px;" onclick="submitCallback()">Жду звонка</button>
+  </div>
+</div>
+
+<!-- ===== QUIZ POPUP ===== -->
+<div class="quiz-popup" id="quizPopup" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+  <div class="quiz-popup-inner">
+    <button class="popup-close" type="button" onclick="closeQuizPopup()" aria-label="Закрыть">×</button>
+    <h3 id="quizTitle">Не можете выбрать из 11 моделей?</h3>
+    <p class="quiz-lead">Ответьте на 6 вопросов — подберём 3 беседки под ваш участок. Пришлём в выбранный мессенджер за 60 секунд.</p>
+
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar" style="width:0%"></div></div>
+
+    <div id="quizBody">
+      <div class="quiz-step" data-quiz-step="1">
+        <div class="quiz-q">1. Что у вас за объект?</div>
+        <div class="quiz-opts">
+          <button type="button" data-val="house">Загородный дом</button>
+          <button type="button" data-val="dacha">Дача</button>
+          <button type="button" data-val="empty">Участок без построек</button>
+          <button type="button" data-val="commercial">Коммерческий объект</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-quiz-step="2" hidden>
+        <div class="quiz-q">2. Сколько человек обычно собирается?</div>
+        <div class="quiz-opts">
+          <button type="button" data-val="4">До 4</button>
+          <button type="button" data-val="4-8">4–8</button>
+          <button type="button" data-val="8-15">8–15</button>
+          <button type="button" data-val="15+">15+</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-quiz-step="3" hidden>
+        <div class="quiz-q">3. Основной сценарий использования?</div>
+        <div class="quiz-opts">
+          <button type="button" data-val="family">Семейные обеды</button>
+          <button type="button" data-val="bbq">Мангал / компания</button>
+          <button type="button" data-val="silence">Тишина и чтение</button>
+          <button type="button" data-val="guests">Приём гостей</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-quiz-step="4" hidden>
+        <div class="quiz-q">4. Размер участка?</div>
+        <div class="quiz-opts">
+          <button type="button" data-val="10">До 10 соток</button>
+          <button type="button" data-val="10-20">10–20</button>
+          <button type="button" data-val="20+">20+</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-quiz-step="5" hidden>
+        <div class="quiz-q">5. Ориентировочный бюджет?</div>
+        <div class="quiz-opts">
+          <button type="button" data-val="4k">До 4 000 BYN</button>
+          <button type="button" data-val="4-6k">4–6 000</button>
+          <button type="button" data-val="6-10k">6–10 000</button>
+          <button type="button" data-val="no-limit">Не ограничен</button>
+        </div>
+      </div>
+      <div class="quiz-step" data-quiz-step="6" hidden>
+        <div class="quiz-q">6. Куда прислать подборку?</div>
+        <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" id="quizPhone" name="phone" autocomplete="tel">
+        <div class="messenger-choice" style="margin-bottom:14px;">
+          <label><input type="radio" name="quiz-msg" value="whatsapp" checked autocomplete="off"><span>WhatsApp</span></label>
+          <label><input type="radio" name="quiz-msg" value="viber" autocomplete="off"><span>Viber</span></label>
+          <label><input type="radio" name="quiz-msg" value="telegram" autocomplete="off"><span>Telegram</span></label>
+        </div>
+        <button type="button" class="btn-primary" style="width:100%;" onclick="submitQuiz()">Получить подборку</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2846,7 +3132,7 @@ body { padding-bottom: 76px; }
     <button class="popup-close" onclick="closePopup()">&times;</button>
     <h3>Подождите!</h3>
     <p>Получите каталог беседок и 3D-примеры бесплатно — просто оставьте номер</p>
-    <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__">
+    <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" name="phone" autocomplete="tel">
     <button class="form-submit" onclick="submitForm('popup');closePopup();">Получить каталог</button>
   </div>
 </div>
@@ -2968,8 +3254,126 @@ document.addEventListener('click', function(e){
   }
 });
 document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') closeContractModal();
+  if (e.key === 'Escape') { closeContractModal(); closeQuizPopup(); }
 });
+
+/* ===== MULTI-BUTTON ===== */
+function toggleMultiBtn() {
+  const mb = document.getElementById('multiBtn');
+  if (mb) mb.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const mb = document.getElementById('multiBtn');
+  if (mb && mb.classList.contains('open') && !mb.contains(e.target)) {
+    mb.classList.remove('open');
+  }
+});
+
+/* ===== STICKY DESKTOP CTA ===== */
+(function(){
+  const hero = document.querySelector('.hero');
+  const stickyCta = document.getElementById('stickyDesktopCta');
+  if (!hero || !stickyCta) return;
+  function onScroll() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    if (heroBottom < 0 && window.innerWidth >= 768) stickyCta.classList.add('visible');
+    else stickyCta.classList.remove('visible');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
+/* ===== CALLBACK WIDGET (inactivity 40s) ===== */
+(function(){
+  if (window.innerWidth < 768) return; // mobile hidden
+  let callbackShown = sessionStorage.getItem('callbackShown') === '1';
+  let inactivityTimer;
+  function showCallback() {
+    if (callbackShown) return;
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) return;
+    const w = document.getElementById('callbackWidget');
+    if (!w) return;
+    w.style.display = 'flex';
+    callbackShown = true;
+    sessionStorage.setItem('callbackShown', '1');
+  }
+  function resetTimer() {
+    clearTimeout(inactivityTimer);
+    if (callbackShown) return;
+    inactivityTimer = setTimeout(showCallback, 40000);
+  }
+  ['click','scroll','keydown','mousemove','touchstart'].forEach(ev =>
+    document.addEventListener(ev, resetTimer, { passive: true })
+  );
+  resetTimer();
+})();
+function closeCallback(){
+  const w = document.getElementById('callbackWidget');
+  if (w) w.style.display = 'none';
+}
+function submitCallback(){
+  const phone = (document.getElementById('cbPhone')||{}).value || '';
+  if (phone.replace(/\D/g,'').length < 9) { alert('Укажите номер телефона'); return; }
+  closeCallback();
+  window.location.href = 'thank-you.html?source=callback';
+}
+
+/* ===== QUIZ POPUP (60s inside catalog) ===== */
+(function(){
+  let quizTimer;
+  let quizShown = sessionStorage.getItem('quizShown') === '1';
+  const catalog = document.querySelector('#catalog');
+  if (!catalog || quizShown) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !quizShown) {
+        quizTimer = setTimeout(() => {
+          const p = document.getElementById('quizPopup');
+          if (p) p.style.display = 'flex';
+          quizShown = true;
+          sessionStorage.setItem('quizShown', '1');
+          io.disconnect();
+        }, 60000);
+      } else {
+        clearTimeout(quizTimer);
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(catalog);
+})();
+window.quizAnswers = {};
+function closeQuizPopup(){
+  const p = document.getElementById('quizPopup');
+  if (p) p.style.display = 'none';
+}
+(function(){
+  const steps = document.querySelectorAll('.quiz-step');
+  const total = steps.length;
+  steps.forEach((step, idx) => {
+    const num = +step.dataset.quizStep;
+    step.querySelectorAll('.quiz-opts button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.quizAnswers['q' + num] = btn.dataset.val;
+        step.hidden = true;
+        const next = document.querySelector('.quiz-step[data-quiz-step="' + (num + 1) + '"]');
+        if (next) next.hidden = false;
+        const bar = document.getElementById('quizProgressBar');
+        if (bar) bar.style.width = Math.round(((num) / total) * 100) + '%';
+      });
+    });
+  });
+})();
+function submitQuiz(){
+  const phone = (document.getElementById('quizPhone')||{}).value || '';
+  if (phone.replace(/\D/g,'').length < 9) { alert('Укажите номер телефона'); return; }
+  const msg = document.querySelector('input[name="quiz-msg"]:checked');
+  window.quizAnswers.phone = phone;
+  window.quizAnswers.msg = msg ? msg.value : 'whatsapp';
+  closeQuizPopup();
+  window.location.href = 'thank-you.html?source=quiz';
+}
 
 // Phone mask
 document.querySelectorAll('input[type="tel"]').forEach(input => {
