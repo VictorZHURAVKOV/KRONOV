@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Договор-заявка {{ contract_num }}</title>
+<style>
+  @page { size: A4; margin: 20mm; }
+  body { font-family: "Helvetica", sans-serif; color: #2A1C0E; font-size: 10.5pt; line-height: 1.45; }
+  h1 { font-family: "Playfair Display", Georgia, serif; font-size: 18pt; text-align: center; letter-spacing: 3px; color: #1E1410; margin-bottom: 4pt; }
+  .sub { text-align: center; color: #8B6040; font-size: 9pt; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20pt; }
+  .meta { display: flex; justify-content: space-between; font-size: 9pt; color: #5C3A28; margin-bottom: 18pt; padding-bottom: 10pt; border-bottom: 1px solid #D4B896; }
+  h2 { font-size: 11pt; color: #7A2E38; margin: 16pt 0 6pt; text-transform: uppercase; letter-spacing: 1px; }
+  .party-box { border: 1px solid #D4B896; padding: 10pt; background: #FFFCF6; margin-bottom: 10pt; font-size: 10pt; }
+  table { width: 100%; border-collapse: collapse; margin: 6pt 0; }
+  th, td { padding: 5pt 7pt; border: 1px solid #D4B896; font-size: 10pt; text-align: left; vertical-align: top; }
+  th { background: #F2EBE0; }
+  .total { font-weight: 700; color: #7A2E38; font-size: 12pt; }
+  .sig { margin-top: 30pt; display: flex; justify-content: space-between; }
+  .sig-block { width: 45%; border-top: 1px solid #2A1C0E; padding-top: 6pt; font-size: 9pt; }
+  p { margin: 6pt 0; }
+</style>
+</head>
+<body>
+  <h1>ДОГОВОР-ЗАЯВКА № {{ contract_num }}</h1>
+  <div class="sub">на изготовление и монтаж беседки</div>
+
+  <div class="meta">
+    <span>г. Минск</span>
+    <span>«{{ date }}»</span>
+  </div>
+
+  <h2>Стороны</h2>
+  <div class="party-box">
+    <strong>Исполнитель:</strong> ООО «КРОНОВЪ», архитектурная мастерская деревянных изделий.
+    В лице директора (подписывается при встрече), действующего на основании Устава.
+    Сайт: zastroyka.by · Контактное лицо: {{ "Алёна" }}, +375 (29) 688-86-29.
+  </div>
+  <div class="party-box">
+    <strong>Заказчик:</strong> {{ client_full_name }}<br>
+    Паспорт: серия {{ passport_series }} № {{ passport_number }}, выдан {{ passport_issued_by }} от {{ passport_issued_date }}<br>
+    Адрес регистрации: {{ client_address }}<br>
+    Телефон: {{ client_phone }}
+  </div>
+
+  <h2>1. Предмет договора</h2>
+  <p>Исполнитель обязуется изготовить и смонтировать деревянную беседку по
+  модели <strong>{{ model_article }} «{{ model_name }}»</strong>, размер <strong>{{ size }} м</strong>,
+  по адресу: <strong>{{ delivery_address }}</strong>. Заказчик обязуется принять и оплатить работы.</p>
+
+  <h2>2. Стоимость и порядок расчётов</h2>
+  <table>
+    <tr><th>Статья</th><th style="text-align:right">Сумма, BYN</th></tr>
+    <tr><td>Стоимость беседки под ключ (материалы + производство + доставка + монтаж)</td>
+        <td style="text-align:right" class="total">{{ "{:,}".format(total_byn).replace(",", " ") }}</td></tr>
+    <tr><td>В том числе предоплата (50%) — вносится на расчётный счёт</td>
+        <td style="text-align:right">{{ "{:,}".format(prepayment_byn).replace(",", " ") }}</td></tr>
+    <tr><td>Остаток — вносится перед монтажом</td>
+        <td style="text-align:right">{{ "{:,}".format(balance_byn).replace(",", " ") }}</td></tr>
+  </table>
+  <p>Оплата производится безналичным переводом на расчётный счёт Исполнителя.
+  Реквизиты высылаются после подписания договора.</p>
+
+  <h2>3. Сроки</h2>
+  <p>Точные сроки производства и монтажа согласуются в приложении к договору
+  после внесения предоплаты. Ориентировочные сроки производства — в
+  соответствии с текущим графиком производства, который согласует менеджер.</p>
+
+  <h2>4. Гарантия</h2>
+  <p>12 (двенадцать) месяцев на монтаж с даты подписания акта выполненных работ.
+  Древесина является живым материалом, микротрещины и естественная усадка не
+  являются гарантийным случаем.</p>
+
+  {% if notes %}
+  <h2>5. Особые условия</h2>
+  <p>{{ notes }}</p>
+  {% endif %}
+
+  <div class="sig">
+    <div class="sig-block">
+      Исполнитель<br><br>
+      ________________________ / ООО «КРОНОВЪ» /<br>
+      М.П.
+    </div>
+    <div class="sig-block">
+      Заказчик<br><br>
+      ________________________ / {{ client_full_name }} /
+    </div>
+  </div>
+</body>
+</html>

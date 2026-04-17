@@ -56,5 +56,6 @@ let s=60;const t=document.getElementById('timer');
 const iv=setInterval(()=>{s--;if(s<=0){clearInterval(iv);t.textContent='Звоним!';}
 else{const m=Math.floor(s/60),sec=s%60;t.textContent=String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}},1000);
 </script>
+<script src="http://localhost:8000/widget.js" data-api="http://localhost:8000" defer></script>
 </body>
 </html>
