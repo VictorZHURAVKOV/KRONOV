@@ -1,7 +1,7 @@
 /**
  * КРОНОВЪ Chat Widget
  * Подключение на сайте:
- *   <script src="https://agent.zastroyka.by/widget.js" data-api="https://agent.zastroyka.by"></script>
+ *   <script src="https://agent.kronov.by/widget.js" data-api="https://agent.kronov.by"></script>
  *
  * Одиночный IIFE, внедряет shadow-DOM чтобы не конфликтовать со стилями сайта.
  */

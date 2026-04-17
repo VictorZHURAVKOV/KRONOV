@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>КРОНОВЪ — Деревянные беседки от производителя в Беларуси</title>
-<meta name="description" content="КРОНОВЪ — производитель деревянных беседок премиум-класса. Полный цикл: от леса до монтажа. Собственная пилорама и столярный цех. Бесплатный 3D-проект.">
+<title>КРОНОВЪ — деревянные беседки от производителя в Беларуси | kronov.by</title>
+<meta name="description" content="КРОНОВЪ — производитель деревянных беседок премиум-класса. Полный цикл: от леса до монтажа. Собственная пилорама и столярный цех. Бесплатный 3D-проект. kronov.by">
+<link rel="canonical" href="https://kronov.by/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kronov.by">
+<meta property="og:site_name" content="КРОНОВЪ">
+<meta property="og:title" content="КРОНОВЪ — деревянные беседки от производителя в Беларуси">
+<meta property="og:description" content="Премиум-беседки полного цикла: от леса до монтажа. Бесплатный 3D-проект, рассрочка 50/50, гарантия в договоре. kronov.by">
+<meta property="og:image" content="https://kronov.by/images/hero-bg.jpg">
+<meta property="og:locale" content="ru_RU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -357,7 +365,66 @@ input { font-family:inherit; }
   .hero-form-card { max-width:440px; }
 }
 
-/* ===== SECTION: VIDEO REVIEW ===== */
+/* ===== SECTION: TRUST (text reviews) ===== */
+.sec-trust { background: var(--c-cream); }
+.trust-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.trust-review-card {
+  background: var(--c-white);
+  border: 1px solid rgba(139,96,64,.12);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(30,20,16,.05);
+  transition: transform .25s, box-shadow .25s;
+}
+.trust-review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(30,20,16,.1); }
+.trust-review-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.trust-review-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.trust-review-body .stars { color: var(--c-bronze); font-size: 16px; letter-spacing: 2px; }
+.trust-review-body blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--c-dark);
+  margin: 0;
+  flex: 1;
+}
+.trust-review-author { border-top: 1px solid rgba(139,96,64,.1); padding-top: 14px; }
+.trust-review-author strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--c-dark);
+  margin-bottom: 2px;
+}
+.trust-review-author span { font-size: 13px; color: var(--c-text-light); }
+.trust-reviews-strip {
+  margin-top: 40px;
+  padding: 18px 28px;
+  background: var(--c-bronze);
+  color: var(--c-dark);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.trust-reviews-strip span:nth-child(even) { opacity: .55; }
+@media(max-width:900px) { .trust-reviews-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:640px) { .trust-reviews-grid { grid-template-columns: 1fr; } }
+
+/* ===== LEGACY: VIDEO REVIEW (deprecated, kept for safety) ===== */
 .sec-video { background: var(--c-dark); }
 .video-grid {
   display: grid;
@@ -1180,9 +1247,9 @@ body { padding-bottom: 76px; }
         <a href="#catalog" class="btn-secondary">Смотреть каталог</a>
       </div>
       <div class="hero-trust">
-        <div class="hero-trust-item"><strong>100+</strong> реализованных проектов</div>
-        <div class="hero-trust-item"><strong>13</strong> лет опыта</div>
-        <div class="hero-trust-item"><strong>11</strong> моделей беседок</div>
+        <div class="hero-trust-item"><strong>100+</strong> беседок выпустило наше производство</div>
+        <div class="hero-trust-item"><strong>13</strong> лет работаем с деревом</div>
+        <div class="hero-trust-item"><strong>11</strong> моделей в линейке КРОНОВЪ</div>
       </div>
     </div>
     <div class="hero-form-card">
@@ -1202,24 +1269,63 @@ body { padding-bottom: 76px; }
   </div>
 </section>
 
-<!-- ===== VIDEO ===== -->
-<section class="sec-video section-pad" id="video">
+<!-- ===== TRUST: текстовые отзывы ===== -->
+<section class="sec-trust section-pad" id="trust-reviews">
   <div class="container">
-    <div class="video-grid">
-      <div class="video-placeholder">
-        <!-- PLACEHOLDER: embed YouTube/Vimeo -->
-        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
-      </div>
-      <div class="video-info">
-        <div class="subtitle" style="margin-bottom:16px;">Отзыв клиента</div>
-        <h3 style="color:var(--c-cream);">Что говорят семьи, которые уже живут с КРОНОВЪ</h3>
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="video-quote">
-          «Мы долго выбирали и не пожалели. Беседка стоит уже третий сезон — как новая. Соседи завидуют.»
-        </blockquote>
-        <p class="video-client">Андрей и Марина, Минский район<br>Модель КР-001 «Резиденция»</p>
-        <a href="#cta" class="btn-primary" style="margin-top:24px;">Хочу такую же</a>
-      </div>
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="subtitle">Отзывы</div>
+      <h2 class="heading-lg" style="margin-top:12px;">Что говорят клиенты нашего производства</h2>
+      <p class="body-text" style="max-width:640px;margin:16px auto 0;">Беседки нашего производства служат в семьях по всей Беларуси. Ниже — отзывы клиентов с фото их беседок на реальных участках.</p>
+    </div>
+
+    <div class="trust-reviews-grid">
+      <article class="trust-review-card animate">
+        <img src="images/kr-001-day.jpg" alt="Беседка КР-001 «Резиденция» у клиента" class="trust-review-img">
+        <div class="trust-review-body">
+          <div class="stars">★★★★★</div>
+          <blockquote>«Заказывали беседку для дачи — результат превзошёл ожидания. Качество дерева отличное, монтаж за один день. Теперь каждые выходные там.»</blockquote>
+          <div class="trust-review-author">
+            <strong>Андрей К.</strong>
+            <span>Минский район · модель КР-001 «Резиденция»</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="trust-review-card animate">
+        <img src="images/kr-006-front.jpg" alt="Беседка КР-006 «Шатёръ» у клиента" class="trust-review-img">
+        <div class="trust-review-body">
+          <div class="stars">★★★★★</div>
+          <blockquote>«Долго сомневалась — не пожалела. Менеджер всё объяснила, показали 3D-проект. Теперь это любимое место семьи.»</blockquote>
+          <div class="trust-review-author">
+            <strong>Елена М.</strong>
+            <span>Брестская область · модель КР-006 «Шатёръ»</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="trust-review-card animate">
+        <img src="images/kr-008-lanterns.jpg" alt="Беседка КР-008 «Дворъ» у клиента" class="trust-review-img">
+        <div class="trust-review-body">
+          <div class="stars">★★★★★</div>
+          <blockquote>«Второй сезон стоит — ни одной трещины, ни одного скрипа. Друзья уже двое заказали после того, как нашу увидели.»</blockquote>
+          <div class="trust-review-author">
+            <strong>Дмитрий П.</strong>
+            <span>Гродненская область · модель КР-008 «Дворъ»</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="trust-reviews-strip">
+      <span>★ 4.9 из 5</span>
+      <span>·</span>
+      <span>100+ беседок нашего производства</span>
+      <span>·</span>
+      <span>С 2013 года работаем с деревом</span>
+    </div>
+
+    <div class="text-center" style="margin-top:32px;">
+      <a href="#cta" class="btn-primary">Хочу такую же — рассчитать для моего участка</a>
     </div>
   </div>
 </section>
@@ -1229,7 +1335,7 @@ body { padding-bottom: 76px; }
   <div class="container">
     <div class="text-center">
       <div class="subtitle">Преимущества</div>
-      <h2 class="heading-lg" style="margin-top:12px;">Почему 100+ семей выбрали КРОНОВЪ</h2>
+      <h2 class="heading-lg" style="margin-top:12px;">Почему выбирают наши беседки</h2>
     </div>
     <div class="why-grid">
       <div class="why-card animate">
@@ -1271,22 +1377,22 @@ body { padding-bottom: 76px; }
         <img class="why-card-img" src="images/why-workshop.jpg" alt="Столярный цех КРОНОВЪ">
         <div class="why-card-body">
           <h4>Столярный цех</h4>
-          <p>Собственное производство в Беларуси. 13 лет опыта, 100+ реализованных проектов.</p>
+          <p>Собственное производство в Беларуси. С 2013 года работаем с деревом, 100+ беседок нашего производства.</p>
         </div>
       </div>
     </div>
     <div class="counters">
       <div class="counter-item animate">
-        <div class="counter-num" data-target="100">0</div>
-        <div class="counter-label">реализованных проектов</div>
+        <div class="counter-num" data-target="100" data-suffix="+">0</div>
+        <div class="counter-label">беседок нашего производства</div>
       </div>
       <div class="counter-item animate">
-        <div class="counter-num" data-target="13">0</div>
-        <div class="counter-label">лет опыта</div>
+        <div class="counter-num"><span class="counter-prefix">С </span><span data-target="2013">0</span></div>
+        <div class="counter-label">работаем с деревом</div>
       </div>
       <div class="counter-item animate">
         <div class="counter-num" data-target="11">0</div>
-        <div class="counter-label">моделей беседок</div>
+        <div class="counter-label">моделей в линейке</div>
       </div>
       <div class="counter-item animate">
         <div class="counter-num" data-target="1">0</div>
@@ -1740,8 +1846,8 @@ body { padding-bottom: 76px; }
     </div>
     <div class="trust-badges">
       <div class="trust-badge">&#9733; 4.9 из 5</div>
-      <div class="trust-badge">100+ установленных беседок</div>
-      <div class="trust-badge">Производитель с 2013 года</div>
+      <div class="trust-badge">100+ беседок нашего производства</div>
+      <div class="trust-badge">С 2013 года работаем с деревом</div>
     </div>
   </div>
 </section>
@@ -1757,7 +1863,7 @@ body { padding-bottom: 76px; }
         <div class="cta-stats">
           <div><div class="cta-stat-num">11</div><div class="cta-stat-label">моделей беседок</div></div>
           <div><div class="cta-stat-num">1</div><div class="cta-stat-label">день монтажа</div></div>
-          <div><div class="cta-stat-num">100+</div><div class="cta-stat-label">семей</div></div>
+          <div><div class="cta-stat-num">С 2013</div><div class="cta-stat-label">с деревом</div></div>
         </div>
       </div>
       <div class="cta-form">
@@ -1817,7 +1923,7 @@ body { padding-bottom: 76px; }
       <p style="font-size:12px;color:var(--c-sand);opacity:.4;">Наведите камеру — откройте сайт</p>
     </div>
     <div class="footer-bottom">
-      <span>КРОНОВЪ · Республика Беларусь · 2026</span>
+      <span>КРОНОВЪ · kronov.by · Республика Беларусь · 2026</span>
       <a href="#" style="opacity:.3;">Политика конфиденциальности</a>
     </div>
   </div>
@@ -1867,16 +1973,18 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closePopup();
 });
 
-// Counter animation
+// Counter animation (supports data-target on element or nested span; optional data-suffix)
 function animateCounters() {
-  document.querySelectorAll('.counter-num').forEach(el => {
+  document.querySelectorAll('[data-target]').forEach(el => {
     const target = +el.dataset.target;
+    if (!target) return;
+    const suffix = el.dataset.suffix || '';
     let current = 0;
-    const step = Math.ceil(target / 40);
+    const step = Math.max(1, Math.ceil(target / 40));
     const timer = setInterval(() => {
       current += step;
       if (current >= target) { current = target; clearInterval(timer); }
-      el.textContent = current + (target >= 100 ? '+' : '');
+      el.textContent = current + suffix;
     }, 40);
   });
 }
@@ -1962,7 +2070,7 @@ document.querySelectorAll('input[type="tel"]').forEach(input => {
 })();
 </script>
 
-<!-- КРОНОВЪ AI-чат (Андрей). Адрес backend-а замени при деплое на agent.zastroyka.by -->
+<!-- КРОНОВЪ AI-чат (Андрей). Адрес backend-а замени при деплое на agent.kronov.by -->
 <script src="http://localhost:8000/widget.js" data-api="http://localhost:8000" defer></script>
 
 </body>

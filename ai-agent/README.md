@@ -4,7 +4,7 @@ AI-агент на Claude Sonnet 4.6 — ведёт клиента от перв
 
 ## Что умеет
 
-- **Один агент** на всех каналах: сайт kronov/zastroyka.by, Telegram, WhatsApp, Viber.
+- **Один агент** на всех каналах: сайт kronov/kronov.by, Telegram, WhatsApp, Viber.
 - **Считает цену** по той же формуле что в калькуляторе сайта (+20% за нестандартный размер автоматом).
 - **Подбирает модель** из 11 артикулов (КР-001 … КР-011).
 - **Формирует PDF**: коммерческое предложение и договор-заявку.
@@ -55,7 +55,7 @@ AI-агент на Claude Sonnet 4.6 — ведёт клиента от перв
 | `ALENA_PHONE` | Уже стоит `+375296888629`, можно оставить. |
 
 Опционально:
-- `SITE_URL` — основной домен (например `https://zastroyka.by`).
+- `SITE_URL` — основной домен (например `https://kronov.by`).
 - `CORS_ORIGINS` — список через запятую — какие домены могут обращаться к `/chat`.
 
 ## Шаг 2. Запуск (локально, для теста)
@@ -85,7 +85,7 @@ Telegram-бот:
 ## Шаг 3. Деплой на продакшен (hoster.by или любой VPS)
 
 1. **Backend AI-агента.** Нужен сервер с Python 3.11+, доменом и HTTPS.
-   Рекомендую поддомен `agent.zastroyka.by`. На hoster.by закажите VPS (от ~10 USD/мес), поставьте Nginx + Let's Encrypt + Python.
+   Рекомендую поддомен `agent.kronov.by`. На hoster.by закажите VPS (от ~10 USD/мес), поставьте Nginx + Let's Encrypt + Python.
 2. **Системные пакеты для PDF** (WeasyPrint требует):
    ```
    apt install libpango-1.0-0 libpangoft2-1.0-0 libcairo2 libffi-dev
@@ -95,10 +95,10 @@ Telegram-бот:
    ```html
    <script src="http://localhost:8000/widget.js" data-api="http://localhost:8000" defer></script>
    ```
-   На продакшене замените `http://localhost:8000` на `https://agent.zastroyka.by`. Один глобальный поиск-замена.
+   На продакшене замените `http://localhost:8000` на `https://agent.kronov.by`. Один глобальный поиск-замена.
 5. **Telegram webhook.** Если есть HTTPS-домен — лучше webhook вместо long-poll:
    ```bash
-   curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://agent.zastroyka.by/webhook/telegram"
+   curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://agent.kronov.by/webhook/telegram"
    ```
    Тогда `tg_bot.py` запускать не нужно.
 6. **WhatsApp Business API.** На вашем номере уже подключён WhatsApp Business — нужно понять через какого провайдера: Meta Cloud API напрямую, или через Twilio / 360dialog / Wazzup24. Webhook поднят на `/webhook/whatsapp` (заглушка под Meta Cloud API). При подключении — нужно дописать вызов их API для отправки ответа клиенту (помечено `TODO`).
@@ -125,9 +125,9 @@ WantedBy=multi-user.target
 ```
 
 ```nginx
-# /etc/nginx/sites-available/agent.zastroyka.by
+# /etc/nginx/sites-available/agent.kronov.by
 server {
-  server_name agent.zastroyka.by;
+  server_name agent.kronov.by;
   listen 443 ssl http2;
   # ssl_certificate ... (Let's Encrypt)
 
