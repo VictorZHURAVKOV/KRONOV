@@ -199,8 +199,63 @@ input { font-family:inherit; }
 }
 .header-cta:hover { background: #8E3542; }
 
+/* Always-visible phone in header (Алёна) */
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px 6px 8px;
+  margin-left: 18px;
+  background: rgba(184,150,90,.10);
+  border: 1px solid rgba(184,150,90,.35);
+  border-radius: 30px;
+  color: var(--c-cream);
+  text-decoration: none;
+  transition: background .25s, border-color .25s, transform .2s;
+  flex-shrink: 0;
+}
+.header-phone:hover {
+  background: rgba(184,150,90,.22);
+  border-color: var(--c-bronze);
+  transform: translateY(-1px);
+}
+.header-phone-ring {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--c-bordo); color: var(--c-cream);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  animation: hp-ring 3.4s ease-in-out infinite;
+}
+@keyframes hp-ring {
+  0%, 88%, 100% { transform: rotate(0); }
+  90% { transform: rotate(-15deg); }
+  92% { transform: rotate(15deg); }
+  94% { transform: rotate(-10deg); }
+  96% { transform: rotate(8deg); }
+  98% { transform: rotate(-4deg); }
+}
+.header-phone-text {
+  display: flex; flex-direction: column; line-height: 1.15;
+}
+.header-phone-num {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-cream);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.header-phone-name {
+  font-size: 10px;
+  color: var(--c-bronze);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 /* Mobile menu */
-.burger { display:none; flex-direction:column; gap:5px; background:none; padding:8px; }
+.burger { display:none; flex-direction:column; gap:5px; background:none; padding:8px; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
 .burger span { display:block; width:22px; height:2px; background:var(--c-sand); border-radius:2px; transition:all .3s; }
 @media(max-width:768px) {
   .header-nav { display:none; }
@@ -211,6 +266,16 @@ input { font-family:inherit; }
     background:rgba(30,20,16,.98); padding:24px;
     border-bottom:1px solid rgba(212,184,150,.1);
   }
+  /* Phone in mobile header — keep visible, condense */
+  .header-phone { margin-left: 0; padding: 5px 12px 5px 6px; gap: 8px; }
+  .header-phone-ring { width: 30px; height: 30px; }
+  .header-phone-num { font-size: 13px; }
+  .header-phone-name { display: none; }
+}
+@media(max-width:380px) {
+  /* На самых узких экранах прячем номер цифрами, оставляем только тапабельный кружок */
+  .header-phone-text { display: none; }
+  .header-phone { padding: 4px; }
 }
 
 /* ===== HERO ===== */
@@ -1934,12 +1999,6 @@ a.catalog-link {
 </head>
 <body>
 
-<!-- ===== FIXED PHONE BADGE (always visible) ===== -->
-<a href="tel:+375296888629" class="phone-fixed" aria-label="Позвонить: +375 (29) 688-86-29">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-  <span>+375 (29) 688-86-29</span>
-</a>
-
 <!-- ===== HEADER ===== -->
 <header class="header" id="header">
   <div class="header-inner">
@@ -1962,6 +2021,15 @@ a.catalog-link {
       <a href="#reviews">Отзывы</a>
       <a href="#cta" class="header-cta">Получить предложение</a>
     </nav>
+    <a href="tel:+375296888629" class="header-phone" aria-label="Позвонить Алёне: +375 (29) 688-86-29">
+      <span class="header-phone-ring" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </span>
+      <span class="header-phone-text">
+        <strong class="header-phone-num">+375 (29) 688-86-29</strong>
+        <span class="header-phone-name">Алёна · менеджер</span>
+      </span>
+    </a>
     <button class="burger" onclick="document.getElementById('nav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
