@@ -27,9 +27,39 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
   background: var(--cream);
   color: var(--text);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 140px;
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 620px) {
+  body { font-size: 16px; padding-bottom: 170px; }
+  .wrap { padding: 0 14px 40px; }
+  .section { padding: 20px 16px; }
+  .cards.c4, .cards.c5 { grid-template-columns: 1fr 1fr; }
+  .row { flex-wrap: wrap; }
+  .row-name { flex: 1 1 100%; margin-bottom: 8px; }
+  .ctr-btn { width: 44px; height: 44px; font-size: 20px; }
+  .ctr-val { width: 44px; height: 44px; line-height: 44px; font-size: 15px; }
+  .actr-btn { width: 36px; height: 36px; }
+  .actr-val { width: 36px; height: 36px; line-height: 36px; }
+  .tog { width: 52px; height: 28px; }
+  .tog-track { border-radius: 14px; }
+  .tog-track::after { width: 22px; height: 22px; }
+  .tog input:checked + .tog-track::after { transform: translateX(24px); }
+  .section-title { font-size: 16px; }
+  .size-info { flex-direction: column; gap: 6px; padding: 10px 14px; }
+  .card-name { font-size: 12px; }
+  .row-name { font-size: 14px; }
+  .row-price { font-size: 12px; }
+  .brand-name { font-size: 22px; letter-spacing: 3px; }
+  .header-title { font-size: 16px; }
+  /* Hide floating price on very small screens — final price card is enough */
+  .price-float { font-size: 0; padding: 10px 14px; }
+  .price-float-lbl { display: none; }
+  .price-float-val { font-size: 16px !important; }
 }
 
 .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 80px; }
@@ -665,7 +695,7 @@ body {
 .phone-fixed:hover { background: #8E3542; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(122,46,56,.6); }
 .phone-fixed svg { width: 22px; height: 22px; flex-shrink: 0; animation: phone-ring 2.6s ease-in-out infinite; }
 @keyframes phone-ring { 0%,92%,100%{transform:rotate(0);} 94%{transform:rotate(-15deg);} 96%{transform:rotate(15deg);} 98%{transform:rotate(-8deg);} }
-@media(max-width:768px) { .phone-fixed { bottom:86px; right:14px; padding:14px; font-size:0; gap:0; border-radius:50%; } .phone-fixed svg { width:26px; height:26px; } } }
+@media(max-width:768px) { .phone-fixed { bottom:86px; right:14px; padding:14px; font-size:0; gap:0; border-radius:50%; } .phone-fixed svg { width:26px; height:26px; } }
 </style>
 </head>
 <body>

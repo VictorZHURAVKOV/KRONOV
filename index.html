@@ -488,10 +488,18 @@ input { font-family:inherit; }
 .sec-catalog { background: var(--c-white); }
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 28px;
   margin-top: 48px;
 }
+/* Mobile safety net */
+@media(max-width:480px){
+  .popup{padding:24px!important}
+  .hero-form-card{padding:20px!important}
+  .footer-bottom{flex-wrap:wrap;gap:8px}
+}
+html,body{overflow-x:hidden}
+body{overflow-wrap:break-word}
 .catalog-card {
   background: var(--c-cream);
   border-radius: 12px;
@@ -962,6 +970,7 @@ a.catalog-link {
 }
 @media(max-width:768px) {
   .footer-grid { grid-template-columns:1fr 1fr; }
+@media(max-width:480px) { .footer-grid { grid-template-columns:1fr; gap: 28px; } }
 }
 
 /* ===== STICKY MOBILE BAR ===== */
