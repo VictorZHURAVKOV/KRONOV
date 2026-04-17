@@ -163,9 +163,13 @@ input { font-family:inherit; }
   padding: 0 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   height: 64px;
+  overflow: visible;
 }
+.header-logo { flex-shrink: 0; }
+.header-nav { flex: 1 1 auto; justify-content: center; min-width: 0; }
+.header-phone { flex-shrink: 0; }
 .header-logo {
   display: flex;
   align-items: center;
