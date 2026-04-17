@@ -633,17 +633,84 @@ a.catalog-link {
   align-items: center;
   justify-content: space-between;
 }
+.catalog-footer {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+.catalog-price-block {
+  background: var(--c-cream);
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(184,150,90,.2);
+}
 .catalog-price {
   font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--c-dark);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--c-bordo);
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
 }
-.catalog-price span {
-  font-size: 13px;
+.catalog-price .price-label {
+  font-family: var(--font-body);
+  font-size: 14px;
   font-weight: 400;
   color: var(--c-text-light);
 }
+.catalog-price .price-value { font-weight: 700; }
+.catalog-price .price-currency {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-bordo);
+  margin-left: 2px;
+}
+.catalog-installment {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--c-brown);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.catalog-installment::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--c-bronze);
+  border-radius: 50%;
+  flex-shrink: 0;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z"/></svg>') center/contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z"/></svg>') center/contain no-repeat;
+}
+
+/* Catalog badges */
+.catalog-img { position: relative; }
+.catalog-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(30,20,16,.25);
+}
+.catalog-badge--hit { background: var(--c-bordo); color: var(--c-cream); }
+.catalog-badge--premium { background: var(--c-dark); color: var(--c-bronze); }
+.catalog-badge--new { background: var(--c-bronze); color: var(--c-dark); }
+.catalog-badge--custom { background: var(--c-dark); color: var(--c-cream); }
 .catalog-btn {
   padding: 10px 20px;
   background: var(--c-bordo);
@@ -1412,13 +1479,16 @@ body { padding-bottom: 76px; }
     <div class="catalog-grid">
 
       <a href="gazebo/kr-001.html" class="catalog-link"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит</span><img src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-001</div>
           <div class="catalog-name">Резиденция</div>
           <div class="catalog-desc">Вечер. Длинный стол. Вся семья собралась под одной крышей — и эта крыша в вашем саду. Флагманская модель с безупречной геометрией.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 4 900 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 900</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1432,7 +1502,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Эстетъ</div>
           <div class="catalog-desc">Свет играет на гранях. Необычная форма притягивает взгляд. Беседка, которая становится архитектурным акцентом вашего участка.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 5 200 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 200</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1446,7 +1519,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Патриархъ</div>
           <div class="catalog-desc">Три поколения за одним столом. Массивная конструкция для большой семьи — места хватит каждому, включая внуков.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 6 800 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">6 800</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1454,13 +1530,16 @@ body { padding-bottom: 76px; }
       </div></a>
 
       <a href="gazebo/kr-004.html" class="catalog-link"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--premium">Премиум</span><img src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-004</div>
           <div class="catalog-name">Привилегия</div>
           <div class="catalog-desc">Тёплый плед. Чай с мятой. Тишина вечера. Премиальная комплектация для тех, кто привык к лучшему.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 7 500 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">7 500</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1474,7 +1553,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Встреча</div>
           <div class="catalog-desc">Два кресла. Чай на двоих. Тихий вечер. Компактная беседка для тех, кому не нужно много — нужно своё, настоящее.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 3 200 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 200</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1482,13 +1564,16 @@ body { padding-bottom: 76px; }
       </div></a>
 
       <a href="gazebo/kr-006.html" class="catalog-link"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-006-front.jpg" alt="КР-006 Шатёръ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--new">Новинка 2026</span><img src="images/kr-006-front.jpg" alt="КР-006 Шатёръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-006</div>
           <div class="catalog-name">Шатёръ</div>
           <div class="catalog-desc">Четыре грани. Шатровая кровля. Квадратное основание 4×4 м, четыре столба, декоративные Х-панели с ромбовидной решёткой. Беседка, которая украшает участок круглый год.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 5 600 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 600</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1502,7 +1587,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Дворъ</div>
           <div class="catalog-desc">Мангал потрескивает. Друзья рядом. Разговоры, которые не хочется заканчивать. Мужской характер, мощная конструкция.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 4 400 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 400</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1516,7 +1604,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Бельведеръ</div>
           <div class="catalog-desc">Массивный брус. Открытый горизонт. Беседка, в которой чувствуешь себя хозяином участка. Фахверковый характер, брутальная честность конструкции.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 5 400 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 400</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1530,7 +1621,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Павильонъ</div>
           <div class="catalog-desc">Максимальный простор. Ни одной стены — только крыша, стойки и горизонт. Для тех, кто хочет быть в саду, а не в коробке.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 4 200 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 200</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1544,7 +1638,10 @@ body { padding-bottom: 76px; }
           <div class="catalog-name">Убежище</div>
           <div class="catalog-desc">Рейки-ширмы создают приватность. Гирлянда над головой. Книга в руках. Компактная беседка для тех, кто ценит уединение и камерность.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 3 800 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 800</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1552,13 +1649,16 @@ body { padding-bottom: 76px; }
       </div></a>
 
       <a href="gazebo/kr-011.html" class="catalog-link"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит · от 14 дней</span><img src="images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-011</div>
           <div class="catalog-name">Классика</div>
           <div class="catalog-desc">Проверенная форма. Прямоугольная в плане, двускатная крыша, закрытые нижние стены, открытые верхние секции. Самая быстрая в реализации модель линейки.</div>
           <div class="catalog-footer">
-            <div class="catalog-price">от 3 600 <span>BYN</span></div>
+            <div class="catalog-price-block">
+              <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 600</span><span class="price-currency">BYN</span></div>
+              <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
+            </div>
             <button class="catalog-btn" onclick="event.stopPropagation();scrollTo('#cta')">Узнать стоимость</button>
           </div>
           <div class="catalog-more">Подробнее →</div>
@@ -1566,7 +1666,7 @@ body { padding-bottom: 76px; }
       </div></a>
 
       <a href="#cta" class="catalog-link"><div class="catalog-card animate" style="border:2px dashed var(--c-bronze);">
-        <div class="catalog-img" style="background:linear-gradient(135deg, #D4B896 0%, #C4A87A 50%, #B8965A 100%);display:flex;align-items:center;justify-content:center;">
+        <div class="catalog-img" style="background:linear-gradient(135deg, #D4B896 0%, #C4A87A 50%, #B8965A 100%);display:flex;align-items:center;justify-content:center;"><span class="catalog-badge catalog-badge--custom">Индивидуально</span>
           <svg viewBox="0 0 200 160" fill="none" style="width:70%;height:70%;">
             <!-- Wood grain texture lines -->
             <line x1="0" y1="30" x2="200" y2="28" stroke="#C4A070" stroke-width="0.5" opacity=".3"/>
