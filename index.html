@@ -163,12 +163,13 @@ input { font-family:inherit; }
   padding: 0 24px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 18px;
   height: 64px;
   overflow: visible;
 }
 .header-logo { flex-shrink: 0; }
-.header-nav { flex: 1 1 auto; justify-content: center; min-width: 0; }
+.header-nav { flex: 0 1 auto; min-width: 0; }
 .header-phone { flex-shrink: 0; }
 .header-logo {
   display: flex;
@@ -261,6 +262,19 @@ input { font-family:inherit; }
 /* Mobile menu */
 .burger { display:none; flex-direction:column; gap:5px; background:none; padding:8px; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
 .burger span { display:block; width:22px; height:2px; background:var(--c-sand); border-radius:2px; transition:all .3s; }
+/* На средних экранах меню уходит в бургер чтобы освободить место для телефона в шапке */
+@media(max-width:1024px) {
+  .header-nav { display:none; }
+  .burger { display:flex; }
+  .header-nav.open {
+    display:flex; flex-direction:column;
+    position:absolute; top:64px; left:0; right:0;
+    background:rgba(30,20,16,.98); padding:24px;
+    border-bottom:1px solid rgba(212,184,150,.1);
+    gap:14px;
+  }
+  .header-nav.open a { padding:8px 0; }
+}
 @media(max-width:768px) {
   .header-nav { display:none; }
   .burger { display:flex; }
