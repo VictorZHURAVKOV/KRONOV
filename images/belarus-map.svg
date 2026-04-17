@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" role="img" aria-label="Карта Беларуси с объектами КРОНОВЪ">
+  <title>Карта Республики Беларусь — география объектов КРОНОВЪ</title>
+  <defs>
+    <filter id="pin-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1E1410" flood-opacity="0.35"/>
+    </filter>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7A2E38" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7A2E38" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Stylized Belarus silhouette (approximate outline) -->
+  <path d="M90,180 C100,150 130,130 170,125 C200,120 225,105 260,100 C300,95 340,92 380,100 C420,108 460,115 490,135 C515,150 525,175 530,200 C535,225 530,255 510,275 C495,290 485,315 465,330 C445,345 420,360 390,365 C360,372 320,380 280,378 C240,376 200,370 165,355 C130,340 105,315 90,285 C78,260 82,220 90,180 Z"
+        fill="#F2EBE0"
+        stroke="#B8965A"
+        stroke-width="2.5"
+        stroke-linejoin="round"/>
+
+  <!-- Subtle inner texture -->
+  <path d="M90,180 C100,150 130,130 170,125 C200,120 225,105 260,100 C300,95 340,92 380,100 C420,108 460,115 490,135 C515,150 525,175 530,200 C535,225 530,255 510,275 C495,290 485,315 465,330 C445,345 420,360 390,365 C360,372 320,380 280,378 C240,376 200,370 165,355 C130,340 105,315 90,285 C78,260 82,220 90,180 Z"
+        fill="none"
+        stroke="#B8965A"
+        stroke-width="0.6"
+        stroke-dasharray="2 5"
+        opacity="0.5"/>
+
+  <!-- Region dividers (very light) -->
+  <g stroke="#D4B896" stroke-width="0.6" fill="none" opacity="0.55">
+    <path d="M240,110 C250,160 260,210 250,260 C245,300 235,340 245,370"/>
+    <path d="M360,105 C355,160 345,210 355,260 C365,300 370,340 355,365"/>
+    <path d="M100,240 C170,245 240,250 310,250 C380,250 450,248 520,250"/>
+  </g>
+
+  <!-- 6 region pins -->
+  <!-- Минская область (6) - center -->
+  <g transform="translate(300,235)">
+    <circle r="28" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-18 C9,-18 16,-11 16,-2 C16,11 0,22 0,22 C0,22 -16,11 -16,-2 C-16,-11 -9,-18 0,-18 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="5" fill="#F2EBE0"/>
+    </g>
+    <text y="-26" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="11" font-weight="600" fill="#1E1410">Минская · 6</text>
+  </g>
+
+  <!-- Брестская область (4) - south-west -->
+  <g transform="translate(160,300)">
+    <circle r="24" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-16 C8,-16 14,-10 14,-2 C14,10 0,19 0,19 C0,19 -14,10 -14,-2 C-14,-10 -8,-16 0,-16 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="4" fill="#F2EBE0"/>
+    </g>
+    <text y="-22" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="10" font-weight="600" fill="#1E1410">Брестская · 4</text>
+  </g>
+
+  <!-- Витебская область (3) - north -->
+  <g transform="translate(380,150)">
+    <circle r="22" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-15 C7,-15 13,-9 13,-2 C13,9 0,18 0,18 C0,18 -13,9 -13,-2 C-13,-9 -7,-15 0,-15 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="4" fill="#F2EBE0"/>
+    </g>
+    <text y="-21" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="10" font-weight="600" fill="#1E1410">Витебская · 3</text>
+  </g>
+
+  <!-- Гомельская область (3) - south-east -->
+  <g transform="translate(420,330)">
+    <circle r="22" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-15 C7,-15 13,-9 13,-2 C13,9 0,18 0,18 C0,18 -13,9 -13,-2 C-13,-9 -7,-15 0,-15 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="4" fill="#F2EBE0"/>
+    </g>
+    <text y="-21" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="10" font-weight="600" fill="#1E1410">Гомельская · 3</text>
+  </g>
+
+  <!-- Гродненская область (2) - west -->
+  <g transform="translate(150,190)">
+    <circle r="20" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-14 C7,-14 12,-9 12,-2 C12,9 0,17 0,17 C0,17 -12,9 -12,-2 C-12,-9 -7,-14 0,-14 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="3.5" fill="#F2EBE0"/>
+    </g>
+    <text y="-20" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="10" font-weight="600" fill="#1E1410">Гродненская · 2</text>
+  </g>
+
+  <!-- Могилёвская область (4) - east -->
+  <g transform="translate(470,220)">
+    <circle r="24" fill="url(#glow)"/>
+    <g filter="url(#pin-shadow)">
+      <path d="M0,-16 C8,-16 14,-10 14,-2 C14,10 0,19 0,19 C0,19 -14,10 -14,-2 C-14,-10 -8,-16 0,-16 Z" fill="#7A2E38"/>
+      <circle cx="0" cy="-3" r="4" fill="#F2EBE0"/>
+    </g>
+    <text y="-22" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-size="10" font-weight="600" fill="#1E1410">Могилёвская · 4</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(30,445)">
+    <rect x="0" y="0" width="240" height="32" rx="6" fill="#1E1410" opacity="0.92"/>
+    <circle cx="18" cy="16" r="5" fill="#7A2E38"/>
+    <text x="32" y="20" font-family="Montserrat,Arial,sans-serif" font-size="12" fill="#F2EBE0" font-weight="500">Реализованные объекты КРОНОВЪ · 100+</text>
+  </g>
+</svg>
