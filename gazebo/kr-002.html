@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script>
+/* Сброс скролла наверх при входе на страницу — отключаем restore-position */
+(function(){
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
+  if (!location.hash) {
+    window.scrollTo(0, 0);
+    /* На некоторых мобильных браузерах нужен второй вызов после первого тика */
+    window.addEventListener('load', function(){ if (!location.hash) window.scrollTo(0, 0); });
+  }
+})();
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>КР-002 Эстетъ — КРОНОВЪ</title>
