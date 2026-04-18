@@ -3616,9 +3616,72 @@ const countersEl = document.querySelector('.counters');
 if (countersEl) counterObs.observe(countersEl);
 
 // Form submission placeholder
-function submitForm(source) {
-  // PLACEHOLDER: подключить к CRM / webhook / email
-  window.location.href = 'thank-you.html?source=' + encodeURIComponent(source || 'form');
+// ============================================================
+// FORM SUBMISSION — отправка заявок в Telegram + email
+// ============================================================
+function kronovCollectFields(source){
+  // Собираем name/phone/time из ближайших к источнику инпутов
+  const map = {
+    'hero':     { phone: '#hero-phone' },
+    'cta':      { root: '#cta' },
+    'popup':    { root: '#exitPopup' },
+    'quick-calc': { phone: '#qcPhone' },
+    'callback': { phone: '#cbPhone' },
+    'quiz':     { phone: '#quizPhone' },
+    'contract': { phone: '#contractPhone' }
+  };
+  const cfg = map[source] || {};
+  let name = '', phone = '', time = '', comment = '';
+
+  if (cfg.phone) {
+    const el = document.querySelector(cfg.phone);
+    if (el) phone = el.value || '';
+  }
+  if (cfg.root) {
+    const root = document.querySelector(cfg.root);
+    if (root) {
+      const nameEl  = root.querySelector('input[name="name"]');
+      const phoneEl = root.querySelector('input[name="phone"], input[type="tel"]');
+      const timeEl  = root.querySelector('select[name="call_time"], [name="time"]');
+      if (nameEl) name = nameEl.value || '';
+      if (phoneEl) phone = phoneEl.value || '';
+      if (timeEl) time = timeEl.value || '';
+    }
+  }
+  return { name, phone, time, comment };
+}
+
+function submitForm(source, extraDetails){
+  const fields = kronovCollectFields(source);
+  const phone_digits = (fields.phone || '').replace(/\D/g,'');
+  if (phone_digits.length < 9) {
+    alert('Укажите номер телефона в формате +375 (XX) XXX-XX-XX');
+    return;
+  }
+  const payload = {
+    name: fields.name || '',
+    phone: fields.phone,
+    source: source || 'form',
+    time: fields.time || '',
+    comment: fields.comment || '',
+    details: extraDetails || null,
+    page: location.pathname + location.search
+  };
+  // Disable the button that triggered if possible
+  if (event && event.target && event.target.tagName === 'BUTTON') {
+    event.target.disabled = true;
+    event.target.textContent = 'Отправляем…';
+  }
+  fetch('/api/submit.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload),
+    keepalive: true
+  })
+    .catch(e => console.error('Submit error:', e))
+    .finally(() => {
+      window.location.href = 'thank-you.html?source=' + encodeURIComponent(source || 'form');
+    });
 }
 
 // Quick calculator
@@ -3646,7 +3709,14 @@ function submitQuickCalc() {
     alert('Укажите номер телефона в формате +375 (XX) XXX-XX-XX');
     return;
   }
-  submitForm('quick-calc');
+  const size = document.querySelector('input[name="qc-size"]:checked');
+  const roof = document.querySelector('input[name="qc-roof"]:checked');
+  const price = (document.getElementById('qcValue')||{}).textContent || '';
+  submitForm('quick-calc', {
+    'Размер':   size ? size.value : '—',
+    'Кровля':   roof ? roof.value : '—',
+    'Итого':    price ? price + ' BYN' : '—'
+  });
 }
 
 // Contract sample modal
@@ -3741,7 +3811,7 @@ function submitCallback(){
   const phone = (document.getElementById('cbPhone')||{}).value || '';
   if (phone.replace(/\D/g,'').length < 9) { alert('Укажите номер телефона'); return; }
   closeCallback();
-  window.location.href = 'thank-you.html?source=callback';
+  submitForm('callback');
 }
 
 /* ===== QUIZ POPUP (60s inside catalog) ===== */
@@ -3793,12 +3863,11 @@ function submitQuiz(){
   const phone = (document.getElementById('quizPhone')||{}).value || '';
   if (phone.replace(/\D/g,'').length < 9) { alert('Укажите номер телефона'); return; }
   const msg = document.querySelector('input[name="quiz-msg"]:checked');
-  window.quizAnswers.phone = phone;
   window.quizAnswers.msg = msg ? msg.value : 'whatsapp';
   const bar = document.getElementById('quizProgressBar');
   if (bar) bar.style.width = '100%';
   closeQuizPopup();
-  window.location.href = 'thank-you.html?source=quiz';
+  submitForm('quiz', window.quizAnswers);
 }
 
 // Phone mask
