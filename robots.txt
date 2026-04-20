@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /thank-you-3d.html
+Disallow: /thank-you-excursion.html
+Disallow: /thank-you-zamer.html
+Disallow: /thank-you-maf.html
+Disallow: /thank-you-partner.html
+Disallow: /thank-you.html
+
+Sitemap: https://kronov.by/sitemap.xml

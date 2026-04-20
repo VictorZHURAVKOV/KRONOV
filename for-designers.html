@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Партнёрская программа для ландшафтных архитекторов — КРОНОВЪ | kronov.by</title>
+<meta name="description" content="Партнёрская программа КРОНОВЪ для ландшафтных дизайнеров: комиссия до 10%, профессиональная съёмка объектов, клиент на производстве, упоминание в кейсах.">
+<link rel="canonical" href="https://kronov.by/for-designers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/analytics.js"></script>
+<style>
+:root{--c-dark:#1E1410;--c-dark2:#3A2518;--c-brown:#5C3A28;--c-sand:#D4B896;--c-cream:#F2EBE0;--c-bordo:#7A2E38;--c-bronze:#B8965A;--c-text:#2A1C0E;--c-text-light:#6B5540;--c-white:#FFFFFF;--font-display:'Playfair Display',Georgia,serif;--font-body:'Montserrat','Helvetica Neue',sans-serif;--max-w:1200px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--c-text);background:var(--c-cream);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px;width:100%}
+
+.page-header{background:rgba(30,20,16,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,184,150,.1);padding:14px 0;position:sticky;top:0;z-index:100}
+.page-header-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--max-w);margin:0 auto;padding:0 24px;gap:16px;flex-wrap:wrap}
+.page-logo{font-family:var(--font-display);font-size:19px;color:var(--c-sand);letter-spacing:3px}
+.page-header-nav{display:flex;gap:22px;flex-wrap:wrap}
+.page-header-nav a{font-size:13px;color:var(--c-sand);opacity:.85;letter-spacing:.5px}
+.page-header-nav a:hover{opacity:1}
+.page-header-nav a.active{color:var(--c-bronze);opacity:1}
+
+.hero{padding:90px 0 70px;background:linear-gradient(135deg,var(--c-dark) 0%,var(--c-dark2) 100%);color:var(--c-cream);text-align:center}
+.hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,50px);font-weight:500;line-height:1.1;color:var(--c-cream);margin-bottom:20px;max-width:880px;margin-left:auto;margin-right:auto}
+.hero p{max-width:740px;margin:0 auto 36px;font-size:17px;color:var(--c-sand);line-height:1.55}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:16px 34px;background:var(--c-bordo);color:var(--c-cream);font-size:15px;font-weight:600;border-radius:4px;letter-spacing:.5px;transition:all .25s;cursor:pointer;border:none}
+.btn-primary:hover{background:#5C1F28;transform:translateY(-1px)}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;background:transparent;color:var(--c-bronze);border:2px solid var(--c-bronze);font-size:14px;font-weight:600;border-radius:4px;letter-spacing:.5px;cursor:pointer}
+.btn-gold:hover{background:var(--c-bronze);color:var(--c-dark)}
+
+.section-pad{padding:72px 0}
+.subtitle{font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--c-bordo)}
+.section-header{text-align:center;margin-bottom:44px}
+.section-header h2{font-family:var(--font-display);font-size:clamp(24px,3.5vw,34px);font-weight:500;color:var(--c-dark);margin:12px 0 10px}
+.section-header p{max-width:640px;margin:0 auto;color:var(--c-text-light);font-size:15.5px;line-height:1.6}
+
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.benefit-card{padding:28px 26px;background:var(--c-white);border-radius:12px;border:1px solid rgba(139,96,64,.12)}
+.benefit-card__num{font-family:var(--font-display);font-size:48px;color:var(--c-bronze);line-height:1;margin-bottom:8px}
+.benefit-card h3{font-family:var(--font-display);font-size:21px;color:var(--c-dark);font-weight:500;margin-bottom:8px}
+.benefit-card p{font-size:14.5px;color:var(--c-text-light);line-height:1.55}
+
+.timeline{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.timeline-step{padding:22px 16px;background:var(--c-white);border-radius:10px;border:1px solid rgba(139,96,64,.1);text-align:center;position:relative}
+.timeline-step__num{font-family:var(--font-display);font-size:28px;color:var(--c-bordo);line-height:1;margin-bottom:8px}
+.timeline-step__title{font-size:12.5px;color:var(--c-text);line-height:1.4;font-weight:500}
+
+.commission-table{max-width:760px;margin:0 auto;background:var(--c-white);border-radius:12px;overflow:hidden;border:1px solid rgba(139,96,64,.1)}
+.commission-row{display:grid;grid-template-columns:2fr 1fr;padding:18px 28px;border-bottom:1px solid rgba(139,96,64,.1);font-size:15px;align-items:center}
+.commission-row:last-child{border-bottom:none}
+.commission-row.header{background:var(--c-dark);color:var(--c-cream);font-family:var(--font-display);font-size:15px}
+.commission-row strong{color:var(--c-bordo);font-family:var(--font-display);font-size:20px}
+.commission-note{max-width:720px;margin:22px auto 0;font-size:13.5px;color:var(--c-text-light);text-align:center;line-height:1.55}
+
+.exclusive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:920px;margin:0 auto}
+.exclusive-card{padding:22px 24px;background:var(--c-dark);color:var(--c-cream);border-radius:10px;border:1px solid rgba(184,150,90,.2)}
+.exclusive-card h4{font-family:var(--font-display);font-size:17px;color:var(--c-bronze);margin-bottom:6px;font-weight:500}
+.exclusive-card p{font-size:13.5px;color:var(--c-sand);opacity:.9;line-height:1.5}
+
+.faq-item{padding:22px 26px;background:var(--c-white);border-radius:10px;margin-bottom:10px;border:1px solid rgba(139,96,64,.1);cursor:pointer}
+.faq-q{font-family:var(--font-display);font-size:16px;color:var(--c-dark);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq-q::after{content:'+';color:var(--c-bronze);font-size:22px;font-weight:400;transition:transform .2s}
+.faq-item.is-open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;margin-top:12px;font-size:14.5px;color:var(--c-text-light);line-height:1.6}
+.faq-item.is-open .faq-a{display:block}
+
+.form-box{max-width:640px;margin:0 auto;background:var(--c-white);border-radius:14px;padding:38px 34px;border:1px solid rgba(139,96,64,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-row--single{grid-template-columns:1fr}
+.form-label{display:block;font-size:12px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--c-brown);margin-bottom:6px}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:12px 14px;border:1px solid rgba(184,150,90,.55);border-radius:8px;background:var(--c-white);font-family:var(--font-body);font-size:15px;color:var(--c-dark)}
+.form-field textarea{min-height:80px;resize:vertical}
+.form-consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--c-text-light);line-height:1.5;margin-bottom:14px}
+.form-consent input{margin-top:3px;accent-color:var(--c-bordo)}
+.form-consent a{color:var(--c-bordo);text-decoration:underline}
+
+.partners-pdf{text-align:center;margin-top:28px;padding:26px;background:var(--c-cream);border-radius:10px;border:1px dashed rgba(184,150,90,.5)}
+.partners-pdf p{margin-bottom:14px;font-size:14px;color:var(--c-text)}
+
+.page-footer{background:var(--c-dark);color:var(--c-sand);padding:48px 0;text-align:center;font-size:14px}
+.page-footer a{color:var(--c-bronze);margin:0 6px}
+
+@media(max-width:840px){.benefits-grid,.exclusive-grid{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr)}.form-row{grid-template-columns:1fr}.commission-row{grid-template-columns:1.5fr 1fr;padding:14px 18px}}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <a href="index.html" class="page-logo">КРОНОВЪ</a>
+    <nav class="page-header-nav">
+      <a href="index.html#catalog">Каталог</a>
+      <a href="arhitekturnye-formy.html">МАФ</a>
+      <a href="index.html#process">Процесс</a>
+      <a href="https://about.kronov.by">О нас</a>
+      <a href="for-designers.html" class="active">Для дизайнеров</a>
+      <a href="tel:+375296888629"><strong>+375 (29) 688-86-29</strong></a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Партнёрская программа для ландшафтных архитекторов</h1>
+    <p>Зарабатывайте на&nbsp;каждом проекте клиента и&nbsp;получайте профессиональный контент для продвижения своей практики.</p>
+    <a href="#partner-form" class="btn-primary">Оставить заявку на партнёрство</a>
+  </div>
+</section>
+
+<!-- Зачем работать с КРОНОВЪ -->
+<section class="section-pad" style="background:var(--c-white)">
+  <div class="container">
+    <div class="section-header">
+      <div class="subtitle">Зачем дизайнеру работать с КРОНОВЪ</div>
+      <h2>Не просто процент — целая экосистема</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-card__num">10%</div>
+        <h3>Комиссия до 10%</h3>
+        <p>Прозрачная ступенчатая шкала. Вышли на 10+ проектов в год — получаете верхнюю планку и эксклюзивные условия.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num">📷</div>
+        <h3>Бесплатная фотосессия готового объекта</h3>
+        <p>Фотограф КРОНОВЪ выезжает на участок вашего клиента. 1–2 часа работы — и у вас профессиональный контент для соцсетей.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num">🏭</div>
+        <h3>Экскурсия клиента на производство</h3>
+        <p>Ваш клиент приезжает в цех во время сборки его беседки. Видит, как рождается его проект — сильнее любого отзыва.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num">🔗</div>
+        <h3>Упоминание в кейсе КРОНОВЪ</h3>
+        <p>Проект публикуется на сайте KRONOV.by с обратной ссылкой на вашу практику. SEO-бонус и социальное доказательство.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Как это работает -->
+<section class="section-pad" style="background:var(--c-cream)">
+  <div class="container">
+    <div class="section-header">
+      <div class="subtitle">Как это работает</div>
+      <h2>6 шагов — от эскиза до публикации</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step"><div class="timeline-step__num">1</div><div class="timeline-step__title">Приходите к клиенту с готовым эскизом</div></div>
+      <div class="timeline-step"><div class="timeline-step__num">2</div><div class="timeline-step__title">В эскизе — беседка КРОНОВЪ</div></div>
+      <div class="timeline-step"><div class="timeline-step__num">3</div><div class="timeline-step__title">Клиент оформляет заказ через вас</div></div>
+      <div class="timeline-step"><div class="timeline-step__num">4</div><div class="timeline-step__title">Экскурсия клиента в цех во время сборки</div></div>
+      <div class="timeline-step"><div class="timeline-step__num">5</div><div class="timeline-step__title">Фотограф КРОНОВЪ делает съёмку</div></div>
+      <div class="timeline-step"><div class="timeline-step__num">6</div><div class="timeline-step__title">Контент — вам, кейс — нам</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Комиссия -->
+<section class="section-pad" style="background:var(--c-white)">
+  <div class="container">
+    <div class="section-header">
+      <div class="subtitle">Ступенчатая комиссия</div>
+      <h2>Чем больше проектов — тем выше процент</h2>
+    </div>
+    <div class="commission-table">
+      <div class="commission-row header">
+        <span>Количество беседок в год</span>
+        <span>Комиссия</span>
+      </div>
+      <div class="commission-row">
+        <span>1–3 проекта</span>
+        <strong>5%</strong>
+      </div>
+      <div class="commission-row">
+        <span>4–9 проектов</span>
+        <strong>7%</strong>
+      </div>
+      <div class="commission-row">
+        <span>10+ проектов</span>
+        <strong>10% + эксклюзив</strong>
+      </div>
+    </div>
+    <p class="commission-note">Точный процент согласуется индивидуально и фиксируется в партнёрском соглашении. Выше 10% — только для топовых архитекторов (10+ проектов в год) с возможностью совместной коллаборации «модель имени дизайнера».</p>
+  </div>
+</section>
+
+<!-- Эксклюзив -->
+<section class="section-pad" style="background:var(--c-cream)">
+  <div class="container">
+    <div class="section-header">
+      <div class="subtitle">Эксклюзив для топ-партнёров</div>
+      <h2>10+ проектов в год — особые условия</h2>
+    </div>
+    <div class="exclusive-grid">
+      <div class="exclusive-card"><h4>Персональный менеджер</h4><p>Отдельное контактное лицо на стороне КРОНОВЪ, доступность в рабочее время.</p></div>
+      <div class="exclusive-card"><h4>Приоритетные сроки производства</h4><p>Ваши заказы идут в приоритет — важно при сжатых дедлайнах ваших проектов.</p></div>
+      <div class="exclusive-card"><h4>«Модель имени вас»</h4><p>Разработка беседки по вашему эскизу — ваше имя в каталоге КРОНОВЪ навсегда.</p></div>
+      <div class="exclusive-card"><h4>Приоритет на главной сайта</h4><p>Ваши проекты в первых кейсах на kronov.by — постоянный поток клиентов.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Форма заявки -->
+<section class="section-pad" style="background:var(--c-white)" id="partner-form">
+  <div class="container">
+    <div class="section-header">
+      <div class="subtitle">Заявка на партнёрство</div>
+      <h2>Готовы работать вместе?</h2>
+      <p>Менеджер свяжется с вами в течение 2 рабочих дней для обсуждения условий.</p>
+    </div>
+    <div class="form-box">
+      <form id="partnerForm" onsubmit="submitPartnerForm(event)" novalidate>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">Имя *</label><input type="text" name="first_name" required></div>
+          <div class="form-field"><label class="form-label">Фамилия *</label><input type="text" name="last_name" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">Компания / статус *</label><select name="company_type" required><option value="">Выберите…</option><option>ИП</option><option>ООО</option><option>Самозанятый</option><option>Частная практика</option></select></div>
+          <div class="form-field"><label class="form-label">Город / регион *</label><input type="text" name="region" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">Телефон *</label><input type="tel" name="phone" placeholder="+375 (__) ___-__-__" required></div>
+          <div class="form-field"><label class="form-label">Email *</label><input type="email" name="email" required></div>
+        </div>
+        <div class="form-row form-row--single">
+          <div class="form-field"><label class="form-label">Инстаграм / сайт</label><input type="text" name="portfolio" placeholder="@username или ссылка"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">Проектов в год</label><select name="projects_year"><option>1–5</option><option>6–15</option><option>16–30</option><option>30+</option></select></div>
+          <div class="form-field"><label class="form-label">Средний чек проекта клиента</label><select name="avg_budget"><option>До 10к USD</option><option>10–30к USD</option><option>30–100к USD</option><option>100к+ USD</option></select></div>
+        </div>
+        <div class="form-row form-row--single">
+          <div class="form-field"><label class="form-label">Комментарий</label><textarea name="comment"></textarea></div>
+        </div>
+        <label class="form-consent"><input type="checkbox" required checked><span>Нажимая «Отправить», вы соглашаетесь с <a href="politika-konfidentsialnosti.html" target="_blank">политикой обработки персональных данных</a>.</span></label>
+        <button type="submit" class="btn-primary" style="width:100%">Отправить заявку</button>
+      </form>
+      <div class="partners-pdf">
+        <p><strong>Скачать подробную презентацию партнёрской программы (PDF)</strong></p>
+        <a href="downloads/kronov-partners-program.pdf" class="btn-gold" download>Скачать PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" style="background:var(--c-cream)">
+  <div class="container" style="max-width:800px">
+    <div class="section-header">
+      <div class="subtitle">FAQ</div>
+      <h2>Частые вопросы партнёров</h2>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('is-open')">
+      <div class="faq-q">Как подписывается договор?</div>
+      <div class="faq-a">Отправляем партнёрское соглашение в PDF по email. Подписываете, высылаете скан/оригинал почтой. Для юр.лиц — договор с реквизитами, для самозанятых — агентский договор.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('is-open')">
+      <div class="faq-q">Как начисляется комиссия?</div>
+      <div class="faq-a">Комиссия выплачивается после полной оплаты клиентом беседки (или по закрывающему акту). Переводим на расчётный счёт или карту по вашим реквизитам в течение 7 рабочих дней.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('is-open')">
+      <div class="faq-q">Могу ли я использовать ваши рендеры в своих проектах?</div>
+      <div class="faq-a">Да, для партнёров есть отдельная библиотека рендеров беседок (PNG с прозрачным фоном) — используйте в презентациях клиентам. Главное условие — указывать, что модель производится КРОНОВЪ.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('is-open')">
+      <div class="faq-q">Что если клиент откажется от заказа?</div>
+      <div class="faq-a">Если клиент отказывается до подписания договора с вашим участием — ничего страшного, продолжаем работу. Если после подписания — действуют стандартные условия возврата (прописаны в договоре клиента).</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('is-open')">
+      <div class="faq-q">Работаете с дизайнерами из России и Казахстана?</div>
+      <div class="faq-a">Да, работаем. Доставка беседки в Россию и Казахстан обсуждается индивидуально (логистика, таможня). Комиссия дизайнеру — по той же шкале.</div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div class="container">
+    КРОНОВЪ · <a href="index.html">kronov.by</a> · <a href="https://about.kronov.by">О&nbsp;нас</a> · <a href="politika-konfidentsialnosti.html">Политика&nbsp;ПДн</a> · Беларусь, 2026
+  </div>
+</footer>
+
+<script>
+function submitPartnerForm(e) {
+  e.preventDefault();
+  const f = document.getElementById('partnerForm');
+  const data = { source: 'partner' };
+  f.querySelectorAll('input, textarea, select').forEach(el => {
+    if (el.type === 'checkbox') return;
+    if (el.name) data[el.name] = el.value;
+  });
+  const phone = (data.phone || '').replace(/\D/g,'');
+  if (phone.length < 9 || !data.first_name || !data.last_name || !data.email) { alert('Заполните обязательные поля'); return; }
+  const btn = f.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+  if (window.gtag) gtag('event', 'form_submit', { form_type: 'partner' });
+  fetch('/api/submit.php', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data), keepalive: true })
+    .catch(err => console.error(err))
+    .finally(() => { window.location.href = 'thank-you-partner.html'; });
+}
+document.querySelectorAll('input[type="tel"]').forEach(el => {
+  el.addEventListener('input', function(){
+    let d = this.value.replace(/\D/g,'');
+    if (d.startsWith('375')) d = d.slice(3);
+    if (d.startsWith('8')) d = d.slice(1);
+    d = d.slice(0,9);
+    let out = '+375';
+    if (d.length > 0) out += ' (' + d.slice(0,2);
+    if (d.length >= 2) out += ') ' + d.slice(2,5);
+    if (d.length >= 5) out += '-' + d.slice(5,7);
+    if (d.length >= 7) out += '-' + d.slice(7,9);
+    this.value = out;
+  });
+  el.addEventListener('focus', function(){ if (!this.value) this.value = '+375 '; });
+});
+</script>
+</body>
+</html>

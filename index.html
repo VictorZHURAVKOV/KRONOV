@@ -16,23 +16,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>КРОНОВЪ — деревянные беседки от производителя в Беларуси | kronov.by</title>
-<meta name="description" content="КРОНОВЪ — производитель деревянных беседок премиум-класса. Полный цикл: от леса до монтажа. Собственная пилорама и столярный цех. Бесплатный 3D-проект. kronov.by">
+<meta name="description" content="КРОНОВЪ — производитель деревянных беседок премиум-класса. 11 моделей, 20 лет гарантии, монтаж за 1 день. Полный цикл: от леса до участка. 3D-проект за 24 часа. kronov.by">
 <link rel="canonical" href="https://kronov.by/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kronov.by">
 <meta property="og:site_name" content="КРОНОВЪ">
 <meta property="og:title" content="КРОНОВЪ — деревянные беседки от производителя в Беларуси">
-<meta property="og:description" content="Премиум-беседки полного цикла: от леса до монтажа. Бесплатный 3D-проект, рассрочка 50/50, гарантия в договоре. kronov.by">
+<meta property="og:description" content="Премиум-беседки полного цикла: от леса до монтажа. 3D-проект за 24 часа, рассрочка 50/50, гарантия 20 лет. kronov.by">
 <meta property="og:image" content="https://kronov.by/images/hero-bg.jpg">
 <meta property="og:locale" content="ru_RU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "КРОНОВЪ",
+  "legalName": "ООО «Кверкус»",
+  "alternateName": ["KRONOV", "Кроновъ"],
+  "url": "https://kronov.by",
+  "logo": "https://kronov.by/logo.png",
+  "description": "Премиальная линейка деревянных беседок от ООО «Кверкус». 11 моделей, 20 лет гарантии, монтаж за 1 день. Две площадки в Беларуси: пилорама в Чаусах (Могилёвская обл.), сборочный цех в Смолевичах (Минская обл.).",
+  "foundingDate": "2013",
+  "location": [
+    { "@type": "Place", "name": "Сборочный цех КРОНОВЪ", "address": {"@type":"PostalAddress","addressCountry":"BY","addressRegion":"Минская область","addressLocality":"Смолевичский район"} },
+    { "@type": "Place", "name": "Пилорама КРОНОВЪ", "address": {"@type":"PostalAddress","addressCountry":"BY","addressRegion":"Могилёвская область","addressLocality":"Чаусский район"} }
+  ],
+  "contactPoint": {"@type":"ContactPoint","telephone":"+375-29-688-86-29","contactType":"sales","areaServed":"BY","availableLanguage":["Russian","Belarusian"]},
+  "makesOffer": {"@type":"Offer","itemOffered":{"@type":"Product","name":"Деревянная беседка КРОНОВЪ","category":"Garden Structure"}}
+}
+</script>
+
 <!-- ===== FORM PERSONALIZER (заглушка — подключит заказчик: Envybox / Callibri / аналог) ===== -->
 <!-- <script src="https://envybox.io/js/widget.js?project_id=XXX" async></script> -->
 
-<!-- ===== ANALYTICS (заглушка — подключит заказчик) ===== -->
-<!-- <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(YM_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});</script> -->
+<!-- ===== ANALYTICS (БЛОК 10 ТЗ v2) — общий модуль, активация одной строкой ===== -->
+<!-- Настройка: пропишите GA4 и Metrika ID в /js/analytics.js — см. ANALYTICS_SETUP.md -->
+<script src="js/analytics.js"></script>
 <style>
 /* ===== CSS VARIABLES ===== */
 :root {
@@ -215,6 +236,8 @@ input { font-family:inherit; }
   transition: background .3s;
 }
 .header-cta:hover { background: #8E3542; }
+.header-nav-designers { color: var(--c-bronze) !important; font-weight: 600; letter-spacing: 0.5px; }
+.header-nav-designers::after { content: ' PRO'; font-size: 9px; letter-spacing: 1px; opacity: .7; }
 
 /* Always-visible phone in header (Алёна) */
 .header-phone {
@@ -376,6 +399,113 @@ input { font-family:inherit; }
   line-height: 1.5;
 }
 .hero-btns { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+
+/* ===== HERO CTA GROUP — 3 двери (БЛОК 1, ТЗ v2) ===== */
+.hero-cta-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+  align-items: flex-start;
+}
+.hero-cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 26px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: .4px;
+  transition: all .25s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  min-height: 68px;
+}
+.hero-cta-label { font-size: 15px; line-height: 1.2; }
+.hero-cta-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin-top: 5px;
+  opacity: .85;
+  text-transform: none;
+}
+
+.hero-cta-primary {
+  background: var(--c-bordo);
+  color: var(--c-cream);
+  border-radius: 4px;
+  padding: 18px 32px;
+  box-shadow: 0 4px 14px rgba(122,46,56,.35);
+}
+.hero-cta-primary:hover { background: #5C1F28; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(122,46,56,.45); }
+
+.hero-cta-secondary {
+  background: transparent;
+  color: var(--c-bronze);
+  border: 2px solid var(--c-bronze);
+}
+.hero-cta-secondary:hover { background: rgba(184,150,90,.12); }
+
+.hero-cta-tertiary {
+  background: transparent;
+  color: var(--c-bronze);
+  border: none;
+  padding: 14px 12px;
+  min-height: 60px;
+  text-decoration: none;
+}
+.hero-cta-tertiary .hero-cta-label {
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(184,150,90,.5);
+}
+.hero-cta-tertiary:hover .hero-cta-label { text-decoration-color: var(--c-bronze); }
+
+/* ===== HERO TRUST STRIP (Задача 1.4) ===== */
+.hero-trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 28px;
+  padding: 14px 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--c-sand);
+  border-top: 1px solid rgba(184,150,90,.15);
+  border-bottom: 1px solid rgba(184,150,90,.15);
+}
+.hero-trust-strip__item { display: inline-flex; align-items: center; gap: 6px; }
+.hero-trust-strip__sep {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background: rgba(184,150,90,.4);
+}
+.hero-trust-strip__star { color: var(--c-bronze); font-size: 15px; }
+
+@media (max-width: 767px) {
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-cta-primary { width: 100%; }
+  .hero-cta-secondary { width: 90%; align-self: center; }
+  .hero-cta-tertiary { width: 80%; align-self: center; }
+  .hero-trust-strip { font-size: 12px; gap: 6px 12px; }
+  .hero-trust-strip__sep { display: none; }
+}
 .hero-trust {
   display: flex;
   gap: 32px;
@@ -521,6 +651,240 @@ input { font-family:inherit; }
 .trust-reviews-strip span:nth-child(even) { opacity: .55; }
 @media(max-width:900px) { .trust-reviews-grid { grid-template-columns: 1fr 1fr; } }
 @media(max-width:640px) { .trust-reviews-grid { grid-template-columns: 1fr; } }
+
+/* ===== SECTION: CASES — «Истории клиентов» (БЛОК 2, ТЗ v2) ===== */
+.sec-cases { background: var(--c-cream); }
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.case-card {
+  background: var(--c-white);
+  border: 1px solid rgba(139,96,64,.12);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(30,20,16,.05);
+  transition: transform .3s, box-shadow .3s;
+}
+.case-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(30,20,16,.1); }
+.case-card.case-card--wide { grid-column: 1 / -1; }
+.case-card.case-card--wide .case-card__inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; }
+.case-card.case-card--wide .case-card__photo { aspect-ratio: 16/11; }
+.case-card__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--c-dark2);
+}
+.case-card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  background: rgba(30,20,16,.85);
+  backdrop-filter: blur(6px);
+  color: var(--c-bronze);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid rgba(184,150,90,.4);
+}
+.case-card__body {
+  padding: 28px 28px 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+}
+.case-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(19px,2.2vw,24px);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--c-dark);
+}
+.case-section__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-bordo);
+  margin-bottom: 6px;
+}
+.case-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--c-dark);
+  padding-left: 14px;
+  border-left: 3px solid var(--c-bronze);
+}
+.case-solution {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.case-solution li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 14px;
+  color: var(--c-text);
+  line-height: 1.55;
+}
+.case-solution li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 1px;
+  background: var(--c-bronze);
+}
+.case-result {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  padding: 16px;
+  background: var(--c-cream);
+  border-radius: 10px;
+  border: 1px solid rgba(184,150,90,.25);
+}
+.case-result__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+.case-result__label {
+  font-size: 10.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--c-text-light);
+  font-weight: 600;
+}
+.case-result__value {
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--c-bordo);
+  font-weight: 500;
+}
+.case-author {
+  border-top: 1px solid rgba(139,96,64,.12);
+  padding-top: 14px;
+  font-size: 13px;
+  color: var(--c-text-light);
+  line-height: 1.5;
+}
+.case-author strong { display: block; font-family: var(--font-display); font-size: 15px; color: var(--c-dark); margin-bottom: 2px; font-weight: 500; }
+
+.cases-cta {
+  margin-top: 48px;
+  padding: 40px 28px;
+  background: var(--c-dark);
+  color: var(--c-cream);
+  border-radius: 14px;
+  text-align: center;
+}
+.cases-cta h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px,3vw,30px);
+  font-weight: 500;
+  color: var(--c-cream);
+  margin-bottom: 10px;
+}
+.cases-cta p { color: var(--c-sand); margin-bottom: 22px; font-size: 15px; }
+
+@media (max-width: 900px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .case-card.case-card--wide .case-card__inner { grid-template-columns: 1fr; }
+  .case-card.case-card--wide .case-card__photo { aspect-ratio: 4/3; }
+}
+@media (max-width: 560px) {
+  .case-card__body { padding: 22px 20px 20px; }
+  .case-result { grid-template-columns: 1fr; padding: 12px; }
+  .case-result__item { flex-direction: row; justify-content: space-between; text-align: left; }
+}
+
+/* ===== SECTION: MAF — Малые архитектурные формы (БЛОК 3, ТЗ v2) ===== */
+.sec-maf { background: var(--c-white); }
+.maf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+.maf-col {
+  background: var(--c-cream);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(139,96,64,.1);
+  transition: transform .25s, box-shadow .25s;
+}
+.maf-col:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(30,20,16,.08); }
+.maf-col__photo { aspect-ratio: 4/3; background: var(--c-dark2); overflow: hidden; }
+.maf-col__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.maf-col__body { padding: 24px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.maf-col__title { font-family: var(--font-display); font-size: 21px; color: var(--c-dark); font-weight: 500; line-height: 1.25; }
+.maf-col__price { font-size: 14px; color: var(--c-bordo); font-weight: 600; letter-spacing: .3px; }
+.maf-col__desc { font-size: 14px; color: var(--c-text-light); line-height: 1.55; flex: 1; }
+.maf-cta-row {
+  text-align: center;
+  margin-top: 40px;
+}
+.maf-cta-row__hint { margin-top: 14px; font-size: 13px; color: var(--c-text-light); }
+@media (max-width: 820px) { .maf-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+/* ===== SECTION: PARTNERS (БЛОК 4 тизер) ===== */
+.sec-partners { background: var(--c-dark); color: var(--c-cream); }
+.sec-partners .subtitle { color: var(--c-bronze); }
+.sec-partners h2 { color: var(--c-cream); }
+.sec-partners p.body-text { color: var(--c-sand); }
+.partners-tiles {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+  margin: 44px 0;
+}
+.partners-tile {
+  padding: 28px 24px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(184,150,90,.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.partners-tile__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(184,150,90,.15);
+  color: var(--c-bronze);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.partners-tile h4 { font-family: var(--font-display); font-size: 20px; color: var(--c-cream); font-weight: 500; }
+.partners-tile p { font-size: 13.5px; color: var(--c-sand); opacity: .85; line-height: 1.55; }
+.partners-cta { text-align: center; margin-top: 10px; }
+.partners-cta .btn-secondary { background: transparent; color: var(--c-bronze); border-color: var(--c-bronze); }
+.partners-cta .btn-secondary:hover { background: var(--c-bronze); color: var(--c-dark); }
+@media (max-width: 820px) { .partners-tiles { grid-template-columns: 1fr; } }
 
 /* ===== SECTION: INSTALLMENT ===== */
 .sec-installment { background: var(--c-cream); }
@@ -1196,6 +1560,186 @@ input { font-family:inherit; }
   line-height: 1;
 }
 
+/* ===== LEAD MODAL — три формы БЛОКА 1 ===== */
+.lead-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30,20,16,.6);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+}
+.lead-overlay.is-open { display: flex; }
+.lead-modal {
+  background: var(--c-cream);
+  border-radius: 14px;
+  padding: 36px 30px 28px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  margin: auto 0;
+}
+.lead-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--c-brown);
+  cursor: pointer;
+  line-height: 1;
+}
+.lead-modal__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--c-dark);
+  margin-bottom: 8px;
+  padding-right: 32px;
+}
+.lead-modal__subtitle {
+  font-size: 14px;
+  color: var(--c-text-light);
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+.lead-field { margin-bottom: 14px; }
+.lead-field__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--c-brown);
+  margin-bottom: 6px;
+}
+.lead-field__input,
+.lead-field__select,
+.lead-field__textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(184,150,90,.55);
+  border-radius: 8px;
+  background: var(--c-white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--c-dark);
+  transition: border-color .2s;
+}
+.lead-field__input:focus,
+.lead-field__select:focus,
+.lead-field__textarea:focus {
+  outline: none;
+  border-color: var(--c-bordo);
+}
+.lead-field__textarea { resize: vertical; min-height: 80px; }
+.lead-field__select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg,transparent 50%,var(--c-brown) 50%),linear-gradient(135deg,var(--c-brown) 50%,transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 34px; }
+
+.lead-field--file {
+  border: 1.5px dashed rgba(184,150,90,.5);
+  border-radius: 10px;
+  padding: 14px;
+  background: rgba(255,255,255,.5);
+  text-align: center;
+  font-size: 13px;
+  color: var(--c-text-light);
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+.lead-field--file:hover { border-color: var(--c-bronze); background: rgba(255,255,255,.75); }
+.lead-field--file input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.lead-field--file__hint { display: block; font-size: 11px; color: var(--c-text-light); margin-top: 4px; }
+.lead-field--file__list { font-size: 12px; color: var(--c-brown); margin-top: 8px; text-align: left; }
+
+.lead-radio-group,
+.lead-number-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.lead-radio-group label,
+.lead-number-group label {
+  position: relative;
+  padding: 9px 16px;
+  border: 1px solid rgba(184,150,90,.55);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--c-text);
+  cursor: pointer;
+  background: var(--c-white);
+  transition: all .2s;
+}
+.lead-radio-group input,
+.lead-number-group input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.lead-radio-group input:checked + span,
+.lead-number-group input:checked + span {
+  color: var(--c-cream);
+}
+.lead-radio-group label:has(input:checked),
+.lead-number-group label:has(input:checked) {
+  background: var(--c-bordo);
+  border-color: var(--c-bordo);
+  color: var(--c-cream);
+}
+
+.lead-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12px;
+  color: var(--c-text-light);
+  line-height: 1.5;
+  margin: 4px 0 14px;
+}
+.lead-consent input { margin-top: 3px; flex-shrink: 0; width: 15px; height: 15px; accent-color: var(--c-bordo); }
+.lead-consent a { color: var(--c-bordo); text-decoration: underline; }
+
+.lead-submit {
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--c-bordo);
+  color: var(--c-cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+}
+.lead-submit:hover:not(:disabled) { background: #5C1F28; }
+.lead-submit:disabled { opacity: .6; cursor: not-allowed; }
+.lead-modal__footnote {
+  font-size: 11px;
+  color: var(--c-text-light);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.lead-field__error {
+  display: none;
+  font-size: 12px;
+  color: var(--c-bordo);
+  margin-top: 4px;
+}
+.lead-field.has-error .lead-field__input,
+.lead-field.has-error .lead-field__select { border-color: var(--c-bordo); }
+.lead-field.has-error .lead-field__error { display: block; }
+
+@media (max-width: 520px) {
+  .lead-modal { padding: 28px 20px 22px; border-radius: 10px; }
+  .lead-modal__title { font-size: 20px; }
+}
+
 /* ===== SECTION: MAP ===== */
 .sec-map { background: var(--c-white); }
 .map-grid {
@@ -1734,8 +2278,87 @@ a.catalog-link {
 .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
 .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 .gallery-item.xxl { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
-.gallery-item { cursor: zoom-in; }
+.gallery-item { cursor: zoom-in; position: relative; }
 .gallery-item:hover { transform: scale(1.02); }
+
+/* Фильтр и контролы галереи (БЛОК 6, ТЗ v2) */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 28px 0 34px;
+  overflow-x: auto;
+  padding: 4px 2px;
+}
+.gallery-filter-pill {
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: var(--c-dark);
+  background: var(--c-cream);
+  border: 1px solid rgba(184,150,90,.4);
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.gallery-filter-pill:hover { background: rgba(184,150,90,.15); border-color: var(--c-bronze); }
+.gallery-filter-pill.is-active { background: var(--c-bordo); color: var(--c-cream); border-color: var(--c-bordo); }
+.gallery-item[hidden] { display: none !important; }
+.gallery-item.is-hidden-overflow { display: none !important; }
+.gallery-controls { text-align: center; margin-top: 40px; }
+.gallery-controls .btn-secondary { margin: 0 auto; }
+.gallery-end { font-size: 15px; color: var(--c-text); display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+/* i-подсказка на фото (Задача 6.1) */
+.gallery-item[data-model]:not([data-model="mixed"]) .gallery-info-badge,
+.gallery-item[data-note] .gallery-info-badge { display: flex; }
+.gallery-info-badge {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(30,20,16,.75);
+  color: var(--c-bronze);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(184,150,90,.45);
+  pointer-events: none;
+}
+.gallery-info-popover {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 12px;
+  background: rgba(30,20,16,.88);
+  color: var(--c-cream);
+  font-size: 12px;
+  line-height: 1.45;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(184,150,90,.25);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+  z-index: 2;
+}
+.gallery-info-popover__model { display:block; font-family: var(--font-display); font-size: 13px; color: var(--c-bronze); margin-bottom: 2px; }
+.gallery-info-popover__meta { display: block; opacity: .8; font-size: 11px; }
+.gallery-item:hover .gallery-info-popover,
+.gallery-item.show-info .gallery-info-popover { opacity: 1; transform: translateY(0); }
 
 /* ===== GALLERY LIGHTBOX ===== */
 .glb {
@@ -2327,11 +2950,11 @@ a.catalog-link {
     </a>
     <nav class="header-nav" id="nav">
       <a href="#catalog">Каталог</a>
-      <a href="#process">Как работаем</a>
-      <a href="#gallery">Работы</a>
+      <a href="arhitekturnye-formy.html">МАФ</a>
+      <a href="#process">Процесс</a>
+      <a href="https://about.kronov.by">О нас</a>
+      <a href="for-designers.html" class="header-nav-designers">Для дизайнеров</a>
       <a href="calculator.html">Калькулятор</a>
-      <a href="#faq">Вопросы</a>
-      <a href="#reviews">Отзывы</a>
       <a href="#cta" class="header-cta">Получить предложение</a>
     </nav>
     <a href="tel:+375296888629" class="header-phone" aria-label="Позвонить Алёне: +375 (29) 688-86-29">
@@ -2358,9 +2981,19 @@ a.catalog-link {
       <div class="hero-badge">Производитель полного цикла</div>
       <h1>Деревянные беседки <em>ручной работы</em> — без посредников</h1>
       <p class="hero-sub">«КРОНОВЪ — это не постройка. Это архитектура вашего отдыха»</p>
-      <div class="hero-btns">
-        <a href="#cta" class="btn-primary">Получить коммерческое предложение</a>
-        <a href="#catalog" class="btn-secondary">Смотреть каталог</a>
+      <div class="hero-cta-group">
+        <button type="button" class="hero-cta hero-cta-primary" onclick="openLeadModal('3d')" data-cta-location="hero_3d">
+          <span class="hero-cta-label">Заказать 3D-проект</span>
+          <span class="hero-cta-sub">достаточно фото участка</span>
+        </button>
+        <button type="button" class="hero-cta hero-cta-secondary" onclick="openLeadModal('excursion')" data-cta-location="hero_excursion">
+          <span class="hero-cta-label">Записаться на экскурсию</span>
+          <span class="hero-cta-sub">наше производство в Беларуси</span>
+        </button>
+        <button type="button" class="hero-cta hero-cta-tertiary" onclick="openLeadModal('zamer')" data-cta-location="hero_zamer">
+          <span class="hero-cta-label">Выезд замерщика</span>
+          <span class="hero-cta-sub">ваш участок, 1 час, по записи</span>
+        </button>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-item"><strong>100+</strong> беседок выпустило наше производство</div>
@@ -2376,75 +3009,28 @@ a.catalog-link {
           Ответит лично
         </div>
       </div>
-      <h3>Бесплатный 3D-проект</h3>
+      <h3>3D-проект вашей беседки</h3>
       <p>Оставьте номер — перезвоним через 60 секунд</p>
       <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" id="hero-phone" name="phone" autocomplete="tel">
       <button class="form-submit" onclick="submitForm('hero')">Перезвоните мне</button>
       <p class="form-note">Никакого спама. Только один звонок.</p>
     </div>
   </div>
-</section>
-
-<!-- ===== TRUST: текстовые отзывы ===== -->
-<section class="sec-trust section-pad" id="trust-reviews">
   <div class="container">
-    <div class="text-center" style="margin-bottom:48px;">
-      <div class="subtitle">Отзывы</div>
-      <h2 class="heading-lg" style="margin-top:12px;">Что говорят клиенты нашего производства</h2>
-      <p class="body-text" style="max-width:640px;margin:16px auto 0;">Беседки нашего производства служат в семьях по всей Беларуси. Ниже — отзывы клиентов с фото их беседок на реальных участках.</p>
-    </div>
-
-    <div class="trust-reviews-grid">
-      <article class="trust-review-card animate">
-        <img src="images/kr-001-day.jpg" alt="Беседка КР-001 «Резиденция» у клиента" class="trust-review-img">
-        <div class="trust-review-body">
-          <div class="stars">★★★★★</div>
-          <blockquote>«Заказывали беседку для дачи — результат превзошёл ожидания. Качество дерева отличное, монтаж за один день. Теперь каждые выходные там.»</blockquote>
-          <div class="trust-review-author">
-            <strong>Андрей К.</strong>
-            <span>Минский район · модель КР-001 «Резиденция»</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="trust-review-card animate">
-        <img src="images/kr-006-front.jpg" alt="Беседка КР-006 «Шатёръ» у клиента" class="trust-review-img">
-        <div class="trust-review-body">
-          <div class="stars">★★★★★</div>
-          <blockquote>«Долго сомневалась — не пожалела. Менеджер всё объяснила, показали 3D-проект. Теперь это любимое место семьи.»</blockquote>
-          <div class="trust-review-author">
-            <strong>Елена М.</strong>
-            <span>Брестская область · модель КР-006 «Шатёръ»</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="trust-review-card animate">
-        <img src="images/kr-008-lanterns.jpg" alt="Беседка КР-008 «Дворъ» у клиента" class="trust-review-img">
-        <div class="trust-review-body">
-          <div class="stars">★★★★★</div>
-          <blockquote>«Второй сезон стоит — ни одной трещины, ни одного скрипа. Друзья уже двое заказали после того, как нашу увидели.»</blockquote>
-          <div class="trust-review-author">
-            <strong>Дмитрий П.</strong>
-            <span>Гродненская область · модель КР-008 «Дворъ»</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="trust-reviews-strip">
-      <span>★ 4.9 из 5</span>
-      <span>·</span>
-      <span>100+ беседок нашего производства</span>
-      <span>·</span>
-      <span>С 2013 года работаем с деревом</span>
-    </div>
-
-    <div class="text-center" style="margin-top:32px;">
-      <a href="#cta" class="btn-primary">Хочу такую же — рассчитать для моего участка</a>
+    <div class="hero-trust-strip" role="group" aria-label="Показатели качества КРОНОВЪ">
+      <span class="hero-trust-strip__item"><span class="hero-trust-strip__star">★</span> 4.9 / 5</span>
+      <span class="hero-trust-strip__sep"></span>
+      <span class="hero-trust-strip__item">100+ беседок нашего производства</span>
+      <span class="hero-trust-strip__sep"></span>
+      <span class="hero-trust-strip__item">С 2013 работаем с деревом</span>
+      <span class="hero-trust-strip__sep"></span>
+      <span class="hero-trust-strip__item">Гарантия 20 лет</span>
     </div>
   </div>
 </section>
+
+<!-- ===== TRUST: текстовые отзывы ===== -->
+<!-- Блок «Отзывы клиентов» удалён — заменён секцией «Истории клиентов» после блока «Почему выбирают» (Задача 2.1/2.2 ТЗ v2) -->
 
 <!-- ===== WHY US ===== -->
 <section class="sec-why section-pad" id="why">
@@ -2472,7 +3058,7 @@ a.catalog-link {
         <img class="why-card-img" src="images/why-design.jpg" alt="Проектное бюро КРОНОВЪ">
         <div class="why-card-body">
           <h4>Проектное бюро</h4>
-          <p>Сами проектируем и визуализируем. Бесплатный 3D-эскиз беседки на вашем участке за 24 часа.</p>
+          <p>Сами проектируем и визуализируем. 3D-эскиз беседки на вашем участке за 24 часа.</p>
         </div>
       </div>
       <div class="why-card animate">
@@ -2514,6 +3100,274 @@ a.catalog-link {
         <div class="counter-num" data-target="1">0</div>
         <div class="counter-label">день на монтаж</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASES — «Истории клиентов» (БЛОК 2, ТЗ v2) ===== -->
+<section class="sec-cases section-pad" id="cases">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="subtitle">Истории</div>
+      <h2 class="heading-lg" style="margin-top:12px;">Пять историй, где беседка изменила ситуацию</h2>
+      <p class="body-text" style="max-width:680px;margin:18px auto 0;">Не отзывы — а конкретные задачи клиентов и решения, которые мы нашли. Имена и суммы реальные, с согласия владельцев.</p>
+    </div>
+
+    <div class="cases-grid">
+
+      <!-- Кейс 1 -->
+      <article class="case-card animate">
+        <div class="case-card__photo">
+          <img src="images/kr-001-night.jpg" alt="КР-001 «Резиденция» — вечерний ракурс с подсветкой">
+          <span class="case-tag">Срочный проект</span>
+        </div>
+        <div class="case-card__body">
+          <h3 class="case-card__title">Юбилей жены — беседка успела за 4 дня 17 часов</h3>
+          <div>
+            <span class="case-section__label">Задача</span>
+            <p class="case-quote">«Звоню 25 июня в 19:42. Юбилей супруги — 30 июня. Загородный участок в 70 км от Минска. Наклон, глинистый грунт после дождей. Нужна беседка к празднику. Без проекта, без замеров, с нуля.»</p>
+          </div>
+          <div>
+            <span class="case-section__label">Решение</span>
+            <ul class="case-solution">
+              <li>Архитектор за 12 минут подобрал КР-001 «Резиденция» — флагман с шатровой крышей подходит под торжество</li>
+              <li>В наличии был подготовленный комплект (производство держит резерв топовых моделей)</li>
+              <li>Ночная логистика: выезд в 03:40, чтобы обойти пробки на МКАД</li>
+              <li>Монтаж на подготовленный бетонный ростверк — 6 часов, с 05:00 до 11:00</li>
+              <li>Подарок от производства: именная гравировка «Светлане — 30 лет вместе» на фронтальной балке</li>
+            </ul>
+          </div>
+          <div class="case-result">
+            <div class="case-result__item"><span class="case-result__label">Срок</span><span class="case-result__value">4 дня 17 часов</span></div>
+            <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~13 500 BYN</span></div>
+            <div class="case-result__item"><span class="case-result__label">Бонус</span><span class="case-result__value">Парные скамейки</span></div>
+          </div>
+          <div class="case-author">
+            <strong>Сергей Ковалёв</strong>
+            <span>Минский район · КР-001 «Резиденция»</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Кейс 2 -->
+      <article class="case-card animate">
+        <div class="case-card__photo">
+          <img src="images/kr-005-tea.jpg" alt="КР-005 «Встреча» — камерная беседка для семейных встреч">
+          <span class="case-tag">Молодая семья</span>
+        </div>
+        <div class="case-card__body">
+          <h3 class="case-card__title">Дом в ремонте — беседка как временное решение, ставшее постоянным</h3>
+          <div>
+            <span class="case-section__label">Задача</span>
+            <p class="case-quote">«Мы строим загородный дом, внутри — стройка, пыль, гости пройти не могут. При этом мои подруги хотят собираться раз в неделю, а принимать негде. Нужно что-то на участке, быстро, без фундамента — дом ещё не закончен.»</p>
+          </div>
+          <div>
+            <span class="case-section__label">Решение</span>
+            <ul class="case-solution">
+              <li>Выбрана КР-005 «Встреча» — компактная модель для камерных встреч</li>
+              <li>Установка без фундамента: бетонные блоки-опоры, монтаж за 1 день</li>
+              <li>Покраска в цвет «медовый ясень» — согласован с будущим фасадом дома</li>
+              <li>Рассрочка на 3 части без переплаты — равномерная нагрузка на семейный бюджет</li>
+              <li>Согласованы точки под будущую электрику для гирлянды</li>
+            </ul>
+          </div>
+          <div class="case-result">
+            <div class="case-result__item"><span class="case-result__label">Срок</span><span class="case-result__value">11 дней</span></div>
+            <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~7 500 BYN</span></div>
+            <div class="case-result__item"><span class="case-result__label">Итог</span><span class="case-result__value">Центр участка</span></div>
+          </div>
+          <div class="case-author">
+            <strong>Елена Василевич</strong>
+            <span>Минский район · КР-005 «Встреча»</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Кейс 3 -->
+      <article class="case-card animate">
+        <div class="case-card__photo">
+          <img src="images/kr-004-family.jpg" alt="КР-004 «Привилегия» — свадебное мероприятие в беседке">
+          <span class="case-tag">Свадьба</span>
+        </div>
+        <div class="case-card__body">
+          <h3 class="case-card__title">Вместо аренды шатра — своя беседка на всю жизнь</h3>
+          <div>
+            <span class="case-section__label">Задача</span>
+            <p class="case-quote">«Свадьба дочери в августе, 70 гостей. Аренда шатра + столы — 7 200 BYN за один день. Деньги уходят в никуда. Бюджет уже распределён, но хочется, чтобы на участке осталось что-то памятное.»</p>
+          </div>
+          <div>
+            <span class="case-section__label">Решение</span>
+            <ul class="case-solution">
+              <li>Выбрана КР-004 «Привилегия» — закрытая модель с пристроенной перголой, вмещает банкет</li>
+              <li>Срок от заказа до готовности — 10 дней</li>
+              <li>Собственные столы (семейная реликвия) отреставрированы и покрашены в тон беседки</li>
+              <li>Комплектация лавками из массива дуба — 4 штуки, под общий стиль</li>
+              <li>Декор мешковиной и льном — рекомендация архитектора, копеечный бюджет</li>
+            </ul>
+          </div>
+          <div class="case-result">
+            <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~8 500 BYN</span></div>
+            <div class="case-result__item"><span class="case-result__label">Экономия</span><span class="case-result__value">Против аренды</span></div>
+            <div class="case-result__item"><span class="case-result__label">Бонус</span><span class="case-result__value">Зимняя фотосессия</span></div>
+          </div>
+          <div class="case-author">
+            <strong>Наталья Петровская</strong>
+            <span>Могилёвская область · КР-004 «Привилегия»</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Кейс 4 -->
+      <article class="case-card animate">
+        <div class="case-card__photo">
+          <img src="images/kr-008-sunset.jpg" alt="КР-008 «Дворъ» — беседка с мангальной зоной">
+          <span class="case-tag">Приём гостей</span>
+        </div>
+        <div class="case-card__body">
+          <h3 class="case-card__title">Беседка как переговорная — деловые встречи на природе</h3>
+          <div>
+            <span class="case-section__label">Задача</span>
+            <p class="case-quote">«У меня поместье в Гомельской области. Партнёры приезжают обсуждать проекты — а принять их негде. Дом — это семья. В кафе — казённо. Нужна переговорная под открытым небом, с мангалом и атмосферой охотничьего клуба.»</p>
+          </div>
+          <div>
+            <span class="case-section__label">Решение</span>
+            <ul class="case-solution">
+              <li>Выбрана КР-008 «Дворъ» — закрытая беседка с мангальной зоной, мужской характер</li>
+              <li>Дымоход в комплекте, без отдельной постройки</li>
+              <li>Большой стол из массива — 2 метра, рассчитан на 8 человек</li>
+              <li>Лавки «Бельведер» из той же породы дерева — 2 штуки</li>
+              <li>Отделка методом поджига (обжиг досок без лака) — запах дыма не въедается в покрытие</li>
+            </ul>
+          </div>
+          <div class="case-result">
+            <div class="case-result__item"><span class="case-result__label">Срок</span><span class="case-result__value">18 дней</span></div>
+            <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~9 200 BYN</span></div>
+            <div class="case-result__item"><span class="case-result__label">Бизнес-эффект</span><span class="case-result__value">+2 заказа</span></div>
+          </div>
+          <div class="case-author">
+            <strong>Олег Дроздов</strong>
+            <span>Гомельская область · КР-008 «Дворъ»</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Кейс 5 — широкий -->
+      <article class="case-card case-card--wide animate">
+        <div class="case-card__inner">
+          <div class="case-card__photo">
+            <img src="images/kr-002-front.jpg" alt="КР-002 «Эстетъ» — чайная беседка для семейных встреч">
+            <span class="case-tag">Семейная традиция</span>
+          </div>
+          <div class="case-card__body">
+            <h3 class="case-card__title">Беседка-якорь: внуки приезжают чаще, семья собирается регулярно</h3>
+            <div>
+              <span class="case-section__label">Задача</span>
+              <p class="case-quote">«У нас большая семья — четверо детей, восемь внуков. Загородная резиденция строилась для того, чтобы все собирались вместе. А выросли дети — и внуки приезжают на час-два. Нужна была точка притяжения: место, где они сами захотят остаться.»</p>
+            </div>
+            <div>
+              <span class="case-section__label">Решение</span>
+              <ul class="case-solution">
+                <li>Выбрана КР-002 «Эстетъ» — камерная чайная беседка с классической квадратной формой</li>
+                <li>Установка в центре участка как визуальная доминанта</li>
+                <li>Именная гравировка «Дом Радкевичей» на балке</li>
+                <li>Складной дубовый стол для семейных обедов (до 10 персон в разложенном виде)</li>
+                <li>Комплект кресел в ротанге — для «кофе с внуками»</li>
+              </ul>
+            </div>
+            <div class="case-result">
+              <div class="case-result__item"><span class="case-result__label">Визиты внуков</span><span class="case-result__value">×8 в месяц</span></div>
+              <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~9 000 BYN</span></div>
+              <div class="case-result__item"><span class="case-result__label">Итог</span><span class="case-result__value">«Место, куда возвращаются»</span></div>
+            </div>
+            <div class="case-author">
+              <strong>Светлана Михайловна Радкевич</strong>
+              <span>Основательница семейного бизнеса · КР-002 «Эстетъ»</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="cases-cta">
+      <h3>Пусть ваша история станет шестой</h3>
+      <p>Расскажите вашу задачу — предложим решение и срок.</p>
+      <button type="button" class="btn-primary" onclick="openLeadModal('3d')">Заказать 3D-проект</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== МАФ ТИЗЕР (БЛОК 3, ТЗ v2) ===== -->
+<section class="sec-maf section-pad" id="maf-teaser">
+  <div class="container">
+    <div class="text-center">
+      <div class="subtitle">Линейка КРОНОВЪ</div>
+      <h2 class="heading-lg" style="margin-top:12px;">Не только беседки — целая архитектура участка</h2>
+      <p class="body-text" style="max-width:680px;margin:18px auto 0;">Колодцы, дорожки, садовая мебель, декоративные формы. Одна стилистика — один характер участка. От большого к мелочи.</p>
+    </div>
+    <div class="maf-grid">
+      <article class="maf-col animate">
+        <div class="maf-col__photo"><img src="images/maf/well-001-windmill-garden.jpg" alt="Колодец с работающей мельницей в саду с цветами" loading="lazy"></div>
+        <div class="maf-col__body">
+          <h3 class="maf-col__title">Колодцы и мельницы</h3>
+          <span class="maf-col__price">от 1 900 BYN</span>
+          <p class="maf-col__desc">Функциональные колодцы и&nbsp;декоративные мельницы с&nbsp;работающими лопастями. Массив, обжиг, высота до&nbsp;2,4&nbsp;м. Акцент участка с&nbsp;узнаваемой стилистикой усадьбы.</p>
+          <a href="arhitekturnye-formy.html#wells" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть 6 моделей</a>
+        </div>
+      </article>
+      <article class="maf-col animate">
+        <div class="maf-col__photo"><img src="images/maf/chair-001-throne-sunset.jpg" alt="Декоративное тронное кресло в саду на закате" loading="lazy"></div>
+        <div class="maf-col__body">
+          <h3 class="maf-col__title">Садовая мебель</h3>
+          <span class="maf-col__price">от 480 BYN за изделие</span>
+          <p class="maf-col__desc">Обеденные столы, лавки-комплекты, кресла Адирондак и&nbsp;тронные с&nbsp;кожей, кожаные диваны для&nbsp;закрытых беседок. Та&nbsp;же порода дерева, что и&nbsp;в&nbsp;беседке &mdash; ансамбль, а&nbsp;не&nbsp;«мебель из&nbsp;магазина».</p>
+          <a href="arhitekturnye-formy.html#furniture" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть 10 моделей</a>
+        </div>
+      </article>
+      <article class="maf-col animate">
+        <div class="maf-col__photo"><img src="images/maf/decor-002-planter-boxes.jpg" alt="Декоративные кашпо из дерева в саду на каменной дорожке" loading="lazy"></div>
+        <div class="maf-col__body">
+          <h3 class="maf-col__title">Декоративные артефакты</h3>
+          <span class="maf-col__price">от 380 BYN</span>
+          <p class="maf-col__desc">Перголы с&nbsp;настилом, каретные колёса из&nbsp;массива, кашпо-комплекты, качели с&nbsp;шинглом кровли. Малые формы, которые превращают сад в&nbsp;продуманную сценографию.</p>
+          <a href="arhitekturnye-formy.html#artefacts" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть категорию</a>
+        </div>
+      </article>
+    </div>
+    <div class="maf-cta-row">
+      <a href="arhitekturnye-formy.html" class="btn-primary">Смотреть все архитектурные формы →</a>
+      <p class="maf-cta-row__hint">Более 30 типов изделий в каталоге</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПАРТНЁРЫ (БЛОК 4 тизер, ТЗ v2) ===== -->
+<section class="sec-partners section-pad" id="partners-teaser">
+  <div class="container">
+    <div class="text-center">
+      <div class="subtitle">Для профессионалов</div>
+      <h2 class="heading-lg" style="margin-top:12px;">Партнёрская программа для ландшафтных архитекторов</h2>
+      <p class="body-text" style="max-width:720px;margin:18px auto 0;">Не просто процент — целая экосистема для ведения клиента от эскиза до публикации готового проекта в&nbsp;ваших соцсетях.</p>
+    </div>
+    <div class="partners-tiles">
+      <div class="partners-tile animate">
+        <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+        <h4>Комиссия до 10%</h4>
+        <p>Ступенчатая шкала от 5% до 10% в зависимости от количества проектов в год.</p>
+      </div>
+      <div class="partners-tile animate">
+        <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h4>Профессиональная съёмка готового объекта</h4>
+        <p>1–2 часа работы фотографа КРОНОВЪ на участке вашего клиента — контент для ваших соцсетей.</p>
+      </div>
+      <div class="partners-tile animate">
+        <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4>Клиент на производстве</h4>
+        <p>Ваш клиент приезжает на экскурсию во время сборки его беседки — эксклюзивный контент и глубокое доверие.</p>
+      </div>
+    </div>
+    <div class="partners-cta">
+      <a href="for-designers.html" class="btn-secondary">Подробнее о партнёрстве →</a>
     </div>
   </div>
 </section>
@@ -2599,7 +3453,7 @@ a.catalog-link {
     </div>
     <div class="catalog-grid">
 
-      <a href="gazebo/kr-001.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-001.html" class="catalog-link" data-model-view="kr-001" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит</span><img src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-001</div>
@@ -2616,7 +3470,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-002.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-002.html" class="catalog-link" data-model-view="kr-002" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-002-front.jpg" alt="КР-002 Эстетъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-002</div>
@@ -2633,7 +3487,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-003.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-003.html" class="catalog-link" data-model-view="kr-003" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-003-front.jpg" alt="КР-003 Патриархъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-003</div>
@@ -2650,7 +3504,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-004.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-004.html" class="catalog-link" data-model-view="kr-004" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><span class="catalog-badge catalog-badge--premium">Премиум</span><img src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-004</div>
@@ -2667,7 +3521,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-005.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-005.html" class="catalog-link" data-model-view="kr-005" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-005-front.jpg" alt="КР-005 Встреча" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-005</div>
@@ -2684,7 +3538,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-006.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-006.html" class="catalog-link" data-model-view="kr-006" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><span class="catalog-badge catalog-badge--new">Новинка 2026</span><img src="images/kr-006-front.jpg" alt="КР-006 Шатёръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-006</div>
@@ -2701,7 +3555,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-008.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-008.html" class="catalog-link" data-model-view="kr-008" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-008-sunset.jpg" alt="КР-008 Дворъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-008</div>
@@ -2718,7 +3572,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-007.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-007.html" class="catalog-link" data-model-view="kr-007" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-007-side.jpg" alt="КР-007 Бельведеръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-007</div>
@@ -2735,7 +3589,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-009.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-009.html" class="catalog-link" data-model-view="kr-009" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-009-evening.jpg" alt="КР-009 Павильонъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-009</div>
@@ -2752,7 +3606,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-010.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-010.html" class="catalog-link" data-model-view="kr-010" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><img src="images/kr-010-front.jpg" alt="КР-010 Приютъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-010</div>
@@ -2769,7 +3623,7 @@ a.catalog-link {
         </div>
       </div></a>
 
-      <a href="gazebo/kr-011.html" class="catalog-link"><div class="catalog-card animate">
+      <a href="gazebo/kr-011.html" class="catalog-link" data-model-view="kr-011" data-model-source="catalog_main"><div class="catalog-card animate">
         <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит · от 14 дней</span><img src="images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-011</div>
@@ -3019,11 +3873,11 @@ a.catalog-link {
       </div>
       <div class="objection-card">
         <div class="objection-q">Не знаю, какую выбрать</div>
-        <p class="objection-a">Делаем бесплатный замер и 3D-эскиз. Вы увидите беседку на своём участке до принятия решения. Никаких обязательств.</p>
+        <p class="objection-a">Выезжаем на замер и готовим 3D-эскиз. Вы увидите беседку на своём участке до принятия решения. Никаких обязательств.</p>
       </div>
       <div class="objection-card">
         <div class="objection-q">А вдруг не впишется в участок?</div>
-        <p class="objection-a">Именно для этого бесплатно приезжаем на замер. Плюс делаем беседки под любые нестандартные размеры — подгоним под ваш ландшафт.</p>
+        <p class="objection-a">Именно для этого приезжаем на замер — час вашего времени, точные размеры на месте. Плюс делаем беседки под любые нестандартные размеры — подгоним под ваш ландшафт.</p>
       </div>
       <div class="objection-card">
         <div class="objection-q">Долго ждать</div>
@@ -3043,7 +3897,7 @@ a.catalog-link {
       </div>
       <div class="objection-card">
         <div class="objection-q">Хочу необычное, а не типовое</div>
-        <p class="objection-a">Разрабатываем беседки по индивидуальным проектам. Всё начинается с бесплатного эскиза — расскажите, что хотите.</p>
+        <p class="objection-a">Разрабатываем беседки по индивидуальным проектам. Всё начинается с 3D-эскиза — расскажите, что хотите.</p>
       </div>
       <div class="objection-card">
         <div class="objection-q">Боюсь, что обманут</div>
@@ -3130,6 +3984,160 @@ a.catalog-link {
   </div>
 </section>
 
+<!-- ===== LEAD MODALS (БЛОК 1, ТЗ v2) ===== -->
+<!-- Форма 1: 3D-проект -->
+<div class="lead-overlay" id="leadModal-3d" role="dialog" aria-modal="true" aria-labelledby="leadTitle-3d">
+  <div class="lead-modal">
+    <button class="lead-modal__close" type="button" onclick="closeLeadModal('3d')" aria-label="Закрыть">×</button>
+    <h3 class="lead-modal__title" id="leadTitle-3d">3D-проект вашей беседки на вашем участке</h3>
+    <p class="lead-modal__subtitle">Пришлите фото — покажем, как беседка будет смотреться именно у вас. Срок — 24 часа.</p>
+    <form class="lead-form" id="leadForm-3d" novalidate>
+      <div class="lead-field">
+        <label class="lead-field__label" for="lead3d-name">Ваше имя *</label>
+        <input type="text" class="lead-field__input" id="lead3d-name" name="name" required>
+        <span class="lead-field__error">Укажите имя</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="lead3d-phone">Телефон *</label>
+        <input type="tel" class="lead-field__input" id="lead3d-phone" name="phone" placeholder="+375 (__) ___-__-__" required autocomplete="tel">
+        <span class="lead-field__error">Укажите телефон в формате +375 XX XXX-XX-XX</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="lead3d-model">Модель беседки</label>
+        <select class="lead-field__select" id="lead3d-model" name="model">
+          <option value="">Не определился — помогите выбрать</option>
+          <option value="КР-001">КР-001 «Резиденция»</option>
+          <option value="КР-002">КР-002 «Эстетъ»</option>
+          <option value="КР-003">КР-003 «Патриархъ»</option>
+          <option value="КР-004">КР-004 «Привилегия»</option>
+          <option value="КР-005">КР-005 «Встреча»</option>
+          <option value="КР-006">КР-006 «Шатёръ»</option>
+          <option value="КР-007">КР-007 «Бельведеръ»</option>
+          <option value="КР-008">КР-008 «Дворъ»</option>
+          <option value="КР-009">КР-009 «Павильонъ»</option>
+          <option value="КР-010">КР-010 «Приютъ»</option>
+          <option value="КР-011">КР-011 «Тишина»</option>
+        </select>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label">Фото участка (до 5 шт, до 10 МБ каждое)</label>
+        <div class="lead-field--file">
+          <span id="lead3d-file-label">Перетащите фото сюда или нажмите для выбора</span>
+          <span class="lead-field--file__hint">JPG, PNG, HEIC</span>
+          <input type="file" id="lead3d-photos" name="photos" accept="image/jpeg,image/png,image/heic,.heic" multiple>
+        </div>
+        <div class="lead-field--file__list" id="lead3d-file-list"></div>
+        <span class="lead-field__error">Максимум 5 файлов, до 10 МБ каждый</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="lead3d-comment">Комментарий</label>
+        <textarea class="lead-field__textarea" id="lead3d-comment" name="comment" rows="3" placeholder="Размеры участка, пожелания, сроки"></textarea>
+      </div>
+      <label class="lead-consent">
+        <input type="checkbox" id="lead3d-consent" required checked>
+        <span>Нажимая «Отправить заявку», вы соглашаетесь с <a href="/politika-konfidentsialnosti.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</span>
+      </label>
+      <button type="submit" class="lead-submit">Отправить заявку</button>
+      <p class="lead-modal__footnote">Архитектор перезвонит в течение 2 часов в рабочее время.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Форма 2: Экскурсия -->
+<div class="lead-overlay" id="leadModal-excursion" role="dialog" aria-modal="true" aria-labelledby="leadTitle-excursion">
+  <div class="lead-modal">
+    <button class="lead-modal__close" type="button" onclick="closeLeadModal('excursion')" aria-label="Закрыть">×</button>
+    <h3 class="lead-modal__title" id="leadTitle-excursion">Приезжайте на наше производство</h3>
+    <p class="lead-modal__subtitle">Посмотрите цех, материалы, технологические этапы. Видеть, как делается беседка — лучший способ понять качество. Визит по предварительной записи.</p>
+    <form class="lead-form" id="leadForm-excursion" novalidate>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadEx-name">Ваше имя *</label>
+        <input type="text" class="lead-field__input" id="leadEx-name" name="name" required>
+        <span class="lead-field__error">Укажите имя</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadEx-phone">Телефон *</label>
+        <input type="tel" class="lead-field__input" id="leadEx-phone" name="phone" placeholder="+375 (__) ___-__-__" required autocomplete="tel">
+        <span class="lead-field__error">Укажите телефон</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadEx-city">Откуда планируете ехать</label>
+        <input type="text" class="lead-field__input" id="leadEx-city" name="city" placeholder="Город или район">
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadEx-time">Удобное время визита</label>
+        <select class="lead-field__select" id="leadEx-time" name="time">
+          <option value="weekday-morning">Будни до 14:00</option>
+          <option value="weekday-afternoon">Будни после 14:00</option>
+          <option value="saturday">Суббота</option>
+          <option value="custom">Согласовать индивидуально</option>
+        </select>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label">Количество гостей</label>
+        <div class="lead-number-group" role="radiogroup" aria-label="Количество гостей">
+          <label><input type="radio" name="guests" value="1" checked><span>1</span></label>
+          <label><input type="radio" name="guests" value="2"><span>2</span></label>
+          <label><input type="radio" name="guests" value="3"><span>3</span></label>
+          <label><input type="radio" name="guests" value="4+"><span>4+</span></label>
+        </div>
+      </div>
+      <label class="lead-consent">
+        <input type="checkbox" id="leadEx-consent" required checked>
+        <span>Нажимая «Согласовать дату», вы соглашаетесь с <a href="/politika-konfidentsialnosti.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</span>
+      </label>
+      <button type="submit" class="lead-submit">Согласовать дату визита</button>
+      <p class="lead-modal__footnote">Менеджер свяжется в течение рабочего дня.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Форма 3: Замер -->
+<div class="lead-overlay" id="leadModal-zamer" role="dialog" aria-modal="true" aria-labelledby="leadTitle-zamer">
+  <div class="lead-modal">
+    <button class="lead-modal__close" type="button" onclick="closeLeadModal('zamer')" aria-label="Закрыть">×</button>
+    <h3 class="lead-modal__title" id="leadTitle-zamer">Замер участка под беседку</h3>
+    <p class="lead-modal__subtitle">Час вашего времени — точные размеры, привязка к участку, смета на месте. Выезд по Минску и Минской области.</p>
+    <form class="lead-form" id="leadForm-zamer" novalidate>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadZ-name">Ваше имя *</label>
+        <input type="text" class="lead-field__input" id="leadZ-name" name="name" required>
+        <span class="lead-field__error">Укажите имя</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadZ-phone">Телефон *</label>
+        <input type="tel" class="lead-field__input" id="leadZ-phone" name="phone" placeholder="+375 (__) ___-__-__" required autocomplete="tel">
+        <span class="lead-field__error">Укажите телефон</span>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadZ-address">Адрес участка</label>
+        <input type="text" class="lead-field__input" id="leadZ-address" name="address" placeholder="Населённый пункт, улица, ориентир" autocomplete="street-address">
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label" for="leadZ-when">Когда удобно принять замерщика</label>
+        <select class="lead-field__select" id="leadZ-when" name="when">
+          <option value="3-days">В ближайшие 3 дня</option>
+          <option value="next-week">На следующей неделе</option>
+          <option value="later">Не срочно</option>
+        </select>
+      </div>
+      <div class="lead-field">
+        <label class="lead-field__label">Есть ли готовый проект беседки?</label>
+        <div class="lead-radio-group" role="radiogroup">
+          <label><input type="radio" name="has_project" value="yes"><span>Да, готовый проект</span></label>
+          <label><input type="radio" name="has_project" value="no" checked><span>Нет, нужен подбор</span></label>
+        </div>
+      </div>
+      <label class="lead-consent">
+        <input type="checkbox" id="leadZ-consent" required checked>
+        <span>Нажимая «Согласовать выезд», вы соглашаетесь с <a href="/politika-konfidentsialnosti.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</span>
+      </label>
+      <button type="submit" class="lead-submit">Согласовать выезд</button>
+      <p class="lead-modal__footnote">Замерщик перезвонит в течение 24 часов.</p>
+    </form>
+  </div>
+</div>
+
 <!-- ===== CONTRACT MODAL ===== -->
 <div class="modal-overlay" id="contractModal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="contractModalTitle">
   <div class="modal">
@@ -3149,43 +4157,66 @@ a.catalog-link {
       <div class="subtitle">Портфолио</div>
       <h2 class="heading-lg" style="margin-top:12px;">Наши беседки на реальных участках</h2>
     </div>
-    <div class="gallery-grid">
-      <!-- Реализованные проекты -->
-      <div class="gallery-item"><img src="images/portfolio-01.jpg" alt="Беседка КРОНОВЪ в саду" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-02.jpg" alt="Беседка КРОНОВЪ — классика" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-03.jpg" alt="Беседка КРОНОВЪ — современный стиль" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-04.jpg" alt="Беседка КРОНОВЪ — премиум" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-05.jpg" alt="Беседка КРОНОВЪ — открытая" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-06.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-07.jpg" alt="Беседка КРОНОВЪ — в природе" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-08.jpg" alt="Беседка КРОНОВЪ — деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-09.jpg" alt="Беседка КРОНОВЪ — вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-10.jpg" alt="Беседка КРОНОВЪ — современная чёрная, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-11.jpg" alt="Беседка КРОНОВЪ — прямоугольная с решёткой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-12.jpg" alt="Беседка КРОНОВЪ — белая с решётчатыми стенами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-13.jpg" alt="Беседка КРОНОВЪ — классическая деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-14.jpg" alt="Беседка КРОНОВЪ — с верандой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-16.jpg" alt="Беседка КРОНОВЪ — с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-17.jpg" alt="Беседка КРОНОВЪ — премиум, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-18.jpg" alt="Беседка КРОНОВЪ — у дома, вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-19.jpg" alt="Беседка КРОНОВЪ — комплекс с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-20.jpg" alt="Беседка КРОНОВЪ — открытая с колоннами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-21.jpg" alt="Беседка КРОНОВЪ — современный минимализм" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-22.jpg" alt="Беседка КРОНОВЪ — скандинавский стиль" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-23.jpg" alt="Беседка КРОНОВЪ — с террасой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-24.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-001-stone.jpg" alt="Резиденция на каменной площадке" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-004-golden.jpg" alt="Привилегия в золотом свете" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-007-peonies.jpg" alt="Бельведеръ в саду с пионами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-008-lanterns.jpg" alt="Дворъ — вечерние фонари" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-010-night.jpg" alt="Приютъ — ночная подсветка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/kr-011-house.jpg" alt="Классика у дома" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-25.jpg" alt="Беседка КРОНОВЪ — на реальном участке" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-26.jpg" alt="Беседка КРОНОВЪ — с зоной отдыха" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — среди гортензий" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-28.jpg" alt="Беседка КРОНОВЪ — в ландшафте" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — светлое дерево, решётчатые стены" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — у пруда в лесу" style="width:100%;height:100%;object-fit:cover;"></div>
+
+    <!-- Фильтр по моделям (Задача 6.2) -->
+    <div class="gallery-filters" role="tablist" aria-label="Фильтр галереи по моделям">
+      <button type="button" class="gallery-filter-pill is-active" data-filter="all" role="tab" aria-selected="true">Все</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-001" role="tab">КР-001</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-002" role="tab">КР-002</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-003" role="tab">КР-003</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-004" role="tab">КР-004</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-005" role="tab">КР-005</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-006" role="tab">КР-006</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-007" role="tab">КР-007</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-008" role="tab">КР-008</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-009" role="tab">КР-009</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-010" role="tab">КР-010</button>
+      <button type="button" class="gallery-filter-pill" data-filter="kr-011" role="tab">КР-011</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Реализованные проекты (data-model + data-region + data-year + data-note) -->
+      <div class="gallery-item" data-model="kr-001" data-region="Минский район" data-year="2024" data-note="Установлена как подарок к 30-летию совместной жизни"><img src="images/kr-001-stone.jpg" alt="КР-001 «Резиденция» на каменной площадке" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-004" data-region="Могилёвская область" data-year="2024" data-note="Установлена к свадьбе дочери на 70 гостей"><img src="images/kr-004-golden.jpg" alt="КР-004 «Привилегия» в золотом свете" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-007" data-region="Минский район" data-year="2023" data-note="В саду с пионами — заказ ландшафтного дизайнера"><img src="images/kr-007-peonies.jpg" alt="КР-007 «Бельведеръ» в саду с пионами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-008" data-region="Гомельская область" data-year="2024" data-note="Беседка-переговорная с мангальной зоной"><img src="images/kr-008-lanterns.jpg" alt="КР-008 «Дворъ» — вечерние фонари" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-010" data-region="Брестская область" data-year="2024" data-note="Компактная беседка с вертикальными ширмами"><img src="images/kr-010-night.jpg" alt="КР-010 «Приютъ» — ночная подсветка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-011" data-region="Минская область" data-year="2024" data-note="Японский характер, тёмный каркас у дома"><img src="images/kr-011-house.jpg" alt="КР-011 «Тишина» — классика у дома" style="width:100%;height:100%;object-fit:cover;"></div>
+
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-01.jpg" alt="Беседка КРОНОВЪ в саду" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-02.jpg" alt="Беседка КРОНОВЪ — классика" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-03.jpg" alt="Беседка КРОНОВЪ — современный стиль" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-04.jpg" alt="Беседка КРОНОВЪ — премиум" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Могилёвская область" data-year="2023"><img src="images/portfolio-05.jpg" alt="Беседка КРОНОВЪ — открытая" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-06.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img src="images/portfolio-07.jpg" alt="Беседка КРОНОВЪ — в природе" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img src="images/portfolio-08.jpg" alt="Беседка КРОНОВЪ — деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-09.jpg" alt="Беседка КРОНОВЪ — вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img src="images/portfolio-10.jpg" alt="Беседка КРОНОВЪ — современная чёрная, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-11.jpg" alt="Беседка КРОНОВЪ — прямоугольная с решёткой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-12.jpg" alt="Беседка КРОНОВЪ — белая с решётчатыми стенами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-13.jpg" alt="Беседка КРОНОВЪ — классическая деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-14.jpg" alt="Беседка КРОНОВЪ — с верандой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-16.jpg" alt="Беседка КРОНОВЪ — с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img src="images/portfolio-17.jpg" alt="Беседка КРОНОВЪ — премиум, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2023"><img src="images/portfolio-18.jpg" alt="Беседка КРОНОВЪ — у дома, вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-19.jpg" alt="Беседка КРОНОВЪ — комплекс с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2023"><img src="images/portfolio-20.jpg" alt="Беседка КРОНОВЪ — открытая с колоннами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img src="images/portfolio-21.jpg" alt="Беседка КРОНОВЪ — современный минимализм" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-22.jpg" alt="Беседка КРОНОВЪ — скандинавский стиль" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img src="images/portfolio-23.jpg" alt="Беседка КРОНОВЪ — с террасой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img src="images/portfolio-24.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-25.jpg" alt="Беседка КРОНОВЪ — на реальном участке" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-26.jpg" alt="Беседка КРОНОВЪ — с зоной отдыха" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — среди гортензий" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img src="images/portfolio-28.jpg" alt="Беседка КРОНОВЪ — в ландшафте" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — светлое дерево, решётчатые стены" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — у пруда в лесу" style="width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+
+    <div class="gallery-controls">
+      <button type="button" class="btn-secondary" id="galleryShowMore">Показать ещё 12 фото</button>
+      <p class="gallery-end" id="galleryEnd" style="display:none;">Вы посмотрели всё портфолио. <button type="button" class="btn-primary" style="margin-left:12px;" onclick="openLeadModal('3d')">Заказать 3D-проект</button></p>
     </div>
   </div>
 </section>
@@ -3254,7 +4285,7 @@ a.catalog-link {
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Делаете ли вы беседки под индивидуальный размер?</button>
-        <div class="faq-a"><p>Да. Разрабатываем проект под ваши размеры и пожелания. Начинаем с бесплатного 3D-эскиза — вы увидите результат до начала работ.</p></div>
+        <div class="faq-a"><p>Да. Разрабатываем проект под ваши размеры и пожелания. Начинаем с 3D-эскиза — вы увидите результат до начала работ.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Какие гарантии качества?</button>
@@ -3347,7 +4378,7 @@ a.catalog-link {
     <div class="cta-grid">
       <div class="cta-left">
         <div class="subtitle" style="color:var(--c-bronze);margin-bottom:16px;">Начните прямо сейчас</div>
-        <h2>Получите бесплатный 3D-проект вашей беседки</h2>
+        <h2>Закажите 3D-проект вашей беседки</h2>
         <p>Оставьте номер — Алёна перезвонит через 60 секунд и ответит на все вопросы. Никаких обязательств.</p>
         <div class="cta-stats">
           <div><div class="cta-stat-num">11</div><div class="cta-stat-label">моделей беседок</div></div>
@@ -3366,7 +4397,7 @@ a.catalog-link {
           <option>Вечер (17:00–20:00)</option>
         </select>
         <button class="form-submit" onclick="submitForm('cta')">Хочу беседку</button>
-        <p class="form-note">Никакого спама. Только один звонок — договоримся о бесплатном замере.</p>
+        <p class="form-note">Никакого спама. Только один звонок — договоримся о замере.</p>
       </div>
     </div>
   </div>
@@ -3393,27 +4424,36 @@ a.catalog-link {
       </div>
       <div>
         <h5>Компания</h5>
-        <a href="#why">О производстве</a>
+        <a href="https://about.kronov.by">О нас</a>
         <a href="#process">Как работаем</a>
+        <a href="ekskursiya.html">Экскурсия на производство</a>
+        <a href="for-designers.html">Для дизайнеров</a>
         <a href="#gallery">Портфолио</a>
-        <a href="#reviews">Отзывы</a>
         <a href="#faq">Вопросы</a>
       </div>
       <div>
-        <h5>Контакты</h5>
-        <a href="tel:+375296888629">+375 (29) 688-86-29</a>
+        <h5>Производство</h5>
+        <a href="ekskursiya.html" style="color:var(--c-sand)">Сборочный цех и шоурум</a>
+        <p style="font-size:12px;opacity:.7;margin:2px 0 8px">Смолевичский р-н, Минская обл.</p>
+        <a href="ekskursiya.html" style="color:var(--c-sand)">Пилорама</a>
+        <p style="font-size:12px;opacity:.7;margin:2px 0 12px">Чаусский р-н, Могилёвская обл.</p>
+        <a href="tel:+375296888629" style="color:var(--c-bronze);font-weight:600">+375 (29) 688-86-29</a>
         <a href="https://wa.me/375296888629">WhatsApp</a>
-        <a href="#">Instagram</a>
-        <a href="#">YouTube</a>
       </div>
     </div>
     <div style="text-align:center;margin:32px 0 0;padding-top:24px;border-top:1px solid rgba(212,184,150,.06);">
       <img src="images/qr-code.png" alt="QR-код сайта КРОНОВЪ" style="width:120px;height:120px;margin:0 auto 8px;border-radius:8px;">
       <p style="font-size:12px;color:var(--c-sand);opacity:.4;">Наведите камеру — откройте сайт</p>
     </div>
-    <div class="footer-bottom">
-      <span>КРОНОВЪ · kronov.by · Республика Беларусь · 2026</span>
-      <a href="#" style="opacity:.3;">Политика конфиденциальности</a>
+    <div class="footer-bottom" style="flex-direction:column;gap:8px;text-align:center">
+      <span style="font-size:12.5px;opacity:.7">© 2013–2026 ООО «Кверкус» · УНП [9 цифр — уточняется]<br>КРОНОВЪ™ — торговая марка. Юридический адрес и полные реквизиты — в&nbsp;<a href="https://about.kronov.by#contacts" style="color:var(--c-bronze);opacity:1">разделе «О&nbsp;нас»</a>.</span>
+      <span style="font-size:12px;opacity:.5">
+        <a href="politika-konfidentsialnosti.html" style="opacity:.8;">Политика конфиденциальности</a>
+        <span style="margin:0 8px">·</span>
+        <a href="https://about.kronov.by" style="opacity:.8;">О компании</a>
+        <span style="margin:0 8px">·</span>
+        <a href="ekskursiya.html" style="opacity:.8;">Экскурсия</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -3550,7 +4590,7 @@ a.catalog-link {
   <div class="popup">
     <button class="popup-close" onclick="closePopup()">&times;</button>
     <h3>Подождите!</h3>
-    <p>Получите каталог беседок и 3D-примеры бесплатно — просто оставьте номер</p>
+    <p>Получите каталог беседок и 3D-примеры — просто оставьте номер</p>
     <input type="tel" class="form-input" placeholder="+375 (__) ___-__-__" name="phone" autocomplete="tel">
     <button class="form-submit" onclick="submitForm('popup');closePopup();">Получить каталог</button>
   </div>
@@ -3746,6 +4786,264 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') { closeContractModal(); closeQuizPopup(); }
 });
 
+/* ===== LEAD MODAL SYSTEM (БЛОК 1, ТЗ v2) =====
+   Три формы: 3D-проект, экскурсия, замер.
+   Каждая отправляет в /api/submit.php с source, редирект на свою thank-you. */
+const LEAD_MODAL_CONFIG = {
+  '3d':        { title: '3D-проект',    thankyou: 'thank-you-3d.html',        submitLabel: 'Отправить заявку',       submittingLabel: 'Отправляем…' },
+  'excursion': { title: 'Экскурсия',    thankyou: 'thank-you-excursion.html', submitLabel: 'Согласовать дату визита', submittingLabel: 'Отправляем…' },
+  'zamer':     { title: 'Замер',        thankyou: 'thank-you-zamer.html',     submitLabel: 'Согласовать выезд',      submittingLabel: 'Отправляем…' }
+};
+function openLeadModal(type) {
+  const overlay = document.getElementById('leadModal-' + type);
+  if (!overlay) return;
+  overlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  // Focus first input
+  const firstInput = overlay.querySelector('input[type="text"], input[type="tel"]');
+  if (firstInput) setTimeout(() => firstInput.focus(), 60);
+  // GA4 event: open
+  if (window.gtag) gtag('event', 'cta_click', { cta_location: 'hero', form_type: type });
+}
+function closeLeadModal(type) {
+  const overlay = document.getElementById('leadModal-' + type);
+  if (!overlay) return;
+  overlay.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+function closeAllLeadModals() {
+  document.querySelectorAll('.lead-overlay.is-open').forEach(el => el.classList.remove('is-open'));
+  document.body.style.overflow = '';
+}
+// Click на фон — закрыть
+document.addEventListener('click', function(e){
+  if (e.target.classList && e.target.classList.contains('lead-overlay')) {
+    e.target.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+});
+// ESC — закрыть
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeAllLeadModals();
+});
+
+// Валидация и отправка
+function validateLeadField(field, condition) {
+  if (!condition) field.classList.add('has-error');
+  else field.classList.remove('has-error');
+  return condition;
+}
+function collectLeadFormData(type) {
+  const form = document.getElementById('leadForm-' + type);
+  if (!form) return null;
+  const data = { source: type };
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+    if (el.type === 'file' || el.type === 'checkbox') return;
+    if (el.type === 'radio') {
+      if (el.checked) data[el.name] = el.value;
+      return;
+    }
+    if (el.name) data[el.name] = el.value.trim();
+  });
+  return data;
+}
+function submitLeadForm(type, event) {
+  event.preventDefault();
+  const form = document.getElementById('leadForm-' + type);
+  if (!form) return false;
+
+  // Validate required fields
+  let valid = true;
+  form.querySelectorAll('.lead-field').forEach(field => {
+    const req = field.querySelector('[required]');
+    if (!req) return;
+    const val = (req.value || '').trim();
+    if (req.type === 'tel') {
+      const digits = val.replace(/\D/g,'');
+      valid = validateLeadField(field, digits.length >= 9) && valid;
+    } else {
+      valid = validateLeadField(field, val.length > 0) && valid;
+    }
+  });
+  // File validation for 3d
+  if (type === '3d') {
+    const fileInput = document.getElementById('lead3d-photos');
+    if (fileInput && fileInput.files.length) {
+      const fileField = fileInput.closest('.lead-field');
+      const okCount = fileInput.files.length <= 5;
+      const okSize = Array.from(fileInput.files).every(f => f.size <= 10 * 1024 * 1024);
+      valid = validateLeadField(fileField, okCount && okSize) && valid;
+    }
+  }
+  if (!valid) return false;
+
+  const cfg = LEAD_MODAL_CONFIG[type] || {};
+  const data = collectLeadFormData(type);
+  data.page = location.pathname + location.search;
+  if (type === '3d') {
+    const fileInput = document.getElementById('lead3d-photos');
+    if (fileInput && fileInput.files.length) {
+      data.photos_count = fileInput.files.length;
+      data.photos_names = Array.from(fileInput.files).map(f => f.name).join(', ');
+    }
+  }
+
+  const btn = form.querySelector('.lead-submit');
+  if (btn) { btn.disabled = true; btn.textContent = cfg.submittingLabel || 'Отправляем…'; }
+
+  // GA4: form_submit
+  if (window.gtag) gtag('event', 'form_submit', { form_type: type });
+
+  // Отправка на единый endpoint (legacy /api/submit.php; source различает тип)
+  fetch('/api/submit.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data),
+    keepalive: true
+  })
+    .catch(e => console.error('Lead submit error:', e))
+    .finally(() => {
+      window.location.href = cfg.thankyou || 'thank-you.html';
+    });
+  return false;
+}
+// Bind submit
+['3d','excursion','zamer'].forEach(type => {
+  const form = document.getElementById('leadForm-' + type);
+  if (form) form.addEventListener('submit', e => submitLeadForm(type, e));
+});
+// Показывать список выбранных фото + маска телефона
+(function(){
+  const fileInput = document.getElementById('lead3d-photos');
+  const fileLabel = document.getElementById('lead3d-file-label');
+  const fileList = document.getElementById('lead3d-file-list');
+  if (fileInput) {
+    fileInput.addEventListener('change', function(){
+      if (!this.files.length) { if (fileLabel) fileLabel.textContent = 'Перетащите фото сюда или нажмите для выбора'; if (fileList) fileList.textContent = ''; return; }
+      if (fileLabel) fileLabel.textContent = 'Выбрано файлов: ' + this.files.length;
+      if (fileList) fileList.textContent = Array.from(this.files).map(f => f.name).join(', ');
+    });
+  }
+  // Phone mask (базовая — +375 XX XXX-XX-XX)
+  function maskPhone(el) {
+    el.addEventListener('input', function(){
+      let d = this.value.replace(/\D/g,'');
+      if (d.startsWith('375')) d = d.slice(3);
+      if (d.startsWith('8')) d = d.slice(1);
+      d = d.slice(0, 9);
+      let out = '+375';
+      if (d.length > 0) out += ' (' + d.slice(0,2);
+      if (d.length >= 2) out += ') ' + d.slice(2,5);
+      if (d.length >= 5) out += '-' + d.slice(5,7);
+      if (d.length >= 7) out += '-' + d.slice(7,9);
+      this.value = out;
+    });
+    el.addEventListener('focus', function(){ if (!this.value) this.value = '+375 '; });
+  }
+  document.querySelectorAll('#leadForm-3d input[type="tel"], #leadForm-excursion input[type="tel"], #leadForm-zamer input[type="tel"]').forEach(maskPhone);
+})();
+
+/* ===== GALLERY FILTER + SHOW MORE (БЛОК 6, ТЗ v2) ===== */
+(function(){
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+  const items = Array.from(grid.querySelectorAll('.gallery-item'));
+  const filters = document.querySelectorAll('.gallery-filter-pill');
+  const showMoreBtn = document.getElementById('galleryShowMore');
+  const endMsg = document.getElementById('galleryEnd');
+  const PAGE = 12;
+  let currentFilter = 'all';
+  let visibleCount = PAGE;
+
+  // Модельные названия
+  const modelNames = {
+    'kr-001': 'КР-001 «Резиденция»',
+    'kr-002': 'КР-002 «Эстетъ»',
+    'kr-003': 'КР-003 «Патриархъ»',
+    'kr-004': 'КР-004 «Привилегия»',
+    'kr-005': 'КР-005 «Встреча»',
+    'kr-006': 'КР-006 «Шатёръ»',
+    'kr-007': 'КР-007 «Бельведеръ»',
+    'kr-008': 'КР-008 «Дворъ»',
+    'kr-009': 'КР-009 «Павильонъ»',
+    'kr-010': 'КР-010 «Приютъ»',
+    'kr-011': 'КР-011 «Тишина»',
+    'mixed':  'КРОНОВЪ'
+  };
+
+  // Наложение i-бейджа и поповера для фото с data-model != mixed
+  items.forEach(item => {
+    const model = item.getAttribute('data-model');
+    const region = item.getAttribute('data-region') || '';
+    const year = item.getAttribute('data-year') || '';
+    const note = item.getAttribute('data-note') || '';
+    if (model && model !== 'mixed') {
+      const badge = document.createElement('span');
+      badge.className = 'gallery-info-badge';
+      badge.setAttribute('aria-hidden', 'true');
+      badge.textContent = 'i';
+      item.appendChild(badge);
+    }
+    if (model || region || year || note) {
+      const pop = document.createElement('div');
+      pop.className = 'gallery-info-popover';
+      const parts = [];
+      parts.push('<span class="gallery-info-popover__model">' + (modelNames[model] || 'КРОНОВЪ') + '</span>');
+      const meta = [region, year].filter(Boolean).join(' · ');
+      if (meta) parts.push('<span class="gallery-info-popover__meta">' + meta + '</span>');
+      if (note) parts.push('<span class="gallery-info-popover__meta" style="margin-top:4px;">' + note + '</span>');
+      pop.innerHTML = parts.join('');
+      item.appendChild(pop);
+    }
+    // Mobile: тап включает .show-info
+    item.addEventListener('click', function(e){
+      if (window.innerWidth <= 768) {
+        if (!this.classList.contains('show-info')) {
+          document.querySelectorAll('.gallery-item.show-info').forEach(el => el.classList.remove('show-info'));
+          this.classList.add('show-info');
+          e.stopPropagation();
+        }
+      }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.gallery-item.show-info').forEach(el => el.classList.remove('show-info'));
+  });
+
+  function applyFilter() {
+    const matching = items.filter(it => currentFilter === 'all' || (it.getAttribute('data-model') || '') === currentFilter);
+    // Скрываем все
+    items.forEach(it => { it.hidden = true; it.classList.remove('is-hidden-overflow'); });
+    // Показываем подходящие до visibleCount
+    matching.slice(0, visibleCount).forEach(it => { it.hidden = false; });
+    matching.slice(visibleCount).forEach(it => { it.hidden = false; it.classList.add('is-hidden-overflow'); });
+    // Кнопка
+    const hasMore = matching.length > visibleCount;
+    if (showMoreBtn) showMoreBtn.style.display = hasMore ? '' : 'none';
+    if (endMsg) endMsg.style.display = hasMore ? 'none' : (matching.length > PAGE ? '' : 'none');
+    // GA4
+    if (window.gtag && currentFilter !== 'all') gtag('event', 'gallery_filter_change', { filter: currentFilter });
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', function(){
+      filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected','false'); });
+      this.classList.add('is-active');
+      this.setAttribute('aria-selected','true');
+      currentFilter = this.getAttribute('data-filter');
+      visibleCount = PAGE;
+      applyFilter();
+    });
+  });
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', function(){
+      visibleCount += PAGE;
+      applyFilter();
+    });
+  }
+  applyFilter();
+})();
+
 /* ===== MULTI-BUTTON ===== */
 function toggleMultiBtn() {
   const mb = document.getElementById('multiBtn');
@@ -3930,5 +5228,18 @@ document.querySelectorAll('input[type="tel"]').forEach(input => {
 <!-- КРОНОВЪ AI-чат (Андрей). Адрес backend-а замени при деплое на agent.kronov.by -->
 <!-- AI-агент (подключить при деплое): <script src="https://agent.kronov.by/widget.js" data-api="https://agent.kronov.by" defer></script> -->
 
+<!-- ===== COOKIE BANNER (Задача 12.2 ТЗ v2) ===== -->
+<div id="cookieBanner" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:9998;background:rgba(30,20,16,.96);backdrop-filter:blur(10px);color:var(--c-cream);padding:16px 20px;border-radius:10px;border:1px solid rgba(184,150,90,.25);box-shadow:0 12px 40px rgba(0,0,0,.4);max-width:760px;margin-left:auto;margin-right:auto;font-size:13.5px;line-height:1.55;display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+  <span style="flex:1;min-width:240px">Мы используем cookies для улучшения работы сайта. Продолжая использование, вы соглашаетесь с <a href="politika-konfidentsialnosti.html" style="color:var(--c-bronze);text-decoration:underline">политикой</a>.</span>
+  <button type="button" onclick="kronovAcceptCookies()" style="padding:10px 22px;background:var(--c-bordo);color:var(--c-cream);border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px">Принять</button>
+</div>
+<script>
+(function(){
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  try { if (!localStorage.getItem('kronov_cookies_ok')) banner.style.display = 'flex'; } catch(e) {}
+  window.kronovAcceptCookies = function(){ try { localStorage.setItem('kronov_cookies_ok','1'); } catch(e) {} banner.style.display = 'none'; };
+})();
+</script>
 </body>
 </html>
