@@ -382,24 +382,31 @@ input { font-family:inherit; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 1700px;   /* ограничитель на очень широких мониторах */
+  max-width: 1640px;
   width: 100%;
-  margin: 0 auto;       /* центрируем всю рамку hero */
-  padding: 60px clamp(24px, 3.5vw, 56px);
+  margin: 0 auto;
+  padding: 60px clamp(24px, 3vw, 48px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 440px;
-  gap: clamp(40px, 5vw, 100px);
+  grid-template-columns: minmax(420px, 1fr) 440px;
+  gap: clamp(40px, 5vw, 90px);
   align-items: center;
 }
 .hero-left {
-  max-width: 720px;
-  margin-left: auto;  /* сдвигаем текст к центру страницы */
-  padding-right: 0;
+  /* занимает всю свою колонку; без margin-left:auto (оно ломало grid-track) */
 }
 .hero-form-card {
-  justify-self: end;   /* прижато к правому краю */
+  justify-self: end;
   width: 100%;
   max-width: 440px;
+}
+
+/* На узких ноутбуках / окнах ~1000-1200px колонки ужимаются адекватно */
+@media (max-width: 1100px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 40px;
+  }
+  .hero-form-card { max-width: 400px; }
 }
 .hero-badge {
   display: inline-block;
