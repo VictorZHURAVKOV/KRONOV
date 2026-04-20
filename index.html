@@ -382,16 +382,18 @@ input { font-family:inherit; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 1200px;     /* центральный блок страницы */
+  max-width: 1200px;
   width: 100%;
-  margin: 0 auto;         /* центрируем всю композицию */
+  margin: 0 auto;
   padding: 60px clamp(20px, 3vw, 40px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: clamp(32px, 4vw, 60px);
+  /* Текстовая колонка имеет МИНИМУМ 440px чтобы заголовок никогда
+     не ломался посимвольно. Если места мало — единый стек. */
+  grid-template-columns: minmax(440px, 1fr) minmax(280px, 400px);
+  gap: clamp(28px, 3vw, 48px);
   align-items: center;
 }
-.hero-left { /* занимает 1fr — заголовок рядом с центром страницы */ }
+.hero-left {}
 .hero-form-card {
   justify-self: stretch;
   width: 100%;
@@ -399,9 +401,18 @@ input { font-family:inherit; }
   margin: 0;
 }
 
-/* Мобильный — стек: сначала текст, ниже форма */
-@media (max-width: 900px) {
-  .hero-content { grid-template-columns: 1fr; gap: 32px; }
+/* Если место для двух колонок не влезает — собираем в единую колонку.
+   1200px breakpoint: ниже этого ширины текстовая колонка + форма
+   физически не умещаются бок о бок, стекаем. */
+@media (max-width: 1200px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 60px 28px;
+  }
+  .hero-form-card { max-width: 520px; justify-self: start; }
+}
+@media (max-width: 600px) {
   .hero-form-card { max-width: 100%; }
 }
 .hero-badge {
