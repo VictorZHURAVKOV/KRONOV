@@ -58,6 +58,9 @@ button{cursor:pointer;border:none;font-family:inherit}
 .maf-card__price{font-size:14px;color:var(--c-bordo);font-weight:600}
 .maf-card__cta{padding:10px 16px;background:var(--c-cream);color:var(--c-dark);border:1px solid var(--c-bronze);font-size:12px;font-weight:600;border-radius:4px;letter-spacing:.3px;transition:all .2s;cursor:pointer}
 .maf-card__cta:hover{background:var(--c-bordo);color:var(--c-cream);border-color:var(--c-bordo)}
+.maf-card__extra-photos{display:flex;gap:6px;margin-top:6px}
+.maf-card__extra-photos img{width:60px;height:48px;object-fit:cover;border-radius:4px;border:1px solid rgba(139,96,64,.2);cursor:zoom-in;transition:transform .2s}
+.maf-card__extra-photos img:hover{transform:scale(1.04);border-color:var(--c-bronze)}
 
 /* Ensemble */
 .ensemble-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -135,34 +138,26 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="maf-card__body">
           <span class="maf-card__article">КЛ-002</span>
           <h3 class="maf-card__title">«Источник»</h3>
-          <p class="maf-card__desc">Компактный колодец «домик»: высокая двускатная крыша, резные кронштейны-тетерева и&nbsp;фигурная доска на&nbsp;фронтоне. Сруб из&nbsp;клееного блок-хауса, полный обжиг и&nbsp;масло &mdash; смотрится как изделие из&nbsp;массива. Идеален в&nbsp;сад с&nbsp;хвойными и&nbsp;каменными дорожками.</p>
+          <p class="maf-card__desc">Компактный колодец «домик»: высокая двускатная крыша, резные кронштейны-тетерева и&nbsp;фигурная доска на&nbsp;фронтоне. Сруб из&nbsp;клееного блок-хауса, полный обжиг и&nbsp;масло &mdash; смотрится как изделие из&nbsp;массива. Возможна увеличенная комплектация с&nbsp;тёмной кровлей и&nbsp;расширенным срубом под именную резьбу.</p>
+          <div class="maf-card__extra-photos" aria-label="Дополнительные ракурсы">
+            <img src="images/maf/well-003-windmill-well.jpg" alt="«Источник» — ракурс с увеличенным срубом" loading="lazy">
+          </div>
           <div class="maf-card__footer">
             <span class="maf-card__price">от 2 800 BYN</span>
             <button type="button" class="maf-card__cta" onclick="openMafModal('КЛ-002 «Источник»')">Заказать</button>
           </div>
         </div>
       </article>
+      <!-- КЛ-003 «Наследие» убран 2026-04-20: на фото это тот же колодец что и КЛ-002 «Источник»; дубль устранён, 002 получил расширенное описание -->
       <article class="maf-card">
-        <div class="maf-card__photo"><img src="images/maf/well-003-windmill-well.jpg" alt="КЛ-003 «Наследие» — премиум колодец-мельница" loading="lazy"></div>
+        <div class="maf-card__photo"><img src="images/maf/well-004-wooden.jpg" alt="КЛ-003 «Домовой» — квадратный брусовой колодец" loading="lazy"></div>
         <div class="maf-card__body">
           <span class="maf-card__article">КЛ-003</span>
-          <h3 class="maf-card__title">«Наследие»</h3>
-          <p class="maf-card__desc">Флагман линейки: массивный колодец-мельница с&nbsp;большими лопастями и&nbsp;двускатной кровлей из&nbsp;потемнённой доски. Выразительная фигурная подпорка ворота, контрастное сочетание светлого сруба и&nbsp;тёмной кровли. По&nbsp;желанию &mdash; именная резьба на&nbsp;фронтоне.</p>
-          <div class="maf-card__footer">
-            <span class="maf-card__price">от 3 600 BYN</span>
-            <button type="button" class="maf-card__cta" onclick="openMafModal('КЛ-003 «Наследие»')">Заказать</button>
-          </div>
-        </div>
-      </article>
-      <article class="maf-card">
-        <div class="maf-card__photo"><img src="images/maf/well-004-wooden.jpg" alt="КЛ-004 «Домовой» — квадратный брусовой колодец" loading="lazy"></div>
-        <div class="maf-card__body">
-          <span class="maf-card__article">КЛ-004</span>
           <h3 class="maf-card__title">«Домовой»</h3>
           <p class="maf-card__desc">Самый компактный колодец в&nbsp;линейке: квадратный брусовой сруб (~1,1&nbsp;м), арочный проём для&nbsp;ведра, двускатная крыша в&nbsp;обжиге. Минимум декора &mdash; строгая геометрия для&nbsp;регулярных садов и&nbsp;дачных партеров. Самый быстрый в&nbsp;производстве (от&nbsp;7&nbsp;дней).</p>
           <div class="maf-card__footer">
             <span class="maf-card__price">от 2 600 BYN</span>
-            <button type="button" class="maf-card__cta" onclick="openMafModal('КЛ-004 «Домовой»')">Заказать</button>
+            <button type="button" class="maf-card__cta" onclick="openMafModal('КЛ-003 «Домовой»')">Заказать</button>
           </div>
         </div>
       </article>

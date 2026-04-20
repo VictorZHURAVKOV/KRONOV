@@ -8,6 +8,7 @@ load_dotenv(BASE_DIR / ".env", override=True)
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 ALENA_TELEGRAM_CHAT_ID = os.getenv("ALENA_TELEGRAM_CHAT_ID", "")
