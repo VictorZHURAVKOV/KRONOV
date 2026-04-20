@@ -382,15 +382,16 @@ input { font-family:inherit; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: var(--max-w);
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 60px 24px;
+  padding: 60px 32px;
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 60px;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  gap: 80px;
   align-items: center;
 }
-.hero-left { }
+.hero-left { max-width: 640px; }
+.hero-form-card { justify-self: end; width: 100%; max-width: 440px; }
 .hero-badge {
   display: inline-block;
   padding: 6px 16px;
@@ -426,6 +427,31 @@ input { font-family:inherit; }
   line-height: 1.5;
 }
 .hero-btns { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+.hero-left .btn-primary,
+.hero-left .btn-secondary {
+  padding: 20px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  min-height: 64px;
+  min-width: 240px;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero-left .btn-primary small,
+.hero-left .btn-secondary small {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  opacity: .75;
+  text-transform: none;
+}
+.hero-left .btn-primary {
+  box-shadow: 0 10px 30px rgba(122,46,56,.35);
+}
+.hero-left .btn-primary:hover {
+  box-shadow: 0 14px 38px rgba(122,46,56,.5);
+}
 
 /* ===== HERO CTA GROUP — 3 двери (БЛОК 1, ТЗ v2) ===== */
 .hero-cta-group {
@@ -752,8 +778,8 @@ input { font-family:inherit; }
 
 /* ===== SECTION: CASES — «Истории клиентов» (БЛОК 2, ТЗ v2) ===== */
 .sec-cases { background: var(--c-cream); }
-/* Скрыть кейсы 4+ по умолчанию; кнопка открывает */
-.cases-grid.cases-collapsed > .case-card:nth-child(n+4) { display: none; }
+/* Скрыть кейсы 3+ по умолчанию (показываем только 2); кнопка открывает остальные 3 */
+.cases-grid.cases-collapsed > .case-card:nth-child(n+3) { display: none; }
 .cases-toggle-row { text-align: center; margin: 28px 0 40px; }
 .cases-toggle {
   display: inline-flex; align-items: center; gap: 8px;
@@ -979,26 +1005,63 @@ input { font-family:inherit; }
   margin: 44px 0;
 }
 .partners-tile {
-  padding: 28px 24px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(184,150,90,.2);
-  border-radius: 12px;
+  position: relative;
+  padding: 32px 26px;
+  background: linear-gradient(180deg, rgba(184,150,90,.09) 0%, rgba(184,150,90,.04) 100%);
+  border: 2px solid var(--c-bronze);
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  box-shadow: 0 8px 26px rgba(184,150,90,.14);
+}
+.partners-tile::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--c-bronze) 0%, #E8C88A 40%, var(--c-bronze) 100%);
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .55;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+.partners-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(184,150,90,.28);
+}
+.partners-tile:hover::before { opacity: 1; }
+.partners-tile__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: var(--c-bronze);
+  color: var(--c-dark);
+  border-radius: 20px;
+  line-height: 1;
 }
 .partners-tile__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: rgba(184,150,90,.15);
-  color: var(--c-bronze);
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--c-bronze) 0%, #8A6B38 100%);
+  color: var(--c-dark);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 14px rgba(184,150,90,.4);
 }
-.partners-tile h4 { font-family: var(--font-display); font-size: 20px; color: var(--c-cream); font-weight: 500; }
-.partners-tile p { font-size: 13.5px; color: var(--c-sand); opacity: .85; line-height: 1.55; }
+.partners-tile h4 { font-family: var(--font-display); font-size: 21px; color: var(--c-cream); font-weight: 600; line-height: 1.25; }
+.partners-tile p { font-size: 14px; color: var(--c-sand); opacity: .9; line-height: 1.55; }
 .partners-cta { text-align: center; margin-top: 10px; }
 .partners-cta .btn-secondary { background: transparent; color: var(--c-bronze); border-color: var(--c-bronze); }
 .partners-cta .btn-secondary:hover { background: var(--c-bronze); color: var(--c-dark); }
@@ -3074,7 +3137,6 @@ a.catalog-link {
       <a href="https://about.kronov.by">О нас</a>
       <a href="for-designers.html" class="header-nav-designers">Для дизайнеров</a>
       <a href="calculator.html">Калькулятор</a>
-      <a href="#cta" class="header-cta">Получить предложение</a>
     </nav>
     <a href="tel:+375296888629" class="header-phone" aria-label="Позвонить Алёне: +375 (29) 688-86-29">
       <span class="header-phone-ring" aria-hidden="true">
@@ -3430,7 +3492,7 @@ a.catalog-link {
 
     <div class="cases-toggle-row" id="casesToggleRow">
       <button type="button" class="cases-toggle" id="casesToggleBtn" onclick="toggleCases()" aria-expanded="false" aria-controls="cases-grid">
-        Показать ещё <span id="casesHiddenCount">2</span> истории
+        Показать ещё <span id="casesHiddenCount">3</span> истории
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
     </div>
@@ -3458,7 +3520,7 @@ function toggleCases(){
   btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
   btn.innerHTML = expanded
     ? 'Свернуть <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>'
-    : 'Показать ещё <span>2</span> истории <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+    : 'Показать ещё <span>3</span> истории <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
 }
 </script>
 
@@ -3516,16 +3578,19 @@ function toggleCases(){
     </div>
     <div class="partners-tiles">
       <div class="partners-tile animate">
+        <span class="partners-tile__badge">TOP</span>
         <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
         <h4>Комиссия до 10%</h4>
         <p>Ступенчатая шкала от 5% до 10% в зависимости от количества проектов в год.</p>
       </div>
       <div class="partners-tile animate">
+        <span class="partners-tile__badge">PREMIUM</span>
         <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
         <h4>Профессиональная съёмка готового объекта</h4>
         <p>1–2 часа работы фотографа КРОНОВЪ на участке вашего клиента — контент для ваших соцсетей.</p>
       </div>
       <div class="partners-tile animate">
+        <span class="partners-tile__badge">ЭКСКЛЮЗИВ</span>
         <div class="partners-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <h4>Клиент на производстве</h4>
         <p>Ваш клиент приезжает на экскурсию во время сборки его беседки — эксклюзивный контент и глубокое доверие.</p>
