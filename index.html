@@ -449,20 +449,92 @@ input { font-family:inherit; }
   min-width: 240px;
   flex-direction: column;
   gap: 2px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 .hero-left .btn-primary small,
 .hero-left .btn-secondary small {
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.5px;
-  opacity: .75;
+  opacity: .85;
   text-transform: none;
 }
+
+/* ===== ПЕРЕЛИВАЮЩИЕСЯ HERO CTA ===== */
 .hero-left .btn-primary {
-  box-shadow: 0 10px 30px rgba(122,46,56,.35);
+  background: linear-gradient(90deg, #7A2E38 0%, #A83848 30%, #D75F5F 50%, #A83848 70%, #7A2E38 100%);
+  background-size: 220% 100%;
+  box-shadow: 0 10px 30px rgba(122,46,56,.45), 0 0 0 0 rgba(216,95,95,.5);
+  animation: heroShine 3.2s linear infinite, heroPulsePrimary 2.4s ease-in-out infinite;
+  border: 1px solid rgba(216,95,95,.55);
+}
+.hero-left .btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  transform: translateX(-150%);
+  animation: heroGlare 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 .hero-left .btn-primary:hover {
-  box-shadow: 0 14px 38px rgba(122,46,56,.5);
+  box-shadow: 0 16px 42px rgba(122,46,56,.6), 0 0 36px 4px rgba(216,95,95,.55);
+  transform: translateY(-2px);
+}
+.hero-left .btn-primary > * { position: relative; z-index: 2; }
+
+.hero-left .btn-secondary {
+  background: linear-gradient(90deg, rgba(184,150,90,.12) 0%, rgba(232,200,138,.25) 50%, rgba(184,150,90,.12) 100%);
+  background-size: 220% 100%;
+  border: 1.5px solid var(--c-bronze);
+  color: var(--c-sand);
+  box-shadow: 0 8px 24px rgba(184,150,90,.2);
+  animation: heroShine 3.6s linear infinite, heroPulseSecondary 2.6s ease-in-out infinite 0.3s;
+  isolation: isolate;
+}
+.hero-left .btn-secondary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(232,200,138,.45) 50%, transparent 65%);
+  transform: translateX(-150%);
+  animation: heroGlare 3.6s ease-in-out infinite 0.6s;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-left .btn-secondary:hover {
+  background: var(--c-bronze);
+  color: var(--c-dark);
+  box-shadow: 0 14px 38px rgba(184,150,90,.45), 0 0 28px 3px rgba(232,200,138,.5);
+  transform: translateY(-2px);
+}
+.hero-left .btn-secondary > * { position: relative; z-index: 2; }
+
+@keyframes heroShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -20% 0; }
+}
+@keyframes heroGlare {
+  0%   { transform: translateX(-150%); }
+  60%  { transform: translateX(150%); }
+  100% { transform: translateX(150%); }
+}
+@keyframes heroPulsePrimary {
+  0%, 100% { box-shadow: 0 10px 30px rgba(122,46,56,.45), 0 0 0 0 rgba(216,95,95,.0); }
+  50%      { box-shadow: 0 12px 34px rgba(122,46,56,.55), 0 0 24px 4px rgba(216,95,95,.35); }
+}
+@keyframes heroPulseSecondary {
+  0%, 100% { box-shadow: 0 8px 24px rgba(184,150,90,.2),  0 0 0 0 rgba(232,200,138,.0); }
+  50%      { box-shadow: 0 10px 28px rgba(184,150,90,.35), 0 0 20px 3px rgba(232,200,138,.35); }
+}
+
+/* Уважаем пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-left .btn-primary,
+  .hero-left .btn-secondary { animation: none; }
+  .hero-left .btn-primary::before,
+  .hero-left .btn-secondary::before { display: none; }
 }
 
 /* ===== HERO CTA GROUP — 3 двери (БЛОК 1, ТЗ v2) ===== */
