@@ -14,8 +14,28 @@
 </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>КР-004 Привилегия — КРОНОВЪ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Беседка Привилегия KR-004 — деревянная беседка, цена от 7500 BYN | КРОНОВЪ</title>
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#1E1410">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://kronov.by/gazebo/kr-004.html">
+<meta property="og:site_name" content="КРОНОВЪ">
+<meta property="og:title" content="Беседка Привилегия KR-004 — Премиум-беседка закрытого типа | КРОНОВЪ">
+<meta property="og:description" content="Премиум-беседка закрытого типа. От 7500 BYN. Рассрочка 50/50 · 0% · 6 месяцев. Бесплатный 3D-проект.">
+<meta property="og:image" content="https://kronov.by/images/og/og-kr-004.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Беседка Привилегия KR-004 | КРОНОВЪ">
+<meta name="twitter:description" content="Премиум-беседка закрытого типа. От 7500 BYN. Рассрочка 0%.">
+<meta name="twitter:image" content="https://kronov.by/images/og/og-kr-004.jpg">
+<link rel="canonical" href="https://kronov.by/gazebo/kr-004.html">
 <meta name="description" content="Беседка Привилегия КР-004 от КРОНОВЪ. Премиальная беседка с двускатной крышей и перголой с качелями. Фото, характеристики, цена. Производитель полного цикла в Беларуси.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1010,5 +1030,38 @@ function setHero(el, src){
 </style>
 <script>document.addEventListener('click',function(e){const m=document.getElementById('multiBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target))m.classList.remove('open');});</script>
 
+<script>
+/* Submit-хэндлер заявки с gazebo-страницы через FormSubmit */
+function kronovSubmitGazebo(ev, modelSlug, modelName){
+  ev.preventDefault();
+  const form = ev.target;
+  const fd = new FormData(form);
+  const data = {};
+  fd.forEach((v,k)=>{ data[k]=v; });
+  const btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+  if (btn){ btn.disabled = true; btn.textContent = 'Отправляем…'; }
+  fetch('https://formsubmit.co/ajax/ontoritmi@gmail.com', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      _subject: 'Заявка по ' + (modelName||modelSlug) + ' · kronov.by',
+      _template: 'table', _captcha: 'false',
+      model: modelName || modelSlug, source: modelSlug,
+      page: location.pathname, submitted_at: new Date().toISOString(),
+      ...data
+    }), keepalive: true
+  }).catch(e=>console.error('Lead submit',e))
+    .finally(()=>{
+      try {
+        if (window.dataLayer) window.dataLayer.push({event:'form_submit', form_source: modelSlug});
+        if (window.gtag) window.gtag('event','generate_lead',{source: modelSlug, value: 1});
+        if (window.ym && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID,'reachGoal','form_submit_' + modelSlug);
+        if (window.fbq) window.fbq('track','Lead',{source: modelSlug});
+      } catch(e){}
+      window.location.href = '../thank-you.html?source=' + encodeURIComponent(modelSlug);
+    });
+  return false;
+}
+</script>
 </body>
 </html>

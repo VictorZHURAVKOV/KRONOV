@@ -1,0 +1,15 @@
+{
+  "name": "КРОНОВЪ — деревянные беседки",
+  "short_name": "КРОНОВЪ",
+  "description": "Производитель деревянных беседок премиум-класса в Беларуси",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2EBE0",
+  "theme_color": "#1E1410",
+  "orientation": "portrait",
+  "lang": "ru",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

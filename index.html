@@ -14,8 +14,14 @@
 </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>КРОНОВЪ — деревянные беседки от производителя в Беларуси | kronov.by</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1E1410">
 <meta name="description" content="КРОНОВЪ — производитель деревянных беседок премиум-класса. 11 моделей, 20 лет гарантии, монтаж за 1 день. Полный цикл: от леса до участка. 3D-проект за 24 часа. kronov.by">
 <link rel="canonical" href="https://kronov.by/">
 <meta property="og:type" content="website">
@@ -23,8 +29,15 @@
 <meta property="og:site_name" content="КРОНОВЪ">
 <meta property="og:title" content="КРОНОВЪ — деревянные беседки от производителя в Беларуси">
 <meta property="og:description" content="Премиум-беседки полного цикла: от леса до монтажа. 3D-проект за 24 часа, рассрочка 50/50, гарантия 20 лет. kronov.by">
-<meta property="og:image" content="https://kronov.by/images/hero-bg.jpg">
+<meta property="og:image" content="https://kronov.by/images/og/og-main.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="КРОНОВЪ — деревянные беседки от производителя в Беларуси">
 <meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="КРОНОВЪ — деревянные беседки от производителя | kronov.by">
+<meta name="twitter:description" content="Премиум-беседки полного цикла, рассрочка 50/50 · 0% · 6 месяцев. Бесплатный 3D-проект.">
+<meta name="twitter:image" content="https://kronov.by/images/og/og-main.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="images/hero-bg.jpg" fetchpriority="high">
@@ -393,32 +406,31 @@ input { font-family:inherit; }
   max-width: 640px;
 }
 
-/* Форма Алёны: прижата к правому краю VIEWPORT, а не к центрированной 1200px-рамке.
-   Беседка на hero-bg открывается в свободной зоне между заголовком и формой. */
+/* Форма Алёны — прямой потомок <section class="hero"> (а не .hero-content).
+   Анкорится к правому краю VIEWPORT через position:absolute на .hero (position:relative).
+   Между заголовком слева и формой справа — свободная зона, где видна беседка hero-bg. */
 .hero-form-card {
   position: absolute;
   top: 50%;
-  right: clamp(20px, 3vw, 56px);
+  right: clamp(12px, 2vw, 40px);
   transform: translateY(-50%);
-  width: clamp(340px, 30vw, 420px);
+  width: clamp(300px, 28vw, 400px);
   z-index: 5;
   margin: 0;
 }
 
-/* На планшетах / узких окнах (<1200px) — стек: текст, ниже форма */
-@media (max-width: 1200px) {
-  .hero-content { padding: 60px 28px; }
-  .hero-left { max-width: none; }
+/* На мобильных (<900px) форма переходит в поток под заголовком */
+@media (max-width: 900px) {
   .hero-form-card {
     position: static;
     transform: none;
-    width: 100%;
+    width: calc(100% - 48px);
     max-width: 520px;
-    margin-top: 36px;
+    margin: 32px auto 0;
   }
 }
 @media (max-width: 600px) {
-  .hero-form-card { max-width: 100%; }
+  .hero-form-card { max-width: none; width: calc(100% - 32px); }
 }
 .hero-badge {
   display: inline-block;
@@ -3347,6 +3359,7 @@ a.catalog-link {
         <div class="hero-trust-item"><strong>∞</strong> проектов под индивидуальный эскиз клиента</div>
       </div>
     </div>
+  </div><!-- /hero-content — форма-карточка теперь выходит ИЗ контейнера 1200px -->
     <div class="hero-form-card">
       <div class="hero-form-eyebrow">Линейка КРОНОВЪ · 11 моделей · под ключ</div>
       <div class="manager-row">
@@ -3381,7 +3394,6 @@ a.catalog-link {
       </div>
       <p class="form-note">Никакого спама. Только один звонок.</p>
     </div>
-  </div>
   <div class="container">
     <div class="hero-trust-strip" role="group" aria-label="Показатели качества КРОНОВЪ">
       <span class="hero-trust-strip__item"><span class="hero-trust-strip__star">★</span> 4.9 / 5</span>
@@ -5107,14 +5119,38 @@ function submitForm(source, extraDetails){
     event.target.disabled = true;
     event.target.textContent = 'Отправляем…';
   }
-  fetch('/api/submit.php', {
+  // Forms via FormSubmit — бесплатный приёмник заявок без бэкенда.
+  // ПРИ ПЕРВОЙ отправке FormSubmit пришлёт письмо на ontoritmi@gmail.com
+  // с кнопкой «Activate» — нужно один раз её нажать. После этого все заявки
+  // будут автоматически приходить на email менеджера.
+  // Когда будет свой бэкенд — замените URL на /api/submit.php или webhook.
+  fetch('https://formsubmit.co/ajax/ontoritmi@gmail.com', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(payload),
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      _subject: 'Новая заявка kronov.by · источник: ' + (source || 'form'),
+      _template: 'table',
+      _captcha: 'false',
+      name: payload.name || '—',
+      phone: payload.phone,
+      source: payload.source,
+      time: payload.time || '—',
+      comment: payload.comment || '—',
+      details: payload.details ? JSON.stringify(payload.details) : '—',
+      page: payload.page,
+      submitted_at: new Date().toISOString()
+    }),
     keepalive: true
   })
     .catch(e => console.error('Submit error:', e))
     .finally(() => {
+      // Пуш в dataLayer для GA4/Метрики (если подключены — см. analytics-плейсхолдер)
+      try {
+        if (window.dataLayer) window.dataLayer.push({event: 'form_submit', form_source: source});
+        if (window.gtag) window.gtag('event', 'generate_lead', {source: source, value: 1});
+        if (window.ym && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID, 'reachGoal', 'form_submit_' + source);
+        if (window.fbq) window.fbq('track', 'Lead', {source: source});
+      } catch(e) {}
       window.location.href = 'thank-you.html?source=' + encodeURIComponent(source || 'form');
     });
 }
@@ -5289,15 +5325,27 @@ function submitLeadForm(type, event) {
   // GA4: form_submit
   if (window.gtag) gtag('event', 'form_submit', { form_type: type });
 
-  // Отправка на единый endpoint (legacy /api/submit.php; source различает тип)
-  fetch('/api/submit.php', {
+  // Lead-форма через FormSubmit (см. комментарий у submitForm выше)
+  fetch('https://formsubmit.co/ajax/ontoritmi@gmail.com', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data),
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      _subject: 'Lead ' + type + ' · kronov.by',
+      _template: 'table',
+      _captcha: 'false',
+      ...data,
+      submitted_at: new Date().toISOString()
+    }),
     keepalive: true
   })
     .catch(e => console.error('Lead submit error:', e))
     .finally(() => {
+      try {
+        if (window.dataLayer) window.dataLayer.push({event: 'lead_submit', lead_type: type});
+        if (window.gtag) window.gtag('event', 'generate_lead', {lead_type: type, value: 1});
+        if (window.ym && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID, 'reachGoal', 'lead_' + type);
+        if (window.fbq) window.fbq('track', 'Lead', {lead_type: type});
+      } catch(e) {}
       window.location.href = cfg.thankyou || 'thank-you.html';
     });
   return false;

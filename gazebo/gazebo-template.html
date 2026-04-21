@@ -721,7 +721,7 @@ button { cursor:pointer; border:none; font-family:inherit; }
       <!-- ЗАМЕНИТЬ: название модели -->
       <h2>Узнать стоимость беседки «Название»</h2>
       <p>Оставьте номер — менеджер Алёна перезвонит и рассчитает стоимость с учётом доставки и монтажа</p>
-      <form class="cta-form" onsubmit="event.preventDefault(); window.location.href='../thank-you.html?source=gazebo-template';">
+      <form class="cta-form" onsubmit="return kronovSubmitGazeboForm(event, 'gazebo-template')">
         <input type="text" placeholder="Ваше имя" required>
         <input type="tel" placeholder="+375 (__) ___-__-__" required>
         <button type="submit">Отправить</button>
@@ -855,5 +855,36 @@ document.addEventListener('keydown', function(e) {
 </style>
 <script>document.addEventListener('click',function(e){const m=document.getElementById('multiBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target))m.classList.remove('open');});</script>
 
+<script>
+function kronovSubmitGazeboForm(ev, source){
+  ev.preventDefault();
+  const form = ev.target;
+  const fd = new FormData(form);
+  const data = {};
+  fd.forEach((v,k)=>{ data[k]=v; });
+  const btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+  if (btn){ btn.disabled = true; btn.textContent = 'Отправляем…'; }
+  fetch('https://formsubmit.co/ajax/ontoritmi@gmail.com', {
+    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      _subject: 'Заявка с ' + source + ' · kronov.by',
+      _template: 'table', _captcha: 'false',
+      source: source, page: location.pathname,
+      submitted_at: new Date().toISOString(),
+      ...data
+    }), keepalive: true
+  }).catch(e=>console.error('Lead submit',e))
+    .finally(()=>{
+      try {
+        if (window.dataLayer) window.dataLayer.push({event:'form_submit', form_source:source});
+        if (window.gtag) window.gtag('event','generate_lead',{source:source, value:1});
+        if (window.ym && window.YM_COUNTER_ID) window.ym(window.YM_COUNTER_ID,'reachGoal','form_submit_'+source);
+        if (window.fbq) window.fbq('track','Lead',{source:source});
+      } catch(e){}
+      window.location.href = '../thank-you.html?source=' + encodeURIComponent(source);
+    });
+  return false;
+}
+</script>
 </body>
 </html>

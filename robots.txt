@@ -2,11 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
-Disallow: /thank-you-3d.html
-Disallow: /thank-you-excursion.html
-Disallow: /thank-you-zamer.html
-Disallow: /thank-you-maf.html
-Disallow: /thank-you-partner.html
-Disallow: /thank-you.html
+Disallow: /ai-agent/
+
+# thank-you.html доступна для чтения роботам — страница сама содержит
+# <meta name="robots" content="noindex,nofollow">, без этого Google
+# не сможет прочитать указание и всё равно проиндексирует URL.
 
 Sitemap: https://kronov.by/sitemap.xml

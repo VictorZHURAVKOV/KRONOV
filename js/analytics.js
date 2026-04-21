@@ -19,6 +19,9 @@
   var isGA4Active = CFG.ga4 && CFG.ga4 !== 'G-XXXXXXXXXX';
   var isYMActive  = CFG.ym && Number(CFG.ym) > 0;
 
+  // Экспортируем ID наружу, чтобы form-хэндлеры могли вызывать ym(…, 'reachGoal', …)
+  if (isYMActive) window.YM_COUNTER_ID = Number(CFG.ym);
+
   // ===== GA4 init =====
   if (isGA4Active) {
     var s = document.createElement('script');
