@@ -1052,6 +1052,400 @@ body {
   </div>
 </div>
 
+<!-- ===== CONTRACT FLOW ===== -->
+<style>
+.contract-section { max-width: 780px; margin: 40px auto 80px; padding: 0 24px; font-family: var(--body, 'Montserrat', sans-serif); }
+.contract-hero { background: linear-gradient(135deg, #1E1410 0%, #3A2518 100%); color: #F2EBE0; padding: 36px 30px; border-radius: 14px; text-align: center; border: 1px solid rgba(184,150,90,.22); }
+.contract-hero h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3vw, 30px); font-weight: 500; margin: 0 0 10px; color: #F2EBE0; letter-spacing: .3px; }
+.contract-hero p { font-size: 14.5px; color: #D4B896; line-height: 1.6; max-width: 560px; margin: 0 auto 20px; }
+.contract-start-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; background: #B8965A; color: #1E1410; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; letter-spacing: .4px; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; box-shadow: 0 8px 24px rgba(184,150,90,.35); }
+.contract-start-btn:hover { background: #D4B896; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,150,90,.5); }
+.contract-start-btn::after { content:'→'; font-size: 17px; }
+.contract-steps-note { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 18px; font-size: 12px; color: #B8965A; letter-spacing: .5px; text-transform: uppercase; }
+.contract-steps-note span { opacity: .8; }
+
+.contract-form { display: none; background: #fff; border: 1px solid rgba(139,96,64,.18); border-radius: 14px; padding: 30px 28px; margin-top: 20px; box-shadow: 0 12px 40px rgba(30,20,16,.08); }
+.contract-form.open { display: block; animation: cfFade .3s ease; }
+@keyframes cfFade { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform: translateY(0);} }
+.cf-step { display: none; }
+.cf-step.active { display: block; }
+.cf-step-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(139,96,64,.14); }
+.cf-step-num { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; color: #B8965A; line-height: 1; }
+.cf-step-title { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #1E1410; font-weight: 500; }
+.cf-step-sub { font-size: 12.5px; color: #6B5540; margin-top: 4px; letter-spacing: .3px; }
+
+.cf-progress { display: flex; gap: 6px; margin-bottom: 22px; }
+.cf-progress span { flex: 1; height: 3px; background: #E8DCC8; border-radius: 2px; transition: background .25s; }
+.cf-progress span.done { background: #B8965A; }
+.cf-progress span.current { background: #7A2E38; }
+
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+@media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } }
+.cf-field { display: flex; flex-direction: column; gap: 6px; }
+.cf-field.full { grid-column: 1 / -1; }
+.cf-field label { font-size: 12px; color: #6B5540; letter-spacing: .3px; font-weight: 600; text-transform: uppercase; }
+.cf-field label .req { color: #7A2E38; }
+.cf-field input, .cf-field textarea, .cf-field select {
+  width: 100%; padding: 12px 14px; font-family: inherit; font-size: 14px; color: #1E1410;
+  background: #F9F5EE; border: 1px solid rgba(139,96,64,.2); border-radius: 7px; transition: border-color .15s, background .15s;
+}
+.cf-field input:focus, .cf-field textarea:focus, .cf-field select:focus { border-color: #B8965A; background: #fff; outline: none; }
+.cf-field textarea { min-height: 92px; resize: vertical; }
+.cf-hint { font-size: 11.5px; color: #8B6C54; line-height: 1.5; margin-top: -2px; }
+
+.cf-summary { background: #F9F5EE; border: 1px solid rgba(184,150,90,.3); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
+.cf-summary-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #1E1410; margin-bottom: 10px; }
+.cf-summary-row { display: flex; justify-content: space-between; gap: 14px; font-size: 13px; padding: 4px 0; }
+.cf-summary-row span:first-child { color: #6B5540; }
+.cf-summary-row span:last-child { color: #1E1410; font-weight: 600; text-align: right; }
+.cf-summary-total { display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(139,96,64,.2); font-size: 16px; }
+.cf-summary-total span:first-child { color: #1E1410; font-weight: 600; }
+.cf-summary-total span:last-child { color: #7A2E38; font-weight: 700; font-family: 'Playfair Display', serif; font-size: 20px; }
+
+.cf-pay-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .cf-pay-options { grid-template-columns: 1fr; } }
+.cf-pay-opt { position: relative; cursor: pointer; }
+.cf-pay-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.cf-pay-opt-body { display: block; padding: 14px 16px; background: #F9F5EE; border: 1.5px solid rgba(139,96,64,.18); border-radius: 8px; transition: all .15s; }
+.cf-pay-opt input:checked + .cf-pay-opt-body { border-color: #7A2E38; background: #fff; box-shadow: 0 0 0 3px rgba(122,46,56,.08); }
+.cf-pay-opt-title { font-size: 14px; color: #1E1410; font-weight: 600; }
+.cf-pay-opt-desc { font-size: 12px; color: #6B5540; margin-top: 3px; }
+
+.cf-upload { border: 2px dashed rgba(184,150,90,.5); border-radius: 10px; padding: 22px; text-align: center; background: #F9F5EE; cursor: pointer; transition: background .15s, border-color .15s; }
+.cf-upload:hover { background: #fff; border-color: #B8965A; }
+.cf-upload input { display: none; }
+.cf-upload-icon { font-size: 32px; color: #B8965A; margin-bottom: 6px; }
+.cf-upload-title { font-size: 14px; color: #1E1410; font-weight: 600; }
+.cf-upload-sub { font-size: 12px; color: #6B5540; margin-top: 4px; }
+.cf-files-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.cf-file-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; background: #F9F5EE; border-radius: 6px; font-size: 12.5px; }
+.cf-file-item .rm { background: none; border: none; color: #7A2E38; cursor: pointer; font-size: 16px; padding: 0 4px; }
+
+.cf-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.cf-btn { padding: 13px 24px; font-size: 14px; font-weight: 600; border-radius: 7px; border: none; cursor: pointer; font-family: inherit; letter-spacing: .3px; transition: background .15s, transform .15s; }
+.cf-btn-prev { background: #F2EBE0; color: #1E1410; }
+.cf-btn-prev:hover { background: #E8DCC8; }
+.cf-btn-next, .cf-btn-submit { background: #7A2E38; color: #fff; margin-left: auto; }
+.cf-btn-next:hover, .cf-btn-submit:hover { background: #5C2028; transform: translateY(-1px); }
+.cf-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.cf-consent { font-size: 11.5px; color: #6B5540; margin-top: 18px; line-height: 1.5; }
+.cf-consent a { color: #7A2E38; text-decoration: underline; }
+
+.cf-success { display: none; text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1E1410 0%, #3A2518 100%); color: #F2EBE0; border-radius: 14px; margin-top: 20px; }
+.cf-success.show { display: block; animation: cfFade .4s ease; }
+.cf-success-icon { font-size: 56px; margin-bottom: 12px; }
+.cf-success h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 14px; color: #F2EBE0; font-weight: 500; }
+.cf-success p { font-size: 14.5px; color: #D4B896; line-height: 1.65; max-width: 520px; margin: 0 auto 10px; }
+.cf-success .req-id { display: inline-block; margin-top: 16px; padding: 6px 14px; background: rgba(184,150,90,.15); border: 1px solid rgba(184,150,90,.4); border-radius: 6px; font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: #B8965A; letter-spacing: 1px; }
+
+.cf-error { display: none; background: #FEF0ED; border: 1px solid rgba(122,46,56,.3); border-radius: 8px; padding: 12px 16px; margin-top: 14px; color: #7A2E38; font-size: 13px; }
+.cf-error.show { display: block; }
+</style>
+
+<section class="contract-section" id="contractSection">
+  <div class="contract-hero">
+    <h2>Всё устраивает? Оформите договор онлайн</h2>
+    <p>Заполните данные, приложите паспорт и схему участка — в&nbsp;течение 24&nbsp;часов Алёна пришлёт готовый проект договора и&nbsp;реквизиты для&nbsp;оплаты аванса.</p>
+    <button type="button" class="contract-start-btn" onclick="openContractForm()">Оформить договор</button>
+    <div class="contract-steps-note">
+      <span>① Ваши данные</span>
+      <span>② Адрес и оплата</span>
+      <span>③ Документы</span>
+    </div>
+  </div>
+
+  <form class="contract-form" id="contractForm" enctype="multipart/form-data" onsubmit="return submitContract(event)">
+    <div class="cf-progress">
+      <span class="current" data-step="1"></span>
+      <span data-step="2"></span>
+      <span data-step="3"></span>
+    </div>
+
+    <!-- Шаг 1 — личные данные -->
+    <div class="cf-step active" data-step="1">
+      <div class="cf-step-head">
+        <span class="cf-step-num">01</span>
+        <div>
+          <div class="cf-step-title">Ваши данные</div>
+          <div class="cf-step-sub">Для оформления договора подряда</div>
+        </div>
+      </div>
+
+      <div class="cf-row">
+        <div class="cf-field full">
+          <label>ФИО полностью <span class="req">*</span></label>
+          <input type="text" name="fio" required placeholder="Иванов Иван Иванович">
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label>Телефон <span class="req">*</span></label>
+          <input type="tel" name="phone" required placeholder="+375 (29) 000-00-00">
+        </div>
+        <div class="cf-field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="name@example.com">
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field full">
+          <label>Паспортные данные <span style="font-weight:400;opacity:.6;text-transform:none">(серия/номер, кем и когда выдан)</span></label>
+          <input type="text" name="passport" placeholder="MP1234567, выдан Минским РУВД 15.03.2015">
+          <div class="cf-hint">Можно оставить пустым и приложить фото паспорта на&nbsp;шаге&nbsp;3&nbsp;— Алёна внесёт в&nbsp;договор.</div>
+        </div>
+      </div>
+
+      <div class="cf-actions">
+        <button type="button" class="cf-btn cf-btn-next" onclick="nextStep(2)">Дальше →</button>
+      </div>
+    </div>
+
+    <!-- Шаг 2 — адреса и оплата -->
+    <div class="cf-step" data-step="2">
+      <div class="cf-step-head">
+        <span class="cf-step-num">02</span>
+        <div>
+          <div class="cf-step-title">Адрес установки и оплата</div>
+          <div class="cf-step-sub">Куда везти беседку и как удобнее платить</div>
+        </div>
+      </div>
+
+      <div class="cf-summary" id="cfSummary">
+        <div class="cf-summary-title">Ваша конфигурация</div>
+        <div id="cfSummaryRows"></div>
+        <div class="cf-summary-total"><span>Итог</span><span id="cfSummaryTotal">—</span></div>
+      </div>
+
+      <div class="cf-row">
+        <div class="cf-field full">
+          <label>Адрес регистрации (прописки)</label>
+          <input type="text" name="reg_addr" placeholder="г. Минск, ул. Притыцкого, д. 10, кв. 5">
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field full">
+          <label>Адрес установки беседки <span class="req">*</span></label>
+          <input type="text" name="inst_addr" required placeholder="Минская обл., Заславль, СТ «Берёзка», уч. 42">
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label>Желаемая дата начала работ</label>
+          <input type="date" name="start_date">
+        </div>
+        <div class="cf-field">
+          <label>Способ оплаты <span class="req">*</span></label>
+          <select name="pay_method" required>
+            <option value="">— выберите —</option>
+            <option value="Аванс 50% + 50% по готовности">Аванс 50% + 50% по готовности</option>
+            <option value="Полная предоплата (скидка 3%)">Полная предоплата (скидка 3%)</option>
+            <option value="Рассрочка 3 мес. (банк-партнёр)">Рассрочка 3 мес. (банк-партнёр)</option>
+            <option value="Юр. лицо (безнал, НДС)">Юр. лицо (безнал, НДС)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cf-actions">
+        <button type="button" class="cf-btn cf-btn-prev" onclick="nextStep(1)">← Назад</button>
+        <button type="button" class="cf-btn cf-btn-next" onclick="nextStep(3)">Дальше →</button>
+      </div>
+    </div>
+
+    <!-- Шаг 3 — документы и отправка -->
+    <div class="cf-step" data-step="3">
+      <div class="cf-step-head">
+        <span class="cf-step-num">03</span>
+        <div>
+          <div class="cf-step-title">Документы и комментарии</div>
+          <div class="cf-step-sub">Паспорт, схема участка, пожелания</div>
+        </div>
+      </div>
+
+      <label class="cf-upload" id="cfUpload">
+        <input type="file" id="cfFiles" name="files[]" multiple accept="image/*,.pdf,.heic">
+        <div class="cf-upload-icon">📎</div>
+        <div class="cf-upload-title">Приложите файлы</div>
+        <div class="cf-upload-sub">Фото паспорта (разворот), схема или&nbsp;фото участка, другие документы. До&nbsp;5&nbsp;файлов, макс. 8&nbsp;МБ каждый. JPG, PNG, PDF.</div>
+      </label>
+      <div class="cf-files-list" id="cfFilesList"></div>
+
+      <div class="cf-row" style="margin-top:18px">
+        <div class="cf-field full">
+          <label>Комментарий / особые пожелания</label>
+          <textarea name="comment" placeholder="Например: доступ через соседний участок, установка строго в будни, нужна 2-я доставка стройматериалов…"></textarea>
+        </div>
+      </div>
+
+      <div class="cf-error" id="cfError"></div>
+
+      <div class="cf-actions">
+        <button type="button" class="cf-btn cf-btn-prev" onclick="nextStep(2)">← Назад</button>
+        <button type="submit" class="cf-btn cf-btn-submit" id="cfSubmitBtn">Отправить на составление договора</button>
+      </div>
+
+      <p class="cf-consent">Отправляя заявку, вы соглашаетесь с&nbsp;<a href="/politika-konfidentsialnosti.html" target="_blank">политикой обработки персональных данных</a>. Ваши документы хранятся зашифрованно, используются только для&nbsp;составления договора и&nbsp;не&nbsp;передаются третьим лицам.</p>
+    </div>
+  </form>
+
+  <div class="cf-success" id="cfSuccess">
+    <div class="cf-success-icon">✓</div>
+    <h3>Заявка принята</h3>
+    <p><strong>Алёна готовит проект договора</strong> с&nbsp;учётом всех указанных данных и&nbsp;приложенных документов. Пришлёт на&nbsp;WhatsApp и&nbsp;email в&nbsp;течение&nbsp;24&nbsp;часов &mdash; вместе с&nbsp;реквизитами для&nbsp;оплаты аванса.</p>
+    <p>Если нужно быстрее &mdash; позвоните: <a href="tel:+375296888629" style="color:#B8965A;text-decoration:none;font-weight:600">+375&nbsp;(29)&nbsp;688-86-29</a></p>
+    <div class="req-id" id="cfReqId"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var selectedFiles = [];
+
+  window.openContractForm = function(){
+    document.getElementById('contractForm').classList.add('open');
+    refreshSummary();
+    document.querySelector('#contractForm input[name="fio"]').focus({preventScroll:true});
+    document.getElementById('contractForm').scrollIntoView({behavior:'smooth', block:'start'});
+  };
+
+  window.nextStep = function(n){
+    var form = document.getElementById('contractForm');
+    // Валидация шага 1
+    if (n === 2) {
+      var fio = form.fio.value.trim(), ph = form.phone.value.trim();
+      if (!fio) return alert('Заполните ФИО');
+      if (ph.replace(/\D/g,'').length < 9) return alert('Телефон введён некорректно');
+    }
+    if (n === 3) {
+      if (!form.inst_addr.value.trim()) return alert('Укажите адрес установки');
+      if (!form.pay_method.value) return alert('Выберите способ оплаты');
+      refreshSummary();
+    }
+    form.querySelectorAll('.cf-step').forEach(function(s){ s.classList.remove('active'); });
+    form.querySelector('.cf-step[data-step="'+n+'"]').classList.add('active');
+    var bars = form.querySelectorAll('.cf-progress span');
+    bars.forEach(function(b){ b.classList.remove('done','current'); });
+    for (var i=0; i<n-1; i++) bars[i].classList.add('done');
+    bars[n-1].classList.add('current');
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+
+  function refreshSummary(){
+    var rows = document.getElementById('cfSummaryRows');
+    var t = document.getElementById('cfSummaryTotal');
+    if (!rows || !t) return;
+    rows.innerHTML = '';
+    var items = [
+      ['Каркас', document.getElementById('r-frame')],
+      ['Кровля', document.getElementById('r-roof')],
+      ['Пропитка', document.getElementById('r-stain')],
+      ['Мебель', document.getElementById('r-furn')],
+      ['Фундамент', document.getElementById('r-found')],
+      ['Двери', document.getElementById('r-doors')],
+      ['Монтаж', document.getElementById('r-inst')],
+      ['Доставка', document.getElementById('r-delv')],
+      ['Аксессуары', document.getElementById('r-acc')],
+    ];
+    items.forEach(function(p){
+      var el = p[1]; if (!el) return;
+      var val = (el.textContent||'').trim();
+      if (!val || val === '—' || val === '0 BYN') return;
+      var row = document.createElement('div');
+      row.className = 'cf-summary-row';
+      row.innerHTML = '<span>'+p[0]+'</span><span>'+val+'</span>';
+      rows.appendChild(row);
+    });
+    var tot = document.getElementById('r-total');
+    if (tot) t.textContent = tot.textContent;
+  }
+
+  // Файлы
+  var filesInput = document.getElementById('cfFiles');
+  var filesList = document.getElementById('cfFilesList');
+  if (filesInput) {
+    filesInput.addEventListener('change', function(e){
+      Array.from(e.target.files).forEach(function(f){
+        if (selectedFiles.length >= 5) return;
+        if (f.size > 8*1024*1024) { alert(f.name + ': превышает 8 МБ'); return; }
+        selectedFiles.push(f);
+      });
+      renderFiles();
+      filesInput.value = '';
+    });
+  }
+  function renderFiles(){
+    filesList.innerHTML = '';
+    selectedFiles.forEach(function(f, i){
+      var row = document.createElement('div');
+      row.className = 'cf-file-item';
+      row.innerHTML = '<span>📎 ' + f.name + ' <span style="color:#8B6C54">('+ Math.round(f.size/1024) +' КБ)</span></span><button type="button" class="rm" aria-label="Удалить">✕</button>';
+      row.querySelector('.rm').addEventListener('click', function(){
+        selectedFiles.splice(i,1); renderFiles();
+      });
+      filesList.appendChild(row);
+    });
+  }
+
+  function configSnapshot(){
+    // Выбираем человекочитаемый снапшот состояния калькулятора, где есть подсказки
+    var parts = [];
+    var labels = document.querySelectorAll('.info-note, .info-line, .summary-line, .tog-label');
+    document.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').forEach(function(el){
+      var lab = el.closest('label');
+      var txt = lab ? lab.textContent.replace(/\s+/g,' ').trim() : el.value;
+      if (txt) parts.push('• ' + txt);
+    });
+    document.querySelectorAll('input[type="number"], input[type="range"]').forEach(function(el){
+      if (!el.name) return;
+      parts.push(el.name + ': ' + el.value);
+    });
+    return parts.join('\n');
+  }
+
+  window.submitContract = function(ev){
+    ev.preventDefault();
+    var form = document.getElementById('contractForm');
+    var btn = document.getElementById('cfSubmitBtn');
+    var err = document.getElementById('cfError');
+    err.classList.remove('show'); err.textContent = '';
+    btn.disabled = true; btn.textContent = 'Отправка…';
+
+    var fd = new FormData();
+    fd.append('fio', form.fio.value.trim());
+    fd.append('phone', form.phone.value.trim());
+    fd.append('email', form.email.value.trim());
+    fd.append('passport', form.passport.value.trim());
+    fd.append('reg_addr', form.reg_addr.value.trim());
+    fd.append('inst_addr', form.inst_addr.value.trim());
+    fd.append('start_date', form.start_date.value);
+    fd.append('pay_method', form.pay_method.value);
+    fd.append('comment', form.comment.value.trim());
+    var tot = document.getElementById('r-total');
+    fd.append('total', tot ? tot.textContent.trim() : '');
+    fd.append('config', configSnapshot());
+    selectedFiles.forEach(function(f){ fd.append('files[]', f, f.name); });
+
+    fetch('/api/contract.php', { method: 'POST', body: fd })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (!res || !res.ok) throw new Error((res && res.error) || 'server_error');
+        form.classList.remove('open');
+        var sc = document.getElementById('cfSuccess');
+        document.getElementById('cfReqId').textContent = 'ID заявки: ' + (res.req_id || '—');
+        sc.classList.add('show');
+        sc.scrollIntoView({behavior:'smooth', block:'center'});
+        if (window.gtag) gtag('event','contract_submit',{value: 1});
+      })
+      .catch(function(e){
+        err.textContent = 'Не удалось отправить. Попробуйте ещё раз или позвоните +375 (29) 688-86-29.';
+        err.classList.add('show');
+        btn.disabled = false; btn.textContent = 'Отправить на составление договора';
+      });
+    return false;
+  };
+})();
+</script>
+
 <script>
 // ── ЦВЕТОВЫЕ ПАЛИТРЫ ──────────────────────────────────────────────────────
 // Цены: закупка РФ × 3.7 ÷ 100 = BYN → +30% наценка → работа +50% от материала
