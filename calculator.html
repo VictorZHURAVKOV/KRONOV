@@ -1275,5 +1275,19 @@ updateInfo();
 calc();
 </script>
 <!-- AI-агент (подключить при деплое): <script src="https://agent.kronov.by/widget.js" data-api="https://agent.kronov.by" defer></script> -->
+<!-- ===== STICKY MOBILE BAR (calculator) ===== -->
+<div class="calc-sticky-bar">
+  <a href="tel:+375296888629" class="csb-call" aria-label="Позвонить">📞 Позвонить</a>
+  <a href="https://wa.me/375296888629" class="csb-wa" aria-label="WhatsApp">💬 WhatsApp</a>
+  <a href="viber://chat?number=%2B375296888629" class="csb-viber" aria-label="Viber">Viber</a>
+</div>
+<style>
+.calc-sticky-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; padding: 8px 10px calc(12px + env(safe-area-inset-bottom)); background: #1E1410; border-top: 1px solid rgba(212,184,150,.14); gap: 8px; }
+.calc-sticky-bar a { flex: 1; padding: 12px 8px; text-align: center; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; color: #fff; white-space: nowrap; }
+.csb-call { background: #7A2E38; }
+.csb-wa { background: #25D366; }
+.csb-viber { background: #7360F2; }
+@media (max-width: 767px) { .calc-sticky-bar { display: flex; } body { padding-bottom: 76px; } body:has(input[type="tel"]:focus) .calc-sticky-bar { transform: translateY(100%); transition: transform .2s; } }
+</style>
 </body>
 </html>

@@ -480,6 +480,16 @@ input { font-family:inherit; }
   overflow: hidden;
   padding-top: 64px;
 }
+@media(max-width:480px){
+  .hero { min-height: auto; padding-top: 80px; padding-bottom: 32px; }
+}
+
+/* ===== ACCESSIBILITY: focus-visible outline для клавиатурной навигации ===== */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--c-bronze);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -3394,7 +3404,7 @@ a.catalog-link {
 <!-- ===== HEADER ===== -->
 <header class="header" id="header">
   <div class="header-inner">
-    <a href="#" class="header-logo">
+    <a href="/" class="header-logo" aria-label="КРОНОВЪ — главная">
       <svg viewBox="0 0 52 52" fill="none">
         <circle cx="26" cy="18" r="14" stroke="#D4B896" stroke-width="1.8"/>
         <circle cx="18" cy="14" r="6" stroke="#D4B896" stroke-width="1.2" opacity=".5"/>
@@ -3518,42 +3528,42 @@ a.catalog-link {
     </div>
     <div class="why-grid">
       <div class="why-card animate">
-        <img class="why-card-img" src="images/why-cycle.jpg" alt="Полный цикл производства КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img" src="images/why-cycle.jpg" alt="Полный цикл производства КРОНОВЪ">
         <div class="why-card-body">
           <h4>Полный цикл производства</h4>
           <p>Собственная доставка леса, пилорама, столярный цех и проектное бюро. Всё делаем сами — под ключ.</p>
         </div>
       </div>
       <div class="why-card animate">
-        <img class="why-card-img" src="images/why-sawmill.jpg" alt="Собственная пилорама КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img" src="images/why-sawmill.jpg" alt="Собственная пилорама КРОНОВЪ">
         <div class="why-card-body">
           <h4>Собственная пилорама</h4>
           <p>Контроль качества древесины с первого бревна. Камерная сушка до 12% влажности, антисептирование в 3 слоя.</p>
         </div>
       </div>
       <div class="why-card animate">
-        <img class="why-card-img" src="images/why-design.jpg" alt="Проектное бюро КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img" src="images/why-design.jpg" alt="Проектное бюро КРОНОВЪ">
         <div class="why-card-body">
           <h4>Проектное бюро</h4>
           <p>Сами проектируем и визуализируем. 3D-эскиз беседки на вашем участке за 24 часа.</p>
         </div>
       </div>
       <div class="why-card animate">
-        <img class="why-card-img contain" src="images/why-guarantee.jpg" alt="Гарантия качества КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img contain" src="images/why-guarantee.jpg" alt="Гарантия качества КРОНОВЪ">
         <div class="why-card-body">
           <h4>Гарантия качества</h4>
           <p>Отвечаем за каждый этап работы. Массив дерева, заводская обработка, фиксация условий в договоре.</p>
         </div>
       </div>
       <div class="why-card animate">
-        <img class="why-card-img contain" src="images/why-montage.jpg" alt="Монтаж за 1 день КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img contain" src="images/why-montage.jpg" alt="Монтаж за 1 день КРОНОВЪ">
         <div class="why-card-body">
           <h4>Монтаж за 1 день</h4>
           <p>Никакой стройки и грязи. Наша бригада приезжает, собирает и убирает за собой.</p>
         </div>
       </div>
       <div class="why-card animate">
-        <img class="why-card-img" src="images/why-workshop.jpg" alt="Столярный цех КРОНОВЪ">
+        <img loading="lazy" decoding="async" class="why-card-img" src="images/why-workshop.jpg" alt="Столярный цех КРОНОВЪ">
         <div class="why-card-body">
           <h4>Столярный цех</h4>
           <p>Собственное производство в Беларуси. С 2013 года работаем с деревом, 100+ беседок нашего производства.</p>
@@ -3595,7 +3605,7 @@ a.catalog-link {
       <!-- Кейс 1 -->
       <article class="case-card animate">
         <div class="case-card__photo">
-          <img src="images/kr-001-night.jpg" alt="КР-001 «Резиденция» — вечерний ракурс с подсветкой">
+          <img loading="lazy" decoding="async" src="images/kr-001-night.jpg" alt="КР-001 «Резиденция» — вечерний ракурс с подсветкой">
           <span class="case-tag">Срочный проект</span>
         </div>
         <div class="case-card__body">
@@ -3629,7 +3639,7 @@ a.catalog-link {
       <!-- Кейс 2 -->
       <article class="case-card animate">
         <div class="case-card__photo">
-          <img src="images/kr-005-tea.jpg" alt="КР-005 «Встреча» — камерная беседка для семейных встреч">
+          <img loading="lazy" decoding="async" src="images/kr-005-tea.jpg" alt="КР-005 «Встреча» — камерная беседка для семейных встреч">
           <span class="case-tag">Молодая семья</span>
         </div>
         <div class="case-card__body">
@@ -3663,7 +3673,7 @@ a.catalog-link {
       <!-- Кейс 3 -->
       <article class="case-card animate">
         <div class="case-card__photo">
-          <img src="images/kr-004-family.jpg" alt="КР-004 «Привилегия» — свадебное мероприятие в беседке">
+          <img loading="lazy" decoding="async" src="images/kr-004-family.jpg" alt="КР-004 «Привилегия» — свадебное мероприятие в беседке">
           <span class="case-tag">Свадьба</span>
         </div>
         <div class="case-card__body">
@@ -3697,7 +3707,7 @@ a.catalog-link {
       <!-- Кейс 4 -->
       <article class="case-card animate">
         <div class="case-card__photo">
-          <img src="images/kr-008-sunset.jpg" alt="КР-008 «Дворъ» — беседка с мангальной зоной">
+          <img loading="lazy" decoding="async" src="images/kr-008-sunset.jpg" alt="КР-008 «Дворъ» — беседка с мангальной зоной">
           <span class="case-tag">Приём гостей</span>
         </div>
         <div class="case-card__body">
@@ -3732,7 +3742,7 @@ a.catalog-link {
       <article class="case-card case-card--wide animate">
         <div class="case-card__inner">
           <div class="case-card__photo">
-            <img src="images/kr-002-front.jpg" alt="КР-002 «Эстетъ» — чайная беседка для семейных встреч">
+            <img loading="lazy" decoding="async" src="images/kr-002-front.jpg" alt="КР-002 «Эстетъ» — чайная беседка для семейных встреч">
             <span class="case-tag">Семейная традиция</span>
           </div>
           <div class="case-card__body">
@@ -3960,7 +3970,7 @@ function toggleCases(){
     <div class="catalog-grid">
 
       <a href="gazebo/kr-001.html" class="catalog-link" data-model-view="kr-001" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит</span><img src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит</span><img loading="lazy" decoding="async" src="images/kr-001-day.jpg" alt="КР-001 Резиденция" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-001</div>
           <div class="catalog-name">Резиденция</div>
@@ -3977,7 +3987,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-002.html" class="catalog-link" data-model-view="kr-002" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-002-front.jpg" alt="КР-002 Эстетъ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-002-front.jpg" alt="КР-002 Эстетъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-002</div>
           <div class="catalog-name">Эстетъ</div>
@@ -3994,7 +4004,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-003.html" class="catalog-link" data-model-view="kr-003" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-003-front.jpg" alt="КР-003 Патриархъ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-003-front.jpg" alt="КР-003 Патриархъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-003</div>
           <div class="catalog-name">Патриархъ</div>
@@ -4011,7 +4021,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-004.html" class="catalog-link" data-model-view="kr-004" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><span class="catalog-badge catalog-badge--premium">Премиум</span><img src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--premium">Премиум</span><img loading="lazy" decoding="async" src="images/kr-004-front.jpg" alt="КР-004 Привилегия" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-004</div>
           <div class="catalog-name">Привилегия</div>
@@ -4028,7 +4038,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-005.html" class="catalog-link" data-model-view="kr-005" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-005-front.jpg" alt="КР-005 Встреча" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-005-front.jpg" alt="КР-005 Встреча" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-005</div>
           <div class="catalog-name">Встреча</div>
@@ -4045,7 +4055,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-006.html" class="catalog-link" data-model-view="kr-006" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><span class="catalog-badge catalog-badge--new">Новинка 2026</span><img src="images/kr-006-front.jpg" alt="КР-006 Шатёръ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--new">Новинка 2026</span><img loading="lazy" decoding="async" src="images/kr-006-front.jpg" alt="КР-006 Шатёръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-006</div>
           <div class="catalog-name">Шатёръ</div>
@@ -4062,7 +4072,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-008.html" class="catalog-link" data-model-view="kr-008" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-008-sunset.jpg" alt="КР-008 Дворъ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-008-sunset.jpg" alt="КР-008 Дворъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-008</div>
           <div class="catalog-name">Дворъ</div>
@@ -4079,7 +4089,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-007.html" class="catalog-link" data-model-view="kr-007" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-007-side.jpg" alt="КР-007 Бельведеръ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-007-side.jpg" alt="КР-007 Бельведеръ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-007</div>
           <div class="catalog-name">Бельведеръ</div>
@@ -4096,7 +4106,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-009.html" class="catalog-link" data-model-view="kr-009" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-009-evening.jpg" alt="КР-009 Павильонъ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-009-evening.jpg" alt="КР-009 Павильонъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-009</div>
           <div class="catalog-name">Павильонъ</div>
@@ -4113,7 +4123,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-010.html" class="catalog-link" data-model-view="kr-010" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><img src="images/kr-010-front.jpg" alt="КР-010 Приютъ" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><img loading="lazy" decoding="async" src="images/kr-010-front.jpg" alt="КР-010 Приютъ" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-010</div>
           <div class="catalog-name">Приютъ</div>
@@ -4130,7 +4140,7 @@ function toggleCases(){
       </div></a>
 
       <a href="gazebo/kr-011.html" class="catalog-link" data-model-view="kr-011" data-model-source="catalog_main"><div class="catalog-card animate">
-        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит · от 14 дней</span><img src="images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="catalog-img"><span class="catalog-badge catalog-badge--hit">Хит · от 14 дней</span><img loading="lazy" decoding="async" src="images/kr-011-front.jpg" alt="КР-011 Классика" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="catalog-body">
           <div class="catalog-article">КР-011</div>
           <div class="catalog-name">Классика</div>
@@ -4682,42 +4692,42 @@ function toggleCases(){
 
     <div class="gallery-grid" id="galleryGrid">
       <!-- Реализованные проекты (data-model + data-region + data-year + data-note) -->
-      <div class="gallery-item" data-model="kr-001" data-region="Минский район" data-year="2024" data-note="Установлена как подарок к 30-летию совместной жизни"><img src="images/kr-001-stone.jpg" alt="КР-001 «Резиденция» на каменной площадке" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="kr-004" data-region="Могилёвская область" data-year="2024" data-note="Установлена к свадьбе дочери на 70 гостей"><img src="images/kr-004-golden.jpg" alt="КР-004 «Привилегия» в золотом свете" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="kr-007" data-region="Минский район" data-year="2023" data-note="В саду с пионами — заказ ландшафтного дизайнера"><img src="images/kr-007-peonies.jpg" alt="КР-007 «Бельведеръ» в саду с пионами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="kr-008" data-region="Гомельская область" data-year="2024" data-note="Беседка-переговорная с мангальной зоной"><img src="images/kr-008-lanterns.jpg" alt="КР-008 «Дворъ» — вечерние фонари" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="kr-010" data-region="Брестская область" data-year="2024" data-note="Компактная беседка с вертикальными ширмами"><img src="images/kr-010-night.jpg" alt="КР-010 «Приютъ» — ночная подсветка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="kr-011" data-region="Минская область" data-year="2024" data-note="Японский характер, тёмный каркас у дома"><img src="images/kr-011-house.jpg" alt="КР-011 «Тишина» — классика у дома" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-001" data-region="Минский район" data-year="2024" data-note="Установлена как подарок к 30-летию совместной жизни"><img loading="lazy" decoding="async" src="images/kr-001-stone.jpg" alt="КР-001 «Резиденция» на каменной площадке" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-004" data-region="Могилёвская область" data-year="2024" data-note="Установлена к свадьбе дочери на 70 гостей"><img loading="lazy" decoding="async" src="images/kr-004-golden.jpg" alt="КР-004 «Привилегия» в золотом свете" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-007" data-region="Минский район" data-year="2023" data-note="В саду с пионами — заказ ландшафтного дизайнера"><img loading="lazy" decoding="async" src="images/kr-007-peonies.jpg" alt="КР-007 «Бельведеръ» в саду с пионами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-008" data-region="Гомельская область" data-year="2024" data-note="Беседка-переговорная с мангальной зоной"><img loading="lazy" decoding="async" src="images/kr-008-lanterns.jpg" alt="КР-008 «Дворъ» — вечерние фонари" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-010" data-region="Брестская область" data-year="2024" data-note="Компактная беседка с вертикальными ширмами"><img loading="lazy" decoding="async" src="images/kr-010-night.jpg" alt="КР-010 «Приютъ» — ночная подсветка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="kr-011" data-region="Минская область" data-year="2024" data-note="Японский характер, тёмный каркас у дома"><img loading="lazy" decoding="async" src="images/kr-011-house.jpg" alt="КР-011 «Тишина» — классика у дома" style="width:100%;height:100%;object-fit:cover;"></div>
 
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-01.jpg" alt="Беседка КРОНОВЪ в саду" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-02.jpg" alt="Беседка КРОНОВЪ — классика" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-03.jpg" alt="Беседка КРОНОВЪ — современный стиль" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-04.jpg" alt="Беседка КРОНОВЪ — премиум" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Могилёвская область" data-year="2023"><img src="images/portfolio-05.jpg" alt="Беседка КРОНОВЪ — открытая" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-06.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img src="images/portfolio-07.jpg" alt="Беседка КРОНОВЪ — в природе" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img src="images/portfolio-08.jpg" alt="Беседка КРОНОВЪ — деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-09.jpg" alt="Беседка КРОНОВЪ — вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img src="images/portfolio-10.jpg" alt="Беседка КРОНОВЪ — современная чёрная, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-11.jpg" alt="Беседка КРОНОВЪ — прямоугольная с решёткой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-12.jpg" alt="Беседка КРОНОВЪ — белая с решётчатыми стенами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-13.jpg" alt="Беседка КРОНОВЪ — классическая деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-14.jpg" alt="Беседка КРОНОВЪ — с верандой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-16.jpg" alt="Беседка КРОНОВЪ — с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img src="images/portfolio-17.jpg" alt="Беседка КРОНОВЪ — премиум, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2023"><img src="images/portfolio-18.jpg" alt="Беседка КРОНОВЪ — у дома, вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-19.jpg" alt="Беседка КРОНОВЪ — комплекс с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2023"><img src="images/portfolio-20.jpg" alt="Беседка КРОНОВЪ — открытая с колоннами" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img src="images/portfolio-21.jpg" alt="Беседка КРОНОВЪ — современный минимализм" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-22.jpg" alt="Беседка КРОНОВЪ — скандинавский стиль" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img src="images/portfolio-23.jpg" alt="Беседка КРОНОВЪ — с террасой" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img src="images/portfolio-24.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-25.jpg" alt="Беседка КРОНОВЪ — на реальном участке" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img src="images/portfolio-26.jpg" alt="Беседка КРОНОВЪ — с зоной отдыха" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — среди гортензий" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img src="images/portfolio-28.jpg" alt="Беседка КРОНОВЪ — в ландшафте" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — светлое дерево, решётчатые стены" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — у пруда в лесу" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-01.jpg" alt="Беседка КРОНОВЪ в саду" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-02.jpg" alt="Беседка КРОНОВЪ — классика" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-03.jpg" alt="Беседка КРОНОВЪ — современный стиль" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-04.jpg" alt="Беседка КРОНОВЪ — премиум" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Могилёвская область" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-05.jpg" alt="Беседка КРОНОВЪ — открытая" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-06.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-07.jpg" alt="Беседка КРОНОВЪ — в природе" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-08.jpg" alt="Беседка КРОНОВЪ — деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-09.jpg" alt="Беседка КРОНОВЪ — вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-10.jpg" alt="Беседка КРОНОВЪ — современная чёрная, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-11.jpg" alt="Беседка КРОНОВЪ — прямоугольная с решёткой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-12.jpg" alt="Беседка КРОНОВЪ — белая с решётчатыми стенами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-13.jpg" alt="Беседка КРОНОВЪ — классическая деревянная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-14.jpg" alt="Беседка КРОНОВЪ — с верандой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-16.jpg" alt="Беседка КРОНОВЪ — с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-17.jpg" alt="Беседка КРОНОВЪ — премиум, аэросъёмка" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-18.jpg" alt="Беседка КРОНОВЪ — у дома, вид сверху" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-19.jpg" alt="Беседка КРОНОВЪ — комплекс с перголой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-20.jpg" alt="Беседка КРОНОВЪ — открытая с колоннами" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гомельская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-21.jpg" alt="Беседка КРОНОВЪ — современный минимализм" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-22.jpg" alt="Беседка КРОНОВЪ — скандинавский стиль" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-23.jpg" alt="Беседка КРОНОВЪ — с террасой" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Витебская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-24.jpg" alt="Беседка КРОНОВЪ — архитектурная" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-25.jpg" alt="Беседка КРОНОВЪ — на реальном участке" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2023"><img loading="lazy" decoding="async" src="images/portfolio-26.jpg" alt="Беседка КРОНОВЪ — с зоной отдыха" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Гродненская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-27.jpg" alt="Беседка КРОНОВЪ — среди гортензий" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-28.jpg" alt="Беседка КРОНОВЪ — в ландшафте" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Брестская область" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-29.jpg" alt="Беседка КРОНОВЪ — светлое дерево, решётчатые стены" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" data-model="mixed" data-region="Минский район" data-year="2024"><img loading="lazy" decoding="async" src="images/portfolio-30.jpg" alt="Беседка КРОНОВЪ — у пруда в лесу" style="width:100%;height:100%;object-fit:cover;"></div>
     </div>
 
     <div class="gallery-controls">
@@ -4738,7 +4748,7 @@ function toggleCases(){
 
     <div class="map-grid">
       <div class="map-visual">
-        <img src="images/belarus-map.svg" alt="Карта Беларуси с объектами КРОНОВЪ" onerror="this.outerHTML='<div class=&quot;map-placeholder&quot;>🗺 Карта Беларуси<br><small>(SVG в разработке)</small></div>';">
+        <img loading="lazy" decoding="async" src="images/belarus-map.svg" alt="Карта Беларуси с объектами КРОНОВЪ" onerror="this.outerHTML='<div class=&quot;map-placeholder&quot;>🗺 Карта Беларуси<br><small>(SVG в разработке)</small></div>';">
       </div>
 
       <div class="map-regions">
@@ -4923,10 +4933,10 @@ function toggleCases(){
       <div>
         <h5>Каталог</h5>
         <a href="#catalog">Все модели</a>
-        <a href="#catalog">Резиденция</a>
-        <a href="#catalog">Эстетъ</a>
-        <a href="#catalog">Патриархъ</a>
-        <a href="#catalog">Шатёръ</a>
+        <a href="gazebo/kr-001.html">Резиденция</a>
+        <a href="gazebo/kr-002.html">Эстетъ</a>
+        <a href="gazebo/kr-003.html">Патриархъ</a>
+        <a href="gazebo/kr-006.html">Шатёръ</a>
       </div>
       <div>
         <h5>Компания</h5>
@@ -4948,7 +4958,7 @@ function toggleCases(){
       </div>
     </div>
     <div style="text-align:center;margin:32px 0 0;padding-top:24px;border-top:1px solid rgba(212,184,150,.06);">
-      <img src="images/qr-code.png" alt="QR-код сайта КРОНОВЪ" style="width:120px;height:120px;margin:0 auto 8px;border-radius:8px;">
+      <img loading="lazy" decoding="async" src="images/qr-code.png" alt="QR-код сайта КРОНОВЪ" style="width:120px;height:120px;margin:0 auto 8px;border-radius:8px;">
       <p style="font-size:12px;color:var(--c-sand);opacity:.4;">Наведите камеру — откройте сайт</p>
     </div>
     <div class="footer-bottom" style="flex-direction:column;gap:8px;text-align:center">
@@ -5732,7 +5742,7 @@ document.querySelectorAll('input[type="tel"]').forEach(input => {
 <div class="glb" id="glb" onclick="if(event.target===this)glbClose()">
   <button class="glb-close" onclick="glbClose()" aria-label="Закрыть">&times;</button>
   <button class="glb-nav glb-prev" onclick="glbNav(-1)" aria-label="Предыдущее фото">&#8249;</button>
-  <img id="glb-img" src="" alt="Беседка КРОНОВЪ">
+  <img loading="lazy" decoding="async" id="glb-img" src="" alt="Беседка КРОНОВЪ">
   <button class="glb-nav glb-next" onclick="glbNav(1)" aria-label="Следующее фото">&#8250;</button>
 </div>
 

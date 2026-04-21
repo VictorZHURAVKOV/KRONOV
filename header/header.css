@@ -194,6 +194,13 @@
 /* Sticky-bar Viber button */
 .sticky-viber { background: #7360F2; color: var(--c-white, #FFFFFF); }
 
+/* ===== ACCESSIBILITY: focus-visible для клавиатурной навигации ===== */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--c-bronze, #B8965A);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* --- Sticky mobile bar (call + WhatsApp) --- */
 .sticky-bar {
   display: none;
