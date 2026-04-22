@@ -17,7 +17,16 @@ log = logging.getLogger(__name__)
 
 WAZZUP_BASE_URL = "https://api.wazzup24.com"
 
-ChatType = Literal["whatsapp", "telegram", "viber", "instagram", "vk"]
+ChatType = Literal["whatsapp", "telegram", "tgapi", "viber", "instagram", "vk"]
+
+# Каналы на номере +375 29 688-86-29 (получены из GET /v3/channels 2026-04-22).
+# transport у Telegram Personal — "tgapi" (подтверждено API).
+CHANNELS = {
+    "whatsapp": "32c18412-6eca-46ed-b920-86ba2b87cd35",
+    "viber": "40f4c872-5cf8-4bf3-8197-afc0e7128515",
+    "telegram": "935779f0-28da-4791-ae5e-7f8f077a4102",
+    "tgapi": "935779f0-28da-4791-ae5e-7f8f077a4102",  # алиас
+}
 
 
 def _headers() -> dict:
