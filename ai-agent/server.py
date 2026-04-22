@@ -121,68 +121,58 @@ async def telegram_webhook(req: Request):
     return {"ok": True}
 
 
-# === WhatsApp webhook (заглушка-интерфейс, готов к подключению Meta Cloud API / 360dialog / Twilio) ===
-@app.post("/webhook/whatsapp")
-async def whatsapp_webhook(req: Request):
+# === Wazzup24 единый webhook для WhatsApp / Telegram Personal / Viber ===
+# На номере +375 29 688-86-29 через Wazzup подключены 3 канала. Все входящие
+# приходят сюда — мы идентифицируем канал по chat_type и chat_id, прогоняем
+# через агента и отвечаем обратно через Wazzup API.
+from tools.wazzup import parse_incoming_webhook, send_message as wazzup_send
+
+
+@app.post("/webhook/wazzup")
+async def wazzup_webhook(req: Request):
     data = await req.json()
-    # TODO: подключить Meta Cloud API или 360dialog — зависит от провайдера, под которым
-    # оформлен WhatsApp Business на номере +375 29 688-86-29.
-    # Схема ниже — под Meta Cloud API Webhook.
-    try:
-        entry = data["entry"][0]["changes"][0]["value"]
-        msg = entry["messages"][0]
-        from_id = msg["from"]
-        text = msg.get("text", {}).get("body", "")
-    except (KeyError, IndexError):
-        return {"ok": True, "reason": "no message"}
+    messages = parse_incoming_webhook(data)
+    if not messages:
+        return {"ok": True, "processed": 0}
 
-    session_id = f"wa-{from_id}"
-    parts = []
-    async for ev in run_turn(session_id=session_id, channel="whatsapp", user_text=text, external_user_id=from_id):
-        if ev["type"] == "text_delta":
-            parts.append(ev["text"])
-    final = "".join(parts).strip()
+    for m in messages:
+        # Session ID — уникальный в пределах канала: "<тип>-<chat_id>"
+        session_id = f"{m['chat_type']}-{m['chat_id']}"
 
-    # TODO: отправка ответа клиенту через WhatsApp Cloud API
-    # Сейчас — логируем, чтобы видеть работу.
-    print(f"[WA → {from_id}]: {final}")
-    return {"ok": True}
+        # Контекст — имя клиента если есть, чтобы Андрей сразу обратился
+        initial_context = None
+        if m["author_name"]:
+            initial_context = f"Имя клиента в {m['chat_type']}: {m['author_name']}"
 
+        parts = []
+        async for ev in run_turn(
+            session_id=session_id,
+            channel=m["chat_type"],
+            user_text=m["text"],
+            external_user_id=m["chat_id"],
+            initial_context=initial_context,
+        ):
+            if ev["type"] == "text_delta":
+                parts.append(ev["text"])
+        final = "".join(parts).strip()
 
-@app.get("/webhook/whatsapp")
-async def whatsapp_verify(req: Request):
-    """Meta Cloud API webhook verification."""
-    params = req.query_params
-    if params.get("hub.mode") == "subscribe":
-        return int(params.get("hub.challenge", 0))
-    return {"ok": True}
+        if not final:
+            continue
 
+        # Отправка обратно клиенту через Wazzup
+        try:
+            res = await wazzup_send(
+                channel_id=m["channel_id"],
+                chat_id=m["chat_id"],
+                text=final,
+                chat_type=m["chat_type"],
+            )
+            if not res.get("ok"):
+                print(f"[WAZZUP SEND FAIL {m['chat_type']} → {m['chat_id']}]: {res}")
+        except Exception as e:
+            print(f"[WAZZUP SEND ERROR]: {e}")
 
-# === Viber webhook (интерфейс для Viber Bot API) ===
-@app.post("/webhook/viber")
-async def viber_webhook(req: Request):
-    data = await req.json()
-    event = data.get("event")
-    if event != "message":
-        return {"status": 0}
-
-    sender = data.get("sender", {})
-    user_id = sender.get("id", "")
-    text = data.get("message", {}).get("text", "")
-
-    if not text:
-        return {"status": 0}
-
-    session_id = f"vb-{user_id}"
-    parts = []
-    async for ev in run_turn(session_id=session_id, channel="viber", user_text=text, external_user_id=user_id):
-        if ev["type"] == "text_delta":
-            parts.append(ev["text"])
-    final = "".join(parts).strip()
-
-    # TODO: отправка ответа через Viber Bot API (POST /send_message с auth_token)
-    print(f"[VB → {user_id}]: {final}")
-    return {"status": 0}
+    return {"ok": True, "processed": len(messages)}
 
 
 # === Раздача PDF ===

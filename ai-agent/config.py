@@ -18,6 +18,9 @@ ALENA_NAME = os.getenv("ALENA_NAME", "Алёна")
 SITE_URL = os.getenv("SITE_URL", "https://kronov.by")
 SITE_ORIGIN = os.getenv("SITE_ORIGIN", "https://kronov.by")
 
+WAZZUP_ACCOUNT_ID = os.getenv("WAZZUP_ACCOUNT_ID", "")
+WAZZUP_API_KEY = os.getenv("WAZZUP_API_KEY", "")
+
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8000"))
 
