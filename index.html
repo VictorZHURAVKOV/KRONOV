@@ -4504,6 +4504,7 @@ function toggleCases(){
     <h3 class="lead-modal__title" id="leadTitle-3d">3D-проект вашей беседки на вашем участке</h3>
     <p class="lead-modal__subtitle">Пришлите фото — покажем, как беседка будет смотреться именно у вас. Срок — 24 часа.</p>
     <form class="lead-form" id="leadForm-3d" novalidate>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
       <div class="lead-field">
         <label class="lead-field__label" for="lead3d-name">Ваше имя *</label>
         <input type="text" class="lead-field__input" id="lead3d-name" name="name" required>
@@ -4562,6 +4563,7 @@ function toggleCases(){
     <h3 class="lead-modal__title" id="leadTitle-excursion">Приезжайте на наше производство</h3>
     <p class="lead-modal__subtitle">Посмотрите цех, материалы, технологические этапы. Видеть, как делается беседка — лучший способ понять качество. Визит по предварительной записи.</p>
     <form class="lead-form" id="leadForm-excursion" novalidate>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
       <div class="lead-field">
         <label class="lead-field__label" for="leadEx-name">Ваше имя *</label>
         <input type="text" class="lead-field__input" id="leadEx-name" name="name" required>
@@ -5279,13 +5281,13 @@ document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') { closeContractModal(); closeQuizPopup(); }
 });
 
-/* ===== LEAD MODAL SYSTEM (БЛОК 1, ТЗ v2) =====
-   Три формы: 3D-проект, экскурсия, замер.
-   Каждая отправляет в /api/submit.php с source, редирект на свою thank-you. */
+/* ===== LEAD MODAL SYSTEM =====
+   Две формы: 3D-проект и экскурсия. Отправляют в /api/submit.php
+   с honeypot + rate-limit на сервере, редирект на свою thank-you.
+   Замер удалён — у КРОНОВЪ клиент сам присылает фото участка. */
 const LEAD_MODAL_CONFIG = {
   '3d':        { title: '3D-проект',    thankyou: 'thank-you-3d.html',        submitLabel: 'Отправить заявку',       submittingLabel: 'Отправляем…' },
-  'excursion': { title: 'Экскурсия',    thankyou: 'thank-you-excursion.html', submitLabel: 'Согласовать дату визита', submittingLabel: 'Отправляем…' },
-  'zamer':     { title: 'Замер',        thankyou: 'thank-you-zamer.html',     submitLabel: 'Согласовать выезд',      submittingLabel: 'Отправляем…' }
+  'excursion': { title: 'Экскурсия',    thankyou: 'thank-you-excursion.html', submitLabel: 'Согласовать дату визита', submittingLabel: 'Отправляем…' }
 };
 function openLeadModal(type) {
   const overlay = document.getElementById('leadModal-' + type);

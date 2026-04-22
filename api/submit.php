@@ -42,8 +42,38 @@ $source   = trim((string)($input['source']   ?? 'form'));
 $details  = $input['details'] ?? '';
 $comment  = trim((string)($input['comment']  ?? ''));
 $time_pref= trim((string)($input['time']     ?? ''));
+$honeypot = trim((string)($input['website']  ?? ''));  // hidden field — боты заполняют
 $ua       = substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 200);
 $ip       = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
+
+// Honeypot: если заполнен — тихий ОК без реальной обработки
+if ($honeypot !== '') {
+    http_response_code(200);
+    echo json_encode(['ok' => true, 'spam' => true]);
+    exit;
+}
+
+// Rate-limit: ≤ 5 заявок с одного IP за 60 секунд
+$rate_dir = __DIR__ . '/rate';
+if (!is_dir($rate_dir)) @mkdir($rate_dir, 0755, true);
+$rate_file = $rate_dir . '/' . md5($ip) . '.json';
+$now_ts = time();
+$window = 60;
+$limit = 5;
+$history = [];
+if (is_file($rate_file)) {
+    $raw_hist = @file_get_contents($rate_file);
+    $parsed_hist = json_decode((string)$raw_hist, true);
+    if (is_array($parsed_hist)) $history = $parsed_hist;
+}
+$history = array_values(array_filter($history, function($t) use ($now_ts, $window){ return ($now_ts - (int)$t) < $window; }));
+if (count($history) >= $limit) {
+    http_response_code(429);
+    echo json_encode(['ok' => false, 'error' => 'rate_limited', 'retry_after' => $window]);
+    exit;
+}
+$history[] = $now_ts;
+@file_put_contents($rate_file, json_encode($history), LOCK_EX);
 
 // Базовая валидация
 $phone_digits = preg_replace('/\D/', '', $phone);
