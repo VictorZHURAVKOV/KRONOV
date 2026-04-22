@@ -56,8 +56,7 @@ async def transcribe_voice(file_bytes: bytes, suffix: str = ".ogg") -> str:
 
 async def cmd_start(update: Update, _ctx: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text(
-        "Здравствуйте. Я Андрей из Кронова — подбираю беседки и считаю стоимость. "
-        "Расскажите, что вас интересует?"
+        "Здравствуйте. КРОНОВЪ на связи. Чем помочь?"
     )
 
 
