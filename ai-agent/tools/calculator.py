@@ -25,7 +25,7 @@ STAIN_RATES = {
 FOUNDATION_BASE = 800      # базовый выезд за свайный
 FOUNDATION_PER_PILE = 220  # цена за одну сваю
 
-DELIVERY_PER_KM = 3        # туда-обратно = 2 × 3 BYN/км
+DELIVERY_PER_KM = 6        # 6 BYN/км — ставка КРОНОВЪ (премиум). У Кверкуса 2 BYN/км.
 
 INSTALL_PCT = 0.10  # монтаж = 10% от каркаса
 
@@ -107,7 +107,7 @@ def calculate_price(
     stain_cost = area * STAIN_RATES.get(stain, 0)
     install_cost = frame * INSTALL_PCT if install else 0
     foundation_cost = (FOUNDATION_BASE + piles * FOUNDATION_PER_PILE) if foundation else 0
-    delivery_cost = delivery_km * 2 * DELIVERY_PER_KM
+    delivery_cost = delivery_km * DELIVERY_PER_KM  # итоговая цена доставки в BYN
 
     acc_cost = 0
     acc_lines = []
