@@ -131,11 +131,13 @@ from tools.wazzup import parse_incoming_webhook, send_message as wazzup_send
 @app.post("/webhook/wazzup")
 async def wazzup_webhook(req: Request):
     data = await req.json()
+    print(f"[WAZZUP RAW] keys={list(data.keys())} | messages={len(data.get('messages') or [])} | statuses={len(data.get('statuses') or [])}")
     messages = parse_incoming_webhook(data)
     if not messages:
         return {"ok": True, "processed": 0}
 
     for m in messages:
+        print(f"[WAZZUP IN  {m['chat_type']} ← {m['chat_id']}] {m['text'][:100]}")
         # Session ID — уникальный в пределах канала: "<тип>-<chat_id>"
         session_id = f"{m['chat_type']}-{m['chat_id']}"
 
@@ -160,6 +162,7 @@ async def wazzup_webhook(req: Request):
             continue
 
         # Отправка обратно клиенту через Wazzup
+        print(f"[WAZZUP OUT {m['chat_type']} → {m['chat_id']}] {final[:120]}")
         try:
             res = await wazzup_send(
                 channel_id=m["channel_id"],
@@ -167,10 +170,12 @@ async def wazzup_webhook(req: Request):
                 text=final,
                 chat_type=m["chat_type"],
             )
-            if not res.get("ok"):
-                print(f"[WAZZUP SEND FAIL {m['chat_type']} → {m['chat_id']}]: {res}")
+            if res.get("ok"):
+                print(f"[WAZZUP OK] sent to {m['chat_id']}")
+            else:
+                print(f"[WAZZUP SEND FAIL {m['chat_type']} → {m['chat_id']}] status={res.get('status')} err={res.get('error', '')[:300]}")
         except Exception as e:
-            print(f"[WAZZUP SEND ERROR]: {e}")
+            print(f"[WAZZUP SEND EXCEPTION]: {e}")
 
     return {"ok": True, "processed": len(messages)}
 
