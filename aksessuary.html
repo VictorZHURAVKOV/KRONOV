@@ -58,7 +58,14 @@ button{cursor:pointer;border:none;font-family:inherit}
 .cat-head h2{font-family:var(--font-display);font-weight:500;font-size:30px;color:var(--c-dark);letter-spacing:-.3px}
 .cat-head .count{font-size:13px;color:var(--c-text-light);letter-spacing:.5px;text-transform:uppercase}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
+.card-cta{background:linear-gradient(135deg,#1E1410 0%,#3A2518 100%);border:1.5px solid var(--c-bronze);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:36px 28px;border-radius:6px;color:var(--c-cream);text-decoration:none;transition:transform .22s,box-shadow .22s}
+.card-cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(184,150,90,.25)}
+.card-cta__icon{width:52px;height:52px;border-radius:50%;background:rgba(184,150,90,.15);border:1px solid rgba(184,150,90,.4);display:flex;align-items:center;justify-content:center;color:var(--c-bronze);margin-bottom:14px}
+.card-cta__title{font-family:var(--font-display);font-size:20px;color:var(--c-cream);margin-bottom:8px;line-height:1.3}
+.card-cta__sub{font-size:13px;color:var(--c-sand);opacity:.85;line-height:1.55;margin-bottom:18px}
+.card-cta__btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:var(--c-bordo);color:var(--c-cream);border-radius:5px;font-size:13.5px;font-weight:600;letter-spacing:.3px;transition:background .2s}
+.card-cta__btn:hover{background:#8E3542}
 
 .card{background:var(--c-white);border:1px solid rgba(139,96,64,.1);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(30,20,16,.12)}
@@ -189,6 +196,14 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="price">190<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -222,6 +237,14 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="price">50<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -251,10 +274,18 @@ button{cursor:pointer;border:none;font-family:inherit}
       </div>
       <div class="body">
         <h3>Плед «Косичка» 200×230 см</h3>
-        <p>Фактурное вязаное плетение. Стильный аксессуар для зоны отдыха в беседке.</p>
+        <p>Фактурное вязаное плетение. Стильная деталь зоны отдыха в беседке.</p>
         <div class="price">90<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -313,6 +344,14 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="price">100<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -392,6 +431,14 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="price">125<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -459,6 +506,14 @@ button{cursor:pointer;border:none;font-family:inherit}
         <div class="price">75<span class="unit"> руб.</span></div>
       </div>
     </article>
+      <a class="card-cta" href="https://wa.me/375296888629?text=Здравствуйте,%20Алёна!%20Помогите%20подобрать%20допоборудование%20под%20беседку" aria-label="Подбор под вашу беседку">
+        <span class="card-cta__icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </span>
+        <span class="card-cta__title">Подберём под вашу&nbsp;беседку</span>
+        <span class="card-cta__sub">Алёна поможет собрать комплект: свет, ткань, мебель — так, чтобы всё работало как одно целое с&nbsp;деревом и&nbsp;вашим стилем.</span>
+        <span class="card-cta__btn">Написать Алёне →</span>
+      </a>
     </div>
   </div>
 </section>

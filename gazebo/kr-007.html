@@ -260,6 +260,98 @@ button { cursor:pointer; border:none; font-family:inherit; }
   .gazebo-hero-grid .hero-thumbs,
   .gazebo-hero-grid .gazebo-hero-info { grid-column: 1; grid-row: auto; }
 }
+/* Баннер-CTA в доп. опциях беседки — усиленная версия для видимости */
+.opts-cta-banner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  margin-top: 36px;
+  padding: 26px 32px;
+  background: linear-gradient(135deg, #1E1410 0%, #3A2518 48%, #5C3A28 100%);
+  border: 1.5px solid rgba(184, 150, 90, .5);
+  border-radius: 14px;
+  color: var(--c-cream);
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(30, 20, 16, .22), 0 0 0 1px rgba(184, 150, 90, .08);
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.opts-cta-banner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 54px rgba(184, 150, 90, .28), 0 0 0 1px rgba(184, 150, 90, .35);
+  border-color: var(--c-bronze);
+}
+.opts-cta-banner::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 18% 0%, rgba(184, 150, 90, .25) 0%, transparent 55%);
+  pointer-events: none;
+}
+.opts-cta-banner__glow {
+  position: absolute;
+  top: -40%; left: -20%;
+  width: 140%; height: 200%;
+  background: linear-gradient(115deg, transparent 40%, rgba(212, 184, 150, .12) 48%, transparent 56%);
+  transform: translateX(-100%);
+  transition: transform 1.4s cubic-bezier(.22,.61,.36,1);
+  pointer-events: none;
+}
+.opts-cta-banner:hover .opts-cta-banner__glow { transform: translateX(80%); }
+.opts-cta-banner__icon {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(184, 150, 90, .2), rgba(184, 150, 90, .05));
+  border: 1px solid rgba(184, 150, 90, .55);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-bronze);
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+.opts-cta-banner__text { position: relative; z-index: 1; min-width: 0; }
+.opts-cta-banner__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--c-cream);
+  line-height: 1.25;
+  margin-bottom: 6px;
+  letter-spacing: .2px;
+}
+.opts-cta-banner__sub {
+  display: block;
+  font-size: 13.5px;
+  color: var(--c-sand);
+  opacity: .92;
+  line-height: 1.55;
+  max-width: 540px;
+}
+.opts-cta-banner__btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 22px;
+  background: var(--c-bronze);
+  color: var(--c-dark);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: .4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 6px 16px rgba(184, 150, 90, .3);
+}
+.opts-cta-banner:hover .opts-cta-banner__btn {
+  background: var(--c-sand);
+  box-shadow: 0 10px 24px rgba(212, 184, 150, .45);
+}
+@media (max-width: 720px) {
+  .opts-cta-banner { grid-template-columns: 1fr; text-align: center; padding: 22px 20px; gap: 14px; }
+  .opts-cta-banner__icon { margin: 0 auto; }
+  .opts-cta-banner__sub { margin: 0 auto; }
+  .opts-cta-banner__btn { justify-self: center; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -872,9 +964,19 @@ button { cursor:pointer; border:none; font-family:inherit; }
     </div>
 
   </div>
-    <a href="../aksessuary.html" style="display:block;margin-top:28px;padding:22px 26px;background:linear-gradient(135deg,#3A2518 0%,#1E1410 100%);border:1.5px solid var(--c-bronze);border-radius:10px;text-align:center;color:var(--c-cream);text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(184,150,90,.22)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-      <span style="font-family:var(--font-display);font-size:19px;color:var(--c-bronze);display:block;margin-bottom:4px;">Все дополнительные опции для беседки →</span>
-      <span style="font-size:13px;color:var(--c-sand);opacity:.85;">Полный каталог: свет, ткань, мебель, мангалы, печи — в едином стиле с беседкой</span>
+    <a href="../aksessuary.html" class="opts-cta-banner">
+      <span class="opts-cta-banner__glow" aria-hidden="true"></span>
+      <span class="opts-cta-banner__icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      </span>
+      <span class="opts-cta-banner__text">
+        <span class="opts-cta-banner__title">Собрать комплект для этой беседки</span>
+        <span class="opts-cta-banner__sub">Свет · ткань · мебель · мангалы · печи — в едином стиле с деревом. Алёна подберёт состав, цвета и габариты под вашу модель.</span>
+      </span>
+      <span class="opts-cta-banner__btn">
+        Открыть каталог опций
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
     </a>
 </section>
 
