@@ -125,6 +125,35 @@
     });
   }, true);
 
+  // ===== Клики по tel: / wa.me / viber / t.me (ТЗ: PHONE_CLICK, WHATSAPP_CLICK) =====
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) {
+      kronovTrack('phone_click', { number: href.replace('tel:', ''), page: location.pathname });
+    } else if (href.indexOf('wa.me') > -1 || href.indexOf('whatsapp') > -1) {
+      kronovTrack('whatsapp_click', { page: location.pathname });
+    } else if (href.indexOf('viber:') === 0) {
+      kronovTrack('viber_click', { page: location.pathname });
+    } else if (href.indexOf('t.me/') > -1) {
+      kronovTrack('telegram_click', { page: location.pathname });
+    }
+  }, true);
+
+  // ===== 60 секунд на странице (ТЗ: TIME_ON_PAGE_60) =====
+  setTimeout(function(){
+    kronovTrack('time_on_page_60', { page: location.pathname });
+  }, 60000);
+
+  // ===== catalog_click — клик по любой карточке каталога =====
+  document.addEventListener('click', function(e){
+    var link = e.target && e.target.closest && e.target.closest('.catalog-link, .catalog-card');
+    if (!link) return;
+    var model = link.getAttribute('data-model-view') || '';
+    kronovTrack('catalog_click', { model: model, page: location.pathname });
+  }, true);
+
   // Видимость для отладки в dev-tools
   window.kronovAnalyticsStatus = function(){
     return {

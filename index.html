@@ -515,6 +515,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   max-width: 640px;
 }
 
+/* Вторичные ссылки под основным Hero-CTA */
+.hero-secondary-links {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--c-sand);
+  opacity: .8;
+  line-height: 1.7;
+}
+.hero-secondary-links a {
+  color: var(--c-bronze);
+  border-bottom: 1px solid rgba(184,150,90,.4);
+  margin: 0 2px;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s;
+}
+.hero-secondary-links a:hover { color: var(--c-cream); border-bottom-color: var(--c-cream); }
+
 /* Форма Алёны — прямой потомок <section class="hero"> (а не .hero-content).
    Анкорится к правому краю VIEWPORT через position:absolute на .hero (position:relative).
    Между заголовком слева и формой справа — свободная зона, где видна беседка hero-bg. */
@@ -2541,16 +2558,22 @@ a.catalog-link {
 .catalog-badge--premium { background: var(--c-dark); color: var(--c-bronze); }
 .catalog-badge--new { background: var(--c-bronze); color: var(--c-dark); }
 .catalog-badge--custom { background: var(--c-dark); color: var(--c-cream); }
+.catalog-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .catalog-btn {
-  padding: 10px 20px;
-  background: var(--c-bordo);
-  color: var(--c-white);
-  font-size: 13px;
+  padding: 10px 14px;
+  font-size: 12.5px;
   font-weight: 600;
   border-radius: 4px;
-  transition: background .3s;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s, color .2s, border-color .2s;
+  white-space: nowrap;
 }
-.catalog-btn:hover { background:#8E3542; }
+.catalog-btn--primary { background: var(--c-bordo); color: var(--c-white); }
+.catalog-btn--primary:hover { background: #8E3542; }
+.catalog-btn--secondary { background: transparent; color: var(--c-bordo); border-color: var(--c-bordo); }
+.catalog-btn--secondary:hover { background: var(--c-bordo); color: var(--c-white); }
 .catalog-cta {
   text-align: center;
   margin-top: 48px;
@@ -3452,11 +3475,13 @@ a.catalog-link {
           <span class="hero-cta-label">Заказать 3D-проект</span>
           <span class="hero-cta-sub">достаточно фото участка</span>
         </button>
-        <button type="button" class="hero-cta hero-cta-secondary" onclick="openLeadModal('excursion')" data-cta-location="hero_excursion">
-          <span class="hero-cta-label">Записаться на экскурсию</span>
-          <span class="hero-cta-sub">наше производство в Беларуси</span>
-        </button>
       </div>
+      <p class="hero-secondary-links">
+        Или выбрать шаг попроще:
+        <a href="#catalog">посмотреть каталог</a> ·
+        <a href="#quick-calc">рассчитать стоимость</a> ·
+        <a href="ekskursiya.html">приехать на производство</a>
+      </p>
       <div class="hero-trust">
         <div class="hero-trust-item"><strong>100+</strong> беседок выпустило наше производство</div>
         <div class="hero-trust-item"><strong>13</strong> лет работаем с деревом</div>
@@ -3629,6 +3654,10 @@ a.catalog-link {
             <strong>Сергей Ковалёв</strong>
             <span>Минский район · КР-001 «Резиденция»</span>
           </div>
+          <div class="case-footer">
+            <a href="gazebo/kr-001.html" class="case-footer__link">Посмотреть модель «Резиденция» →</a>
+            <button type="button" class="case-footer__cta" onclick="openLeadModal('3d')">Рассчитать под себя</button>
+          </div>
         </div>
       </article>
 
@@ -3663,44 +3692,16 @@ a.catalog-link {
             <strong>Елена Василевич</strong>
             <span>Минский район · КР-005 «Встреча»</span>
           </div>
-        </div>
-      </article>
-
-      <!-- Кейс 3 -->
-      <article class="case-card animate">
-        <div class="case-card__photo">
-          <img loading="lazy" decoding="async" src="images/kr-004-family.jpg" alt="КР-004 «Привилегия» — свадебное мероприятие в беседке">
-          <span class="case-tag">Свадьба</span>
-        </div>
-        <div class="case-card__body">
-          <h3 class="case-card__title">Вместо аренды шатра — своя беседка на всю жизнь</h3>
-          <div>
-            <span class="case-section__label">Задача</span>
-            <p class="case-quote">«Свадьба дочери в августе, 70 гостей. Аренда шатра + столы — 7 200 BYN за один день. Деньги уходят в никуда. Бюджет уже распределён, но хочется, чтобы на участке осталось что-то памятное.»</p>
-          </div>
-          <div>
-            <span class="case-section__label">Решение</span>
-            <ul class="case-solution">
-              <li>Выбрана КР-004 «Привилегия» — закрытая модель с пристроенной перголой, вмещает банкет</li>
-              <li>Срок от заказа до готовности — 10 дней</li>
-              <li>Собственные столы (семейная реликвия) отреставрированы и покрашены в тон беседки</li>
-              <li>Комплектация лавками из массива дуба — 4 штуки, под общий стиль</li>
-              <li>Декор мешковиной и льном — рекомендация архитектора, копеечный бюджет</li>
-            </ul>
-          </div>
-          <div class="case-result">
-            <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~8 500 BYN</span></div>
-            <div class="case-result__item"><span class="case-result__label">Экономия</span><span class="case-result__value">Против аренды</span></div>
-            <div class="case-result__item"><span class="case-result__label">Бонус</span><span class="case-result__value">Зимняя фотосессия</span></div>
-          </div>
-          <div class="case-author">
-            <strong>Наталья Петровская</strong>
-            <span>Могилёвская область · КР-004 «Привилегия»</span>
+          <div class="case-footer">
+            <a href="gazebo/kr-005.html" class="case-footer__link">Посмотреть модель «Встреча» →</a>
+            <button type="button" class="case-footer__cta" onclick="openLeadModal('3d')">Рассчитать под себя</button>
           </div>
         </div>
       </article>
 
-      <!-- Кейс 4 -->
+      <!-- Кейс 3 удалён из main-ленты по результатам аудита (слишком много историй подряд).
+           Оставлен текстовым упоминанием в блоке «ещё истории» ниже. -->
+      <!-- Кейс 3 (бывший «Переговорная КР-008» — бизнес-кейс для разнообразия аудиторий) -->
       <article class="case-card animate">
         <div class="case-card__photo">
           <img loading="lazy" decoding="async" src="images/kr-008-sunset.jpg" alt="КР-008 «Дворъ» — беседка с мангальной зоной">
@@ -3731,52 +3732,23 @@ a.catalog-link {
             <strong>Олег Дроздов</strong>
             <span>Гомельская область · КР-008 «Дворъ»</span>
           </div>
-        </div>
-      </article>
-
-      <!-- Кейс 5 — широкий -->
-      <article class="case-card case-card--wide animate">
-        <div class="case-card__inner">
-          <div class="case-card__photo">
-            <img loading="lazy" decoding="async" src="images/kr-002-front.jpg" alt="КР-002 «Эстетъ» — чайная беседка для семейных встреч">
-            <span class="case-tag">Семейная традиция</span>
-          </div>
-          <div class="case-card__body">
-            <h3 class="case-card__title">Беседка-якорь: внуки приезжают чаще, семья собирается регулярно</h3>
-            <div>
-              <span class="case-section__label">Задача</span>
-              <p class="case-quote">«У нас большая семья — четверо детей, восемь внуков. Загородная резиденция строилась для того, чтобы все собирались вместе. А выросли дети — и внуки приезжают на час-два. Нужна была точка притяжения: место, где они сами захотят остаться.»</p>
-            </div>
-            <div>
-              <span class="case-section__label">Решение</span>
-              <ul class="case-solution">
-                <li>Выбрана КР-002 «Эстетъ» — камерная чайная беседка с классической квадратной формой</li>
-                <li>Установка в центре участка как визуальная доминанта</li>
-                <li>Именная гравировка «Дом Радкевичей» на балке</li>
-                <li>Складной дубовый стол для семейных обедов (до 10 персон в разложенном виде)</li>
-                <li>Комплект кресел в ротанге — для «кофе с внуками»</li>
-              </ul>
-            </div>
-            <div class="case-result">
-              <div class="case-result__item"><span class="case-result__label">Визиты внуков</span><span class="case-result__value">×8 в месяц</span></div>
-              <div class="case-result__item"><span class="case-result__label">Стоимость</span><span class="case-result__value">~9 000 BYN</span></div>
-              <div class="case-result__item"><span class="case-result__label">Итог</span><span class="case-result__value">«Место, куда возвращаются»</span></div>
-            </div>
-            <div class="case-author">
-              <strong>Светлана Михайловна Радкевич</strong>
-              <span>Основательница семейного бизнеса · КР-002 «Эстетъ»</span>
-            </div>
+          <div class="case-footer">
+            <a href="gazebo/kr-008.html" class="case-footer__link">Посмотреть модель «Дворъ» →</a>
+            <button type="button" class="case-footer__cta" onclick="openLeadModal('3d')">Рассчитать под себя</button>
           </div>
         </div>
       </article>
 
     </div>
 
-    <div class="cases-toggle-row" id="casesToggleRow">
-      <button type="button" class="cases-toggle" id="casesToggleBtn" onclick="toggleCases()" aria-expanded="false" aria-controls="cases-grid">
-        Показать ещё <span id="casesHiddenCount">3</span> истории
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </button>
+    <!-- Ещё истории — текстовыми ссылками (не перегружают поток, но доступны тем, кому нужна похожая ситуация) -->
+    <div class="cases-more">
+      <div class="cases-more__label">Ещё истории клиентов</div>
+      <ul class="cases-more__list">
+        <li><a href="gazebo/kr-004.html">Свадьба дочери вместо аренды шатра</a> — КР-004 «Привилегия», Могилёвская обл.</li>
+        <li><a href="gazebo/kr-002.html">Беседка-якорь: внуки приезжают чаще</a> — КР-002 «Эстетъ», семейная резиденция</li>
+        <li><a href="gazebo/kr-011.html">От эскиза до ключей за 18 дней</a> — КР-011 «Мостикъ», индивидуальный проект</li>
+      </ul>
     </div>
 
     <div class="cases-cta">
@@ -3786,69 +3758,25 @@ a.catalog-link {
     </div>
   </div>
 </section>
-<script>
-/* Сворачивание кейсов 4 и 5 под кнопкой */
-(function(){
-  var grid = document.getElementById('cases-grid');
-  if (!grid) return;
-  grid.classList.add('cases-collapsed');
-})();
-function toggleCases(){
-  var grid = document.getElementById('cases-grid');
-  var btn  = document.getElementById('casesToggleBtn');
-  if (!grid || !btn) return;
-  var expanded = grid.classList.toggle('cases-expanded');
-  grid.classList.toggle('cases-collapsed', !expanded);
-  btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  btn.innerHTML = expanded
-    ? 'Свернуть <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>'
-    : 'Показать ещё <span>3</span> истории <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-}
-</script>
+<style>
+/* Футер кейса: ссылка на модель + кнопка расчёта (блок E.1 аудита) */
+.case-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(184,150,90,.18); }
+.case-footer__link { font-size: 14px; font-weight: 600; color: var(--c-bordo); border-bottom: 1px solid rgba(122,46,56,.25); padding-bottom: 2px; transition: color .15s, border-color .15s; white-space: nowrap; }
+.case-footer__link:hover { color: var(--c-dark); border-bottom-color: var(--c-dark); }
+.case-footer__cta { padding: 9px 18px; background: transparent; color: var(--c-bordo); border: 1.5px solid var(--c-bordo); border-radius: 6px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
+.case-footer__cta:hover { background: var(--c-bordo); color: var(--c-cream); }
 
-<!-- ===== МАФ ТИЗЕР (БЛОК 3, ТЗ v2) ===== -->
-<section class="sec-maf section-pad" id="maf-teaser">
-  <div class="container">
-    <div class="text-center">
-      <div class="subtitle">Линейка КРОНОВЪ</div>
-      <h2 class="heading-lg" style="margin-top:12px;">Не только беседки — целая архитектура участка</h2>
-      <p class="body-text" style="max-width:680px;margin:18px auto 0;">Колодцы, дорожки, садовая мебель, декоративные формы. Одна стилистика — один характер участка. От большого к мелочи.</p>
-    </div>
-    <div class="maf-grid">
-      <article class="maf-col animate">
-        <div class="maf-col__photo"><img src="images/maf/well-001-windmill-garden.jpg" alt="Колодец с работающей мельницей в саду с цветами" loading="lazy"></div>
-        <div class="maf-col__body">
-          <h3 class="maf-col__title">Колодцы и мельницы</h3>
-          <span class="maf-col__price">от 1 900 BYN</span>
-          <p class="maf-col__desc">Функциональные колодцы и&nbsp;декоративные мельницы с&nbsp;работающими лопастями. Массив, обжиг, высота до&nbsp;2,4&nbsp;м. Акцент участка с&nbsp;узнаваемой стилистикой усадьбы.</p>
-          <a href="arhitekturnye-formy.html#wells" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть 6 моделей</a>
-        </div>
-      </article>
-      <article class="maf-col animate">
-        <div class="maf-col__photo"><img src="images/maf/chair-001-throne-sunset.jpg" alt="Декоративное тронное кресло в саду на закате" loading="lazy"></div>
-        <div class="maf-col__body">
-          <h3 class="maf-col__title">Садовая мебель</h3>
-          <span class="maf-col__price">от 480 BYN за изделие</span>
-          <p class="maf-col__desc">Обеденные столы, лавки-комплекты, кресла Адирондак и&nbsp;тронные с&nbsp;кожей, кожаные диваны для&nbsp;закрытых беседок. Та&nbsp;же порода дерева, что и&nbsp;в&nbsp;беседке &mdash; ансамбль, а&nbsp;не&nbsp;«мебель из&nbsp;магазина».</p>
-          <a href="arhitekturnye-formy.html#furniture" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть 10 моделей</a>
-        </div>
-      </article>
-      <article class="maf-col animate">
-        <div class="maf-col__photo"><img src="images/maf/decor-002-planter-boxes.jpg" alt="Декоративные кашпо из дерева в саду на каменной дорожке" loading="lazy"></div>
-        <div class="maf-col__body">
-          <h3 class="maf-col__title">Декоративные артефакты</h3>
-          <span class="maf-col__price">от 380 BYN</span>
-          <p class="maf-col__desc">Перголы с&nbsp;настилом, каретные колёса из&nbsp;массива, кашпо-комплекты, качели с&nbsp;шинглом кровли. Малые формы, которые превращают сад в&nbsp;продуманную сценографию.</p>
-          <a href="arhitekturnye-formy.html#artefacts" class="btn-gold" style="align-self:flex-start;margin-top:4px;">Смотреть категорию</a>
-        </div>
-      </article>
-    </div>
-    <div class="maf-cta-row">
-      <a href="arhitekturnye-formy.html" class="btn-primary">Смотреть все архитектурные формы →</a>
-      <p class="maf-cta-row__hint">Более 30 типов изделий в каталоге</p>
-    </div>
-  </div>
-</section>
+/* Ещё истории — компактный список-ссылки */
+.cases-more { max-width: 860px; margin: 32px auto 0; padding: 22px 28px; background: rgba(242,235,224,.55); border: 1px solid rgba(184,150,90,.2); border-radius: 10px; }
+.cases-more__label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--c-bronze); margin-bottom: 10px; }
+.cases-more__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.cases-more__list li { font-size: 14px; color: var(--c-text-light); line-height: 1.55; }
+.cases-more__list a { color: var(--c-dark); font-weight: 600; border-bottom: 1px solid rgba(184,150,90,.35); transition: border-color .15s; }
+.cases-more__list a:hover { border-bottom-color: var(--c-bordo); }
+</style>
+
+<!-- МАФ-блок свёрнут по результатам аудита: пришедший за беседкой отвлекается.
+     Оставили одну строку-ссылку в футере + отдельная страница arhitekturnye-formy.html -->
 
 <!-- ===== ПАРТНЁРЫ (БЛОК 4 тизер, ТЗ v2) ===== -->
 <section class="sec-partners section-pad" id="partners-teaser">
@@ -3884,77 +3812,6 @@ function toggleCases(){
   </div>
 </section>
 
-<!-- ===== INSTALLMENT ===== -->
-<section class="sec-installment section-pad" id="installment">
-  <div class="container">
-    <div class="installment-grid">
-      <div class="installment-left">
-        <div class="subtitle">Удобная оплата</div>
-        <h2 class="heading-lg" style="margin-top:12px;">Рассрочка без переплат на 6 месяцев</h2>
-        <p class="installment-lead body-text" style="margin:20px 0 28px;">Платите половину стоимости при подписании договора. Остаток делим на 6 равных ежемесячных платежей. Ноль переплат, ноль процентов.</p>
-
-        <ul class="installment-list">
-          <li><span class="num">50%</span><span class="txt">первый взнос при подписании договора</span></li>
-          <li><span class="num">50%</span><span class="txt">на 6 месяцев равными платежами</span></li>
-          <li><span class="num">0%</span><span class="txt">переплаты — платите ровно стоимость беседки</span></li>
-          <li><span class="num">2</span><span class="txt">документа: паспорт и справка о доходах</span></li>
-        </ul>
-
-        <a href="calculator.html" class="btn-primary" style="margin-top:8px;">Рассчитать ежемесячный платёж</a>
-      </div>
-
-      <div class="installment-right">
-        <div class="payment-schedule">
-          <div class="ps-badge">Пример</div>
-          <div class="ps-title">Беседка за <strong>6 000 BYN</strong></div>
-          <div class="ps-divider" aria-hidden="true"></div>
-
-          <!-- Первый платёж: крупный акцент -->
-          <div class="ps-first">
-            <div class="ps-first-label">
-              <span class="ps-step">1</span>
-              <span>Подписание<br>договора</span>
-            </div>
-            <div class="ps-first-amount">
-              <span class="ps-amt-num">3 000</span>
-              <span class="ps-amt-cur">BYN</span>
-            </div>
-          </div>
-
-          <!-- Визуализация 6 месячных платежей -->
-          <div class="ps-months">
-            <div class="ps-months-label">+ 6 ежемесячных платежей</div>
-            <div class="ps-dots" aria-hidden="true">
-              <span class="ps-dot"></span>
-              <span class="ps-dot"></span>
-              <span class="ps-dot"></span>
-              <span class="ps-dot"></span>
-              <span class="ps-dot"></span>
-              <span class="ps-dot"></span>
-            </div>
-            <div class="ps-months-amount">
-              по <strong>500</strong> <span>BYN</span> / мес
-            </div>
-          </div>
-
-          <div class="ps-divider" aria-hidden="true"></div>
-
-          <div class="ps-total">
-            <div class="ps-total-row">
-              <span>Итого к оплате</span>
-              <strong>6 000 BYN</strong>
-            </div>
-            <div class="ps-promise">
-              <span class="ps-check" aria-hidden="true">✓</span> 0% переплаты
-              <span class="ps-dot-sep">·</span>
-              <span class="ps-check" aria-hidden="true">✓</span> Без комиссий
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== CATALOG ===== -->
 <section class="sec-catalog section-pad" id="catalog">
@@ -3976,7 +3833,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 900</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -3993,7 +3853,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 200</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4010,7 +3873,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">6 800</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4027,7 +3893,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">7 500</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4044,7 +3913,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 200</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4061,7 +3933,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 600</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4078,7 +3953,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 400</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4095,7 +3973,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">5 400</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4112,7 +3993,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">4 200</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4129,7 +4013,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 800</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4146,7 +4033,10 @@ function toggleCases(){
               <div class="catalog-price"><span class="price-label">от</span><span class="price-value">3 600</span><span class="price-currency">BYN</span></div>
               <div class="catalog-installment">Рассрочка 50/50 · 6 мес · 0%</div>
             </div>
-            <span class="catalog-btn" role="button" tabindex="0" onclick="event.stopPropagation();event.preventDefault();scrollToSel('#cta')">Узнать стоимость</span>
+            <div class="catalog-cta-row">
+              <button type="button" class="catalog-btn catalog-btn--primary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('3d')">3D-проект</button>
+              <button type="button" class="catalog-btn catalog-btn--secondary" onclick="event.stopPropagation();event.preventDefault();openLeadModal('excursion')">Экскурсия</button>
+            </div>
           </div>
           <div class="catalog-more">Подробнее →</div>
         </div>
@@ -4257,6 +4147,79 @@ function toggleCases(){
     <p class="calc-full-link">Нужен детальный расчёт со всеми опциями? <a href="calculator.html">Перейти в полный калькулятор →</a></p>
   </div>
 </section>
+
+<!-- Рассрочка — перенесена сюда (после каталога и калькулятора) по результатам аудита -->
+<section class="sec-installment section-pad" id="installment">
+  <div class="container">
+    <div class="installment-grid">
+      <div class="installment-left">
+        <div class="subtitle">Удобная оплата</div>
+        <h2 class="heading-lg" style="margin-top:12px;">Рассрочка без переплат на 6 месяцев</h2>
+        <p class="installment-lead body-text" style="margin:20px 0 28px;">Платите половину стоимости при подписании договора. Остаток делим на 6 равных ежемесячных платежей. Ноль переплат, ноль процентов.</p>
+
+        <ul class="installment-list">
+          <li><span class="num">50%</span><span class="txt">первый взнос при подписании договора</span></li>
+          <li><span class="num">50%</span><span class="txt">на 6 месяцев равными платежами</span></li>
+          <li><span class="num">0%</span><span class="txt">переплаты — платите ровно стоимость беседки</span></li>
+          <li><span class="num">2</span><span class="txt">документа: паспорт и справка о доходах</span></li>
+        </ul>
+
+        <a href="calculator.html" class="btn-primary" style="margin-top:8px;">Рассчитать ежемесячный платёж</a>
+      </div>
+
+      <div class="installment-right">
+        <div class="payment-schedule">
+          <div class="ps-badge">Пример</div>
+          <div class="ps-title">Беседка за <strong>6 000 BYN</strong></div>
+          <div class="ps-divider" aria-hidden="true"></div>
+
+          <!-- Первый платёж: крупный акцент -->
+          <div class="ps-first">
+            <div class="ps-first-label">
+              <span class="ps-step">1</span>
+              <span>Подписание<br>договора</span>
+            </div>
+            <div class="ps-first-amount">
+              <span class="ps-amt-num">3 000</span>
+              <span class="ps-amt-cur">BYN</span>
+            </div>
+          </div>
+
+          <!-- Визуализация 6 месячных платежей -->
+          <div class="ps-months">
+            <div class="ps-months-label">+ 6 ежемесячных платежей</div>
+            <div class="ps-dots" aria-hidden="true">
+              <span class="ps-dot"></span>
+              <span class="ps-dot"></span>
+              <span class="ps-dot"></span>
+              <span class="ps-dot"></span>
+              <span class="ps-dot"></span>
+              <span class="ps-dot"></span>
+            </div>
+            <div class="ps-months-amount">
+              по <strong>500</strong> <span>BYN</span> / мес
+            </div>
+          </div>
+
+          <div class="ps-divider" aria-hidden="true"></div>
+
+          <div class="ps-total">
+            <div class="ps-total-row">
+              <span>Итого к оплате</span>
+              <strong>6 000 BYN</strong>
+            </div>
+            <div class="ps-promise">
+              <span class="ps-check" aria-hidden="true">✓</span> 0% переплаты
+              <span class="ps-dot-sep">·</span>
+              <span class="ps-check" aria-hidden="true">✓</span> Без комиссий
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== PROCESS ===== -->
 <section class="sec-process section-pad" id="process">
