@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import AsyncIterator, Optional
 
 import anthropic
+import httpx
 from anthropic import AsyncAnthropic
 
 from config import ANTHROPIC_API_KEY, CLAUDE_MODEL, PROMPTS_DIR
@@ -264,7 +265,16 @@ def _get_client() -> AsyncAnthropic:
     if _client is None:
         if not ANTHROPIC_API_KEY:
             raise RuntimeError("ANTHROPIC_API_KEY не задан. Заполните .env")
-        _client = AsyncAnthropic(api_key=ANTHROPIC_API_KEY, max_retries=0)
+        # Сеть BY→US нестабильная и медленная (до 10 сек на TLS-handshake).
+        # httpx-дефолт connect=5 сек стабильно обрывает нас → поднимаем до 30.
+        # read=180 позволяет длинным стрим-ответам (до 2048 токенов) дойти до конца.
+        # Свой retry берёт поверх — max_retries=0 у SDK.
+        timeout = httpx.Timeout(connect=30.0, read=180.0, write=30.0, pool=30.0)
+        _client = AsyncAnthropic(
+            api_key=ANTHROPIC_API_KEY,
+            max_retries=0,
+            timeout=timeout,
+        )
     return _client
 
 
