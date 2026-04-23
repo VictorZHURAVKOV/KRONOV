@@ -15,6 +15,11 @@ from typing import Optional
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from config import KP_DIR, BASE_DIR, ALENA_PHONE, ALENA_NAME, SITE_URL
+import os
+
+# PDF-файлы раздаются нашим сервером — URL должен указывать на домен агента,
+# а не на главный сайт. Берём AGENT_BASE_URL или фолбэк.
+AGENT_BASE_URL = os.getenv("AGENT_BASE_URL", "https://agent.kronov.by").rstrip("/")
 from db import add_event
 
 TEMPLATES_DIR = BASE_DIR / "prompts"  # шаблоны лежат рядом
@@ -79,7 +84,7 @@ async def generate_kp_pdf(
     })
 
     HTML(string=html, base_url=str(BASE_DIR)).write_pdf(str(out_path))
-    url = f"{SITE_URL}/kp/{filename}"
+    url = f"{AGENT_BASE_URL}/kp/{filename}"
 
     await add_event(session_id, "kp_sent", {
         "filename": filename,
@@ -142,7 +147,7 @@ async def generate_contract_pdf(
     })
 
     HTML(string=html, base_url=str(BASE_DIR)).write_pdf(str(out_path))
-    url = f"{SITE_URL}/kp/{filename}"
+    url = f"{AGENT_BASE_URL}/kp/{filename}"
 
     await add_event(session_id, "contract_sent", {
         "filename": filename,
