@@ -56,7 +56,7 @@ async def transcribe_voice(file_bytes: bytes, suffix: str = ".ogg") -> str:
 
 async def cmd_start(update: Update, _ctx: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text(
-        "Здравствуйте. КРОНОВЪ на связи. Чем помочь?"
+        "Здравствуйте. Меня зовут Алёна, я менеджер КРОНОВЪ. Чем помочь?"
     )
 
 
@@ -78,11 +78,11 @@ async def on_voice(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
         text = await transcribe_voice(bytes(file_bytes))
     except Exception as e:
         log.error("Ошибка транскрибации: %s", e)
-        await msg.reply_text("Не смог распознать голосовое — попробуйте написать текстом.")
+        await msg.reply_text("Не смогла распознать голосовое — попробуйте написать текстом.")
         return
 
     if not text:
-        await msg.reply_text("Не услышал слов. Попробуйте ещё раз или напишите текстом.")
+        await msg.reply_text("Не услышала слов. Попробуйте ещё раз или напишите текстом.")
         return
 
     log.info("Транскрибировано [%s]: %s", msg.from_user.id, text[:120])
@@ -150,7 +150,7 @@ def main():
     app.add_handler(CommandHandler("start", cmd_start))
     app.add_handler(MessageHandler(filters.VOICE | filters.AUDIO, on_voice))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, on_message))
-    log.info("Telegram-бот Андрей запущен (long polling). Жду сообщения. STT: gpt-4o-transcribe")
+    log.info("Telegram-бот Алёна запущен (long polling). Жду сообщения. STT: gpt-4o-transcribe")
     app.run_polling(drop_pending_updates=True)
 
 

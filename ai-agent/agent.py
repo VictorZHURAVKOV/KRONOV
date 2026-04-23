@@ -251,12 +251,28 @@ def _serialize_block(block) -> dict:
 
 
 # === Системный промпт ===
+# Два документа: system.md (регламент: цены, правила, факты) +
+# human_voice.md (как говорить: живой голос, вариативность, микро-детали).
+# Объединяем в один текст чтобы уложиться в один cache_control блок.
 _SYSTEM_PROMPT_CACHE: Optional[str] = None
 
 def _load_system_prompt() -> str:
     global _SYSTEM_PROMPT_CACHE
     if _SYSTEM_PROMPT_CACHE is None:
-        _SYSTEM_PROMPT_CACHE = (Path(PROMPTS_DIR) / "system.md").read_text(encoding="utf-8")
+        base = (Path(PROMPTS_DIR) / "system.md").read_text(encoding="utf-8")
+        voice_path = Path(PROMPTS_DIR) / "human_voice.md"
+        if voice_path.exists():
+            voice = voice_path.read_text(encoding="utf-8")
+            _SYSTEM_PROMPT_CACHE = (
+                base
+                + "\n\n---\n\n# ЖИВОЙ ГОЛОС (как говорить с клиентом)\n\n"
+                + "Следующий раздел — твой тон, ритм и человечность. "
+                + "Если здесь и в регламенте выше есть конфликт по формулировкам — "
+                + "в фактах приоритет у регламента, в тоне — у живого голоса.\n\n"
+                + voice
+            )
+        else:
+            _SYSTEM_PROMPT_CACHE = base
     return _SYSTEM_PROMPT_CACHE
 
 

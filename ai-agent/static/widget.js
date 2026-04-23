@@ -187,10 +187,10 @@
   panel.className = 'panel';
   panel.innerHTML = `
     <div class="header">
-      <div class="avatar">К</div>
+      <div class="avatar">А</div>
       <div class="header-text">
-        <div class="header-name">КРОНОВЪ · онлайн-консультант</div>
-        <div class="header-sub"><span class="header-status"></span>на связи</div>
+        <div class="header-name">Алёна · КРОНОВЪ</div>
+        <div class="header-sub"><span class="header-status"></span>менеджер · на связи</div>
       </div>
       <button class="close-btn" aria-label="Свернуть">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -251,7 +251,7 @@
     launcher.style.display = 'none';
     if (firstOpen) {
       firstOpen = false;
-      renderMessage('assistant', 'Здравствуйте. КРОНОВЪ на связи. Подскажу по беседкам: подобрать модель, посчитать стоимость, оформить заявку. Напишите коротко, что вас интересует.');
+      renderMessage('assistant', 'Здравствуйте. Меня зовут Алёна, я менеджер КРОНОВЪ. Помогу подобрать беседку, посчитать стоимость, оформить заказ. Напишите коротко, что вас интересует.');
     }
     setTimeout(() => textarea.focus(), 120);
   }
