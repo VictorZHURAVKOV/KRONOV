@@ -260,7 +260,11 @@ def _load_system_prompt() -> str:
     global _SYSTEM_PROMPT_CACHE
     if _SYSTEM_PROMPT_CACHE is None:
         base = (Path(PROMPTS_DIR) / "system.md").read_text(encoding="utf-8")
-        voice_path = Path(PROMPTS_DIR) / "human_voice.md"
+        # human_voice_core.md — компактная выжимка живого голоса (~7 KB).
+        # Полная версия (human_voice.md, ~66 KB) лежит рядом как референс
+        # для команды, в промпт не подгружается чтобы влезть в rate-limit
+        # Anthropic (30K input tokens/min на Tier 1).
+        voice_path = Path(PROMPTS_DIR) / "human_voice_core.md"
         if voice_path.exists():
             voice = voice_path.read_text(encoding="utf-8")
             _SYSTEM_PROMPT_CACHE = (
@@ -327,7 +331,28 @@ RETRYABLE = (
     anthropic.RateLimitError,
     anthropic.InternalServerError,
 )
-MAX_API_ATTEMPTS = 4
+MAX_API_ATTEMPTS = 6
+
+
+def _retry_delay(exc: Exception, attempt: int) -> float:
+    """Сколько ждать перед следующей попыткой.
+
+    На 429 (rate-limit) уважаем Retry-After header, иначе ждём 30+ сек —
+    лимит на org Anthropic в input tokens/min, надо реально дать минуте
+    смениться. Для других транзиентных ошибок — экспоненциальный backoff.
+    """
+    if isinstance(exc, anthropic.RateLimitError):
+        # Anthropic SDK прокидывает response.headers через .response
+        try:
+            ra = exc.response.headers.get("retry-after")  # type: ignore
+            if ra:
+                return float(ra) + random.random()
+        except Exception:
+            pass
+        # Fallback: окно 60 сек, ждём от 30 до 60 в зависимости от попытки
+        return min(60.0, 30.0 + attempt * 10.0) + random.random()
+    # Прочие транзиентные — обычный экспоненциальный backoff
+    return 0.5 * (2 ** (attempt - 1)) + random.random() * 0.5
 
 
 async def _stream_once(client: AsyncAnthropic, system_prompt: str, history: list[dict]):
@@ -394,10 +419,9 @@ async def run_turn(
                     log.error("Anthropic API exhausted retries: %s", e)
                     yield {"type": "error", "message": f"Claude API недоступен: {e}"}
                     return
-                # экспоненциальный backoff с jitter: 0.5, 1, 2, 4 + 0..0.5
-                delay = 0.5 * (2 ** (attempt - 1)) + random.random() * 0.5
-                log.warning("Anthropic API transient error (attempt %d): %s — retry in %.1fs",
-                            attempt, e, delay)
+                delay = _retry_delay(e, attempt)
+                log.warning("Anthropic API transient error (attempt %d/%d): %s — retry in %.1fs",
+                            attempt, MAX_API_ATTEMPTS, type(e).__name__, delay)
                 await asyncio.sleep(delay)
             except anthropic.BadRequestError as e:
                 log.error("Anthropic API bad request: %s", e)
