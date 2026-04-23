@@ -8,6 +8,12 @@ load_dotenv(BASE_DIR / ".env", override=True)
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
+# Если агент развёрнут в санкционной стране (BY/RU/...), Anthropic API вернёт
+# 403 forbidden. Обход — прокси через Cloudflare Worker (см. deploy/cloudflare-worker.js).
+# ANTHROPIC_BASE_URL: https://kronov-claude.<accountId>.workers.dev
+# ANTHROPIC_PROXY_SECRET: тот же, что прописан в PROXY_SECRET Worker-а.
+ANTHROPIC_BASE_URL = os.getenv("ANTHROPIC_BASE_URL", "").rstrip("/")
+ANTHROPIC_PROXY_SECRET = os.getenv("ANTHROPIC_PROXY_SECRET", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")

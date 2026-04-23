@@ -20,7 +20,10 @@ import anthropic
 import httpx
 from anthropic import AsyncAnthropic
 
-from config import ANTHROPIC_API_KEY, CLAUDE_MODEL, PROMPTS_DIR
+from config import (
+    ANTHROPIC_API_KEY, CLAUDE_MODEL, PROMPTS_DIR,
+    ANTHROPIC_BASE_URL, ANTHROPIC_PROXY_SECRET,
+)
 from db import add_message, get_history, get_or_create_conversation
 from tools import (
     calculate_price,
@@ -270,11 +273,21 @@ def _get_client() -> AsyncAnthropic:
         # read=180 позволяет длинным стрим-ответам (до 2048 токенов) дойти до конца.
         # Свой retry берёт поверх — max_retries=0 у SDK.
         timeout = httpx.Timeout(connect=30.0, read=180.0, write=30.0, pool=30.0)
-        _client = AsyncAnthropic(
-            api_key=ANTHROPIC_API_KEY,
-            max_retries=0,
-            timeout=timeout,
-        )
+
+        kwargs: dict = {
+            "api_key": ANTHROPIC_API_KEY,
+            "max_retries": 0,
+            "timeout": timeout,
+        }
+        if ANTHROPIC_BASE_URL:
+            # Прокси через Cloudflare Worker (см. deploy/cloudflare-worker.js).
+            kwargs["base_url"] = ANTHROPIC_BASE_URL
+            if ANTHROPIC_PROXY_SECRET:
+                # Уважается SDK-ом на всех запросах
+                kwargs["default_headers"] = {"x-proxy-secret": ANTHROPIC_PROXY_SECRET}
+            log.info("Anthropic API: using proxy base_url=%s", ANTHROPIC_BASE_URL)
+
+        _client = AsyncAnthropic(**kwargs)
     return _client
 
 
