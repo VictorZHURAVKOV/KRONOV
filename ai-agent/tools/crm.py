@@ -4,6 +4,7 @@
 времени. Никакой внешней CRM-системы не используется.
 """
 import json
+import logging
 import httpx
 from typing import Optional
 
@@ -15,20 +16,42 @@ from config import (
 )
 from db import update_conversation, add_event, get_or_create_conversation
 
+log = logging.getLogger(__name__)
+
+# WARN один раз при первом обращении, чтобы не засирать лог
+_warned_no_token = False
+_warned_no_chat = False
+
 
 async def _tg_send(chat_id: str, text: str) -> dict:
-    """Отправить текст в Telegram. Тихий фейл, если токен не настроен."""
-    if not TELEGRAM_BOT_TOKEN or not chat_id:
-        return {"ok": False, "reason": "TELEGRAM_BOT_TOKEN or chat_id not configured"}
+    """Отправить текст в Telegram. Если токен/chat_id не заданы — WARN в лог."""
+    global _warned_no_token, _warned_no_chat
+    if not TELEGRAM_BOT_TOKEN:
+        if not _warned_no_token:
+            log.warning("TELEGRAM_BOT_TOKEN не задан — уведомления Алёне не отправляются")
+            _warned_no_token = True
+        return {"ok": False, "reason": "TELEGRAM_BOT_TOKEN not configured"}
+    if not chat_id:
+        if not _warned_no_chat:
+            log.warning("ALENA_TELEGRAM_CHAT_ID не задан — уведомления некуда слать (молчаливый CRM)")
+            _warned_no_chat = True
+        return {"ok": False, "reason": "ALENA_TELEGRAM_CHAT_ID not configured"}
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    async with httpx.AsyncClient(timeout=10) as client:
-        r = await client.post(url, json={
-            "chat_id": chat_id,
-            "text": text,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": True,
-        })
-        return r.json()
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            r = await client.post(url, json={
+                "chat_id": chat_id,
+                "text": text,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": True,
+            })
+            data = r.json()
+            if not data.get("ok"):
+                log.warning("Telegram sendMessage не ok: %s", str(data)[:200])
+            return data
+    except Exception as e:
+        log.error("Telegram sendMessage exception: %s", e)
+        return {"ok": False, "reason": str(e)}
 
 
 async def save_contact(

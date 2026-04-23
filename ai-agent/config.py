@@ -20,6 +20,14 @@ SITE_ORIGIN = os.getenv("SITE_ORIGIN", "https://kronov.by")
 
 WAZZUP_ACCOUNT_ID = os.getenv("WAZZUP_ACCOUNT_ID", "")
 WAZZUP_API_KEY = os.getenv("WAZZUP_API_KEY", "")
+# Shared-secret для проверки входящих webhook-ов от Wazzup. Если задан — сравниваем
+# с заголовком Authorization (или X-Wazzup-Token). Если пусто — проверка отключена,
+# но при старте печатаем WARN. На проде ставить ОБЯЗАТЕЛЬНО.
+WAZZUP_WEBHOOK_TOKEN = os.getenv("WAZZUP_WEBHOOK_TOKEN", "")
+
+# Простейший rate-limit на /chat по IP.
+CHAT_RATE_LIMIT = int(os.getenv("CHAT_RATE_LIMIT", "20"))     # запросов
+CHAT_RATE_WINDOW = int(os.getenv("CHAT_RATE_WINDOW", "60"))   # секунд
 
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "8000"))

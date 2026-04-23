@@ -1,18 +1,22 @@
-"""Ядро AI-менеджера Андрея.
+"""Ядро AI-менеджера КРОНОВЪ.
 
 Один агентный цикл: Claude видит инструменты, вызывает их, получает
 результаты, продолжает до текстового ответа. История сохраняется в БД.
 
-Prompt caching — системный промпт кэшируется (5 мин TTL), это режет
-стоимость в ~3 раза на длинных диалогах.
+- Реальный токен-стриминг через `client.messages.stream()` — UX печатающего.
+- Prompt caching на системный промпт (5-мин TTL) — стоимость ~3× ниже.
+- Retry с экспоненциальным backoff на транзиентные ошибки Anthropic API.
 """
 from __future__ import annotations
 
 import asyncio
 import json
+import logging
+import random
 from pathlib import Path
 from typing import AsyncIterator, Optional
 
+import anthropic
 from anthropic import AsyncAnthropic
 
 from config import ANTHROPIC_API_KEY, CLAUDE_MODEL, PROMPTS_DIR
@@ -27,6 +31,8 @@ from tools import (
     generate_kp_pdf,
     generate_contract_pdf,
 )
+
+log = logging.getLogger(__name__)
 
 
 # === Схема инструментов для Claude ===
@@ -217,9 +223,27 @@ async def _invoke_tool(session_id: str, name: str, args: dict) -> dict:
             return await handoff_to_alena(session_id=session_id, **args)
         return {"error": f"unknown tool: {name}"}
     except TypeError as e:
+        log.warning("Bad arguments for tool %s: %s", name, e)
         return {"error": f"bad arguments for {name}: {e}"}
     except Exception as e:
+        log.exception("Tool %s failed", name)
         return {"error": f"{name} failed: {e}"}
+
+
+# === Сериализация блоков ответа ===
+def _serialize_block(block) -> dict:
+    """Превратить TextBlock/ToolUseBlock в JSON для БД и re-подачи в API.
+
+    Важно: не полагаемся на model_dump(), т.к. он может включать неинспектируемые
+    SDK-поля (`parsed_output` при стриминге) — Anthropic API их не принимает.
+    """
+    if block.type == "text":
+        return {"type": "text", "text": block.text}
+    if block.type == "tool_use":
+        return {"type": "tool_use", "id": block.id, "name": block.name,
+                "input": dict(block.input) if block.input is not None else {}}
+    # thinking и прочие — оставляем как есть через model_dump
+    return block.model_dump()
 
 
 # === Системный промпт ===
@@ -240,8 +264,37 @@ def _get_client() -> AsyncAnthropic:
     if _client is None:
         if not ANTHROPIC_API_KEY:
             raise RuntimeError("ANTHROPIC_API_KEY не задан. Заполните .env")
-        _client = AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
+        _client = AsyncAnthropic(api_key=ANTHROPIC_API_KEY, max_retries=0)
     return _client
+
+
+# === Retry на транзиентные ошибки ===
+# Anthropic SDK сам ретраит часть, но при сетевых дропах в стриме мы хотим
+# управляемый backoff на уровне нашего цикла. Параметры подобраны под SLA
+# ответа агенту в чате (≤ 8 сек до первого токена в нормальном режиме).
+RETRYABLE = (
+    anthropic.APIConnectionError,
+    anthropic.APITimeoutError,
+    anthropic.RateLimitError,
+    anthropic.InternalServerError,
+)
+MAX_API_ATTEMPTS = 4
+
+
+async def _stream_once(client: AsyncAnthropic, system_prompt: str, history: list[dict]):
+    """Один вызов API в режиме стриминга. Возвращает финальный Message."""
+    async with client.messages.stream(
+        model=CLAUDE_MODEL,
+        max_tokens=2048,
+        system=[{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}],
+        tools=TOOLS_SCHEMA,
+        messages=history,
+    ) as stream:
+        async for event in stream:
+            if event.type == "content_block_delta" and getattr(event.delta, "type", "") == "text_delta":
+                yield ("delta", event.delta.text)
+        final = await stream.get_final_message()
+        yield ("final", final)
 
 
 # === Основной цикл ===
@@ -255,15 +308,14 @@ async def run_turn(
     """Один оборот: пользователь написал — агент отвечает (может вызвать tools).
 
     Yields events:
-      - {"type": "text_delta", "text": "..."} — кусочек ответа для стриминга
-      - {"type": "tool_use", "name": "...", "input": {...}}
-      - {"type": "tool_result", "name": "...", "result": {...}}
+      - {"type": "text_delta", "text": "..."} — токен/чанк текста для стриминга
+      - {"type": "tool_use", "name": "...", "input": {...}, "id": "..."}
+      - {"type": "tool_result", "name": "...", "result": {...}, "id": "..."}
       - {"type": "done", "final_text": "...", "stop_reason": "..."}
       - {"type": "error", "message": "..."}
     """
     await get_or_create_conversation(session_id, channel, external_user_id)
 
-    # --- Кладём сообщение пользователя в историю
     user_content = user_text
     if initial_context:
         user_content = f"[СИСТЕМНЫЙ КОНТЕКСТ: {initial_context}]\n\n{user_text}"
@@ -272,49 +324,66 @@ async def run_turn(
     client = _get_client()
     system_prompt = _load_system_prompt()
 
-    max_iterations = 6  # защита от бесконечных циклов tool-use
+    max_iterations = 6
     final_text_parts: list[str] = []
 
     for _iter in range(max_iterations):
         history = await get_history(session_id, limit=60)
 
-        try:
-            resp = await client.messages.create(
-                model=CLAUDE_MODEL,
-                max_tokens=2048,
-                system=[
-                    {
-                        "type": "text",
-                        "text": system_prompt,
-                        "cache_control": {"type": "ephemeral"},
-                    }
-                ],
-                tools=TOOLS_SCHEMA,
-                messages=history,
-            )
-        except Exception as e:
-            yield {"type": "error", "message": f"Claude API error: {e}"}
-            return
+        # --- Вызов API с retry на транзиентные ошибки
+        resp = None
+        for attempt in range(1, MAX_API_ATTEMPTS + 1):
+            try:
+                async for kind, payload in _stream_once(client, system_prompt, history):
+                    if kind == "delta":
+                        yield {"type": "text_delta", "text": payload}
+                    else:  # final
+                        resp = payload
+                break
+            except RETRYABLE as e:
+                if attempt == MAX_API_ATTEMPTS:
+                    log.error("Anthropic API exhausted retries: %s", e)
+                    yield {"type": "error", "message": f"Claude API недоступен: {e}"}
+                    return
+                # экспоненциальный backoff с jitter: 0.5, 1, 2, 4 + 0..0.5
+                delay = 0.5 * (2 ** (attempt - 1)) + random.random() * 0.5
+                log.warning("Anthropic API transient error (attempt %d): %s — retry in %.1fs",
+                            attempt, e, delay)
+                await asyncio.sleep(delay)
+            except anthropic.BadRequestError as e:
+                log.error("Anthropic API bad request: %s", e)
+                yield {"type": "error", "message": "Внутренняя ошибка диалога — Алёна перезвонит."}
+                return
+            except Exception as e:
+                log.exception("Unexpected error from Anthropic API")
+                yield {"type": "error", "message": f"Сбой соединения: {e}"}
+                return
 
-        # Сохраняем ответ ассистента в историю (с блоками как есть)
-        assistant_blocks = [b.model_dump() for b in resp.content]
+        if resp is None:
+            return  # уже yield'ули error выше
+
+        # --- Сериализуем блоки для БД так, чтобы их можно было подать обратно в API.
+        # При стриминге SDK добавляет в TextBlock поле `parsed_output`, которое
+        # Anthropic API не принимает обратно ("Extra inputs are not permitted").
+        # Оставляем только канонические поля.
+        assistant_blocks = [_serialize_block(b) for b in resp.content]
         await add_message(session_id, "assistant", assistant_blocks)
 
-        # Проходим блоки
+        # --- Разбираем блоки
         tool_uses = []
         text_buf = []
         for block in resp.content:
             if block.type == "text":
                 text_buf.append(block.text)
-                yield {"type": "text_delta", "text": block.text}
+                # text_delta уже отдан выше — здесь не дублируем
             elif block.type == "tool_use":
                 tool_uses.append(block)
-                yield {"type": "tool_use", "name": block.name, "input": block.input, "id": block.id}
+                yield {"type": "tool_use", "name": block.name, "input": dict(block.input), "id": block.id}
 
         if text_buf:
             final_text_parts.append("".join(text_buf))
 
-        # Если stop_reason не end_turn и есть tool_use — выполняем их
+        # --- Если есть tool-use — выполняем и продолжаем
         if resp.stop_reason == "tool_use" and tool_uses:
             tool_results = []
             for tu in tool_uses:
@@ -325,11 +394,10 @@ async def run_turn(
                     "tool_use_id": tu.id,
                     "content": json.dumps(result, ensure_ascii=False),
                 })
-            # Кладём результаты как user message (Anthropic convention)
             await add_message(session_id, "tool", tool_results)
-            continue  # следующая итерация — Claude увидит результаты и ответит
+            continue
 
-        # end_turn или другое — завершаем
+        # --- end_turn (или другое) — завершаем
         yield {
             "type": "done",
             "final_text": "".join(final_text_parts),
@@ -337,6 +405,8 @@ async def run_turn(
         }
         return
 
+    # max_iterations исчерпаны — мягкий fallback с handoff в логе
+    log.warning("Agent reached max_iterations for session %s", session_id)
     yield {
         "type": "done",
         "final_text": "".join(final_text_parts) or "Извините, не получилось ответить сразу — передам Алёне, она свяжется.",
@@ -345,11 +415,12 @@ async def run_turn(
 
 
 async def run_turn_collect(session_id: str, channel: str, user_text: str, **kwargs) -> str:
-    """Удобная обёртка — собрать финальный текст без стриминга."""
+    """Удобная обёртка — собрать финальный текст без стриминга (для TG/Wazzup)."""
     parts = []
     async for ev in run_turn(session_id, channel, user_text, **kwargs):
         if ev["type"] == "text_delta":
             parts.append(ev["text"])
         elif ev["type"] == "error":
-            return f"Ошибка: {ev['message']}"
-    return "".join(parts)
+            log.error("run_turn_collect error: %s", ev["message"])
+            return parts and "".join(parts) or "Сейчас не получилось ответить — передам Алёне, она свяжется."
+    return "".join(parts).strip()

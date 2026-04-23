@@ -38,24 +38,40 @@ def _headers() -> dict:
     }
 
 
-async def send_message(
-    channel_id: str,
-    chat_id: str,
-    text: str,
-    chat_type: Optional[ChatType] = None,
-) -> dict:
-    """Отправить текстовое сообщение клиенту через Wazzup.
+# Лимиты по каналам (символы). WhatsApp ~4096, Viber ~7000, Telegram ~4096.
+# Берём консервативно 3500 — оставляем зазор на расшифровку UTF-8 и форматирование.
+CHUNK_LIMIT = 3500
 
-    Args:
-        channel_id: UUID канала в Wazzup (разный для WA/TG/Viber).
-        chat_id: идентификатор чата — телефон для WA/Viber, user_id для Telegram.
-        text: текст сообщения.
-        chat_type: тип чата, опционально (Wazzup определит сам по channelId).
-    """
+
+def _split_for_messenger(text: str, limit: int = CHUNK_LIMIT) -> list[str]:
+    """Разбить длинный ответ на чанки по границам абзаца/предложения, без обрезки слов."""
+    text = text.strip()
+    if len(text) <= limit:
+        return [text]
+    chunks: list[str] = []
+    rest = text
+    while len(rest) > limit:
+        # Ищем последний разрыв абзаца, потом предложения, потом пробел до limit
+        cut = rest.rfind("\n\n", 0, limit)
+        if cut < limit // 2:
+            cut = rest.rfind(". ", 0, limit)
+            if cut > 0:
+                cut += 1  # включить точку
+        if cut < limit // 2:
+            cut = rest.rfind(" ", 0, limit)
+        if cut <= 0:
+            cut = limit
+        chunks.append(rest[:cut].strip())
+        rest = rest[cut:].strip()
+    if rest:
+        chunks.append(rest)
+    return chunks
+
+
+async def _post_one(channel_id: str, chat_id: str, text: str, chat_type: Optional[ChatType]) -> dict:
     payload = {"channelId": channel_id, "chatId": chat_id, "text": text}
     if chat_type:
         payload["chatType"] = chat_type
-
     async with httpx.AsyncClient(timeout=15) as client:
         r = await client.post(
             f"{WAZZUP_BASE_URL}/v3/message",
@@ -64,14 +80,44 @@ async def send_message(
         )
         try:
             r.raise_for_status()
-        except httpx.HTTPStatusError as e:
-            log.error(
-                "Wazzup send_message failed %s: %s",
-                r.status_code,
-                r.text[:300],
-            )
+        except httpx.HTTPStatusError:
+            log.error("Wazzup send failed %s: %s", r.status_code, r.text[:300])
             return {"ok": False, "status": r.status_code, "error": r.text}
         return {"ok": True, "result": r.json()}
+
+
+async def send_message(
+    channel_id: str,
+    chat_id: str,
+    text: str,
+    chat_type: Optional[ChatType] = None,
+) -> dict:
+    """Отправить текстовое сообщение через Wazzup. Длинный текст автоматически
+    разбивается на части ≤3500 символов и шлётся последовательно.
+
+    Args:
+        channel_id: UUID канала в Wazzup (разный для WA/TG/Viber).
+        chat_id: идентификатор чата — телефон для WA/Viber, user_id для Telegram.
+        text: текст сообщения.
+        chat_type: тип чата, опционально (Wazzup определит сам по channelId).
+    """
+    text = (text or "").strip()
+    if not text:
+        return {"ok": False, "error": "empty text"}
+
+    chunks = _split_for_messenger(text)
+    if len(chunks) == 1:
+        return await _post_one(channel_id, chat_id, chunks[0], chat_type)
+
+    log.info("Wazzup: разбиваю ответ на %d чанк(ов) для %s/%s", len(chunks), chat_type, chat_id)
+    last = {"ok": True, "result": None}
+    for i, chunk in enumerate(chunks, 1):
+        res = await _post_one(channel_id, chat_id, chunk, chat_type)
+        if not res.get("ok"):
+            return {"ok": False, "status": res.get("status"), "error": res.get("error"),
+                    "sent_chunks": i - 1, "total_chunks": len(chunks)}
+        last = res
+    return {"ok": True, "result": last.get("result"), "sent_chunks": len(chunks)}
 
 
 def parse_incoming_webhook(body: dict) -> list[dict]:
