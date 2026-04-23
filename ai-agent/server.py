@@ -225,29 +225,15 @@ def _split_text(text: str, limit: int) -> list[str]:
 from tools.wazzup import parse_incoming_webhook, send_message as wazzup_send
 
 
-def _verify_wazzup_auth(req: Request) -> bool:
-    """Проверить, что webhook пришёл от Wazzup. Wazzup шлёт заданный нами токен
-    в заголовке Authorization. Если WAZZUP_WEBHOOK_TOKEN пуст — проверка отключена
-    (dev-режим, WARN уже выведен при старте)."""
-    if not WAZZUP_WEBHOOK_TOKEN:
-        return True
-    auth = req.headers.get("authorization") or req.headers.get("x-wazzup-token") or ""
-    # Wazzup присылает значение "как задали": либо сырой токен, либо "Bearer <...>"
-    if auth.lower().startswith("bearer "):
-        auth = auth[7:].strip()
-    return auth == WAZZUP_WEBHOOK_TOKEN
-
-
-@app.post("/webhook/wazzup")
-async def wazzup_webhook(req: Request):
-    if not _verify_wazzup_auth(req):
-        log.warning("Wazzup webhook: invalid token from %s", _client_ip(req))
-        raise HTTPException(401, "invalid webhook token")
-
+async def _process_wazzup_payload(req: Request):
+    """Общий обработчик webhook-а Wazzup (вызывается из обоих маршрутов)."""
     try:
         data = await req.json()
     except Exception:
-        raise HTTPException(400, "bad json")
+        # Wazzup при добавлении webhook делает verify-POST с пустым телом.
+        # Возвращаем 200 чтобы они приняли URL.
+        log.info("[WAZZUP] verify-ping (empty/non-json body)")
+        return {"ok": True}
 
     log.info("[WAZZUP RAW] keys=%s | messages=%d | statuses=%d",
              list(data.keys()),
@@ -304,6 +290,28 @@ async def wazzup_webhook(req: Request):
             log.exception("wazzup send exception")
 
     return {"ok": True, "processed": len(messages)}
+
+
+# Старый маршрут с проверкой Authorization header (на случай ручных тестов).
+@app.post("/webhook/wazzup")
+async def wazzup_webhook_authed(req: Request):
+    if WAZZUP_WEBHOOK_TOKEN:
+        auth = req.headers.get("authorization") or req.headers.get("x-wazzup-token") or ""
+        if auth.lower().startswith("bearer "):
+            auth = auth[7:].strip()
+        if auth != WAZZUP_WEBHOOK_TOKEN:
+            log.warning("Wazzup webhook (header): invalid token from %s", _client_ip(req))
+            raise HTTPException(401, "invalid webhook token")
+    return await _process_wazzup_payload(req)
+
+
+# Новый маршрут с токеном в URL — Wazzup легко принимает (verify-POST доходит).
+@app.post("/webhook/wazzup/{token}")
+async def wazzup_webhook_url_token(token: str, req: Request):
+    if WAZZUP_WEBHOOK_TOKEN and token != WAZZUP_WEBHOOK_TOKEN:
+        log.warning("Wazzup webhook (url): invalid token from %s", _client_ip(req))
+        raise HTTPException(404)  # 404 чтобы скрыть существование маршрута
+    return await _process_wazzup_payload(req)
 
 
 # ==================== Раздача PDF ====================
