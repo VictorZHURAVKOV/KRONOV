@@ -22,7 +22,7 @@ from anthropic import AsyncAnthropic
 
 from config import (
     ANTHROPIC_API_KEY, CLAUDE_MODEL, PROMPTS_DIR,
-    ANTHROPIC_BASE_URL, ANTHROPIC_PROXY_SECRET,
+    ANTHROPIC_BASE_URL, ANTHROPIC_PROXY_SECRET, ANTHROPIC_HTTPS_PROXY,
 )
 from db import add_message, get_history, get_or_create_conversation
 from tools import (
@@ -286,6 +286,16 @@ def _get_client() -> AsyncAnthropic:
                 # Уважается SDK-ом на всех запросах
                 kwargs["default_headers"] = {"x-proxy-secret": ANTHROPIC_PROXY_SECRET}
             log.info("Anthropic API: using proxy base_url=%s", ANTHROPIC_BASE_URL)
+        elif ANTHROPIC_HTTPS_PROXY:
+            # SOCKS5/HTTP прокси для прямых запросов к api.anthropic.com.
+            # Используется когда исходящий IP блокирован Anthropic (BY/RU).
+            http_client = httpx.AsyncClient(
+                proxy=ANTHROPIC_HTTPS_PROXY,
+                timeout=timeout,
+            )
+            kwargs["http_client"] = http_client
+            log.info("Anthropic API: using HTTPS_PROXY=%s",
+                     ANTHROPIC_HTTPS_PROXY.split("@")[-1])  # без креденшелов
 
         _client = AsyncAnthropic(**kwargs)
     return _client

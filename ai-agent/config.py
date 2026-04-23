@@ -14,6 +14,9 @@ CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
 # ANTHROPIC_PROXY_SECRET: тот же, что прописан в PROXY_SECRET Worker-а.
 ANTHROPIC_BASE_URL = os.getenv("ANTHROPIC_BASE_URL", "").rstrip("/")
 ANTHROPIC_PROXY_SECRET = os.getenv("ANTHROPIC_PROXY_SECRET", "")
+# Прямой SOCKS5/HTTP прокси для SDK httpx-клиента. Альтернатива BASE_URL.
+# Пример: socks5://127.0.0.1:1080 или http://user:pass@1.2.3.4:8080
+ANTHROPIC_HTTPS_PROXY = os.getenv("ANTHROPIC_HTTPS_PROXY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
