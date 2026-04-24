@@ -259,24 +259,37 @@ _SYSTEM_PROMPT_CACHE: Optional[str] = None
 def _load_system_prompt() -> str:
     global _SYSTEM_PROMPT_CACHE
     if _SYSTEM_PROMPT_CACHE is None:
-        base = (Path(PROMPTS_DIR) / "system.md").read_text(encoding="utf-8")
-        # human_voice_core.md — компактная выжимка живого голоса (~7 KB).
-        # Полная версия (human_voice.md, ~66 KB) лежит рядом как референс
-        # для команды, в промпт не подгружается чтобы влезть в rate-limit
-        # Anthropic (30K input tokens/min на Tier 1).
+        parts: list[str] = []
+
+        # 1. БАЗА — регламент: цены, факты, возражения, FAQ.
+        parts.append((Path(PROMPTS_DIR) / "system.md").read_text(encoding="utf-8"))
+
+        # 2. ЖИВОЙ ГОЛОС — как говорить (компактная выжимка KRONOV_AI_HUMAN_VOICE).
+        # Полная версия (human_voice.md, ~66 KB) лежит как референс для команды,
+        # в промпт не подгружается чтобы влезть в rate-limit Anthropic.
         voice_path = Path(PROMPTS_DIR) / "human_voice_core.md"
         if voice_path.exists():
-            voice = voice_path.read_text(encoding="utf-8")
-            _SYSTEM_PROMPT_CACHE = (
-                base
-                + "\n\n---\n\n# ЖИВОЙ ГОЛОС (как говорить с клиентом)\n\n"
+            parts.append(
+                "\n\n---\n\n# ЖИВОЙ ГОЛОС (как говорить с клиентом)\n\n"
                 + "Следующий раздел — твой тон, ритм и человечность. "
                 + "Если здесь и в регламенте выше есть конфликт по формулировкам — "
                 + "в фактах приоритет у регламента, в тоне — у живого голоса.\n\n"
-                + voice
+                + voice_path.read_text(encoding="utf-8")
             )
-        else:
-            _SYSTEM_PROMPT_CACHE = base
+
+        # 3. ПАТЧ v1.2 — ПРИОРИТЕТНЫЙ слой. При конфликте с (1) и (2) побеждает.
+        # Полная версия (patch_v1_2_full.md) — рядом как референс.
+        patch_path = Path(PROMPTS_DIR) / "patch_v1_2_core.md"
+        if patch_path.exists():
+            parts.append(
+                "\n\n---\n\n# ПАТЧ v1.2 — ПРИОРИТЕТНЫЙ СЛОЙ (24.04.2026)\n\n"
+                + "ВАЖНО: правила ниже имеют **высший приоритет** при конфликте "
+                + "с регламентом и живым голосом выше. Это последняя редакция от "
+                + "владельца после живых тестов с клиентами.\n\n"
+                + patch_path.read_text(encoding="utf-8")
+            )
+
+        _SYSTEM_PROMPT_CACHE = "".join(parts)
     return _SYSTEM_PROMPT_CACHE
 
 
